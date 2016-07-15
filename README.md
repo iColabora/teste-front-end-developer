@@ -14,9 +14,9 @@
 5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
 
-**PS1:** O formulário não deve fazer requisições para nenhuma url.
-**PS2:** A url da página não pode ser recarregada em momento algum.
-**PS3:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :D
+**PS1:** O formulário não deve fazer requisições para nenhuma url.<br>
+**PS2:** A url da página não pode ser recarregada em momento algum.<br>
+**PS3:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando.
 
 ### Você pode:
 
@@ -64,6 +64,15 @@
     * Endereço;
     * Complemento;
     * CEP.
+  * Dados da entrega:
+  * Cálculos:
+    * 
+  * Busca:
+    * 
+* Implemente o HTML/CSS do dashboard com os seguintes gráficos e tabelas:
+  * Quantidade de envios por dia;
+  * Envios por marca;
+  * Pedidos pendentes;
 
 ## Submissão
 
