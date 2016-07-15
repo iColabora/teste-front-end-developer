@@ -49,8 +49,8 @@
 * Modelo do processo de negócio disponível com o nome <i>Processo_Teste_Front.png</i> na pasta raíz;
 * Para consultas acerca da BPM acesse o Activiti User Guide: http://www.activiti.org/userguide/#bpmnConstructs.
 * Utilize o webservice de consulta de CEP's: https://viacep.com.br/
-* Modelo do banco de dados relacional:
-  *
+* Modelo do banco de dados relacional pode ser encontrado em <i>modelo_relacional.png</i> na pasta raíz;
+
 ## Especificação
 
 * Deve ser desenvolvido um conjunto de interfaces (formulário e métricas) para a automação do processo de 'Shipment of a hardware retailer';
