@@ -13,9 +13,10 @@
 4. Para a interação das interfaces utilize preferencialmente jQuery;
 5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
-* **PS1:** O formulário não deve fazer requisições para nenhuma url.
-* **PS2:** A url da página não pode ser recarregada em momento algum.
-* **PS3:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :D
+
+**PS1:** O formulário não deve fazer requisições para nenhuma url.
+**PS2:** A url da página não pode ser recarregada em momento algum.
+**PS3:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :D
 
 ### Você pode:
 
@@ -51,8 +52,18 @@
 * Para tal, implemente o HTML/CSS do formulário associado a tarefa <i>'Check if extra insurance is necessary'</i> com os seguintes campos:
   * Dados do pedido:
     * Número de pedido;
+    * Material;
+    * Marca;
+    * Data de compra;
+    * Quantidade.
   * Dados do solicitante:
-    *
+    * Nome Completo;
+    * Telefone;
+    * Estado;
+    * Cidade;
+    * Endereço;
+    * Complemento;
+    * CEP.
 
 ## Submissão
 
