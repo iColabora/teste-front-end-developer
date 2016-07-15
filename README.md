@@ -2,7 +2,8 @@
 > [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas)
 >
 > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br>
-> Essa prova consiste em testar seus conhecimentos com HTML, CSS, JavaScript, SQL entre outras coisas.
+> Essa prova consiste em testar seus conhecimentos com <b>HTML, CSS, JavaScript, SQL</b> entre outras coisas. <br>
+> O conjunto de interfaces disponibilizado leva em média <b>6 horas</b> para ser implementado;
 
 ## Instruções:
 
@@ -14,65 +15,83 @@
 5. Após terminar seu teste submeta um pull request e aguarde seu feedback.
 
 
-**PS1:** O formulário não deve fazer requisições para nenhuma url.<br>
+**PS1:** O formulário não deve submeter nenhuma url.<br>
 **PS2:** A url da página não pode ser recarregada em momento algum.<br>
 **PS3:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando.
 
 ### Você pode:
 
-* Utilizar qualquer linguagem de preprocessador css ou css puro;
+* Utilizar qualquer linguagem de pré-processador CSS ou CSS puro;
 * Utilizar um task runner de sua preferência;
-* Utilizar bibliotecas css como compass, bourbon, animatecss ou outras.
+* Utilizar bibliotecas CSS como compass, bourbon, animateCSS ou outras.
 
 ### Esperamos que você:
 
-* Minifique seu css e deixe-o na pasta "css";
+* Realize as consultas no banco de dados que fornecemos;
+* Torne dinâmica as buscas e preenchimentos dos campos do formulário;
+* Faça um visual bacana;
+* Minifique seu CSS e deixe-o na pasta "CSS";
 * Minifique seu javascript e deixe-o na pasta "js";
 * Faça commit também dos arquivos não minificados;
 * Dê suporte a IE10+, Chrome, Safari e Firefox;
-* Testes, testes, testes!
 
 ### Ganhe pontos extras por:
 
 * Desenvolver HTML semântico;
-* Componentizar seu css;
+* Componentizar seu CSS;
 * Ser fiel as especificações dos arquivos;
 * Validar os campos do seu formulário antes de habilitar o botão de envio;
 * UX/UI.
 
 ## Material:
 
-* Todos os layouts necessários estão disponíveis na pasta XPTO;
-* Modelo do processo de negócio disponível com o nome <i>Processo_Teste_Front.png</i> no arquivo XPTO;
+* Todos os layouts necessários estão disponíveis na pasta raíz;
+* Modelo do processo de negócio disponível com o nome <i>Processo_Teste_Front.png</i> na pasta raíz;
 * Para consultas acerca da BPM acesse o Activiti User Guide: http://www.activiti.org/userguide/#bpmnConstructs.
-
+* Utilize o webservice de consulta de CEP's: https://viacep.com.br/
+* Modelo do banco de dados relacional:
+  *
 ## Especificação
 
 * Deve ser desenvolvido um conjunto de interfaces (formulário e métricas) para a automação do processo de 'Shipment of a hardware retailer';
-* Para tal, implemente o HTML/CSS do formulário associado a tarefa <i>'Check if extra insurance is necessary'</i> com os seguintes campos:
-  * Dados do pedido:
-    * Número de pedido;
+* Use a criatividade para preencher os espaços em branco nos arquivos fornecidos;
+* Para tal, implemente o HTML/CSS/JS do formulário associado a tarefa <i>'Check if extra insurance is necessary'</i> (arquivo: <i>task.psd</i>) com os seguintes campos:
+  * <b>Dados do Pedido</b> (Devem existir 4 materiais, de sua escolha, vinculados ao pedido do teste):
+    * Número de Pedido;
     * Material;
     * Marca;
     * Data de compra;
-    * Quantidade.
-  * Dados do solicitante:
+    * Quantidade do Material;
+    * Preço total;
+  * <b>Dados do Insumo</b> (Devem existir 2 insumos, de sua escolha, vinculados ao pedido do teste. Além disso, deve ser possível inserir mais insumos): 
+    * Marca;
+    * Descrição;
+    * Quantidade;
+    * Preço;
+  * <b>Dados do Solicitante</b> (Use o webservice para a consulta de CEP):
     * Nome Completo;
     * Telefone;
-    * Estado;
-    * Cidade;
+    * CPF;
+    * CEP;
     * Endereço;
     * Complemento;
-    * CEP.
-  * Dados da entrega:
-  * Cálculos:
-    * 
-  * Busca:
-    * 
-* Implemente o HTML/CSS do dashboard com os seguintes gráficos e tabelas:
-  * Quantidade de envios por dia;
-  * Envios por marca;
-  * Pedidos pendentes;
+    * Cidade;
+    * Estado;
+  * <b>Dados da Entrega</b> (Pode ser utilizado o mesmo endereço presente nos dados do solicitante):
+    * CEP;
+    * Endereço;
+    * Complemento;
+    * Cidade;
+    * Estado;
+  * <b>Cálculos</b>:
+    * Total do pedido ((preço dos insumos x quantidades) + (preço do material x quantidades));
+  * <b>Busca</b>:
+    * Deve ser permitido inserir um numero de pedido e após a consulta, preencher automaticamente todos os campos do formulário;
+* Implemente o HTML/CSS/JS do dashboard com os seguintes gráficos e tabelas (arquivo: <i>dashboard.psd</i>):
+  * [GRÁFICO] - Quantidade de pedidos por dia;
+  * [GRÁFICO] - Pedidos por solicitante;
+  * [TABELA] - Pedidos pendentes;
+
 
 ## Submissão
 
