@@ -3,15 +3,6 @@
 >
 > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.
 
-## Vaga:
-A iColabora, especializada em soluções para automação de processos de negócio (BPM), contrata front-end developer para atuar em São Paulo. <br>
-O profissional deve trabalhar em time liderado por um Product Manager e dedicado a concepção, codificação e modificação de produtos, do layout ao funcionamento, sobre plataforma própria (Turbina BPMS) e de acordo com especificações definidas.
-
-<strong>RESPONSABILIDADES</strong><br>
-* Iteração constante com stakeholders e gestão executiva, bem como a autoridade e escopo para aplicar seus conhecimentos em muitos problemas técnicos interessantes;
-* Candidato deve ter conhecimentos de UI/UX, compatibilidade cross-browser, funções web gerais e padrões;
-* A posição requer uma comunicação constante com os colegas em ambiente Scrum e multi-cultural.
-
 ## Instruções:
 
 1. Faça um fork deste repositório;
