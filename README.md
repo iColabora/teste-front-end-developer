@@ -2,6 +2,7 @@
 > [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br)
 >
 > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.
+> Essa prova consiste em testar seus conhecimentos com HTML, CSS, JavaScript, SQL entre outras coisas.
 
 ## Instruções:
 
@@ -24,7 +25,8 @@
 * Minifique seu css e deixe-o na pasta "css";
 * Minifique seu javascript e deixe-o na pasta "js";
 * Faça commit também dos arquivos não minificados;
-* Dê suporte a IE10+, Chrome, Safari e Firefox.
+* Dê suporte a IE10+, Chrome, Safari e Firefox;
+* Testes, testes, testes!
 
 * **Importante:** Usamos o mesmo teste para todos os níveis de front: **junior**, **pleno** ou **senior**, mas procuramos adequar nossa exigência na avaliação com cada um desses níveis sem, por exemplo, exigir excelência de quem está começando :D
 
