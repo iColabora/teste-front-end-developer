@@ -1,3 +1,19 @@
+<!--
+------------------------------------------------------
+- Nome: Caio de Lima Granero
+- Obs: Tentei durante os três dias utilizar a biblioteca mysqlQuery, 
+- cheguei a entrei em contato com o Murylo a respeito, porém continuei
+- sem conseguir utiliza-la. 
+- Recebi erro de requisição, tentei até mesmo trocar de máquina 
+- mas não obtive sucesso.
+- Sei que era um dos requisitos do estudo de casos, porém infelizemente 
+- precisei submeter sem a biblioteca. 
+- Nas operações que seriam necessários realizar as consultas SQL, 
+- gerei dados aleatórios apenas para mostrar o funcionamento.
+- Também criei um arquivo query.sql com todas as consultas que seriam utilizadas.
+- Obrigado pela oportunidade!
+-------------------------------------------------------->
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,31 +24,46 @@
         <title>Shipment of a hardware retailer</title>
         <meta name="description" content="Shipment of a hardware retailer" />
         <meta name="keywords" content="shipment, hardware, retailer, icolabora" />
-
+        <meta charset="utf-8" />
+        
         <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
 
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>-->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="dist/semantic.min.js"></script>
-        <!--<script src="js/mysql_lib.js"></script> -->
-        <script src="js/main.js"></script>
+        <!--<script src="js/mysql_lib.js"></script>-->
         <script src="js/jquery.maskedinput.min.js"></script>
-        <script src="js/moment.js"></script>
         <script src="js/chart/Chart.bundle.js"></script>
         <script src="js/charts.js"></script>
         <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/numeric.js"></script>
+        <script src="js/maskMoney.js"></script>
+        <script src="js/main.js"></script>
+        
+        <script>    
+            /** Consultas MySQL **/
+            var mysql_query = "SELECT id FROM pedidos";
+            mysqlQuery(mysql_query, function(result){
+                // mostra o resultado da query
+                console.log(result);
+            });
+        </script>
     </head>
     <body> 
+        <script>
+            
+        </script>
         <header>
             <div class="ui grid">
                 <div class="one wide column"><img class="logo" src="images/logo.png"></div>
-                <div class="five wide column" id="options">
-                    <a  id="dashboards">DASHBOARDS</a>
-                    <a >SOLUÇÕES</a>
-                    <a >ADMINISTRAÇÃO</a>
+                <div class="five wide column options" id="options">
+                    <a id="dashboards">DASHBOARDS</a>
+                    <a>SOLUÇÕES</a>
+                    <a>ADMINISTRAÇÃO</a>
                 </div>
                 <div class="one wide column"></div>
-                <div class="three wide column" id="process">
+                <div class="three wide column process" id="process">
                     <a id="process_text"  class="process_txt"><i class="play icon"></i>INICIAR PROCESSO</a>
                 </div>
                 <div class="three wide column"></div>
@@ -62,7 +93,7 @@
                     <div class="ten wide column"></div>
                 </div>
             </div> <!---- END PROCESS --->
-            <div id="nav-dashboards">
+            <div class="nav-dashboards" id="nav-dashboards">
                 <div class="ui grid">
                     <div class="left floater two wide column" id="options">
                         <b><a id="dashboard1_link">Dashboard 1</a></b>
@@ -78,9 +109,9 @@
         </nav>
         <div class="content">
             <center>
-                <div class="charts">
-                    <canvas id="chart1" class="chart1"></canvas>
-                    <canvas id="chart2" class="chart2"></canvas>
+                <div class="charts"> <!--- DASHBOARDS -->
+                    <canvas id="chart1" class="chart1"></canvas> <!--- CHART 1 -->
+                    <canvas id="chart2" class="chart2"></canvas> <!--- CHART 2 -->
                     <div id="table1" class="table1">
                         <center><h2>Pedidos Pendentes</h2></center><br>
                         <table class="ui celled table">
@@ -92,20 +123,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
+                                    <td>1100</td>
+                                    <td>01/01/2016</td>
                                 </tr>
                                 <tr>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
+                                    <td>1111</td>
+                                    <td>02/04/2016</td>
                                 </tr>
                                 <tr>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
+                                    <td>1122</td>
+                                    <td>23/05/2016</td>
                                 </tr>
                                 <tr>
-                                    <td>Cell</td>
-                                    <td>Cell</td>
+                                    <td>1200</td>
+                                    <td>07/07/2016</td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -127,7 +158,7 @@
                                 </tr>
                             </tfoot>
                         </table>
-                    </div>
+                    </div> <!--- TABLE 1 -->
                 </div>
             </center>
             <div class="choice_process">
@@ -138,36 +169,36 @@
                         <button class="ui positive button btn_com_pedido">Tenho o número do pedido</button>
                     </div>
                 </center>
-            </div> <!--- -->
+            </div> <!--- CHOICE_PROCESS -->
             <br><br>
             <div class="search_process">    
                 <div class="ui action fluid input" id="search_div">
                     <input class="" placeholder="Número do pedido" type="text">
-                    <button class="ui button">Buscar</button>
+                    <button onclick="" class="ui button" id="btn_search">Buscar</button>
                 </div> <!--- SEARCH --->
                 <br>
-                <div class="search_result">
-
-                </div>
+                <div class="search_result"></div>
             </div> <!--- END SEARCH PROCESS --->
             <div class="form_process">
                 <form class="ui form">
                     <div class="ui one column very relaxed grid">
-                        <div class="column dados_pedidos">
+                        <div class="column dados_pedidos" id="dados_pedidos">
                             <br>
                             <center><h3>Dados do Pedido</h3></center><br>
                             <div class="ui grid">
                                 <div class="five wide column">
                                     <div class="ui fluid input field">
-                                        <input placeholder="Número do Pedido" maxlength="11" name="num_pedido" type="text">
+                                        <input placeholder="Número do Pedido" maxlength="11" name="num_pedido" id="num_pedido" type="text">
                                     </div>
                                 </div>
                                 <div class="six wide column">
-                                    <select class="ui fluid selection dropdown">
-                                        <option value="all">All</option>
-                                        <option selected="" value="articles">Articles</option>
-                                        <option value="products">Products</option>
-                                    </select>
+                                    <select class="ui selection dropdown" tabindex="0" id="seleciona_material">
+                                        <option value="0" selected="">Selecione o material</option>
+                                        <option value="1">HD</option>
+                                        <option value="2">Memória RAM</option>
+                                        <option value="3">Placa mãe</option>
+                                        <option value="4">Placa de Rede</option>
+                                    </select>                                    
                                 </div>
                                 <div class="five wide column">
                                     <div class="ui fluid input field">
@@ -195,30 +226,59 @@
                         </div> <!---- DADOS PEDIDOS ---->
                     </div>
                     <div class="ui one column very relaxed grid">
-                        <div class="column" id="dados_insumo">
+                        <div class="column dados_insumo" id="dados_insumo">
                             <br>
                             <center><h3>Dados do Insumo <i class="plus icon novo_insumo"></i></h3></center><br><br>
                             <div class="ui grid">
                                 <div class="ten wide column">
                                     <div class="ui fluid input field">
-                                        <input placeholder="Marca" type="text" maxlength="255" name="marca_insumo" id="marca_insumo">
+                                        <input placeholder="Marca" type="text" maxlength="255" name="marca_insumo[]" id="marca_insumo[]">
                                     </div>
                                 </div>
                                 <div class="six wide column">
                                     <div class="ui fluid input field">
-                                        <input placeholder="Quantidade" type="text" maxlength="10" name="quantidade_insumo" id="quantidade_insumo">
+                                        <input placeholder="Quantidade" type="text" maxlength="10" name="quantidade_insumo[]" id="quantidade_insumo[]">
                                     </div>
                                 </div>
                             </div>
                             <div class="ui grid">
                                 <div class="ten wide column ">
                                     <div class="ui fluid input field">
-                                        <input placeholder="Descrição" type="text" name="descricao_insumo" id="descricao_insumo">
+                                        <input placeholder="Descrição" type="text" name="descricao_insumo[]" id="descricao_insumo[]">
                                     </div>
                                 </div>
                                 <div class="six wide column">
                                     <div class="ui fluid input field">
-                                        <input placeholder="Preço" type="text" name="preco_insumo" id="preco_insumo">
+                                        <input placeholder="Preço" type="text" name="preco_insumo[]" id="preco_insumo[]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!---- DADOS INSUMOS ---->
+                    </div>
+                    <div class="ui one column very relaxed grid">
+                        <div class="column dados_insumo" id="dados_insumo">
+                            <br>
+                            <div class="ui grid">
+                                <div class="ten wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Marca" type="text" maxlength="255" name="marca_insumo[]" id="marca_insumo[]">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Quantidade" type="text" maxlength="10" name="quantidade_insumo[]" id="quantidade_insumo[]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="ten wide column ">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Descrição" type="text" name="descricao_insumo[]" id="descricao_insumo[]">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Preço" type="text" name="preco_insumo[]" id="preco_insumo[]">
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +287,7 @@
                     <div class="div_novo_insumo"></div>
                     <br><br>
                     <div class="ui two column very relaxed grid">
-                        <div class="column" id="dados_solicitante">
+                        <div class="column dados_solicitante" id="dados_solicitante">
                             <center><h3>Dados do Solicitante</h3></center><br><br>
                             <div class="ui grid">
                                 <div class="sixteen wide column">
@@ -249,7 +309,7 @@
                                 </div>
                                 <div class="five wide column">
                                     <div class="ui fluid input field">
-                                        <input placeholder="CEP" type="text" name="cep_solicitante" maxlength="10" id="cep_solicitante">
+                                        <input placeholder="CEP" type="text" name="cep_solicitante" maxlength="8" id="cep_solicitante">
                                     </div>
                                 </div>
                             </div>
@@ -278,12 +338,12 @@
                                 </div>
                             </div>
                         </div> <!--- DADOS SOLICITANTE --->
-                        <div class="column" id="dados_entrega">
+                        <div class="column dados_entrega" id="dados_entrega">
                             <center><h3>Dados da Entrega</h3></center><br><br>
                             <div class="ui grid">
                                 <div class="sixteen wide column">
                                     <div class="ui fluid input field">
-                                        <input placeholder="CEP" type="text" name="cep_entrega" id="cep_entrega" maxlength="10">
+                                        <input placeholder="CEP" type="text" name="cep_entrega" id="cep_entrega" maxlength="8">
                                     </div>
                                 </div>
                             </div>
@@ -320,10 +380,16 @@
                                 <button class="ui teal labeled icon button">
                                     <i class="cart icon"></i>Valor Total
                                 </button>
-                                <input value="" id="valor_total" type="text">
+                                <input id="valor_total" readonly="" type="text">
                             </div>
                         </div>
-                    </div>
+                    </div><br><br>  <!--- VALOR TOTAL -->
+                    <center>
+                        <button class="ui primary button btn_save">
+                          Enviar
+                        </button>
+                        <div class="ui error message"></div>
+                    </center>
                 </form>
             </div> <!--- END FORM PROCESS --->
         </div> <!--- END CONTENT --->

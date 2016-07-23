@@ -18,7 +18,7 @@ header i, header a{
     cursor: pointer;
 }
 
-header #process{
+header .process{
     background-color: rgb(57, 187, 157);
     margin-bottom: 14px;
 }
@@ -70,7 +70,7 @@ header .perfil{
 
 /*********** Nav ************/
 
-nav #nav-dashboards{
+nav .nav-dashboards{
     display: none;
 }
 
@@ -117,11 +117,11 @@ nav a{
 }
 
 /************* choice_process *************/
-.choice_process .btn_sem_pedido, .choice_process .btn_com_pedido{
+.choice_process .btn_sem_pedido, .choice_process .btn_com_pedido, .form_process .btn_save{
     width:300px;
 }
 
-.choice_process .btn_com_pedido, .ui.positive.button{
+.choice_process .btn_com_pedido, .ui.positive.button, .form_process .btn_save{
     background-color: rgb(57, 187, 157) !important;
 }
 

@@ -29,9 +29,6 @@ var randomColor = function() {
     return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',0.7)';
 };
 
-
-console.log(randomColor());
-
 var barChartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [{
