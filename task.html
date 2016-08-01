@@ -3,13 +3,66 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	
+	<!-- Loading the stylesheets -->
 	<link rel="stylesheet" type="text/css" href="./vendor/font-awesome/styles/css/font-awesome.css" />
 	<link rel="stylesheet" type="text/css" href="./vendor/spirit-framework/styles/css/main.css" />
+	
+	<!-- Loading the scripts -->
+	<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="./vendor/spirit-framework/js/core.js"></script>
+	
 	<title></title>
 </head>
 <body>
 	<div class="demo">
 		
+		<!-- Menu -->
+		<div class="menu fix-top-offset clearfix">
+			<div class="menu-inner menu-fluid">
+				<strong class="menu-brand text-uppercase menu-scroll-to"><a href="#home">Menu brand</a></strong>
+				<span class="menu-toggle fa fa-bars"></span>
+				<span class="search-toggle fa fa-search"></span>
+				
+				<!-- Menu collapse -->
+				<div class="menu-collapse">
+					<ul class="menu-list menu-left">
+						<li class="text-uppercase"><a href="javascript:void(0);">Dashboards</a></li>
+						<li class="text-uppercase"><a href="javascript:void(0);">Soluções</a></li>
+						<li class="text-uppercase"><a href="javascript:void(0);">Administração</a></li>
+					</ul>
+					<ul class="menu-list menu-right">
+						<li class="text-uppercase"><a href="javascript:void(0);">Menu item right</a></li>
+						<li class="text-uppercase"><span class="menu-sub"><a href="javascript:void(0);">Dropdown</a></span>
+							<ul>
+								<li class="text-uppercase"><a href="javascript:void(0);">Dropdown sub-item 1</a></li>
+								<li class="text-uppercase"><a href="javascript:void(0);">Dropdown sub-item 2</a></li>
+								<li class="text-uppercase"><a href="javascript:void(0);">Dropdown sub-item 3</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- END Menu collapse -->
+				
+				<!-- Form collapse -->
+				<div class="form-collapse">
+					<ul>
+						<li>
+							<form name="form_busca" action="#" method="POST">
+								<div class="demo-tf-skin col-l4 box-asd no-margin-right">
+									<input type="search" placeholder="Busca" name="demo_search_e1" id="demo_search_e1" />
+								</div>
+								<span class="box-asd no-margin-bottom"><button type="submit" class="demo-btn-skin demo-btn-form demo-btn-submit">Submit</button></span>
+							</form>
+						</li>
+					</ul>
+				</div>
+				<!-- END Form collapse -->
+
+			</div>
+		</div>
+		<!-- END Menu -->
+
 	</div>
 </body>
 </html>
