@@ -1,0 +1,73 @@
+#tarefas
+{
+	background-color:white; 
+	font-weight: bold; 
+	font-family: Arial; 
+	font-size: 115%;
+}
+
+#rodape
+{
+	height: 60px; 
+	bottom: 0px; 
+	position: absolute; 
+	background-color:#565351; 
+	padding: 10px;
+}
+
+#menu 
+{
+	color: #FFFFFF; 
+	text-shadow: 1px 1px 0 #000000; 
+	font-size: 115%;
+	font-weight: bold;
+}
+
+#iniciaprocesso
+{
+	padding: 0px; 
+	background-color: #39BB9D;
+	color: #ffffff;
+}
+
+#menudireita
+{
+	padding: 4px; 
+	margin: 0px; 
+	text-align: right
+}
+
+
+.branco 
+{
+	color: #ffffff;
+}
+
+.itemdireita
+{
+	height: 30px;
+	width: 30px
+}
+
+.foto
+{
+	height: 50px;
+	width:50px;
+}
+
+.vazio
+{
+	height: 60px;
+}
+
+.principal
+{
+	background-color: #F9F9F9;
+}
+
+.campoform
+{
+	font-weight:bold; 
+	text-shadow: 1px 1px 1px #888888; 
+	text-align: left;
+}
