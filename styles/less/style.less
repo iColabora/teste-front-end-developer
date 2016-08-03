@@ -1,0 +1,91 @@
+// ------------------- // 
+// Estrutura principal // 
+// ------------------- //
+.container {
+	//Toolbar
+	.toolbar {
+		height: 64px;
+		background: #102938;
+		.menu-inner { width: auto; margin: 0px 30px; }
+		.menu-brand a {
+			display: inline-block;
+			width: 54px;
+			height: 64px;
+			margin-right: 32px;
+			background: url(../../img/logo.png) center center no-repeat;
+		}
+		.menu-search a,
+		.menu-accessibility a { font-size: 22px; color: #4a5c68; }
+		.menu-accessibility a { font-weight: bold; }
+		.menu-profile strong { 
+			display: inline-block;
+			width: 32px;
+			height: 32px;
+			border-radius: 64px;
+			overflow: hidden;
+			background: #ffffff;
+		}
+		.menu-profile img { 
+			display: block; 
+			width: 100%; 
+			border: none; 
+		}
+		ul {
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+			background: transparent;
+		}
+		ul ul {
+			background: #ffffff;
+			border-top: none;
+			border-left: 1px solid #efefef;
+			border-right: 1px solid #efefef;
+			border-bottom: 1px solid #efefef;
+			border-radius: 0px 0px 3px 3px;
+			box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+		}
+		ul ul li {
+			float: none;
+			display: block;
+			min-width: 250px;
+			border: none;
+		}
+		ul ul a {
+			float: none;
+			display: block;
+			color: #102938;
+			line-height: 24px;
+			text-decoration: none;
+			margin: 0px;
+			padding: 12px;
+		}
+		ul ul a:hover { color: #39bb9d;	background: #f7f7f7; }
+		ul ul ul { top: 0; left: 100%; }
+		ul li:hover ul { display: block; }
+		li {
+			position: relative;
+			display: inline-block;
+			*display: inline;
+			zoom: 1;
+			width: auto;
+		}
+		li a {
+			float: left;
+			display: block;
+			font-size: 14px;
+			color: #ffffff;
+			cursor: pointer;
+			line-height: 32px;
+			text-align: inherit;
+			text-decoration: none;
+			margin: 0px;
+			padding: 16px 12px;
+		}
+		li a:hover { color: #39bb9d; background: none; }
+		li a.menu-item-active { color: #39bb9d; background: none; }
+		li:hover { color: #39bb9d; background: none; }
+		.menu-sub a { color: #4a5c68; }
+		.menu-sub a:hover { color: #ffffff; }
+	}
+}
