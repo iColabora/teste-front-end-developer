@@ -1,3 +1,31 @@
+@font-face {
+  font-family: 'hk_groteskbold';
+  src: url('../fonts/hkgrotesk-bold-webfont.eot');
+  src: url('../fonts/hkgrotesk-bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/hkgrotesk-bold-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-bold-webfont.woff') format('woff'), url('../fonts/hkgrotesk-bold-webfont.ttf') format('truetype'), url('../fonts/hkgrotesk-bold-webfont.svg#hk_groteskbold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'hk_grotesklight';
+  src: url('../fonts/hkgrotesk-light-webfont.eot');
+  src: url('../fonts/hkgrotesk-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/hkgrotesk-light-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-light-webfont.woff') format('woff'), url('../fonts/hkgrotesk-light-webfont.ttf') format('truetype'), url('../fonts/hkgrotesk-light-webfont.svg#hk_grotesklight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'hk_groteskmedium';
+  src: url('../fonts/hkgrotesk-medium-webfont.eot');
+  src: url('../fonts/hkgrotesk-medium-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/hkgrotesk-medium-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-medium-webfont.woff') format('woff'), url('../fonts/hkgrotesk-medium-webfont.ttf') format('truetype'), url('../fonts/hkgrotesk-medium-webfont.svg#hk_groteskmedium') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'hk_groteskregular';
+  src: url('../fonts/hkgrotesk-regular-webfont.eot');
+  src: url('../fonts/hkgrotesk-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/hkgrotesk-regular-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-regular-webfont.woff') format('woff'), url('../fonts/hkgrotesk-regular-webfont.ttf') format('truetype'), url('../fonts/hkgrotesk-regular-webfont.svg#hk_groteskregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 .container .toolbar {
   height: 64px;
   background: #102938;
@@ -13,8 +41,27 @@
   margin-right: 32px;
   background: url(../../img/logo.png) center center no-repeat;
 }
+.container .toolbar .menu-start {
+  margin-left: 50px;
+}
+.container .toolbar .menu-start a {
+  padding: 16px;
+  background: #39bb9d;
+}
+.container .toolbar .menu-start a:hover {
+  color: #ffffff;
+  background: #60c8b0;
+}
+.container .toolbar .menu-start a:before {
+  float: left;
+  display: inline-block;
+  font-family: 'FontAwesome';
+  content: '\f04b';
+  margin-right: 10px;
+}
 .container .toolbar .menu-search a,
 .container .toolbar .menu-accessibility a {
+  font-family: 'FontAwesome';
   font-size: 22px;
   color: #4a5c68;
 }
@@ -41,6 +88,7 @@
   background: transparent;
 }
 .container .toolbar ul ul {
+  padding: 0px;
   background: #ffffff;
   border-top: none;
   border-left: 1px solid #efefef;
@@ -58,6 +106,7 @@
 .container .toolbar ul ul a {
   float: none;
   display: block;
+  font-family: 'hk_groteskregular';
   color: #102938;
   line-height: 24px;
   text-decoration: none;
@@ -85,6 +134,7 @@
 .container .toolbar li a {
   float: left;
   display: block;
+  font-family: 'hk_groteskbold';
   font-size: 14px;
   color: #ffffff;
   cursor: pointer;
@@ -111,4 +161,232 @@
 }
 .container .toolbar .menu-sub a:hover {
   color: #ffffff;
+}
+.container .toolbar .menu-divider {
+  border-top: 1px solid #efefef;
+}
+.container .toolbar .card-profile {
+  display: none;
+}
+.container .toolbar .form-collapse {
+  display: none;
+  background: none;
+}
+@media screen and (min-width: 240px) and (max-width: 480px) {
+  .container .toolbar {
+    height: auto;
+  }
+  .container .toolbar .menu-inner {
+    width: auto;
+    margin: 0;
+  }
+  .container .toolbar .menu-brand a {
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    margin-right: 0px;
+    background-size: 28px;
+    background-image: url(../../img/logo.png);
+  }
+  .container .toolbar .menu-start {
+    margin: 0px;
+  }
+  .container .toolbar .menu-search,
+  .container .toolbar .menu-accessibility,
+  .container .toolbar .menu-profile {
+    display: none;
+  }
+  .container .toolbar ul ul {
+    background: #3b4953;
+  }
+  .container .toolbar ul ul a {
+    color: #ffffff;
+  }
+  .container .toolbar li {
+    float: none;
+    display: block;
+    border-bottom: 1px solid #3b4953;
+  }
+  .container .toolbar li:last-child {
+    border: none;
+  }
+  .container .toolbar li a {
+    float: none;
+    font-size: 0.875em;
+    color: #ffffff;
+    line-height: 10px;
+    margin: 0px;
+    padding: 16px;
+  }
+  .container .toolbar .menu-toggle,
+  .container .toolbar .search-toggle {
+    font-size: 1.250em;
+    color: #929da4;
+    line-height: 22px;
+    text-align: center;
+    width: 54px;
+    margin: 0px;
+    padding: 16px 0px;
+    border-left: 1px solid #4a5c68;
+  }
+  .container .toolbar .search-toggle {
+    float: right;
+  }
+  .container .toolbar .menu-expand,
+  .container .toolbar .search-expand {
+    color: #ffffff;
+  }
+  .container .toolbar .menu-expand {
+    background: #60c8b0;
+    border-left: 1px solid #60c8b0;
+  }
+  .container .toolbar .search-expand {
+    background: #4a5c68;
+  }
+  .container .toolbar .menu-collapse {
+    border: none;
+    background: #4a5c68;
+  }
+  .container .toolbar .card-profile {
+    display: block;
+    font-family: 'hk_grotesklight';
+    padding: 16px;
+    background: #60c8b0;
+  }
+  .container .toolbar .card-profile h4,
+  .container .toolbar .card-profile p {
+    margin: 0px 0px 0px 50px;
+  }
+  .container .toolbar .card-profile h4 {
+    color: #ffffff;
+  }
+  .container .toolbar .card-profile p {
+    color: #afe3d7;
+  }
+  .container .toolbar .card-profile strong {
+    float: left;
+    display: block;
+    width: 38px;
+    height: 38px;
+    overflow: hidden;
+    border-radius: 64px;
+    background: #ffffff;
+  }
+  .container .toolbar .card-profile img {
+    display: block;
+    width: 100%;
+  }
+  .container .toolbar .form-collapse {
+    display: none;
+    background: #4a5c68;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .container .toolbar {
+    height: auto;
+  }
+  .container .toolbar .menu-inner {
+    width: auto;
+    margin: 0;
+  }
+  .container .toolbar .menu-brand a {
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    margin-right: 0px;
+    background-size: 28px;
+    background-image: url(../../img/logo.png);
+  }
+  .container .toolbar .menu-start {
+    margin: 0px;
+  }
+  .container .toolbar .menu-search,
+  .container .toolbar .menu-accessibility,
+  .container .toolbar .menu-profile {
+    display: none;
+  }
+  .container .toolbar ul ul {
+    background: #3b4953;
+  }
+  .container .toolbar ul ul a {
+    color: #ffffff;
+  }
+  .container .toolbar li {
+    float: none;
+    display: block;
+    border-bottom: 1px solid #3b4953;
+  }
+  .container .toolbar li:last-child {
+    border: none;
+  }
+  .container .toolbar li a {
+    float: none;
+    font-size: 0.875em;
+    color: #ffffff;
+    line-height: 10px;
+    margin: 0px;
+    padding: 16px;
+  }
+  .container .toolbar .menu-toggle,
+  .container .toolbar .search-toggle {
+    font-size: 1.250em;
+    color: #929da4;
+    line-height: 22px;
+    text-align: center;
+    width: 54px;
+    margin: 0px;
+    padding: 16px 0px;
+    border-left: 1px solid #4a5c68;
+  }
+  .container .toolbar .search-toggle {
+    float: right;
+  }
+  .container .toolbar .menu-expand,
+  .container .toolbar .search-expand {
+    color: #ffffff;
+  }
+  .container .toolbar .menu-expand {
+    background: #60c8b0;
+    border-left: 1px solid #60c8b0;
+  }
+  .container .toolbar .search-expand {
+    background: #4a5c68;
+  }
+  .container .toolbar .menu-collapse {
+    border: none;
+    background: #4a5c68;
+  }
+  .container .toolbar .card-profile {
+    display: block;
+    font-family: 'hk_grotesklight';
+    padding: 16px;
+    background: #60c8b0;
+  }
+  .container .toolbar .card-profile h4,
+  .container .toolbar .card-profile p {
+    margin: 0px 0px 0px 50px;
+  }
+  .container .toolbar .card-profile h4 {
+    color: #ffffff;
+  }
+  .container .toolbar .card-profile p {
+    color: #afe3d7;
+  }
+  .container .toolbar .card-profile strong {
+    float: left;
+    display: block;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border-radius: 64px;
+    background: #ffffff;
+  }
+  .container .toolbar .card-profile img {
+    display: block;
+    width: 100%;
+  }
+  .container .toolbar .form-collapse {
+    display: none;
+    background: #4a5c68;
+  }
 }
