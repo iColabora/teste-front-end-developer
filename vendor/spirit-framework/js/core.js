@@ -74,7 +74,7 @@ $(function() {
           $('.menu-toggle').removeClass('menu-expand');
           $('.menu-collapse').hide();
           //Executa o efeito de abrir e fechar a pesquisa
-          $(this).parent().find('.form-collapse').slideToggle(200);
+          $(this).parent().find('.form-collapse').toggle();
           event.stopPropagation();
         });
       }

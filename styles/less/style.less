@@ -65,8 +65,8 @@
 		.menu-profile ul {
 			display: none;
 			position: absolute;
-			top: 100%;
 			right: 0px;
+			z-index: 3;
 			width: 320px;
 			border-radius: 3px;
 			background: #ffffff;
@@ -125,6 +125,7 @@
 		ul ul ul { top: 0; left: 100%; }
 		ul li:hover ul { display: block; }
 		li {
+			float: left;
 			position: relative;
 			display: inline-block;
 			*display: inline;
@@ -160,7 +161,7 @@
 			height: 64px; 
 			background: #4a5c68; 
 		}
-		.form-collapse form { padding: 15px 0px 15px 12px; }
+		.form-collapse form { padding: 15px 0px 15px 12px; background: none; }
 		.form-collapse input[type='search'],
 		.form-collapse input[type='search']:focus {
 			font-family: 'hk_grotesklight';
@@ -177,6 +178,39 @@
 		.form-collapse input[type='search']::-moz-placeholder { color: #a4adb3; }
 		.form-collapse input[type='search']:-ms-input-placeholder { color: #a4adb3; }
 	}
+
+	//Sub-navigation bar
+	.subnavigation {
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.075);
+		background: #ffffff;
+	}
+	.subnavigation ul {
+		margin: 0px 30px;
+		padding: 0px;
+		list-style: none;
+	}
+	.subnavigation li {
+		float: left;
+		display: inline;
+		margin-right: 24px;
+		border: none;
+	}
+	.subnavigation li:last-child { margin: 0px; }
+	.subnavigation li a {
+		float: left;
+		display: inline-block;
+		font-family: 'hk_groteskmedium';
+		font-size: 14px;
+		color: #909090;
+		text-align: left;
+		margin: 0px;
+		padding: 16px 12px;
+	}
+	.subnavigation li a:hover { color: #39bb9d; background: none; }
 }
 
 // ------------------ // 
@@ -250,17 +284,19 @@
 			.menu-expand, 
 			.search-expand { color: #60c8b0; background: none; }
 			.menu-expand:before { color: #60c8b0; content: '\f0c9'; }
-			.menu-collapse { height: 100vh }
+			.menu-collapse { top: auto; height: 100vh; background: #102938; }
 			.menu-collapse,
 			.form-collapse {
+				position: absolute;
 				float: none; 
 				display: none;
+				width: 100%;
+				z-index: 2;
 				border-top: 1px solid #3f535f; 
-				background: #102938; 
 			}
-			.form-collapse { height: auto; }
-			.form-collapse:before { top: 54px; }
-			.form-collapse form { padding: 16px; }
+			.form-collapse { height: 100vh; background: url(../../img/dark-transparent.png); }
+			.form-collapse:before { display: none; }
+			.form-collapse form { padding: 16px; background: #102938; }
 			.form-collapse input[type='search'],
 			.form-collapse input[type='search']:focus {
 				font-family: 'hk_grotesklight';
@@ -276,5 +312,27 @@
 			.form-collapse input[type='search']::-moz-placeholder { color: #909090; }
 			.form-collapse input[type='search']:-ms-input-placeholder { color: #909090; }
 		}
+		.subnavigation { top: 2px; }
+		.subnavigation ul {
+			margin: 0px;
+			padding: 0px;
+			list-style: none;
+		}
+		.subnavigation li { 
+			display: inline-block; 
+			width: 50%; 
+			margin: 0px;
+			border-right: 1px solid #efefef;
+			border-bottom: 1px solid #efefef;  
+		}
+		.subnavigation li:last-child:nth-child(odd) { width: 100%; border: none; }
+		.subnavigation li a { 
+			float: none;
+			display: block; 
+			font-size: 0.750em;
+			text-align: center;
+			padding: 16px; 
+		}
+		.subnavigation li a:hover { color: #39bb9d; background: #efefef; }
 	}
 }
