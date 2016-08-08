@@ -7,7 +7,15 @@ function mysqlQuery(sql_string, callback){
 
 	if(typeof sql_string == "string"){
 		var api_host = "http://192.241.152.185:3000/";
-		var xhttp = new XMLHttpRequest();
+		var xhttp;
+
+		if (window.XMLHttpRequest) {
+			xhttp = new XMLHttpRequest();
+		} else {
+			// IE6, IE5
+			xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
 		xhttp.onreadystatechange = function() {
 			if (xhttp.readyState == 4 && xhttp.status == 200) {
 				if(callback != undefined && typeof callback == "function"){
@@ -15,7 +23,7 @@ function mysqlQuery(sql_string, callback){
 				}
 			}
 		};
-		xhttp.open("GET", api_host+sql_string, false);
+		xhttp.open("GET", api_host+sql_string, true);
 		xhttp.send();
 	}else{
 		console.warn("Your query mysql is not a string");
