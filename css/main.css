@@ -1,0 +1,155 @@
+html {
+    height: 100%;
+}
+
+body{
+    background-color: #f9f9f9;
+}
+
+/************** Header ****************/
+
+header{
+    background-color: rgba(16, 41, 56, 1);
+    color:white;
+    padding-left: 30px;
+}
+
+header i, header a{
+    cursor: pointer;
+}
+
+header .process{
+    background-color: rgb(57, 187, 157);
+    margin-bottom: 14px;
+}
+
+header img{
+    position: relative;
+    transform: translateY(-50%); 
+}
+
+header p, header a{
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%); 
+    color:white;
+    text-transform: uppercase;
+    font-weight: bold;    
+}
+
+header #options{
+    word-spacing: 30px;
+}
+
+header p{
+    top: 50%;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+header a:hover{
+    color:rgb(57, 187, 157);
+}
+
+header .process_txt:hover{
+    color:white;
+}
+
+header .logo{
+    top: 50%;
+    height: 60%;
+}
+
+header .perfil{
+    margin-bottom:-50px;
+    width: 50px;
+	height: 50px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+}
+
+/*********** Nav ************/
+
+nav .nav-dashboards{
+    display: none;
+}
+
+nav{
+    background-color: white;
+    padding-left: 30px;
+}
+
+nav i{
+    color:rgb(57, 187, 157);
+}
+
+nav a{
+    color: #666666;
+}
+
+nav a:hover{
+    color:rgba(57, 187, 157, 1);
+}
+
+nav a{
+    cursor: pointer;
+}
+/******** Content ***********/
+
+.content{
+    min-height: 100%;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.content i{
+    cursor: pointer;
+}
+
+.content .search_process, .content .form_process, .content .charts{
+    display: none;
+}
+
+.content .charts{
+    height: 75%;
+    width: 75%;
+}
+
+/************* choice_process *************/
+.choice_process .btn_sem_pedido, .choice_process .btn_com_pedido, .form_process .btn_save{
+    width:300px;
+}
+
+.choice_process .btn_com_pedido, .ui.positive.button, .form_process .btn_save{
+    background-color: rgb(57, 187, 157) !important;
+}
+
+.ui.positive.button:hover, .ui.positive.button:active, .ui.positive.button:focus{
+    background-color: rgb(58, 162, 138) !important;
+}
+
+/************ Push **********/
+
+.push{
+    margin-bottom: -60px;
+    margin-top: 60px;
+}
+
+.push:after{
+    content:"";
+    display:block;
+}
+
+/******** Footer ************/
+
+footer, .push:after{
+    height:60px;
+    background-color: #565351;    
+}
+
+footer p{
+    margin-left: 30px;
+    color: #999999;
+    font-weight: bold;
+}

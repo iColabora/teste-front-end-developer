@@ -1,0 +1,404 @@
+<!--
+------------------------------------------------------
+- Nome: Caio de Lima Granero
+- Obs: Tentei durante os três dias utilizar a biblioteca mysqlQuery, 
+- cheguei a entrei em contato com o Murylo a respeito, porém continuei
+- sem conseguir utiliza-la. 
+- Recebi erro de requisição, tentei até mesmo trocar de máquina 
+- mas não obtive sucesso.
+- Sei que era um dos requisitos do estudo de casos, porém infelizemente 
+- precisei submeter sem a biblioteca. 
+- Nas operações que seriam necessários realizar as consultas SQL, 
+- gerei dados aleatórios apenas para mostrar o funcionamento.
+- Também criei um arquivo query.sql com todas as consultas que seriam utilizadas.
+- Obrigado pela oportunidade!
+-------------------------------------------------------->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+        <title>Shipment of a hardware retailer</title>
+        <meta name="description" content="Shipment of a hardware retailer" />
+        <meta name="keywords" content="shipment, hardware, retailer, icolabora" />
+        <meta charset="utf-8" />
+        
+        <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <!--<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>-->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="dist/semantic.min.js"></script>
+        <!--<script src="js/mysql_lib.js"></script>-->
+        <script src="js/jquery.maskedinput.min.js"></script>
+        <script src="js/chart/Chart.bundle.js"></script>
+        <script src="js/charts.js"></script>
+        <script src="js/validation/jquery.validate.min.js"></script>
+        <script src="js/numeric.js"></script>
+        <script src="js/maskMoney.js"></script>
+        <script src="js/main.js"></script>
+        
+        <script>    
+            /** Consultas MySQL **/
+            var mysql_query = "SELECT id FROM pedidos";
+            mysqlQuery(mysql_query, function(result){
+                // mostra o resultado da query
+                console.log(result);
+            });
+        </script>
+    </head>
+    <body> 
+        <script>
+            
+        </script>
+        <header>
+            <div class="ui grid">
+                <div class="one wide column"><img class="logo" src="images/logo.png"></div>
+                <div class="five wide column options" id="options">
+                    <a id="dashboards">DASHBOARDS</a>
+                    <a>SOLUÇÕES</a>
+                    <a>ADMINISTRAÇÃO</a>
+                </div>
+                <div class="one wide column"></div>
+                <div class="three wide column process" id="process">
+                    <a id="process_text"  class="process_txt"><i class="play icon"></i>INICIAR PROCESSO</a>
+                </div>
+                <div class="three wide column"></div>
+                <div class="right floated three wide column" id="options">
+                    <p>
+                        <a><i class="large search icon"></i></a>
+                        <a><i class="large taxi icon"></i></a>
+                        <a><i><img class="perfil" src="images/perfil.jpg"></i></a>
+                        <a><i class="angle down icon" style="margin-left:-30px;"></i></a>
+                    </p>
+                </div>
+            </div>
+        </header>
+        <nav>
+            <div id="nav-process">
+                <div class="ui grid">
+                    <div class="left floated two wide column">
+                        <h4>
+                            <i class="big users icon"></i> Tarefa                        
+                        </h4>               
+                    </div>
+                    <div class="left floated four wide column">
+                        <h4>
+                            Check if extra insurence is necessary        
+                        </h4>               
+                    </div>
+                    <div class="ten wide column"></div>
+                </div>
+            </div> <!---- END PROCESS --->
+            <div class="nav-dashboards" id="nav-dashboards">
+                <div class="ui grid">
+                    <div class="left floater two wide column" id="options">
+                        <b><a id="dashboard1_link">Dashboard 1</a></b>
+                    </div>
+                    <div class="left floater two wide column" id="options">
+                        <b><a id="dashboard2_link">Dashboard 2</a></b>
+                    </div>
+                    <div class="left floater two wide column" id="options">
+                        <b><a id="dashboard3_link">Dashboard 3</a></b>
+                    </div>
+                </div>
+            </div> <!--- END DASHBOARDS --->
+        </nav>
+        <div class="content">
+            <center>
+                <div class="charts"> <!--- DASHBOARDS -->
+                    <canvas id="chart1" class="chart1"></canvas> <!--- CHART 1 -->
+                    <canvas id="chart2" class="chart2"></canvas> <!--- CHART 2 -->
+                    <div id="table1" class="table1">
+                        <center><h2>Pedidos Pendentes</h2></center><br>
+                        <table class="ui celled table">
+                            <thead>
+                                <tr>
+                                    <th>Número do pedido</th>
+                                    <th>Data da Compra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1100</td>
+                                    <td>01/01/2016</td>
+                                </tr>
+                                <tr>
+                                    <td>1111</td>
+                                    <td>02/04/2016</td>
+                                </tr>
+                                <tr>
+                                    <td>1122</td>
+                                    <td>23/05/2016</td>
+                                </tr>
+                                <tr>
+                                    <td>1200</td>
+                                    <td>07/07/2016</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="2">
+                                        <div class="ui right floated pagination menu">
+                                            <a class="icon item">
+                                                <i class="left chevron icon"></i>
+                                            </a>
+                                            <a class="item">1</a>
+                                            <a class="item">2</a>
+                                            <a class="item">3</a>
+                                            <a class="item">4</a>
+                                            <a class="icon item">
+                                                <i class="right chevron icon"></i>
+                                            </a>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div> <!--- TABLE 1 -->
+                </div>
+            </center>
+            <div class="choice_process">
+                <center>
+                    <div class="ui buttons">
+                        <button class="ui button btn_sem_pedido">Não tenho o número do pedido</button>
+                        <div class="or" data-text="ou"></div>
+                        <button class="ui positive button btn_com_pedido">Tenho o número do pedido</button>
+                    </div>
+                </center>
+            </div> <!--- CHOICE_PROCESS -->
+            <br><br>
+            <div class="search_process">    
+                <div class="ui action fluid input" id="search_div">
+                    <input class="" placeholder="Número do pedido" type="text">
+                    <button onclick="" class="ui button" id="btn_search">Buscar</button>
+                </div> <!--- SEARCH --->
+                <br>
+                <div class="search_result"></div>
+            </div> <!--- END SEARCH PROCESS --->
+            <div class="form_process">
+                <form class="ui form">
+                    <div class="ui one column very relaxed grid">
+                        <div class="column dados_pedidos" id="dados_pedidos">
+                            <br>
+                            <center><h3>Dados do Pedido</h3></center><br>
+                            <div class="ui grid">
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Número do Pedido" maxlength="11" name="num_pedido" id="num_pedido" type="text">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <select class="ui selection dropdown" tabindex="0" id="seleciona_material">
+                                        <option value="0" selected="">Selecione o material</option>
+                                        <option value="1">HD</option>
+                                        <option value="2">Memória RAM</option>
+                                        <option value="3">Placa mãe</option>
+                                        <option value="4">Placa de Rede</option>
+                                    </select>                                    
+                                </div>
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Marca" maxlength="255" name="marca_pedido" id="marca_pedido" type="text" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Data de compra" type="date" name="data_pedido" id="data_pedido">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Quantidade do material" maxlength="10" type="text" name="qtd_material_pedido" id="qtd_material_pedido">
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Preço Total" type="text" name="preco_pedido" id="preco_pedido">
+                                    </div>
+                                </div>
+                            </div>  
+                        </div> <!---- DADOS PEDIDOS ---->
+                    </div>
+                    <div class="ui one column very relaxed grid">
+                        <div class="column dados_insumo" id="dados_insumo">
+                            <br>
+                            <center><h3>Dados do Insumo <i class="plus icon novo_insumo"></i></h3></center><br><br>
+                            <div class="ui grid">
+                                <div class="ten wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Marca" type="text" maxlength="255" name="marca_insumo[]" id="marca_insumo[]">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Quantidade" type="text" maxlength="10" name="quantidade_insumo[]" id="quantidade_insumo[]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="ten wide column ">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Descrição" type="text" name="descricao_insumo[]" id="descricao_insumo[]">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Preço" type="text" name="preco_insumo[]" id="preco_insumo[]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!---- DADOS INSUMOS ---->
+                    </div>
+                    <div class="ui one column very relaxed grid">
+                        <div class="column dados_insumo" id="dados_insumo">
+                            <br>
+                            <div class="ui grid">
+                                <div class="ten wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Marca" type="text" maxlength="255" name="marca_insumo[]" id="marca_insumo[]">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Quantidade" type="text" maxlength="10" name="quantidade_insumo[]" id="quantidade_insumo[]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="ten wide column ">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Descrição" type="text" name="descricao_insumo[]" id="descricao_insumo[]">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Preço" type="text" name="preco_insumo[]" id="preco_insumo[]">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!---- DADOS INSUMOS ---->
+                    </div>
+                    <div class="div_novo_insumo"></div>
+                    <br><br>
+                    <div class="ui two column very relaxed grid">
+                        <div class="column dados_solicitante" id="dados_solicitante">
+                            <center><h3>Dados do Solicitante</h3></center><br><br>
+                            <div class="ui grid">
+                                <div class="sixteen wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Nome completo" type="text" maxlength="255" name="nome_solicitante" id="nome_solicitante">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Telefone" type="text" name="telefone_solicitante" id="telefone_solicitante">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="CPF" type="text" maxlength="20" name="cpf_solicitante" id="cpf_solicitante">
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="CEP" type="text" name="cep_solicitante" maxlength="8" id="cep_solicitante">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="sixteen wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Endereço" type="text" name="endereco_solicitante"  readonly="" id="endereco_solicitante">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Complemento" type="text" name="complemento_solicitante" id="complemento_solicitante" maxlength="10" id="complemento_solicitante">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Cidade" type="text" name="cidade_solicitante" readonly="" id="cidade_solicitante">
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Estado" type="text" name="estado_solicitante" readonly="" id="estado_solicitante">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!--- DADOS SOLICITANTE --->
+                        <div class="column dados_entrega" id="dados_entrega">
+                            <center><h3>Dados da Entrega</h3></center><br><br>
+                            <div class="ui grid">
+                                <div class="sixteen wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="CEP" type="text" name="cep_entrega" id="cep_entrega" maxlength="8">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="sixteen wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Endereço" type="text" readonly="" name="endereco_entrega" id="endereco_entrega">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui grid">
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Complemento" type="text" name="complemento_entrega" maxlength="10" id="complemento_entrega">
+                                    </div>
+                                </div>
+                                <div class="six wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Cidade" type="text" readonly="" name="cidade_entrega" id="cidade_entrega">
+                                    </div>
+                                </div>
+                                <div class="five wide column">
+                                    <div class="ui fluid input field">
+                                        <input placeholder="Estado" type="text" readonly="" name="estado_entrega" id="estado_entrega">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!--- DADOS ENTREGA --->
+                    </div>
+                    <br><br><br>
+                    <div class="ui one column very relaxed grid">
+                        <div class="column">
+                            <div class="ui left action input">
+                                <button class="ui teal labeled icon button">
+                                    <i class="cart icon"></i>Valor Total
+                                </button>
+                                <input id="valor_total" readonly="" type="text">
+                            </div>
+                        </div>
+                    </div><br><br>  <!--- VALOR TOTAL -->
+                    <center>
+                        <button class="ui primary button btn_save">
+                          Enviar
+                        </button>
+                        <div class="ui error message"></div>
+                    </center>
+                </form>
+            </div> <!--- END FORM PROCESS --->
+        </div> <!--- END CONTENT --->
+        <div class="push"></div>
+        <footer>
+            <div class="ui grid">
+                <div class="sixteen wide column"><p>© 2016 iColabora</p></div>
+
+            </div>
+        </footer>
+    </body>
+</html>
