@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		
+		<!-- Loading the stylesheets -->
+		<link rel="stylesheet" type="text/css" href="./vendor/font-awesome/styles/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="./vendor/spirit-framework/styles/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="./styles/css/style.css" />
+		
+		<!-- Loading the scripts -->
+		<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="./vendor/spirit-framework/js/core.js"></script>
+		<script type="text/javascript" src="./js/scripts.js"></script>
+		
+		<title></title>
+	</head>
+	<body>
+		<div class="demo container">
+			
+			<!-- Menu -->
+			<div class="menu fix-top-offset">
+				
+				<!-- Toolbar -->
+				<div class="toolbar clearfix">
+					<div class="menu-inner menu-fluid">
+						<strong class="menu-brand text-uppercase"><a href="javascript:void(0);"></a></strong>
+						<div class="menu-profile dropdown">
+							<span class="menu-sub"><a href="javascript:void(0);"><strong><img src="./img/user-profile-img.jpg" title="" alt=""></strong></a></span>
+							<ul>
+								<li><a href="javascript:void(0);">Dropdown item 1</a></li>
+								<li><a href="javascript:void(0);">Dropdown item 2</a></li>
+								<li><a href="javascript:void(0);">Dropdown item 3</a></li>
+								<li><a href="javascript:void(0);">Logout</a></li>
+							</ul>
+						</div>
+						<span class="menu-toggle fa fa-bars"></span>
+						<span class="accessibility-toggle fa fa-wheelchair"></span>
+						<span class="search-toggle fa fa-search"></span>
+						
+						<!-- Menu collapse -->
+						<div class="menu-collapse">
+							<ul class="menu-list menu-left">
+								<li class="text-uppercase text-bold"><a href="javascript:void(0);">Dashboards</a></li>
+								<li class="text-uppercase text-bold"><a href="javascript:void(0);">Soluções</a></li>
+								<li class="text-uppercase text-bold"><a href="javascript:void(0);">Administração</a></li>
+							</ul>
+							<ul class="menu-list menu-start menu-left">
+								<li class="text-uppercase text-bold"><a href="javascript:void(0);">Iniciar processo</a></li>
+							</ul>
+							<ul class="menu-list menu-right">
+								<li class="menu-search"><a href="javascript:void(0);" class="fa fa-search"></a></li>
+								<li class="menu-accessibility"><a href="javascript:void(0);" class="fa fa-wheelchair"></a></li>
+							</ul>
+						</div>
+						<!-- END Menu collapse -->
+						
+						<!-- Form collapse -->
+						<div class="form-collapse">
+							<ul>
+								<li>
+									<form name="form_busca" action="#" method="POST">
+										<div class="demo-tf-skin col-l0 box-asd no-margin-right">
+											<input type="search" placeholder="Buscar" name="demo_search_e1" id="demo_search_e1" />
+										</div>
+									</form>
+								</li>
+							</ul>
+						</div>
+						<!-- END Form collapse -->
+
+					</div>
+				</div>
+				<!-- END Toolbar -->
+				
+				<!-- Sub-navigation -->
+				<div class="subnavigation actionbar clearfix">
+					<ul>
+						<li><strong class="fa fa-group"><span>Tarefa</span></strong></li>
+						<li><strong><span>Check if extra insurance is necessary</span></strong></li>
+					</ul>
+				</div>
+				<!-- END Sub-navigation -->
+
+			</div>
+			<!-- END Menu -->
+			
+			<!-- Content -->
+			<div class="content content-fluid">
+				<form name="formXtraInsurance" action="#" method="POST" id="formXtraInsurance" class="demo-form-v demo-form-grid form-validate no-margin">
+					<div class="main-block no-padding">
+						
+						<!-- Dados do pedido -->
+						<div class="module">
+							<h5 class="module-title margin-bottom-x20">Dados do pedido</h5>
+							<div class="demo-one-row clearfix">
+								<label class="demo-grid demo-lb-text col-l2"><span>Número do pedido:</span></label>
+								<div class="demo-grid demo-tf-skin col-l2 no-margin">
+									<input type="text" maxlength="11" name="numero_pedido_id" id="numero_pedido_id" class="required" />
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Material:</span></label>
+									<div class="demo-grid demo-sb-skin col-l2 no-margin">
+										<select name="material" id="material" class="valid-select-box">
+											<option value="">Selecione...</option>
+											<option value="1">Opção 1</option>
+											<option value="2">Opção 2</option>
+											<option value="3">Opção 3</option>
+											<option value="4">Opção 4</option>
+										</select>
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Marca:</span></label>
+									<div class="demo-grid demo-tf-skin col-l0 no-margin">
+										<input type="text" name="marca" id="marca" class="required" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Data de compra:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2 no-margin">
+										<input type="tel" maxlength="10" placeholder="dd/mm/aaaa" name="data_compra" id="data_compra" class="mask-data valid-tdata" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Quantidade do material:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2 no-margin">
+										<input type="tel" maxlength="10" name="qtde_material" id="qtde_material" class="mask-num valid-tnum" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Total:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2 no-margin">
+										<input type="tel" maxlength="18" placeholder="0,00" name="valor_pedido" id="valor_pedido" class="mask-money valid-tmoney" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END Dados do pedido -->
+
+						<!-- Dados do insumo -->
+						<div class="module">
+							<h5 class="module-title margin-bottom-x20">Dados do insumo</h5>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Marca:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2 no-margin">
+										<input type="text" name="marca_insumo" id="marca_insumo" class="required" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Quantidade:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2 no-margin">
+										<input type="tel" maxlength="10" name="qtde_insumo" id="qtde_insumo" class="mask-num valid-tnum" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-stk col-xl">
+									<label class="demo-grid demo-lb-text col-lf"><span>Descrição:</span></label>
+									<div class="demo-grid demo-ta-skin col-lf no-margin">
+										<textarea name="desc_insumo" id="desc_insumo" rows="6" class="required"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Preço:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2 no-margin">
+										<input type="tel" maxlength="18" placeholder="0,00" name="valor_insumo" id="valor_insumo" class="mask-money" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END Dados do insumo -->
+
+						<!-- Dados do solicitante -->
+						<div class="module">
+							<h5 class="module-title margin-bottom-x20">Dados do solicitante</h5>
+							<div class="demo-one-row clearfix">
+								<div class="box-stk col-xl">
+									<label class="demo-grid demo-lb-text col-lf"><span>Nome completo:</span></label>
+									<div class="demo-grid demo-tf-skin col-lf">
+										<input type="text" name="nome_solicitante" id="nome_solicitante" class="required" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>CPF:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="tel" maxlength="14" placeholder="000.000.000-00" name="cpf_solicitante" id="cpf_solicitante" class="mask-cpf valid-tcpf" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Telefone:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="tel" maxlength="15" placeholder="(00) 00000-0000" name="tel_solicitante" id="tel_solicitante" class="mask-fone valid-tfone" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>CEP:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="tel" maxlength="9" placeholder="00000-000" name="cep_solicitante" id="cep_solicitante" class="mask-cep valid-tcep" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-stk col-xl">
+									<label class="demo-grid demo-lb-text col-lf"><span>Endereço:</span></label>
+									<div class="demo-grid demo-tf-skin col-lf">
+										<input type="text" name="end_solicitante" id="end_solicitante" class="required" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Complemento:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="text" name="comp_solicitante" id="comp_solicitante" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Cidade:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="text" name="cidade_solicitante" id="cidade_solicitante" class="required" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Estado:</span></label>
+									<div class="demo-grid demo-sb-skin col-l2">
+										<select name="estado_solicitante" id="estado_solicitante" class="valid-select-box">
+											<option value="">Selecione...</option>
+											<option value="Acre">Acre</option>
+											<option value="Alagoas">Alagoas</option>
+											<option value="Amazonas">Amazonas</option>
+											<option value="Amapá">Amapá</option>
+											<option value="Bahia">Bahia</option>
+											<option value="Ceará">Ceará</option>
+											<option value="Distrito Federal">Distrito Federal</option>
+											<option value="Espírito Santo">Espírito Santo</option>
+											<option value="Goiás">Goiás</option>
+											<option value="Mato Grosso">Mato Grosso</option>
+											<option value="Minas Gerais">Minas Gerais</option>
+											<option value="Pará">Pará</option>
+											<option value="Paraíba">Paraíba</option>
+											<option value="Paraná">Paraná</option>
+											<option value="Pernambuco">Pernambuco</option>
+											<option value="Piauí">Piauí</option>
+											<option value="Rio de Janeiro">Rio de Janeiro</option>
+											<option value="Rondônia">Rondônia</option>
+											<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+											<option value="Roraima">Roraima</option>
+											<option value="Santa Catarina">Santa Catarina</option>
+											<option value="Sergipe">Sergipe</option>
+											<option value="São Paulo">São Paulo</option>
+											<option value="Tocantins">Tocantins</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END Dados do solicitante -->
+
+						<!-- Dados da entrega -->
+						<div class="module">
+							<h5 class="module-title margin-bottom-x20">Dados da entrega</h5>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>CEP:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="tel" maxlength="9" placeholder="00000-000" name="cep_entrega" id="cep_entrega" class="mask-cep valid-tcep" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-stk col-xl">
+									<label class="demo-grid demo-lb-text col-lf"><span>Endereço:</span></label>
+									<div class="demo-grid demo-tf-skin col-lf">
+										<input type="text" name="end_entrega" id="end_entrega" class="required" />
+									</div>
+								</div>
+							</div>
+							<div class="demo-one-row clearfix">
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Complemento:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="text" name="comp_entrega" id="comp_entrega" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Cidade:</span></label>
+									<div class="demo-grid demo-tf-skin col-l2">
+										<input type="text" name="cidade_entrega" id="cidade_entrega" class="required" />
+									</div>
+								</div>
+								<div class="box-asd col-xl">
+									<label class="demo-grid demo-lb-text col-l2"><span>Estado:</span></label>
+									<div class="demo-grid demo-sb-skin col-l2">
+										<select name="estado_entrega" id="estado_entrega" class="valid-select-box">
+											<option value="">Selecione...</option>
+											<option value="Acre">Acre</option>
+											<option value="Alagoas">Alagoas</option>
+											<option value="Amazonas">Amazonas</option>
+											<option value="Amapá">Amapá</option>
+											<option value="Bahia">Bahia</option>
+											<option value="Ceará">Ceará</option>
+											<option value="Distrito Federal">Distrito Federal</option>
+											<option value="Espírito Santo">Espírito Santo</option>
+											<option value="Goiás">Goiás</option>
+											<option value="Mato Grosso">Mato Grosso</option>
+											<option value="Minas Gerais">Minas Gerais</option>
+											<option value="Pará">Pará</option>
+											<option value="Paraíba">Paraíba</option>
+											<option value="Paraná">Paraná</option>
+											<option value="Pernambuco">Pernambuco</option>
+											<option value="Piauí">Piauí</option>
+											<option value="Rio de Janeiro">Rio de Janeiro</option>
+											<option value="Rondônia">Rondônia</option>
+											<option value="Rio Grande do Sul">Rio Grande do Sul</option>
+											<option value="Roraima">Roraima</option>
+											<option value="Santa Catarina">Santa Catarina</option>
+											<option value="Sergipe">Sergipe</option>
+											<option value="São Paulo">São Paulo</option>
+											<option value="Tocantins">Tocantins</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END Dados da entrega -->
+						
+						<div class="demo-one-row clearfix">
+							<div class="box-asd col-xl x-right-offset no-margin">
+								<button type="submit" class="demo-btn-skin demo-btn-submit valid-submit"><span class="demo-btn-ico fa fa-check"></span>Submit</button>
+								<button type="reset" class="demo-btn-skin demo-btn-default"><span class="demo-btn-ico fa fa-times-circle"></span>Cancelar</button>
+							</div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+			<!-- END Content -->
+
+		</div>
+	</body>
+</html>

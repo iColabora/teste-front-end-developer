@@ -1,0 +1,49 @@
+// out: ../css/style-a.css, compress: false, strictMath: true
+@import "main.less";
+
+html,
+body {
+	margin: 0px;
+	padding: 0px;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: none;
+}
+
+// ------------------- // 
+// Estrutura principal // 
+// ------------------- //
+.demo {
+	.sidebar {
+		padding: 20px;
+		background: #fc4664;
+		h2 { color: #ffffff; }
+		ul { color: #ffffff;  list-style: none; }
+		li { display: block; margin-bottom: 10px; }
+		li a { 
+			display: block; 
+			font-size: 14px;
+			color: #ffffff;
+			text-decoration: none;
+			&:hover { text-decoration: underline; }
+		}
+	}
+	.main-cont { margin: 20px 20px 0px 0px; }
+	.sidebar,
+	.main-cont { 
+		& h2 { line-height: 24px; }
+	}
+	.grid-one-row { margin-bottom: 18px; }
+	.grid-one-row:last-child { margin-bottom: 0px; }
+	.true-height { overflow: auto; }
+}
+
+@media screen and (min-width:240px) and (max-width:480px) {
+	.demo {
+		.main-cont { margin: 0px 15px; }
+		.sidebar {
+			padding: 15px;
+			li a { font-size: 0.750em; }
+		}
+		.true-height { overflow: visible; }
+	}
+}
