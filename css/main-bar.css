@@ -1,0 +1,72 @@
+/* CSS RESPONSÁVEL PELA NAVEGAÇÃO ABAIXO DO MENU */
+
+.middle-bar {
+
+	position: relative;
+	z-index:9999;
+	height: 80px;
+	background-color:#fff;
+	width:100%;
+	text-align: left;
+	padding: 0 0;
+	box-sizing: border-box;
+	border-bottom: 1px solid rgba(0,0,0,.08);
+	/* margin-bottom: 5em; */
+}
+
+.custom-container-dashboard {
+
+	padding-right: 25px;
+	padding-left: 25px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.custom-container-task {
+
+	padding-right: 25px;
+	padding-left: 25px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.custom-container-footer {
+
+	padding-right: 25px;
+	padding-left: 25px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+footer {
+
+		background: #565351;
+		vertical-align: middle;
+		color: #999999; 
+		padding-top: 15px;
+		padding-bottom: 10px;
+		position: relative;
+}
+
+.nav-tabs>li>a {
+	
+	color: #000;
+	
+	
+}
+
+.nav>li>a:active {
+
+/*	background: #B1B1B1;
+		
+}
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:visited {
+
+	background: #B1B1B1;
+	color: #fff;
+	
+}
+
+

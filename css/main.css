@@ -1,0 +1,162 @@
+/*  CSS DO MENU PRINCIPAL DA APLICAÇÃO */
+/*	1. MENU
+	2. BARRA ABAIXO DO MENU
+	3. IMAGENS 
+	4. NAVEGAÇÃO ENTRE O MENU
+	5. Botão Iniciar Processo*/	
+
+
+/* --- 1. MENU --- */
+.nav-bar-header{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+	background: #102938;
+}
+.navbar-toggle {
+    z-index:3;
+}
+
+.navbar-default {
+	
+	background: #102938;
+	color: #fff;
+	font-style: bold;	
+}
+
+.navbar-navigation-modified{
+	margin-top: 5px;
+	margin-right: 20px;
+	padding: 10px;
+	color: #fff;
+	font-style: "bold";
+	vertical-align: middle;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #fff;
+	font-weight: bold;
+	vertical-align: middle;
+	padding: 10px;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{
+/*	background-color: #4d5a62; */
+	text-decoration: none;
+	color: #39bb9d;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.nav>li>a:active{
+/*	background-color: #4d5a62;*/
+	text-decoration: none;
+}
+
+.nav>li>a:focus{
+/*	background-color: #4d5a62;*/
+	text-decoration: none;
+}
+
+a:focus, a:hover{
+
+	text-decoration: none;
+	color: #39bb9d;
+}
+
+.navbar-nav>li {
+	
+	padding: 10px 15px; 
+	
+}
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.custom-mid-button, .custom-mid-button>li>center>a  {
+
+color: #fff;
+
+font-weight: bold;
+
+vertical-align: middle;
+
+margin-top:;
+
+/* padding: 20px; */
+}
+
+
+.custom-mid-button>li>center>a:hover {
+
+	text-decoration: none;
+	color: #39bb9d;
+	font-weight: bold;
+	vertical-align: middle;
+
+}
+
+/* --- 2. BARRA ABAIXO DO MENU --- */
+
+.nav-bar-middle{
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: left;
+    margin: auto;
+	background: #fff;
+}
+
+
+.custom-text {
+
+	color: #102938;
+	font-weight: bold;
+	font-size: 20px;
+	font-family: "Helvetica";
+
+}
+
+
+
+/* --- 3. IMAGENS (brand logo e profile pic)---*/
+
+.logo {
+	position: relative;
+	padding: 0 2%;
+}
+
+.special-img 
+{
+    position: relative;
+    top: -5px;
+    float: left;
+    left: -5px;
+}
+
+
+/* --- 5. BOTÃO INICIAR PROCESSO --*/
+
+.btn2 {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #ffffff;
+  background: #39bb9d;
+  padding: 20px 20px 28px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  /* margin-top: -20; */
+}
+
+.btn2:hover {
+  background: #34ad91;
+  text-decoration: none;
+  color: #fff;
+}
