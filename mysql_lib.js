@@ -4,7 +4,7 @@ function mysqlQuery(sql_string, callback){
 	// you have only permission to 'SELECT' on database :D
 
 	if(typeof sql_string == "string"){
-		var api_host = "http://192.241.152.185:3000/";
+		var api_host = "http://192.241.152.185/";
 		var xhttp;
 
 		if (window.XMLHttpRequest) {
