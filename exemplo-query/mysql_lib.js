@@ -1,5 +1,3 @@
-'use strict';
-
 function mysqlQuery(sql_string, callback){
 	// send a mysql query and a callback function to get this response
 	// the result as a array of objects like [{ result1, result2}]
