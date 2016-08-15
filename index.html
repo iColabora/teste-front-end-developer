@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<!-- TAGS META -->
+	    <meta charset="utf-8">
+	    <meta name="author" content="Marcel Brilha">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	    <!-- FOLHA DE ESTILO EM CASCATA -->
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css"> <!-- BOOTSTRAP -->
+	    <link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css"> <!-- BOOTSTRAP RESPONSIVE -->
+	    <link href="css/style.css" rel="stylesheet" type="text/css"> <!-- STYLE PRINCIPAL -->
+
+	    <!-- SCRIPTS JAVASCRIPT -->
+	    <script src="js/jquery.js" type="text/javascript"></script> <!-- BIBLIOTECA JQUERY -->
+	    <script src="js/mysql_lib.js" type="text/javascript"></script> <!-- BIBLIOTECA MYSQL -->
+	    <script type="text/javascript" src="js/loader.js"></script> <!-- GRÁFICO -->
+	    <script src="js/script.js" type="text/javascript"></script> <!-- SCRIPT PRINCIPAL -->
+	    
+	    <!-- LINK PARA ÍCONE DA PÁGINA -->
+	    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+		<title>iColabora</title>
+
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" type="text/css" href="css/internet-explorer.css">
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+        	<script src="js/IE-html5.js" type="text/javascript"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<div id="info-ie-inferior">
+			<p class="titulo-ie-inferior">Desculpe</p>
+			
+			<p class="texto-ie-inferior">
+				Este site possui funcionalidades que seu navegador atual não 
+				consegue interpretar de forma correta.
+			</p>
+			
+			<p class="texto-ie-inferior">
+				Atualize seu navegador, agradecemos sua compreensão.
+			</p>
+			
+		</div><!-- INFORMACOES PARA IE INFERIOR -->
+
+		<section id="background-header">
+			<section class="container-fluid">
+				<header class="row-fluid">
+					<section class="span6 container-menu-esquerda">
+						<figure id="logo">
+							<a href="javascript:void(0);">
+								<img src="img/logo.png" alt="iColabora" 
+								title="iColabora">
+							</a>
+						</figure><!-- LOGO -->
+
+						<nav id="menu-principal">
+							<ul>
+								<li id="pag-dashboards">
+									<a href="javascript:void(0);" title="DASHBOARDS">
+										DASHBOARDS
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" title="SOLUÇÕES">
+										SOLUÇÕES
+									</a>
+								</li>
+								<li>
+									<a href="javascript:void(0);" title="ADMINISTRAÇÃO">
+										ADMINISTRAÇÃO
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</section><!-- CONTAINER MENU ESQUERDA -->
+
+					<section class="span6 container-menu-direita">
+						
+						<div id="bt-iniciar-processo">
+							<a href="javascript:void(0);" title="INICIAR PROCESSO">
+								<img src="img/play.png" alt="INICIAR PROCESSO" title="INICIAR PROCESSO">
+								<span>INICIAR PROCESSO</span>
+							</a>
+						</div><!-- BT INICIAR PROCESSO -->
+
+						<nav id="menu-lateral">
+							<ul>
+								<li>
+									<img src="img/pesquisar.png" alt="Pesquisar" 
+									title="Pesquisar" id="bt-pesquisar">
+								</li>
+								<li>
+									<img src="img/acessibilidade.png" alt="Acessibilidade" 
+									title="Acessibilidade" id="bt-acessibilidade">
+								</li>
+								<li>
+									<img src="img/usuario.png" alt="Usuário" 
+									title="Usuário">
+
+									<img src="img/icone_usuario.png" 
+									alt="Opções" title="Opções" id="opcoes-usuario">
+								</li>
+							</ul>
+						</nav><!-- MENU LATERAL -->
+
+						<div id="ico-menu-mobile" title="Menu">
+							<img src="img/ico_mobile.png" 
+							alt="Menu" title="Menu" id="menu-mobile">
+						</div><!-- MENU LATERAL -->
+
+					</section><!-- CONTAINER MENU DIREITA -->
+				</header>
+			</section>
+		</section><!-- BACKGROUND HEADER -->
+
+		<section id="container-pesquisar">
+			<section class="container-fluid">
+				<section class="row-fluid">
+					<section class="span12">
+						<img src="img/bt_close.png" alt="Fechar" title="Fechar"
+						id="bt_fechar">
+
+						<input type="search" id="input-pesquisar"
+						placeholder="PESQUISAR PEDIDO" maxlength="11">
+
+						<div class="alert alert-error pedido-branco">
+  							Campo pesquisar pedido em branco.
+						</div>
+
+						<input type="button" value="PESQUISAR" 
+						title="PESQUISAR" id="bt-pesquisar-pedido">
+					</section>
+				</section>
+			</section>
+		</section><!-- CONTAINER PESQUISAR -->
+
+		<section id="container-menu-mobile">
+			<section class="container-fluid">
+				<section class="row-fluid">
+					<section class="span12">
+						<img src="img/bt_close.png" alt="Fechar" title="Fechar"
+						id="bt_fechar_mobile">
+
+						<ul>
+							<li id="mobile-dashboards">
+								DASHBOARDS
+							</li>
+							<li id="mobile-solucoes">
+								SOLUÇÕES
+							</li>
+							<li id="mobile-adm">
+								ADMINISTRAÇÃO
+							</li>
+							<li id="mobile-processo">
+								INICIAR PROCESSO
+							</li>
+							<li id="mobile-pesquisar">
+								PESQUISAR
+							</li>
+						</ul>
+					</section>
+				</section>
+			</section>
+		</section><!-- CONTAINER MENU MOBILE -->
+
+		<section class="container-fluid content"></section><!-- CONTENT -->
+
+		<footer id="background-footer">
+			<section class="container-fluid container-footer">
+				<section class="row-fluid">
+					<section class="span12">
+						<div id="direitos-autorais">
+							© 2016 iColabora
+						</div><!-- DIREITOS AUTORAIS -->
+
+						<div id="ajuda-footer">
+							<a href="javascript:void(0);">
+								<img src="img/ajuda.png" alt="Ajuda" title="Ajuda">
+							</a>
+						</div><!-- AJUDA FOOTER -->
+					</section>
+				</section>
+			</section>
+		</footer><!-- FOOTER -->
+
+	</body>
+</html>

@@ -1,0 +1,231 @@
+<section class="row-fluid">
+	<section class="span12">
+		<nav id="menu-pedidos">
+			<ul>
+				<li>
+					<a href="javascript:void(0);" title="Tarefa">
+						<img src="img/tarefa.png" alt="Tarefa">
+						Tarefa
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" title="Check if extra insurance is necessary">
+						Check if extra insurance is necessary
+					</a>
+				</li>
+			</ul>
+		</nav><!-- MENU PEDIDOS -->
+	</section>
+</section>
+
+<section class="row-fluid">
+	<header class="span12">
+		<h1>Cadastro de Pedidos</h1>
+	</header>
+</section><!-- HEADER -->
+
+<fieldset>
+	<legend>Dados do Pedido</legend>
+
+	<section class="row-fluid">
+		<section class="span6">
+			<label for="num-pedido">
+				Número do Pedido:
+			</label>
+			<input type="text" id="num-pedido" 
+			title="Número do Pedido" maxlength="11">
+
+			<label for="inp-material-pedido">
+				Material:
+			</label>
+			<input type="text" id="inp-material-pedido" 
+			title="Material" maxlength="255">
+
+			<label for="inp-marca">
+				Marca:
+			</label>
+			<input type="text" id="inp-marca" 
+			title="Marca" maxlength="255">
+
+			<label for="preco-material">
+				Preço:
+			</label>
+			<input type="text" id="preco-material" 
+			title="Marca" maxlength="255">
+		</section>
+
+		<section class="span6">
+			<label>
+				Data de Compra:
+			</label>
+			<input type="text" id="data-compra" title="Data de Compra">
+
+			<label for="qtde-material">
+				Quantidade do Material:
+			</label>
+			<input type="text" id="qtde-material" 
+			title="Quantidade do Material" maxlength="10">
+
+			<label>
+				Preço Total:
+			</label>
+			<input type="text" id="preco-total" title="Preço Total" readonly>
+		</section>
+	</section>
+</fieldset><!-- DADOS DO PEDIDO -->
+
+<fieldset>
+	<legend>Dados do Insumo</legend>
+
+	<section class="row-fluid">
+		<section class="span6">
+			<label for="marca-insumo">
+				Marca:
+			</label>
+			<input type="text" id="marca-insumo" title="Marca">
+
+			<label for="desc-insumo">
+				Descrição:
+			</label>
+			<input type="text" id="desc-insumo" title="Descrição">
+		</section>
+
+		<section class="span6">
+			<label for="qtde-insumo">
+				Quantidade:
+			</label>
+			<input type="text" id="qtde-insumo" 
+			title="Quantidade" maxlength="10">
+
+			<label for="preco-insumo">
+				Preço:
+			</label>
+			<input type="text" id="preco-insumo" title="Preço">
+		</section>
+	</section>
+</fieldset><!-- DADOS DO INSUMO -->
+
+<fieldset>
+	<legend>Dados do Solicitante</legend>
+
+	<section class="row-fluid">
+		<section class="span6">
+			<label for="nome-solicitante">
+				Nome:
+			</label>
+			<input type="text" id="nome-solicitante" 
+			title="Nome" maxlength="255">
+
+			<label for="telefone-solicitante">
+				Telefone:
+			</label>
+			<input type="text" id="telefone-solicitante" 
+			title="Telefone" maxlength="100">
+
+			<label for="cpf-solicitante">
+				CPF:
+			</label>
+			<input type="text" id="cpf-solicitante" 
+			title="CPF" maxlength="20">
+
+			<label for="cep-solicitante">
+				CEP:
+			</label>
+			<input type="text" id="cep-solicitante" title="CEP"
+			maxlength="10">
+
+			<label for="endereco-solicitante">
+				Endereço:
+			</label>
+			<input type="text" id="endereco-solicitante" 
+			title="Endereço" maxlength="100">
+		</section>
+
+		<section class="span6">
+			<label for="bairro-solicitante">
+				Bairro:
+			</label>
+			<input type="text" id="bairro-solicitante" 
+			title="Bairro" maxlength="100">
+
+			<label for="numero-solicitante">
+				Número:
+			</label>
+			<input type="text" id="numero-solicitante" 
+			title="Número" maxlength="10">
+
+			<label for="cidade-solicitante">
+				Cidade:
+			</label>
+			<input type="text" id="cidade-solicitante" 
+			title="Cidade" maxlength="100">
+
+			<label for="estado-solicitante">
+				Estado:
+			</label>
+			<input type="text" id="estado-solicitante" 
+			title="Estado" maxlength="100">
+
+			<label for="pais-solicitante">
+				País:
+			</label>
+			<input type="text" id="pais-solicitante" 
+			title="País" maxlength="100">
+		</section>
+	</section>
+</fieldset> <!-- DADOS DO SOLICITANTE -->
+
+<fieldset>
+	<legend>Dados da Entrega</legend>
+
+	<section class="row-fluid">
+		<section class="span6">
+			<label for="cep-entrega">
+				CEP:
+			</label>
+			<input type="text" id="cep-entrega" title="CEP"
+			maxlength="10">
+
+			<label for="endereco-entrega">
+				Endereço:
+			</label>
+			<input type="text" id="endereco-entrega" 
+			title="Endereço" maxlength="100">
+
+			<label for="bairro-entrega">
+				Bairro:
+			</label>
+			<input type="text" id="bairro-entrega" 
+			title="Bairro" maxlength="100">
+
+			<label for="numero-entrega">
+				Número:
+			</label>
+			<input type="text" id="numero-entrega" 
+			title="Número" maxlength="10">
+		</section>
+
+		<section class="span6">
+			<label for="cidade-entrega">
+				Cidade:
+			</label>
+			<input type="text" id="cidade-entrega" 
+			title="Cidade" maxlength="100">
+
+			<label for="estado-entrega">
+				Estado:
+			</label>
+			<input type="text" id="estado-entrega" 
+			title="Estado" maxlength="100">
+
+			<label for="pais-entrega">
+				País:
+			</label>
+			<input type="text" id="pais-entrega" 
+			title="País" maxlength="100">
+		</section>
+	</section>
+</fieldset><!-- DADOS DA ENTREGA -->
+
+<input type="button" value="CADASTRAR" 
+title="CADASTRAR" id="bt-cadastrar-pedido">
