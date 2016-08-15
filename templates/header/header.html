@@ -1,0 +1,74 @@
+<!--Fixed Bar-->
+<nav class="navbar navbar-custom navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#dashboard"><img src="img/logo/android-icon-36x36.png" alt="logo"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav nav-custom">
+                <li class="dashboard"><a href="#dashboard">DASHBOARD</a></li>
+                <li class="dashboard1"><a href="#dashboard/1">Quantidade de pedidos por dia</a></li>
+                <li class="dashboard1"><a href="#dashboard/2">Pedidos por solicitante</a></li>
+                <li class="dashboard1"><a href="#dashboard/3">Pedidos pendentes</a></li>
+                <li><a href="javascript:void(0);">SOLUÇÕES</a></li>
+                <li><a href="javascript:void(0);">ADMINISTRAÇÃO</a></li>
+                <li class="process">
+                    <a href="#task">
+                        <i class="fa fa-play" aria-hidden="true"></i>
+                        <span>INICIAR PROCESSO</span>
+                    </a>
+                </li>
+                <li class="dropdown profile-menu">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="photo"><img src="./img/user-profile-img.jpg" title="photo" alt="photo"></div> <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);">EDITAR PERFIL</a></li>
+                        <li><a href="javascript:void(0);">SAIR</a></li>
+                    </ul>
+                </li>
+                <li class="menu-accessibility">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-wheelchair"></i>
+                        <span>ACESSIBILIDADE</span>
+                    </a>
+                </li>
+                <li class="menu-search">
+                    <a href="javascript:void(0);">
+                        <i class="fa fa-search"></i>
+                        <span>SEARCH</span>
+                    </a>
+                </li>
+                <li class="profile">
+                    <div class="photo">
+                        <img src="./img/user-profile-img.jpg" title="photo" alt="photo">
+                    </div>
+                    <div class="options">
+                        <a href="javascript:void(0);">EDITAR PERFIL</a> <span>|</span> <a href="javascript:void(0);">SAIR</a>
+                    </div>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<!--End Fixed Bar-->
+
+<div class="navbar navbar-fixed-top actionbar">
+    <ul class="dashboard hidden">
+        <li><a href="#dashboard/1">Quantidade de pedidos por dia</a></li>
+        <li><a href="#dashboard/2">Pedidos por solicitante</a></li>
+        <li><a href="#dashboard/3">Pedidos pendentes</a></li>
+    </ul>
+    <ul class="process hidden">
+        <li>
+            <i class="fa fa-group"></i>
+            <span>Tarefa</span>
+            <span class="task-number"></span>
+        </li>
+        <li><span>Verifique se o seguro extra é necessário</span></li>
+    </ul>
+</div>

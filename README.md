@@ -1,4 +1,4 @@
-# Teste para candidatos à vaga de Front-End developer
+﻿# Teste para candidatos à vaga de Front-End developer
 > [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas)
 >
 > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br>
@@ -108,7 +108,7 @@
       console.log(result);
     });
   ``` 
-  * **Para mais informações, baixe a pasta `exemplo-query` para um exemplo de como utilizar a biblioteca, ou acesse o link no [jsbin](http://jsbin.com/bahewexuze/1/edit?html,output)**
+  * **Para mais informações, baixe a pasta `exemplo-query` para um exemplo de como utilizar a biblioteca, ou acesse o link no [jsbin](http://jsbin.com/vefeyelofi/edit?html,output)**
 
 ## Submissão
 

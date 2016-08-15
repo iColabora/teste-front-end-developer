@@ -1,0 +1,211 @@
+{{
+function formatDate(date)
+{
+    var moment = require('moment');
+    deadline=moment.utc(date);
+    deadline=deadline.utc().format('DD/MM/YYYY');
+    return deadline;
+}
+
+function showDeleteButton(userPermissions, finished)
+{
+  if (finished === 1) {
+      return false;
+  }
+
+  if (userPermissions.indexOf('postDelete')!=-1) {
+    return true;
+  }
+  return false;
+}
+
+function showExportButton(userPermissions, finished)
+{
+if (finished !== 1) {
+    return false;
+}
+
+if (userPermissions.indexOf('postExport')!=-1) {
+    return true;
+}
+    return false;
+}
+
+function showEditButton(userPermissions, finished)
+{
+  if (finished === 1) {
+      return false;
+  }
+
+  if (userPermissions.indexOf('postEdit')!=-1) {
+    return true;
+  }
+  return false;
+}  
+}}
+
+{{
+var bodyMaxLength = 100;
+}}
+
+{{
+var Roles =localstorage.get('roles').split(",");
+var Permissions =localstorage.get('permissions').split(",");
+}}
+
+
+
+<div id="maincontent">
+    <div class="container-dashboard dashboard" style="padding: 0px 17px 0px 77px;">
+
+
+
+        {{
+        var counterWriter = 1;
+        }}
+        {{? it.writerPosts.length>0}}
+        {{~it.writerPosts :post:index}}
+        {{? post.attributes}}
+            {{
+                post = post.attributes;
+            }}
+        {{?}}
+
+        <div data-postId="{{=post.id}}" class="box-dashboard" data-row="1" data-col="1" >
+            {{? post.postType == 1 }}
+
+            <div class="box-facebook"><img src="styles/images/icon-facebook.png"></div>
+
+            {{?}}
+
+            {{? post.postType == 4 }}
+
+            <div class="box-linkedin"><img src="styles/images/img-link.jpg"></div>
+
+            {{?}}
+
+            {{? post.postType == 2 }}
+
+            <div class="box-twitter"><img src="styles/images/icon-twitter.png"></div>
+
+            {{?}}
+
+
+            {{? post.postType == 5}}
+            <div class="box-instagram"><img src="styles/images/instagram-icon.png"></div>
+            {{?}}
+
+
+            {{? post.postType == 3}}
+
+            <div class="box-blogspot"><img src="styles/images/icon-blogspot.png"></div>
+
+            {{?}}
+
+            {{? post.postType == 6}}
+
+            <div class="box-wordpress"><img src="img/wordpress-icon-2.jpg"></div>
+
+            {{?}}
+            <div class="box-dashboard-resume">
+                <ul>
+                    <!--  <li><b>{{=Polyglo.t('createProject.Title')}}: </b>{{=post.title}}</li> -->
+                    <li><b>{{=Polyglo.t('createProject.Topic')}}: </b>{{=post.topic}}</li>
+                    <li><b>{{=Polyglo.t('createProject.Client')}}: </b>{{=post.clientName}}</li>
+                    {{? post.postType == 6}}
+                    <li><b>{{=Polyglo.t('project.name')}}: </b>
+                        {{
+                            var title;
+                            if(post.title != ""){
+                                title = post.title;
+                            }
+                            else {
+                                title = Polyglo.t('blogpost.no_title');
+                            }
+                        }}
+                        {{=title}}
+                    </li>
+                    {{?}}
+                </ul>
+
+
+
+
+
+
+            </div>
+
+            <div class="box-dashboard-content">
+                <div class="post-resume">
+
+                    {{=post.body.substr(0, bodyMaxLength).replace(/<[^>]*>?/g, '')}}
+                </div>
+                <ul>
+                    <!-- Need to manage deadlines here -->
+                    {{~post.deadlines :onedeadline:index2}}
+
+
+                    <li class="box-dashboard-date {{=this.getState(onedeadline.deadline.date,null)}}">
+                        <div class="circle"></div>
+
+                        Deadline {{=onedeadline.roleTitle}}:
+
+
+
+                        <span class="deadline-date"> {{=formatDate(onedeadline.deadline.date)}}</span></li>
+                    {{~}}
+
+
+                    <!-- Need to check if there are comments in the post to show this icon -->
+                    <!--  <li><a href="#" class="box-dashboard-comments"></a></li> -->
+                </ul>
+                <div style="clear: both;"></div>
+
+                {{? post.draftFlag == '1'}} <div class="draft-label">{{=Polyglo.t('createProject.Draft')}} </div>
+                {{?? post.rejectedFlag == '1'}}  <div class="rejected-label" >{{=Polyglo.t('createProject.Rejected')}}</div>
+                {{??}}<div class="empty-label" >/</div>{{?}}
+            </div>
+            <div class="box-dashboard-butons">
+                {{? showDeleteButton(Permissions, post.finished)}}<a class="delete-post" data-post="{{=post.id}}" href="#"></a>{{?}}
+                {{? showExportButton(Permissions, post.finished)}}<a data-target="#globalModal" data-toggle="modal" data-post="{{=post.id}}" class="export-post" data-post="{{=post.id}}" style="font-size: 18px; color: rgb(119, 119, 119) ! important;" href="#"><i style="top: -12px;" class="glyphicon glyphicon-export"></i></a>{{?}}
+                {{? showEditButton(Permissions, post.finished)}}<a href="#" class="edit-post" data-post="{{=post.id}}"></a>{{?}}
+            </div>
+
+        </div>
+
+        {{
+        var counterWriter = counterWriter + 1;
+        }}
+
+
+
+        {{~}}
+        {{??}}
+        <div class="no-posts">{{=Polyglo.t('createProject.noPosts')}}<br/> {{?Roles.indexOf('1')!=-1}}<div class="btn btn-warning new-campaign-button"><a href="/#campaign">{{=Polyglo.t('createProject.create.createProject')}}</a></div>{{?}}</div>
+        {{?}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal-msgs" tabindex="-1" role="dialog" aria-labelledby="ModalMessages">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!-- Use #id to put some message e fire the modal. -->
+            </div>
+        </div>
+    </div>
+</div>

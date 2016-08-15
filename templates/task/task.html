@@ -1,0 +1,264 @@
+<div class="content content-fluid">
+    <form name="task" method="POST" id="task">
+        <div class="container">
+
+            <!-- Dados do pedido -->
+            <div class="module container-fluid">
+                <h5 class="module-title">Dados do pedido</h5>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="field-content">
+                            <label for="numero_pedido_id"  class="no-pedido">Número do pedido:</label>
+                            <div class="content">
+                                <input onkeypress="return onlyNumber(event)" type="text" maxlength="11" name="numero_pedido_id" id="numero_pedido_id" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-content">
+                            <label for="material" class="material">Material:</label>
+                            <div class="content">
+                                <select name="material" id="material" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="Opção 1">Opção 1</option>
+                                    <option value="Opção 2">Opção 2</option>
+                                    <option value="Opção 3">Opção 3</option>
+                                    <option value="Opção 4">Opção 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-content">
+                            <label for="marca" class="marca">Marca:</label>
+                            <div class="content">
+                                <input type="text" name="marca" id="marca" class="form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-content">
+                            <label for="data_compra" class="data_compra">Data de compra:</label>
+                            <div class="content">
+                                <input type="text" placeholder="dd/mm/aaaa" name="data_compra" id="data_compra" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-content">
+                            <label for="qtde_material" class="qtde_material">Quantidade do material:</label>
+                            <div class="content">
+                                <input type="number" onkeypress="return onlyNumber(event)" name="qtde_material" id="qtde_material" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="field-content">
+                            <label for="valor_pedido" class="valor_pedido">Total (R$):</label>
+                            <div class="content">
+                                <input type="text" placeholder="0,00" name="valor_pedido" id="valor_pedido" class="price form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Dados do pedido -->
+
+            <!-- Dados do insumo -->
+            <div class="module container-fluid">
+                <h5 class="module-title">Dados dos insumos</h5>
+                <div class="insumos">
+                    <div class="row">
+                        <div class="col-lg-12"><label>Insumo <span class="insumo-number">1</span></label></div>
+                        <div class="col-lg-3">
+                            <div class="field-content">
+                                <label for="insumo"  class="insumo">Insumo:</label>
+                                <div class="content">
+                                    <select name="insumo" id="insumo" class="form-control">
+                                        <option value="">Selecione...</option>
+                                        <option value="Opção 1">Opção 1</option>
+                                        <option value="Opção 2">Opção 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="field-content">
+                                <label for="marca_insumo"  class="marca_insumo">Marca:</label>
+                                <div class="content">
+                                    <input type="text" name="marca_insumo" id="marca_insumo" class="form-control" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="field-content">
+                                <label for="qtde_insumo"  class="qtde_insumo">Quantidade:</label>
+                                <div class="content">
+                                    <input type="number" onkeypress="return onlyNumber(event)" name="qtde_insumo" id="qtde_insumo" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="field-content">
+                                <label for="valor_insumo"  class="valor_insumo">Preço (R$):</label>
+                                <div class="content">
+                                    <input type="text" placeholder="0,00" name="valor_insumo" id="valor_insumo" class="price form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="field-content">
+                                <label for="desc_insumo"  class="desc_insumo">Descrição:</label>
+                                <div class="content">
+                                    <textarea name="desc_insumo" id="desc_insumo" rows="6" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="btn add-insumo btn-warning pull-right">Adicionar</a>
+            </div>
+            <!-- END Dados do insumo -->
+
+            <!-- Dados do solicitante -->
+            <div class="module container-fluid">
+                <h5 class="module-title">Dados do solicitante</h5>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="nome_solicitante"  class="nome_solicitante">Nome completo:</label>
+                            <div class="content">
+                                <input type="text" name="nome_solicitante" id="nome_solicitante" class="form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="cpf_solicitante"  class="cpf_solicitante">CPF:</label>
+                            <div class="content">
+                                <input type="text" maxlength="14" placeholder="000.000.000-00" name="cpf_solicitante" id="cpf_solicitante" class="cpf form-control" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="tel_solicitante"  class="tel_solicitante">Telefone:</label>
+                            <div class="content">
+                                <input type="tel" placeholder="(00) 00000-0000" name="tel_solicitante" id="tel_solicitante" class="phone form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="cep_solicitante"  class="cep_solicitante">CEP:</label>
+                            <div class="content">
+                                <input type="tel" maxlength="9" placeholder="00000-00" name="cep_solicitante" id="cep_solicitante" class="cep form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-content">
+                            <label for="end_solicitante"  class="end_solicitante">Endereço:</label>
+                            <div class="content">
+                                <input type="text" name="end_solicitante" id="end_solicitante" class="form-control address" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-content">
+                            <label for="comp_solicitante"  class="comp_solicitante">Complemento:</label>
+                            <div class="content">
+                                <input type="text" name="comp_solicitante" id="comp_solicitante" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="cidade_solicitante"  class="cidade_solicitante">Cidade:</label>
+                            <div class="content">
+                                <input type="text" name="cidade_solicitante" id="cidade_solicitante" class="country form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="estado_solicitante"  class="estado_solicitante">Estado:</label>
+                            <div class="content">
+                                <input name="estado_solicitante" id="estado_solicitante" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Dados do solicitante -->
+
+            <!-- Dados da entrega -->
+            <div class="module container-fluid">
+                <h5 class="module-title">Dados da entrega</h5>
+                <div class="form-group endereco_igual">
+                    <input type="checkbox" name="endereco_igual" id="endereco_igual"> Mesmo endereço do solicitante
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="cep_entrega"  class="cep_entrega">CEP:</label>
+                            <div class="content">
+                                <input type="tel" maxlength="9" placeholder="00000-00" name="cep_entrega" id="cep_entrega" class="cep form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="field-content">
+                            <label for="end_entrega"  class="end_entrega">Endereço:</label>
+                            <div class="content">
+                                <input type="text" name="end_entrega" id="end_entrega" class="form-control address" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="comp_entrega"  class="comp_entrega">Complemento:</label>
+                            <div class="content">
+                                <input type="text" name="comp_entrega" id="comp_entrega" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="cidade_entrega"  class="cidade_entrega">Cidade:</label>
+                            <div class="content">
+                                <input type="text" name="cidade_entrega" id="cidade_entrega" class="country form-control" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="field-content">
+                            <label for="estado_entrega"  class="estado_entrega">Estado:</label>
+                            <div class="content">
+                                <input name="estado_entrega" id="estado_entrega" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Dados da entrega -->
+
+            <div class="box-buttons pull-right">
+                <button type="submit" class="btn btn-submit valid-submit"><span class="demo-btn-ico fa fa-check"></span> Seguinte</button>
+                <button type="submit" class="btn btn-submit valid-submit hidden"><span class="demo-btn-ico fa fa-check"></span> Enviar</button>
+                <button type="reset" class="btn btn-default"><span class="demo-btn-ico fa fa-times-circle"></span> Cancelar</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    function onlyNumber(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla==8) return true;
+        patron =/[0-9]/;
+        te = String.fromCharCode(tecla);
+        return patron.test(te);
+    }
+</script>

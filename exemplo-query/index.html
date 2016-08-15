@@ -11,47 +11,43 @@
 			padding: 5px;
 			border: 1px solid #cccccc;
 			border-collapse:collapse;
-		}		
+		}
 	</style>
 </head>
 <body>
-	
-	<h3>Solicitantes</h3>
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nome</th>
-				<th>Telefone</th>
-			</tr>
-		</thead>
-		<tbody id="conteudo">
 
-		</tbody>
-	</table>
+<h3>Solicitantes</h3>
+<table>
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>Nome</th>
+		<th>Telefone</th>
+	</tr>
+	</thead>
+	<tbody id="conteudo">
 
-	<script src="mysql_lib.js"></script>
-	<script>
-		window.onload = function(){
+	</tbody>
+</table>
 
-			var mysql_query = "SELECT * FROM solicitantes ORDER BY nome ASC";
-
-		  	mysqlQuery(mysql_query, function(result){
-		    	// mostra o resultado da query
-		    	var obj = JSON.parse(result);
-		    	var table_body =  document.getElementById("conteudo");
-
-			    obj.forEach(function(el){
-			    	var html_body = "<tr>"+
-										"<td>"+el.id+"</td>"+
-										"<td>"+el.nome+"</td>"+
-										"<td>"+el.telefone+"</td>"+
-									"</tr>";
-					table_body.innerHTML += html_body;
-			    });
-
-		  	});
-		};
-	</script>
+<script src="mysql_lib.js"></script>
+<script>
+	window.onload = function(){
+		var mysql_query = "SELECT * FROM solicitantes ORDER BY nome ASC";
+		mysqlQuery(mysql_query, function(result){
+			// mostra o resultado da query
+			var obj = JSON.parse(result);
+			var table_body =  document.getElementById("conteudo");
+			obj.forEach(function(el){
+				var html_body = "<tr>"+
+						"<td>"+el.id+"</td>"+
+						"<td>"+el.nome+"</td>"+
+						"<td>"+el.telefone+"</td>"+
+						"</tr>";
+				table_body.innerHTML += html_body;
+			});
+		});
+	};
+</script>
 </body>
 </html>
