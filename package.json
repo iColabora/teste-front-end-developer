@@ -1,0 +1,33 @@
+{
+  "name": "icolabora",
+  "version": "1.0.0",
+  "description": "> [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas) > > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br> > Essa prova consiste em testar seus conhecimentos com <b>HTML, CSS, JavaScript, SQL</b> entre outras coisas. <br> > O conjunto de interfaces disponibilizado leva em média <b>6 horas</b> para ser implementado;",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulioLuchiari/teste-front-end-developer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulioLuchiari/teste-front-end-developer/issues"
+  },
+  "homepage": "https://github.com/JulioLuchiari/teste-front-end-developer#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-compass": "^2.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-csslint": "^0.3.1",
+    "gulp-html-replace": "^1.6.1",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-jshint": "^2.0.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-usemin": "^0.3.23",
+    "jshint": "^2.9.2"
+  }
+}
