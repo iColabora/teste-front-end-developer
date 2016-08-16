@@ -1,0 +1,404 @@
+﻿<div class="col-sm-12">
+               		<!--      Wizard container        -->   
+                    <div class="wizard-container"> 
+                        
+                        <div class="card wizard-card ct-wizard-azzure" id="wizardProfile">
+                            <form action="" method="">
+                        <!--        You can switch "ct-wizard-orange"  with one of the next bright colors: "ct-wizard-blue", "ct-wizard-green", "ct-wizard-orange", "ct-wizard-red"             -->
+                        
+                                <div class="wizard-header">
+                                    <h3>
+                                       <b>Pedido</b> <br>
+                                       <small>Check if extra insurance is necessary.</small>
+                                    </h3>
+                                </div>
+                                <ul>
+                                    <li><a href="#dados_pedido" data-toggle="tab">Pedido</a></li>
+                                    <li><a href="#dados_insumos" data-toggle="tab">Insumos</a></li>
+                                    <li><a href="#dados_solicitante" data-toggle="tab">Solicitante</a></li>
+                                    <li><a href="#entrega" data-toggle="tab">Entrega</a></li>
+                                </ul>
+                                
+                                <div class="tab-content">
+                                	
+                                    <!-- dados pedido -->
+                                    <div class="tab-pane" id="dados_pedido">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text"> Dados do Pedido </h4>
+                                            </div>
+                                            <div class="col-sm-12">
+                                              <div class="col-sm-4 col-sm-offset-2">
+                                                  <div class="form-group">
+                                                    <label>Número:</label>
+                                                    <input name="nped" id="nped" type="text" class="form-control" placeholder="Nº do Pedido">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-4">
+                                                  <div class="form-group">
+                                                    <label>Material:</label>
+                                                    <select type="text" class="form-control" id="pedido_material" placeholder="" name="pedido_material">
+                                                      <option value=""> - Selecione - </option>
+                                                      <option value="1"> Hard Disk </option>
+                                                      <option value="2"> Motherboard </option>
+                                                      <option value="3"> Mouse </option>
+                                                      <option value="4"> Keyboard </option>
+                                                    </select>
+                                                  </div>
+                                              </div>
+                                           </div>
+                                           <div class="col-sm-12">
+                                              <div class="col-sm-4 col-sm-offset-2">
+                                                  <div class="form-group">
+                                                    <label>Marca:</label>
+                                                    <input name="marca" id="marca" type="text" class="form-control" placeholder="Marca">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-4">
+                                                  <div class="form-group">
+                                                       <label>Data de compra:</label>
+                                                       <input type="date" class="form-control" name="pedido_data_compra" id="pedido_data_compra" placeholder="">
+                                                  </div>
+                                              </div>
+                                           </div>
+                                           <div class="col-sm-12">  
+                                              <div class="col-sm-4 col-sm-offset-2">
+                                                  <div class="form-group">
+                                                     <label>Qtde do Material:</label>
+                                                     <input type="number" class="form-control" id="quantidade" placeholder="Ex: 1, 2, 3" name="quantidade" min="0">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-4">
+                                                  <div class="form-group">
+                                                     <label>Preço Total:</label>
+                                                     <input class="form-control numerico" id="preco_total" placeholder="" name="preco_total" readonly>
+                                                  </div>
+                                              </div>
+                                            </div>                                   
+                                        </div>
+                                    </div>
+                                    <!-- /dados pedido -->
+                                    
+                                    <!-- dados insumos -->
+                                    <div class="tab-pane" id="dados_insumos">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text"> Dados dos Insumos </h4>
+                                            </div>
+                                            <div class="col-sm-8 col-sm-offset-2 simple-card">
+                                            	<br>
+                                            	<table class="table" id="tblInsumos"> 
+                                                	<thead> 
+                                                    	<tr> 
+                                                        	<th>#</th> 
+                                                            <th>Descrição</th> 
+                                                            <th>Material</th> 
+                                                            <th>Qtde</th> 
+                                                            <th>Preço</th>
+                                                        </tr> 
+                                                    </thead> 
+                                                    <tbody> 
+                                                    	<tr> 
+                                                        	<th scope="row">1</th> 
+                                                            <td>Mouse</td> 
+                                                            <td>Material</td> 
+                                                            <td>2</td> 
+                                                            <td>50,00</td> 
+                                                        </tr> 
+                                                        <tr> 
+                                                        	<th scope="row">1</th> 
+                                                            <td>Keyboard</td> 
+                                                            <td>Material</td> 
+                                                            <td>1</td> 
+                                                            <td>75,00</td> 
+                                                        </tr> 
+                                                    </tbody> 
+                                                </table>
+                                            </div> 
+                                            <div class="col-sm-12" align="center">
+                                            	<br>
+                                                <input type='button' class='btn btn-fill btn-success btn-md' id="add_insumo" value='Adicionar Insumo' data-toggle="modal" data-target="#addInsumo" />
+                                            </div>
+                                            <div class="modal fade" tabindex="-1" role="dialog" id="addInsumo">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header" align="center">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Adicionar Insumo</h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <div class="col-sm-12">
+                                                        <div class="col-sm-5 col-sm-offset-1">
+                                                          <div class="form-group">
+                                                             <label>Descrição:</label>
+                                                             <input class="form-control" id="descricao_insumo" placeholder="Descrição" name="descricao_insumo">
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-sm-5">
+                                                          <div class="form-group">
+                                                            <label>Material:</label>
+                                                            <select class="form-control" id="insumo_material" placeholder="" name="insumo_material">
+                                                              <option value=""> - Selecione - </option>
+                                                              <option value="Hard Disk"> Hard Disk </option>
+                                                              <option value="Motherboard"> Motherboard </option>
+                                                              <option value="Mouse"> Mouse </option>
+                                                              <option value="Keyboard"> Keyboard </option>
+                                                            </select>
+                                                          </div>
+                                                      </div>
+                                                    </div>  
+                                                    <div class="col-sm-12">  
+                                                      <div class="col-sm-5 col-sm-offset-1">
+                                                          <div class="form-group">
+                                                             <label>Qtde do Material:</label>
+                                                             <input type="number" class="form-control" id="insumo_qtde" placeholder="Quantidade" name="quantidade" min="1">
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-sm-5">
+                                                          <div class="form-group">
+                                                             <label>Preço:</label>
+                                                             <input class="form-control numerico" id="insumo_total" placeholder="Valor" name="preco_total">
+                                                          </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                    	&nbsp;
+                                                    </div>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default btn-fill" data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-success btn-fill" id="ad_insumo">Adicionar</button>
+                                                  </div>
+                                                </div><!-- /.modal-content -->
+                                              </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->                               
+                                        </div>
+                                    </div>
+                                    <!-- /dados insumos -->
+                                    
+                                    <!-- dados do solicitante -->
+                                    <div class="tab-pane" id="dados_solicitante">
+                                      <div class="row">
+                                          <h4 class="info-text"> Dados do Solicitante</h4>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-10 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>Nome Completo:</label>
+                                                    <input name="nome" id="nome" type="text" class="form-control" placeholder="Nome">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>Telefone:</label>
+                                                    <input name="telefone" id="telefone" type="text" class="form-control" placeholder="Telefone" onKeyPress="mascara(this,mtel)">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-5">
+                                                  <div class="form-group">
+                                                    <label>CPF:</label>
+                                                    <input name="cpf" id="cpf" type="text" class="form-control" placeholder="CPF">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>CEP:</label>
+                                                    <input name="cep" id="cep" type="text" class="form-control" placeholder="CEP">
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-10 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                      <label>Endereço: </label>
+                                                      <input name="endereco" id="endereco" class="form-control" placeholder="Endereco">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>Complemento:</label>
+                                                    <input name="complemento" id="complemento" type="text" class="form-control" placeholder="Complemento">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>Cidade:</label>
+                                                    <input name="cidade" id="cidade" type="text" class="form-control" placeholder="Cidade">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-5">
+                                                  <div class="form-group">
+                                                    <label>Estado:</label>
+                                                    <input name="estado" id="estado" type="text" class="form-control" placeholder="Estado">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                    <!-- /dados solicitante -->
+                                    
+                                    <!-- dados entrega -->
+                                    <div class="tab-pane" id="entrega">
+                                        <h4 class="info-text"> Dados da Entrega </h4>
+                                        <div class="row">
+                                          
+                                          <div class="col-sm-12">
+                                            <div class="col-sm-5 col-sm-offset-1">
+                                                <input type="checkbox" name="endereco_igual" id="endereco_igual" value=""><label for="endereco_igual">&nbsp;Utilizar Endereço do Solicitante</label>
+                                            </div> 
+                                          </div>
+                                          <div class="col-sm-12">
+                                            &nbsp;
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>CEP:</label>
+                                                    <input name="cep_entrega" id="cep_entrega" type="text" class="form-control" placeholder="CEP">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-10 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                      <label>Endereço: </label>
+                                                      <input name="endereco_entrega" id="endereco_entrega" class="form-control" placeholder="Endereco">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>Complemento:</label>
+                                                    <input name="complemento_entrega" id="complemento_entrega" type="text" class="form-control" placeholder="Complemento">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-12">
+                                              <div class="col-sm-5 col-sm-offset-1">
+                                                  <div class="form-group">
+                                                    <label>Cidade:</label>
+                                                    <input name="cidade_entrega" id="cidade_entrega" type="text" class="form-control" placeholder="Cidade">
+                                                  </div>
+                                              </div>
+                                              <div class="col-sm-5">
+                                                  <div class="form-group">
+                                                    <label>Estado:</label>
+                                                    <input name="estado_entrega" id="estado_entrega" type="text" class="form-control" placeholder="Estado">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- /dados entrega -->
+                                    
+                                </div>
+                                <div class="wizard-footer">
+                                    <hr>
+                                    <div class="pull-right">
+                                        <input type='button' class='btn btn-next btn-fill btn-info btn-wd btn-md' name='next' value='Próximo' />
+                                        <input type='button' class='btn btn-finish btn-fill btn-success btn-wd btn-md' name='finish' value='Finalizar' />
+                
+                                    </div>
+                                    
+                                    <div class="pull-left">
+                                        <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-md' name='previous' value='Anterior' />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>	
+                            </form>
+                        </div>
+                    </div> <!-- wizard container -->
+                
+            </div>
+            
+            <!--  metodos de validacao -->
+			<script src="assets/js/wizard.js"></script>
+            
+            <!--  funcao de busca do cep -->
+			<script src="assets/js/busca_cep.js"></script>
+            
+            <!--  custom js -->
+			<script src="assets/js/custom.js"></script>
+            
+            <!--  custom js -->
+			<script src="assets/js/mask.js"></script>
+            
+            <script>
+			$("#ad_insumo").click(function() {
+                adicionarLinha($("#descricao_insumo").val(),$("#insumo_material").val(),$("#insumo_qtde").val(),$("#insumo_total").val());
+				//$('#addInsumo').modal('hide');
+            });
+			function adicionarLinha(descricao,material,qtde,preco){
+				document.getElementById("tblInsumos").innerHTML += "<tr><td>1</td><td>"+ descricao +"</td><td>"+ material +"</td><td>"+ qtde +"</td><td>"+ preco +"</td></tr>";	
+			}
+			</script>
+            
+            <script>
+			function onlyNumbers(event){
+				var key = window.event ? event.keyCode : event.which;
+				if (key < 48 || key > 57) return false;
+				else return true;
+			}
+			
+			function run(){
+				$('.numerico').number(true, 2, ',', '.');
+			
+				//formata números
+				Number.prototype.formatMoney = function(c, d, t){
+				var n = this, 
+					c = isNaN(c = Math.abs(c)) ? 2 : c, 
+					d = d == undefined ? "." : d, 
+					t = t == undefined ? "," : t, 
+					s = n < 0 ? "-" : "", 
+					i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+					j = (j = i.length) > 3 ? j % 3 : 0;
+					return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+				 };
+			}
+			</script>
+			
+			<script>
+			if (typeof run === "function") { 
+				run();
+			}
+			
+			<!-- Masks -->
+			$("#cep").mask("99999-999");
+			$("#cpf").mask("999.999.999-99");
+			$("#cep_entrega").mask("99999-999");
+			function mascara(o,f){
+				v_obj=o
+				v_fun=f
+				setTimeout("execmascara()",1)
+			}
+			function execmascara(){
+				v_obj.value=v_fun(v_obj.value)
+			}
+			function mtel(v){
+				v=v.replace(/\D/g,"")             //Remove tudo o que não é dígito
+				//Coloca parênteses em volta dos dois primeiros dígitos
+				if(v.length == 11)
+				{
+					v=v.replace(/(\d{7})(\d)/,"$1-$2")    //Coloca hífen entre o quarto e o quinto dígitos
+					v=v.replace(/(\d{1})(\d)/,"($1$2")	  //Coloca o primeiro parêntese
+					v=v.replace(/(\d{2})(\d)/,"$1)$2")    //Coloca o segundo parêntese
+				}else
+				{
+					v=v.replace(/(\d{6})(\d)/,"$1-$2")    //Coloca hífen entre o quarto e o quinto dígitos
+					v=v.replace(/(\d{1})(\d)/,"($1$2")    //Coloca o primeiro parêntese
+					v=v.replace(/(\d{2})(\d)/,"$1)$2")	  //Coloca o segundo parêntese
+				}
+				return v
+			}
+			<!-- /Masks -->
+			</script>

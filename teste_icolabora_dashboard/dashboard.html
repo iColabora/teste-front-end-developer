@@ -1,0 +1,92 @@
+﻿		<div class="col-sm-6 container">
+                <div class="simple-card col-sm-12">
+                    <div class="col-sm-12 modal-header" align="center">
+                        <h5><b>Quantidade de pedidos por dia</b></h5>
+                    </div>
+                    <div class="ct-chart" id="chart"></div>
+                    <div class="col-sm-12">
+                        <hr>
+                        <small><i class="fa fa-history"></i> Atualizado agora...</small>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-6 container">               
+                <div class="simple-card col-sm-12">
+                    <div class="col-sm-12 modal-header" align="center">
+                        <h5><b>Pedidos por solicitante</b></h5>
+                    </div>
+                    <div class="ct-chart-sol" id="chart-sol"></div>
+                    <div class="col-sm-12">
+                        <hr>
+                        <small><i class="fa fa-history"></i> Atualizado agora...</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">&nbsp;</div>
+            <div class="col-sm-12 container">    
+                <div class="col-sm-12 simple-card">
+                    <br>
+                    <table class="table"> 
+                        <thead> 
+                            <tr class="bolder"> 
+                                <th>#</th> 
+                                <th>Data de Compra</th> 
+                                <th>Solicitante</th> 
+                                <th>Cidade</th> 
+                                <th>Situação</th>
+                                <th>Valor</th>
+                            </tr> 
+                        </thead> 
+                        <tbody> 
+                            <tr> 
+                                <th scope="row">1</th> 
+                                <td>14/08/2016</td> 
+                                <td>José</td> 
+                                <td>São Paulo</td> 
+                                <td>Pendente</td> 
+                                <td>250,00</td>
+                            </tr> 
+                            <tr> 
+                                <th scope="row">1</th> 
+                                <td>13/08/2016</td> 
+                                <td>Pedro</td> 
+                                <td>São Paulo</td> 
+                                <td>Pendente</td> 
+                                <td>976,50</td>
+                            </tr> 
+                        </tbody> 
+                    </table>
+                </div>
+            </div>
+            
+            <!--  custom js -->
+			<script src="assets/js/custom.js"></script>
+            
+            <script>
+			new Chartist.Bar('.ct-chart', {
+			  labels: ['Domingo', 'Sábado', 'Sexta', 'Quinta', 'Quarta', 'Terça', 'Segunda'],
+			  series: [
+				[2, 4, 3, 7, 5, 10, 3],
+			  ]
+			}, {
+		
+			  reverseData: true,
+			  horizontalBars: false,
+			  axisY: {
+				onlyInteger: true,
+			  }
+			  
+			});
+			
+			new Chartist.Bar('.ct-chart-sol', {
+			  labels: ['Robison', 'Pedro', 'José', 'Marcos'],
+			  series: [85, 60, 120, 200]
+			}, {
+			  reverseData: true,
+			  distributeSeries: true,
+			  axisY: {
+				onlyInteger: true,
+			  }
+			});
+			</script>
