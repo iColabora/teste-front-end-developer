@@ -48,7 +48,7 @@
                         <div class="field-content">
                             <label for="qtde_material" class="qtde_material">Quantidade do material:</label>
                             <div class="content">
-                                <input type="number" onkeypress="return onlyNumber(event)" name="qtde_material" id="qtde_material" class="form-control" />
+                                <input type="number" min="0" onkeypress="return onlyNumber(event)" name="qtde_material" id="qtde_material" class="form-control" />
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <div class="field-content">
                                 <label for="qtde_insumo"  class="qtde_insumo">Quantidade:</label>
                                 <div class="content">
-                                    <input type="number" onkeypress="return onlyNumber(event)" name="qtde_insumo" id="qtde_insumo" class="form-control" />
+                                    <input type="number" min="0" onkeypress="return onlyNumber(event)" name="qtde_insumo" id="qtde_insumo" class="form-control" />
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                         <div class="field-content">
                             <label for="tel_solicitante"  class="tel_solicitante">Telefone:</label>
                             <div class="content">
-                                <input type="tel" placeholder="(00) 00000-0000" name="tel_solicitante" id="tel_solicitante" class="phone form-control" />
+                                <input type="tel" placeholder="(00) 0000-0000" name="tel_solicitante" id="tel_solicitante" class="phone form-control" />
                             </div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                         <div class="field-content">
                             <label for="cep_solicitante"  class="cep_solicitante">CEP:</label>
                             <div class="content">
-                                <input type="tel" maxlength="9" placeholder="00000-00" name="cep_solicitante" id="cep_solicitante" class="cep form-control" />
+                                <input type="tel" maxlength="9" placeholder="00000-00" name="cep_solicitante" id="cep_solicitante" data-info="solicitante" class="cep form-control" />
                             </div>
                         </div>
                     </div>
@@ -176,7 +176,7 @@
                         <div class="field-content">
                             <label for="cidade_solicitante"  class="cidade_solicitante">Cidade:</label>
                             <div class="content">
-                                <input type="text" name="cidade_solicitante" id="cidade_solicitante" class="country form-control" required/>
+                                <input type="text" name="cidade_solicitante" id="cidade_solicitante" class="country form-control" disabled/>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                         <div class="field-content">
                             <label for="estado_solicitante"  class="estado_solicitante">Estado:</label>
                             <div class="content">
-                                <input name="estado_solicitante" id="estado_solicitante" class="form-control">
+                                <input name="estado_solicitante" id="estado_solicitante" class="form-control" disabled>
                             </div>
                         </div>
                     </div>
@@ -196,14 +196,14 @@
             <div class="module container-fluid">
                 <h5 class="module-title">Dados da entrega</h5>
                 <div class="form-group endereco_igual">
-                    <input type="checkbox" name="endereco_igual" id="endereco_igual"> Mesmo endereço do solicitante
+                    <input type="checkbox" name="endereco_igual" id="endereco_igual" class=""> Mesmo endereço do solicitante
                 </div>
-                <div class="row">
+                <div class="row group-entrega">
                     <div class="col-lg-3">
                         <div class="field-content">
                             <label for="cep_entrega"  class="cep_entrega">CEP:</label>
                             <div class="content">
-                                <input type="tel" maxlength="9" placeholder="00000-00" name="cep_entrega" id="cep_entrega" class="cep form-control" />
+                                <input type="tel" maxlength="9" placeholder="00000-00" name="cep_entrega" id="cep_entrega" data-info="entrega" class="cep form-control" />
                             </div>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                         <div class="field-content">
                             <label for="cidade_entrega"  class="cidade_entrega">Cidade:</label>
                             <div class="content">
-                                <input type="text" name="cidade_entrega" id="cidade_entrega" class="country form-control" required/>
+                                <input type="text" name="cidade_entrega" id="cidade_entrega" class="country form-control" disabled/>
                             </div>
                         </div>
                     </div>
@@ -235,7 +235,7 @@
                         <div class="field-content">
                             <label for="estado_entrega"  class="estado_entrega">Estado:</label>
                             <div class="content">
-                                <input name="estado_entrega" id="estado_entrega" class="form-control">
+                                <input name="estado_entrega" id="estado_entrega" class="form-control" disabled>
                             </div>
                         </div>
                     </div>
@@ -244,8 +244,7 @@
             <!-- END Dados da entrega -->
 
             <div class="box-buttons pull-right">
-                <button type="submit" class="btn btn-submit valid-submit"><span class="demo-btn-ico fa fa-check"></span> Seguinte</button>
-                <button type="submit" class="btn btn-submit valid-submit hidden"><span class="demo-btn-ico fa fa-check"></span> Enviar</button>
+                <button type="submit" class="btn btn-submit valid-submit" disabled><span class="demo-btn-ico fa fa-check"></span> Enviar</button>
                 <button type="reset" class="btn btn-default"><span class="demo-btn-ico fa fa-times-circle"></span> Cancelar</button>
             </div>
 
