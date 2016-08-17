@@ -3,7 +3,6 @@ angular.module('app').factory('Auth', function () {
 
     return {
         setUser : function (aUser) {
-
             user = aUser
         },
         isLoggedIn : function () {

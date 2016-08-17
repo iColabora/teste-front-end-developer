@@ -1,10 +1,13 @@
-angular.module('app').controller('navController', ['$scope', '$location', 'ROUTE_LOGIN', 'ROUTE_REGISTER', 'ROUTE_DASHBOARD',
-    function($scope, $location, ROUTE_LOGIN, ROUTE_REGISTER, ROUTE_DASHBOARD) {
+angular.module('app').controller('navController', ['$scope', '$location', 'Auth', 'ROUTE_LOGIN', 'ROUTE_REGISTER', 'ROUTE_DASHBOARD',
+    function($scope, $location, Auth, ROUTE_LOGIN, ROUTE_REGISTER, ROUTE_DASHBOARD) {
         console.log('navController')
 
         $scope.destinations = []
 
+        $scope.isLoggedIn = Auth.isLoggedIn
+
         $scope.$on('$locationChangeSuccess', function () {
+            console.log('location changed')
             $scope.destinations = []
             if(/\/login$/.test($location.path())) {
                 $scope.destinations.push({path:'#/', text:'Inicial'})

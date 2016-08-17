@@ -1,4 +1,4 @@
-angular.module('app').controller('contas_controller', [
+angular.module('app').service('contas_service', [
     '$scope', '$location', '$route', '$http',
     'Auth', 'Usuários',
     'USER_SOCKET',
@@ -8,8 +8,6 @@ angular.module('app').controller('contas_controller', [
     function($scope, $location, $route, $http, Auth, Usuários, USER_SOCKET,
              LOGIN_COMMAND, LOGIN_SUCCESS, LOGIN_FAILURE,
              REGISTER_COMMAND, REGISTRATION_SUCCESS, REGISTRATION_FAILURE) {
-        console.log('contas_controller')
-
         $scope.navTo = function(url) {
             if ($location.path() === url) {
                 $route.reload()

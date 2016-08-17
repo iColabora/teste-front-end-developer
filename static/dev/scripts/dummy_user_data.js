@@ -13,27 +13,29 @@
             )
 
             stream.onMessage(function(message){
-                var tx_response = JSON.parse(message.data)
+                var tx_response = JSON.parse(message)
+                tx_response = tx_response.data // we're just going to throw away http stuff
+
                 switch (tx_response.status) {
                     case LOGIN_SUCCESS:
                         $rootScope.$broadcast(LOGIN_SUCCESS, true)
                         break
                     case LOGIN_FAILURE:
-                        $rootScope.$broadcast(LOGIN_FAILURE, tx_response.reason)
+                        $rootScope.$broadcast(LOGIN_FAILURE, tx_response.status)
                         break
                     case REGISTRATION_SUCCESS:
                         $rootScope.$broadcast(REGISTRATION_SUCCESS, true)
                         break
                     case REGISTRATION_FAILURE:
-                        $rootScope.$broadcast(REGISTRATION_FAILURE, tx_response.reason)
+                        $rootScope.$broadcast(REGISTRATION_FAILURE, tx_response.status)
                         break
                 }
             })
 
             return {
-                send: function (message) {
-                    console.log('sending message: ' + JSON.stringify(message))
-                    stream.send(message)
+                send: function (command, message) {
+                    console.log('sending command: ' + command)
+                    stream.send(command, message)
                 },
                 close: function () {
                     stream.send(CLOSE)
@@ -84,7 +86,7 @@
                     console.log(prefix + reason)
                     return {command: REGISTER_COMMAND, status: sf[REGISTER_COMMAND][false], reason: reason}
                 }
-                users.push( clone(user) ) // JSON, de util.js
+                this.users.push( clone(user) ) // JSON, de util.js
                 return {command: REGISTER_COMMAND, status: sf[REGISTER_COMMAND][true]}
             },
             existsUsername: function(user) {
@@ -104,21 +106,18 @@
     var dummy_service = function (uri, REGISTER_COMMAND, REGISTRATION_SUCCESS, REGISTRATION_FAILURE,
                                   LOGIN_COMMAND, LOGIN_SUCCESS, LOGIN_FAILURE) {
         return {
+            self: this,
             uri: uri,
             message_handler: function () {},
             __dummy_userRESTService: dummy_userRESTService(
                 REGISTER_COMMAND, REGISTRATION_SUCCESS, REGISTRATION_FAILURE,
                 LOGIN_COMMAND, LOGIN_SUCCESS, LOGIN_FAILURE),
-            __dummy_message: function(message) {
-                var command, tx, user, tx_response
-                var m = message.split(' ', 2)
-                command = m[0]
-                tx = m[1]
-
+            __dummy_message: function(command, tx) {
+                var user, tx_response
                 switch (command){
                     case LOGIN_COMMAND:
                         user = JSON.parse(tx)
-                        tx_reponse = this.__dummy_userRESTService.hasCredentials(user)
+                        tx_response = this.__dummy_userRESTService.hasCredentials(user)
                         break
                     case REGISTER_COMMAND:
                         user = JSON.parse(tx)
@@ -128,10 +127,13 @@
                         console.log('[Socket] dummy_$webSocket - invalid message type: ' + message)
                         return
                 }
-                setTimeout(function () { this.receive({data: tx_response}) }, Math.random()*2 )
+                var self = this
+                setTimeout(function () {
+                    self.receive(JSON.stringify({data: tx_response}))
+                }, Math.random()*2 )
             },
-            send: function (message) {
-                this.__dummy_message(message)
+            send: function (command, message) {
+                this.__dummy_message(command, message)
             },
             receive: function(tx_response) {
                 this.message_handler(tx_response)
