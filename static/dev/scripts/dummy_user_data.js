@@ -18,7 +18,7 @@
 
                 switch (tx_response.status) {
                     case LOGIN_SUCCESS:
-                        $rootScope.$broadcast(LOGIN_SUCCESS, true)
+                        $rootScope.$broadcast(LOGIN_SUCCESS, true) // https://github.com/angular/angular.js/issues/11213
                         break
                     case LOGIN_FAILURE:
                         $rootScope.$broadcast(LOGIN_FAILURE, tx_response.status)

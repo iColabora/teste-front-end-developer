@@ -2,7 +2,10 @@
     <nav class="navbar navbar-default navbar-static-top">
         <div class="navbar-header"><img src="recursos/logo.png" class="img-responsive" alt="Remessa" /></div>
         <ul class="nav navbar-nav navbar-left">
-            <li class="nav-item" ng-repeat="d in destinations"><a ng-href="{{d.path}}">{{d.text}}</a></li>
+            <li class="nav-item" ng-repeat="d in destinations">
+                <div ng-if="d.path === '#/painéis'" class="diamante"></div>
+                <a ng-href="{{d.path}}">{{d.text}}</a>
+            </li>
             <li class="nav-item soluções"><!-- TODO - give a dummy solutions blurb page --><a href="#/">Soluções</a></li>
             <li class="nav-item administração"><!-- TODO - give a dummy admin info page --><a href="#/">Administração</a></li>
         </ul>

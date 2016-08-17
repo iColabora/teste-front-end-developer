@@ -1,1 +1,42 @@
-<div id="dashboard" class="mysql"></div>
+<div id="dashboard" class="mysql">
+    <div ng-if="hasShipping()" id="shippingSubPanel">
+        <ul class="subnav nav navbar-nav navbar-left container-fluid">
+            <li id="order_{{order.id}}" class="subnav order nav-item" ng-repeat="order in shippingForUser">
+                {{order.solicitante.nome}}-{{order.data_de_compra}}
+            </li>
+        </ul>
+    </div>
+    <div ng-if="hasShipping()" id="shippingInspection">
+        <div id="order_detail_{{order.id}}" class="order_detail" ng-repeat="order in shippingForUser">
+            <h3>{{order.data_de_compra}}</h3>
+            <ul id="orderer_{{order.id}}" class="orderer">
+                <li>{{order.solicitante.nome}} - {{order.solicitante.cpf}}</li>
+                <li>{{order.solicitante.telefone}}</li>
+                <li>{{order.solicitante.rua}} {{order.solicitante.numero}}</li>
+                <li>{{order.solicitante.bairro}}, {{order.solicitante.cidade}}-{{order.solicitante.estado}}</li>
+                <li>{{order.solicitante.cep}}</li>
+                <li>{{order.solicitante.pais}}</li>
+            </ul>
+            <ul id="destination_{{order.id}}" class="destination">
+                <li>{{order.rua}} {{order.numero}}</li>
+                <li>{{order.bairro}}, {{order.cidade}}-{{order.estado}}</li>
+                <li>{{order.cep}}</li>
+                <li>{{order.pais}}</li>
+            </ul>
+            <ul id="insumos_{{insumos.id}}"  class="insumos" ng-repeat="insumos in order.insumos">
+                <li>
+                    <span class="quantidade">{{insuomes.quantidade}}</span>&20;
+                    <span class="descricao">{{insumos.descricao}}</span>&20;-&20;
+                    <span class="preco">{{insumos.preco}}</span>
+                </li>
+            </ul>
+            <ul id="materiais_{{materiais.id}}" class="materiais" ng-repeat="materiais in order.materiais">
+                <li>
+                    <span class="quantidade">{{insuomes.quantidade}}</span>&20;
+                    <span class="título">{{insumos.marca}} {{insumos.nome}}</span>&20;-&20;
+                    <span class="preco">{{insumos.preco}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

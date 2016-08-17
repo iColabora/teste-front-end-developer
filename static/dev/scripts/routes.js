@@ -9,7 +9,7 @@
                     resolve: {
                         factory: function (Res, Auth, $location, $rootScope) {
                             checkRouting($rootScope, $location, Auth, '/login')
-                            controllersAndServices(Res, {})
+                            controllersAndServices(Res, {styles: 'scripts/domain/mysql/dashboard.css'})
                         }
                     }
                 }).
@@ -19,7 +19,7 @@
                     resolve: {
                         factory: function (Res, Auth, $location, $rootScope) {
                             checkRouting($rootScope, $location, Auth, '/login')
-                            controllersAndServices(Res, {})
+                            controllersAndServices(Res, {styles: 'scripts/domain/mysql/dashboard.css'})
                         }
                     }
                 }).
@@ -29,7 +29,7 @@
                     resolve: {
                         factory: function (Res, Auth, $location, $rootScope) {
                             checkRouting($rootScope, $location, Auth, '/login')
-                            controllersAndServices(Res, {})
+                            controllersAndServices(Res, {styles: 'scripts/domain/mysql/dashboard.css'})
                         }
                     }
                 }).
@@ -71,7 +71,6 @@
     }
 
     const checkRouting = function ($rootScope, $location, Auth, fallback_url, checkAdmin) {
-        console.log('checking routing')
         if(fallback_url === undefined)
             throw '[routes] checkRouting - must provide a fallback_url'
         if (checkAdmin === undefined)
