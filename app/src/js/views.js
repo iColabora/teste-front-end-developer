@@ -11,10 +11,10 @@
 
       /*Função que customisa as tabs*/
       helperTabs: function(){
-        $('.nav-tabs a').click(function(e){
+        $('a[data-toggle="tab"]').click(function(e){
             e.preventDefault();
             $('.nav-tabs a').parent().removeClass('active');
-            $(this).parent().addClass('active');
+            $('.nav-tabs a[aria-controls='+$(this).attr('aria-controls')+']').parent().addClass('active');
             $('.tab-content .tab-pane').removeClass('active');
             $('.tab-content .tab-pane[id='+$(this).attr('aria-controls')+']').addClass('active');
           });
@@ -29,10 +29,41 @@
         $(".mask-num").mask("9?999999999");
       },
 
+      /*Função que cria uma alerta customizado*/
+      helperAlert: function(msg, back, color, btn){
+      	$(btn).addClass("disabled").attr("disabled", "disabled");
+        $("body").append("<div id='alert' style='width: 100%; height: 100px; position: fixed; top: -100%; left: 0; background: " + back + "; z-index: 99999;'><h1>" + msg + "</h1></div>");
+        $("#alert h1").css({
+            color: color,
+            display: 'none'
+        });
+        $("#alert").animate({
+            top: '0'
+        }, 500, function () {
+            $("#alert h1").fadeIn(800);
+            setTimeout(function () {
+                $("#alert h1").hide();
+                $("#alert").animate({
+                    top: '-100%'
+                }, 600, function () {
+                    $(this).remove();
+                });
+                $(btn).removeClass("disabled").removeAttr("disabled");
+            }, 5000);
+        });
+      },
+
       /*Função que busca no webservice para o CEP*/
       helperSearchCep: function(){
         $('.sh-cep').on('click', function(){
           var cep = $(this).closest('.serch-cep').find('.mask-cep').val();
+
+          if(cep === ""){
+          	$(this).closest('.serch-cep').find('.mask-cep').focus();
+          	views.helperAlert("Informe o número do CEP", "#FCA464", "#FFFFFF", '.sh-cep');
+          	return false;
+          }
+
           var form = $(this).closest('fieldset');
 
           $.getJSON('http://viacep.com.br/ws/'+cep.replace(/[\(\)\.\s-]+/g,'')+'/json/ ', function(data) {
@@ -48,6 +79,7 @@
         });
       },
 
+      /*Função que clona os campos do formulário*/
       helperCloneFields: function(){
 
         $('#insum').on('click', '.btn-clone', function(){
@@ -55,7 +87,7 @@
           $("div.form-group.clone")
             .last()
             .clone()
-            .appendTo($("#insum"))
+            .appendTo($("#insum .group"))
             .find("input").attr("name",function(i,oldVal) {
                 return oldVal.replace(/\[(\d+)\]/,function(_,m){
                     return "[" + (+m + 1) + "]";
@@ -66,6 +98,30 @@
         $('#insum').on('click', '.btn-remove', function(){
           $(this).closest('div.form-group.clone').remove();                  
         });
+
+      },
+
+      /*Função que trata a moeda*/
+      helperRoundMoney: function(v){
+      	v = parseFloat(v) * 100;
+    	return Math.floor(v) / 100;
+      },
+
+      /*Função que formada a data*/
+      helperDateFormat: function(data){
+
+		function addZero(n){
+			return n < 10 ? '0' + n : '' + n;
+		}
+
+      	var d = new Date(data);
+
+      	return addZero(d.getDate()) + "/"
+      		   + addZero(d.getMonth()+1) + "/"
+      		   + d.getFullYear() + " "
+      		   + addZero(d.getHours()) + ":"
+      		   + addZero(d.getMinutes()) + ":"
+      		   + addZero(d.getSeconds());
 
       },
 
@@ -94,7 +150,20 @@
               });
         },
 
-        getPedido: function(id){         
+        /*Função que busca a quatidade de pedidos por dia*/
+        getOrdersDay: function(){
+
+        	var sql = "SELECT COUNT(*) AS total "+
+        			  "FROM pedidos WHERE data_de_compra = CURDATE()";
+
+        	mysqlQuery(sql, function(result){
+        		console.log(result);
+        	});
+
+        },
+
+        /*Função que retorna os pedidos*/
+        getOrder: function(id){         
 
             var sql = "SELECT " +
                     "pedido.id AS id, "+
@@ -125,8 +194,67 @@
                     "FROM pedidos AS pedido "+
                     "INNER JOIN materiais AS material ON material.id_pedido = pedido.id "+
                     "INNER JOIN solicitantes AS solicitante ON solicitante.id = pedido.id_solicitante "+                    
-                    "WHERE pedido.id = "+id;
+                    "WHERE pedido.id = "+id+
                      " GROUP BY pedido.id";
+
+            var sql2 = "SELECT "+
+            		   "insumo.descricao AS descIns, "+
+            		   "insumo.quantidade AS qtdIns, "+
+            		   "insumo.preco AS precoIns, "+
+            		   "material.marca AS marcaIns "+            		  
+            		   "FROM insumos AS insumo "+
+            		   "INNER JOIN materiais AS material ON material.id = insumo.id_material "+
+            		   "WHERE insumo.id_pedido = "+id;
+
+           	var sql3 = "SELECT "+
+           			   "(material.preco * material.quantidade) AS precoMaterial, "+
+           			   "SUM(insumo.preco * insumo.quantidade) AS precoInsumo "+
+           			   "FROM materiais AS material "+
+           			   "INNER JOIN insumos AS insumo ON insumo.id_pedido = "+id+
+           			   " WHERE material.id_pedido = "+id+
+           			   " GROUP BY material.id_pedido";
+
+        var insumosFields = '';
+        var precoTotal = '';
+       
+        mysqlQuery(sql2, function(result){
+        	
+        	 var obj = JSON.parse(result);
+
+        	 if(obj.length !== 0){
+
+        	 	$.each(obj, function(index, element){
+        	 		insumosFields += '<div class="form-group">';
+        	 		insumosFields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Marca</label><input type="text" class="form-control" value="'+element.marcaIns+'"></div>';
+        	 		insumosFields += '<div class="col-xs-12 col-sm-6 col-md-5 col-lg-4"><label>Descrição</label><input type="text" class="form-control" value="'+element.descIns+'"></div>'; 
+        	 		insumosFields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Quantidade</label><input type="text" class="form-control" value="'+element.qtdIns+'"></div>';
+        	 		insumosFields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Preço</label><input type="text" class="form-control mask-money" value="R$ '+element.precoIns+'"></div>';
+        	 		insumosFields += '</div>';
+        	 	});
+
+        	 }
+
+        });
+
+
+        mysqlQuery(sql3, function(result){
+
+        	console.log(result);
+
+        	var obj = JSON.parse(result);
+
+        	 if(obj.length !== 0){
+
+        	 	$.each(obj, function(index, element){
+
+        	 		precoTotal = (element.precoMaterial + element.precoInsumo);
+
+        	 	});
+
+        	 }
+
+        	
+        });
 
           mysqlQuery(sql, function(result){
 
@@ -140,19 +268,30 @@
 
                     fields += '<ul class="nav nav-tabs" role="tablist">';
                     fields += '<li role="presentation" class="active"><a href="#mater" aria-controls="mater" role="tab" data-toggle="tab">Dados do Pedido</a></li>';
+                    fields += '<li role="presentation"><a href="#insum" aria-controls="insum" role="tab" data-toggle="tab">Dados do Insumo</a></li>';
                     fields += '<li role="presentation"><a href="#solic" aria-controls="solic" role="tab" data-toggle="tab">Dados do Solicitante</a></li>';
                     fields += '<li role="presentation"><a href="#entr" aria-controls="entr" role="tab" data-toggle="tab">Dados da Entrega</a></li>';
                     fields += '</ul>';
+
+                    fields += '<div class="form-group">';
+                    fields += '<h3 class="priceTotal">Preço Total: R$ '+ views.helperRoundMoney(precoTotal) +'</h3>';
+                    fields += '</div>';
+
                     fields += '<div class="tab-content">';
                     fields += '<fieldset role="tabpanel" id="mater" class="mat tab-pane active"">';
                     fields += '<div class="form-group">';
                     fields += '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><label>Material</label><input type="text" class="form-control" value="'+element.nomeMat+'"></div>';
-                    fields +=  '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Marca</label><input type="text" class="form-control" value="'+element.marcaMat+'"></div>';
-                    fields +=  '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Data da Compra</label><input type="text" class="form-control mask-date" value="'+element.data+'"></div>';
-                    fields +=  '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Quantidade</label><input type="text" class="form-control" value="'+element.qtdMat+'"></div>';
-                    fields +=  '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Preço</label><input type="text" class="form-control .mask-money" value="R$ '+element.precoMat+',00"></div>';
+                    fields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Marca</label><input type="text" class="form-control" value="'+element.marcaMat+'"></div>';
+                    fields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Data da Compra</label><input type="text" class="form-control mask-date" value="'+views.helperDateFormat(element.data)+'"></div>';
+                    fields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Quantidade</label><input type="text" class="form-control" value="'+element.qtdMat+'"></div>';
+                    fields += '<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Preço '+element.nomeMat+'</label><input type="text" class="form-control mask-money" value="R$ '+element.precoMat+'"></div>';
                     fields += '</div>';
                     fields += '</fieldset>';
+
+                    fields += '<fieldset role="tabpanel" id="insum" class="mat tab-pane"">';
+                    fields += insumosFields;
+                    fields += '</fieldset>';
+
                     fields += '<fieldset role="tabpanel" id="solic" class="mat tab-pane">';
                     fields += '<div class="form-group">';
                     fields += '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><label>Nome</label><input type="text" class="form-control" value="'+element.nomeSol+'"></div>';
@@ -205,35 +344,9 @@
 
         },
 
-        pedidos: function(){
-
-          var sql = "SELECT * FROM pedidos ORDER BY id DESC";
-
-          
-          mysqlQuery(sql, function(result){
-
-                var obj = JSON.parse(result);                
-
-                var table = '';
-                
-                $.each(obj, function(index, element){
-                  table +='<tr>';
-                  table += '<td>'+element.id+'</td>';
-                  table += '<td>'+element.id_solicitante+'</td>';
-                  table += '<td>'+element.data_de_compra+'</td>';
-                  table += '</tr>';
-
-                });
-
-                $('#pedidos').html(table);
-
-              });
-
-        }
-
     }
 
-    // Define as roda para views
+    /* Define as roda para views*/
     var app = $.sammy('#wrap', function() {       
 
       this.helpers({
@@ -253,17 +366,11 @@
         views.menuActive('');        
         this.partial('views/index.html', function(){
           $('.mask-num').mask('9?999999999');
+          views.getOrdersDay();
         }); 
         
       });
 
-
-      this.get('#/solucoes', function() {
-        views.menuActive('solucoes');
-        this.partial('views/solucoes.html', function(){
-          views.pedidos();
-        });        
-      });
 
       this.get('#/admin', function() {
          views.menuActive('admin');
@@ -282,7 +389,7 @@
          app.clearTemplateCache();
         var id = this.params['id'];
         this.partial('views/pedido.html', function(){
-          views.getPedido(id);
+          views.getOrder(id);
           $('.cod').html(id);
           views.helperMaskInput(); 
           views.helperTabs();

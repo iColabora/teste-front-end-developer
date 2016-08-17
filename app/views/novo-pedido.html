@@ -26,21 +26,25 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Marca</label><input type="text" class="form-control"></div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Data da Compra</label><input type="text" class="form-control mask-date"></div>
         <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Quantidade</label><input type="text" class="form-control"></div>
-        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Preço Total</label><input type="text" class="form-control"></div>
+        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Preço</label><input type="text" class="form-control"></div>
       </div>
+      <a href="#insum" aria-controls="insum" role="tab" data-toggle="tab"  class="btn btn-green">Ir para dados do insumo <span class="glyphicon glyphicon-chevron-right"></span></a>
     </fieldset>
 
     <fieldset role="tabpanel" id="insum" class="mat tab-pane">
-    <div class="form-group clone">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Marca</label><input type="text" id="marca-0" name="maraca[0]" class="form-control"></div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"><label>Descrição</label><input type="text" id="desc-0" name="desc[0]" class="form-control"></div>
-        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Quantidade</label><input type="text" id="qtd-0" name="qtd[0]" class="form-control"></div>
-        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Preço</label><input type="text" id="preco-0" name="preco[0]" class="form-control mask-money"></div>
-        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
-          <button type="button" class="btn btn-green btn-clone">+</button>
-          <button type="button" class="btn btn-danger btn-remove">-</button>
-        </div>
+      <div class="group">
+        <div class="form-group clone">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2"><label>Marca</label><input type="text" id="marca-0" name="maraca[0]" class="form-control"></div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"><label>Descrição</label><input type="text" id="desc-0" name="desc[0]" class="form-control"></div>
+            <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Quantidade</label><input type="text" id="qtd-0" name="qtd[0]" class="form-control"></div>
+            <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2"><label>Preço</label><input type="text" id="preco-0" name="preco[0]" class="form-control mask-money"></div>
+            <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+              <button type="button" class="btn btn-green btn-clone">+</button>
+              <button type="button" class="btn btn-danger btn-remove">-</button>
+            </div>
+          </div>
       </div>
+      <a href="#solic" aria-controls="solic" role="tab" data-toggle="tab"  class="btn btn-green">Ir para dados do solicitante <span class="glyphicon glyphicon-chevron-right"></span></a>
     </fieldset>
 
     <fieldset role="tabpanel" id="solic"  class="mat tab-pane">
@@ -70,6 +74,7 @@
           <div class="col-xs-12 col-sm-6 col-md-2 col-lg-1"><label>Estado</label><input type="text" id="uf-sol" name="uf-sol" class="form-control us mask-uf auto" disabled></div>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><label>País</label><input type="text" class="form-control auto" disabled></div>
       </div>
+      <a href="#entr" aria-controls="entr" role="tab" data-toggle="tab"  class="btn btn-green">Ir para dados da Entrega <span class="glyphicon glyphicon-chevron-right"></span></a>
     </fieldset>
 
     <fieldset role="tabpanel" id="entr"  class="mat tab-pane">
@@ -93,6 +98,9 @@
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><label>Cidade</label><input type="text" class="form-control cs auto" disabled></div>
           <div class="col-xs-12 col-sm-6 col-md-2 col-lg-1"><label>Estado</label><input type="text" class="form-control us mask-uf auto" disabled></div>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"><label>País</label><input type="text" class="form-control auto" disabled></div>
+        </div>
+        <div class="form-group">
+        <button type="button" class="btn btn-green btn-lg">Salvar Pedido</button>
         </div>
     </fieldset>
 

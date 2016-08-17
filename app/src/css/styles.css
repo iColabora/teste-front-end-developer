@@ -6,6 +6,7 @@
   vertical-align: baseline; }
 
 /* VARIÁVAEIS */
+/*CORES PADRÃO DO SISTEMAS*/
 h1,
 h2,
 h3,
@@ -27,9 +28,10 @@ ul {
   border: 2px solid #ccc; }
 
 .btn-link {
-  color: #565351; }
+  color: #39bb9d; }
   .btn-link:hover, .btn-link:focus, .btn-link:active {
-    color: #39bb9d;
+    color: #fff;
+    background-color: #39bb9d;
     text-decoration: none; }
 
 body {
@@ -102,7 +104,8 @@ strong.cod {
         margin-right: 0; }
         .app-navbar .nv .op .dropdown .down {
           width: 63px;
-          display: table; }
+          display: table;
+          cursor: pointer; }
         .app-navbar .nv .op .dropdown .down img {
           float: left;
           margin-right: 5px; }
@@ -262,6 +265,16 @@ body.open-search .app-navbar .nv .op .icon-sch {
 #wrap form {
   margin: 30px 0; }
 
+#wrap form a.btn,
+#wrap form .btn-lg {
+  margin: 30px 20px; }
+
+#wrap form .priceTotal {
+  font-size: 14pt;
+  color: #565351;
+  margin: 30px;
+  text-transform: uppercase; }
+
 #wrap .seach-order {
   width: 40%;
   display: table;
@@ -370,6 +383,11 @@ textarea.form-control {
       height: 19px;
       text-indent: -3333px;
       background-position: -4px -75px; }
+
+#alert h1 {
+  text-align: center;
+  line-height: 100px;
+  margin: 0; }
 
 @media screen and (max-width: 1152px) {
   .app-navbar .nv .pr {

@@ -8,6 +8,7 @@
 /* VARIÁVAEIS */
 $pathIMG: '../img';
 
+/*CORES PADRÃO DO SISTEMAS*/
 $green: #39bb9d;
 $green-dark: #29AA8C;
 $blue-dark: #102938;
@@ -42,12 +43,13 @@ ul {
 }
 
 .btn-link {
-	color: $silver-dark;
+	color: $green;
 
 	&:hover,
 	&:focus,
 	&:active {
-		color: $green;
+		color: #fff;
+		background-color: $green;
 		text-decoration: none;
 	}
 }
@@ -169,6 +171,7 @@ strong.cod {
 				.down {
 					width: 63px;
 					display: table;
+					cursor: pointer;
 				}
 
 				.down img {
@@ -408,6 +411,18 @@ body.open-search .app-navbar .nv .op .icon-sch {
 	margin: 30px 0;
 }
 
+#wrap form a.btn,
+#wrap form .btn-lg {
+	margin: 30px 20px;
+}
+
+#wrap form .priceTotal {
+	font-size: 14pt;
+	color: $silver-dark;
+	margin: 30px;
+	text-transform: uppercase;
+}
+
 #wrap .seach-order {
 	width: 40%;
 
@@ -558,6 +573,12 @@ textarea.form-control {
 	}
 
 	
+}
+
+#alert h1 {
+	text-align: center;
+	line-height: 100px;
+	margin: 0;
 }
 
 @media screen and (max-width: 1152px) {
