@@ -1,0 +1,29 @@
+<header class="menu-navbar">
+  <div class="container-fluid">
+    <ul class="act">
+      <li><span class="icon icon-ac"></span> Tarefa</li>
+      <li>Buscar pedidos</li>
+      <li><a href="#/novo/pedido" class="btn btn-new">Novo pedido</a></li>
+    </ul>
+  </div>
+</header>
+
+<div id="content" class="container-fluid animated bounceInUp">
+  <form method="post" action="#/pedido" class="seach-order">
+      <div class="form-group">
+        <fieldset>
+          <div class="col-xs-6 col-md-8">
+            <input type="text" name="id" id="id" class="form-control mask-num" placeholder="Número do Pedido">
+          </div>
+          <div class="col-xs-6 col-md-4">
+            <button type="submit" id="ped" class="btn btn-green c">Buscar</button>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="results">
+
+      </div>
+
+  </form>
+</div>
