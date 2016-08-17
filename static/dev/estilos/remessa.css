@@ -1,0 +1,69 @@
+:root {
+    --highlight: white;
+    --highlight-primary: #82D7EF;
+    --highlight-secondary: #39BB9D;
+    --dark-primary: #102938;
+}
+
+#nav nav {
+    background-color: var(--dark-primary);
+}
+
+#nav .navbar-nav {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#nav img {
+    max-height: 3rem;
+}
+#nav .navbar-header img, #nav .nav-item.img a {
+    margin: 1rem;
+}
+
+#nav .nav-item {
+    font-size: 1.5rem;
+}
+#nav .nav-item a {
+    color: white;
+}
+#nav .nav-item:not(.img):hover {
+    background-color: var(--highlight-secondary);
+}
+#nav .nav-item.img a {
+    margin-right: 1rem;
+    padding: 0;
+}
+
+#nav .nav-item.img div.img {
+    opacity: 0.2;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+#nav .nav-item.img div.img:hover {
+    opacity: 1;
+}
+
+#nav #search {
+    background-size: 2.58rem; /* need a proper asset */
+    background-image: url('../recursos/search-inactive.png');
+}
+#nav #search:hover {
+    background-image: url('../recursos/search.png');
+}
+
+#nav #accessibility {
+    background-repeat: no-repeat;
+    background-size: 2.1rem; /* need a proper asset */
+    background-image: url('../recursos/accessibility-inactive.png');
+
+}
+#nav #accessibility:hover {
+    background-image: url('../recursos/accessibility.png');
+}
+
+#nav #user_portrait {
+    background-size: 2.58rem; /* need a proper asset */
+    background-image: url('../recursos/search-inactive.png');
+    opacity: 1;
+}

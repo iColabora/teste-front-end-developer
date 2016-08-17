@@ -1,0 +1,22 @@
+<div id="register" class="contas">
+    <form id="registration" class="register form-horizontal" ng-submit="register()">
+        <div class="form-group">
+            <label for="username" class="register control-label col-sm-2">Nome do usuário</label>
+            <div class="col-sm-8">
+                <input id="username" class="register form-control" ng-model="user.username" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="register control-label col-sm-2">Senha</label>
+            <div class="col-sm-8">
+                <input id="password" class="register form-control" ng-model="user.password" type="password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input id="submit" class="register btn btn-success" value="Enviar" type="submit" />
+            </div>
+        </div>
+    </form>
+</div>

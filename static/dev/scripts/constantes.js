@@ -1,0 +1,18 @@
+angular.module('app')
+    .constant('SQL_SERVER', 'http://192.241.152.185/')
+    .constant('DOMÍNIOS', 'scripts/domain')
+    .constant('MÍDIA', 'hipermídia')
+
+    .constant('ROUTE_LOGIN', 'login')
+    .constant('ROUTE_REGISTER', 'inscrever')
+    .constant('ROUTE_DASHBOARD', 'painéis')
+
+    .constant('DADOS_USUARIOS', 'ws://dummy_websocket')
+    .constant('DEFAULT_STREAM', '/')
+    .constant('USER_SOCKET', 'dummy_websocket')
+    .constant('LOGIN_COMMAND', 'LOGIN')
+    .constant('LOGIN_SUCCESS', 'SUCCESS')
+    .constant('LOGIN_FAILURE', 'FAILURE')
+    .constant('REGISTER_COMMAND', 'REGISTER')
+    .constant('REGISTRATION_SUCCESS', 'SUCCESS')
+    .constant('REGISTRATION_FAILURE', 'FAILURE')
