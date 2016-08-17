@@ -139,6 +139,6 @@ angular.module('app').controller('mysql_controller', [ '$scope', 'Auth',
             return has
         }
 
-        $scope.on('$destroy')
+        $scope.on('$destroy', function(){})
     }
 ])
