@@ -125,7 +125,22 @@
 
       },
 
-       admin: function(){
+        /*Função */
+        helpersWidget: function(content, title){
+
+        	var data = '<div class="col-xs-12 col-sm-6 col-md-5 col-lg-3">';
+				data += '<div class="panel panel-default">';
+				data += '<div class="panel-heading">'+title+'</div>';
+				data += '<div class="panel-body">';
+				data +=  content;
+				data += '</div>';
+				data += '</div>';
+				data += '</div>';
+
+			return data;
+        },
+
+        admin: function(){
 
           var sql = "SELECT * FROM solicitantes ORDER BY nome DESC";
 
@@ -150,14 +165,98 @@
               });
         },
 
+        /*Função que retorna os pedidos por solicitantes*/
+        getOrdersCustomer: function(limit){
+
+        	if(limit === undefined ){
+        		limit = '10';
+        	}
+
+        	var sql = "SELECT "+
+        			   "pedido.id, "+
+        			   "solicitante.nome AS nomeSol, "+
+        			   "material.nome AS nomeMat, "+
+        			   "material.preco AS precoMat "+
+        			   "FROM pedidos AS pedido "+
+        			   "INNER JOIN materiais AS material ON material.id_pedido = pedido.id "+
+        			   "INNER JOIN solicitantes AS solicitante ON solicitante.id = pedido.id_solicitante "+
+        			   "WHERE pedido.id_solicitante = solicitante.id "+
+        			   "ORDER BY pedido.data_de_compra DESC "+
+        			   "LIMIT "+limit;
+
+
+        	mysqlQuery(sql, function(result){
+
+        		var obj = JSON.parse(result);
+        		
+        		if(obj.length !== 0){
+
+        			var table = '<table class="table table-striped">';
+        				table += '<thead>';
+        				table += '<tr>';
+        				table += '<th>Material</th>';
+        				table += '<th>Nome</th>';
+        				table += '<th>Preço</th>';
+        				table += '</tr>';
+        				table += '</thead>';
+        				table += '<tbody>';
+
+
+        			$.each(obj, function(index, element){
+
+						table +='<tr>';
+						table += '<td>'+element.nomeMat+'</td>';
+						table += '<td><a href="#/pedido/id/'+element.id+'">'+element.nomeSol+'</a></td>';
+						table += '<td>R$ '+element.precoMat+'</td>';
+						table += '</tr>';
+
+        			});
+
+        			table += '</tbody>'
+        			table += '</table>';
+
+
+        			var data = views.helpersWidget(table, 'Últimos Pedidos');
+
+        			$('.widgets').append(data);
+
+        		}
+
+        	});
+
+        },
+
         /*Função que busca a quatidade de pedidos por dia*/
         getOrdersDay: function(){
 
-        	var sql = "SELECT COUNT(*) AS total "+
-        			  "FROM pedidos WHERE data_de_compra = CURDATE()";
+        	var sql = "SELECT "+
+        	          "COUNT(*) AS total, "+
+        	          "CURDATE() AS data "+
+        			  "FROM pedidos WHERE data_de_compra = CURDATE() "
+        			  "GROUP BY 1";
 
         	mysqlQuery(sql, function(result){
-        		console.log(result);
+        		
+        		var obj = JSON.parse(result);
+
+
+        		if(obj.length !== 0){
+				
+					var data = '';
+
+					$.each(obj, function(index, element){
+						var content = '<div class="pull-left"><input data-readOnly="true" data-fgColor="#39BB9D" value="'+element.total+'" class="dial"></div>';
+							content += '<div class="info"><h3>Total de <span class="green-color">'+element.total+'</span> Pedidos</h3>';
+							content += '<span class="date">Data '+views.helperDateFormat(element.data)+'</span></div>';
+
+						data = views.helpersWidget(content, 'Pedidos de Hoje');
+
+					});
+
+					$('.widgets').html(data);
+
+				}
+
         	});
 
         },
@@ -367,6 +466,10 @@
         this.partial('views/index.html', function(){
           $('.mask-num').mask('9?999999999');
           views.getOrdersDay();
+          views.getOrdersDay();
+          $(".dial").knob();
+          views.getOrdersCustomer('2');
+
         }); 
         
       });

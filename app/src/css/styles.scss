@@ -30,6 +30,12 @@ h6 {
 
 a {
 	transition: all 0.5s ease;
+	color: $green;
+
+	&:hover {
+		color: $green-dark;
+		text-decoration: none;
+	}
 }
 
 ul {
@@ -328,8 +334,28 @@ body.open-search .app-navbar .nv .op .icon-sch {
 	background-position: -4px -38px;
 }
 
+.green-color {
+	color: $green;
+}
+
 #wrap {
 	margin-top: 190px;
+}
+
+#wrap .widgets {
+	width: 100%;
+	float: left;
+	margin-top: 50px;
+
+	.info {
+		text-align: right;
+	}
+
+}
+
+#wrap .panel-heading {
+	font-weight: 600;
+	color: $blue-dark;
 }
 
 .menu-navbar {

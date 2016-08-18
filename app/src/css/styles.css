@@ -17,7 +17,11 @@ h6 {
   font-family: 'Helvetica Neue Bold'; }
 
 a {
-  transition: all 0.5s ease; }
+  transition: all 0.5s ease;
+  color: #39bb9d; }
+  a:hover {
+    color: #29aa8c;
+    text-decoration: none; }
 
 ul {
   list-style: none; }
@@ -209,8 +213,22 @@ body.open-search input#s {
 body.open-search .app-navbar .nv .op .icon-sch {
   background-position: -4px -38px; }
 
+.green-color {
+  color: #39bb9d; }
+
 #wrap {
   margin-top: 190px; }
+
+#wrap .widgets {
+  width: 100%;
+  float: left;
+  margin-top: 50px; }
+  #wrap .widgets .info {
+    text-align: right; }
+
+#wrap .panel-heading {
+  font-weight: 600;
+  color: #102938; }
 
 .menu-navbar {
   width: 100%;
