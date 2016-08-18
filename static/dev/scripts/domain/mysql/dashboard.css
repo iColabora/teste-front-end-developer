@@ -5,23 +5,57 @@ body {
 }
 
 #dashboard {
-    height: calc(100vh - 5.5rem);
-    background-color: var(--light-grey);
     margin-top: -1.9rem;
 }
 
 #dashboard .subnav.order {
     margin: 1rem;
+    cursor: pointer;
 }
 
 #dashboard #shippingSubPanel > .subnav {
     width: 100vw;
     background-color: white;
-    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.33);
-    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.33);
-    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.33);
+}
+
+#dashboard #shippingInspection {
+    padding-bottom: 10rem;
 }
 
 .subnav {
     color: rgba(0,0,0, 0.6);
+}
+
+.order_detail {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+.order_detail:not(.active) {
+    display:none;
+}
+
+.order_detail ul {
+    list-style: none;
+}
+
+span.solicitante {
+    font-weight: bold;
+}
+
+.order_detail > section:not(:last-child) {
+    border-bottom: solid 0.3rem var(--light-grey);
+}
+
+.order_detail h3, .order_detail h5 {
+    font-variant: all-small-caps;
+}
+.order_detail h4 {
+    font-variant: small-caps;
+}
+
+.material_de_insumo {
+    padding: 0 2rem;
 }
