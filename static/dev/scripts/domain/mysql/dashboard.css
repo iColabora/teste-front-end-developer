@@ -1,21 +1,6 @@
-body {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
-
-#dashboard {
-    margin-top: -1.9rem;
-}
-
 #dashboard .subnav.order {
     margin: 1rem;
     cursor: pointer;
-}
-
-#dashboard #shippingSubPanel > .subnav {
-    width: 100vw;
-    background-color: white;
 }
 
 #dashboard #shippingInspection {

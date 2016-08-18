@@ -3,11 +3,13 @@
         <div class="navbar-header"><img src="recursos/logo.png" class="img-responsive" alt="Remessa" /></div>
         <ul class="nav navbar-nav navbar-left">
             <li class="nav-item" ng-repeat="d in destinations">
-                <div ng-if="d.path === '#/painéis'" class="diamante"></div>
+                <!-- more precisely, this could be a hasSubnav() function. at the moment this is accurate -->
+                <div ng-if="showDiamante($index)" class="diamante"></div>
                 <a ng-href="{{d.path}}">{{d.text}}</a>
             </li>
-            <li class="nav-item soluções"><!-- TODO - give a dummy solutions blurb page --><a href="#/">Soluções</a></li>
-            <li class="nav-item administração"><!-- TODO - give a dummy admin info page --><a href="#/">Administração</a></li>
+            <!-- more precisely, this could be a hasSubnav() function. at the moment these is accurate -->
+            <li ng-if="isLoggedIn()" class="nav-item soluções"><a href="#/soluções">Soluções</a></li>
+            <li ng-if="isLoggedIn()" class="nav-item administração"><a href="#/admin">Administração</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item img"><!-- TODO - provide an item search -->
@@ -17,7 +19,7 @@
                 <a href="#/accessibility"><div id="accessibility" class="img"></div></a>
             </li>
             <li ng-if="isLoggedIn()" class="nav-item img user_portrait_container">
-                <span id="user_portrait" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <a href="#/painéis" class="no_margin"><span id="user_portrait" class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
             </li>
         </ul>
     </nav>

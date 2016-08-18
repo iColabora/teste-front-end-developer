@@ -1,7 +1,9 @@
 (function(){
     angular.module('app')
-        .config(['$routeProvider', 'DOMÍNIOS', 'MÍDIA', 'ROUTE_LOGIN', 'ROUTE_REGISTER', 'ROUTE_DASHBOARD',
-            function config($routeProvider, DOMÍNIOS, MÍDIA, ROUTE_LOGIN, ROUTE_REGISTER, ROUTE_DASHBOARD) {
+        .config(['$routeProvider', 'DOMÍNIOS', 'MÍDIA',
+            'ROUTE_LOGIN', 'ROUTE_REGISTER', 'ROUTE_DASHBOARD', 'ROUTE_ADMIN', 'ROUTE_SOLUTIONS',
+            function config($routeProvider, DOMÍNIOS, MÍDIA,
+                            ROUTE_LOGIN, ROUTE_REGISTER, ROUTE_DASHBOARD, ROUTE_ADMIN, ROUTE_SOLUTIONS) {
                 $routeProvider.
                 when('/', {
                     templateUrl: DOMÍNIOS + '/mysql/dashboard.template.html',
@@ -9,7 +11,7 @@
                     resolve: {
                         factory: function (Res, Auth, $location, $rootScope) {
                             checkRouting($rootScope, $location, Auth, '/login')
-                            controllersAndServices(Res, {styles: 'scripts/domain/mysql/dashboard.css'})
+                            controllersAndServices(Res, {styles: ['scripts/domain/mysql/dashboard.css', 'scripts/domain/mysql/mysql.css']})
                         }
                     }
                 }).
@@ -19,7 +21,7 @@
                     resolve: {
                         factory: function (Res, Auth, $location, $rootScope) {
                             checkRouting($rootScope, $location, Auth, '/login')
-                            controllersAndServices(Res, {styles: 'scripts/domain/mysql/dashboard.css'})
+                            controllersAndServices(Res, {styles: ['scripts/domain/mysql/dashboard.css', 'scripts/domain/mysql/mysql.css']})
                         }
                     }
                 }).
@@ -29,7 +31,29 @@
                     resolve: {
                         factory: function (Res, Auth, $location, $rootScope) {
                             checkRouting($rootScope, $location, Auth, '/login')
-                            controllersAndServices(Res, {styles: 'scripts/domain/mysql/dashboard.css'})
+                            controllersAndServices(Res, {styles: ['scripts/domain/mysql/dashboard.css', 'scripts/domain/mysql/mysql.css']})
+                        }
+                    }
+                }).
+
+                when('/' + ROUTE_ADMIN, {
+                    templateUrl: DOMÍNIOS + '/mysql/admin.template.html',
+                    controller: 'mysql_controller',
+                    resolve: {
+                        factory: function (Res, Auth, $location, $rootScope) {
+                            checkRouting($rootScope, $location, Auth, '/login')
+                            controllersAndServices(Res, {styles: ['scripts/domain/mysql/admin.css', 'scripts/domain/mysql/mysql.css']})
+                        }
+                    }
+                }).
+
+                when('/' + ROUTE_SOLUTIONS, {
+                    templateUrl: DOMÍNIOS + '/mysql/solutions.template.html',
+                    controller: 'mysql_controller',
+                    resolve: {
+                        factory: function (Res, Auth, $location, $rootScope) {
+                            checkRouting($rootScope, $location, Auth, '/login')
+                            controllersAndServices(Res, {styles: ['scripts/domain/mysql/solutions.css', 'scripts/domain/mysql/mysql.css']})
                         }
                     }
                 }).
@@ -39,7 +63,7 @@
                     controller: 'contas_controller',
                     resolve: {
                         factory: function (Res) {
-                            controllersAndServices(Res, {})
+                            controllersAndServices(Res, {styles: ['scripts/domain/contas/contas.css', 'scripts/domain/contas/login.css']})
                         }
                     }
                 }).
@@ -49,7 +73,7 @@
                     controller: 'contas_controller',
                     resolve: {
                         factory: function (Res) {
-                            controllersAndServices(Res, {})
+                            controllersAndServices(Res, {styles: ['scripts/domain/contas/contas.css', 'scripts/domain/contas/register.css']})
                         }
                     }
                 }).

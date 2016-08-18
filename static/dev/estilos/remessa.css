@@ -4,6 +4,40 @@
     --highlight-primary: #82D7EF;
     --highlight-secondary: #39BB9D;
     --dark-primary: #102938;
+    --footer-grey: #565351;
+    --footer-highlight: #999;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+body {
+    background-color: var(--light-grey);
+}
+
+.jconfirm-box { /* for jquery-confirm dialogs */
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.34);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.34);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.34);
+    padding: 1rem;
+    border: solid #f0f0f0 thin;
+}
+
+.shadow {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.33);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.33);
+}
+
+.no_margin { /* overrides */
+    margin: 0 !important;
+}
+
+.inline {
+    display: inline-block;
+    position: relative;
 }
 
 #nav nav {
@@ -95,6 +129,32 @@
     -moz-transform: rotate(45deg);
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=5); /*for IE*/
 }
-.nav-item .diamante:not(.hasShipping) {
+.nav-item .diamante:not(.hasSubpanel) {
     opacity: 0;
+}
+.nav-item .diamante.hasSubpanel.soluções {
+    margin-left: 12rem;
+}
+.nav-item .diamante.hasSubpanel.admin {
+    margin-left: 23rem;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 2.8rem;
+    margin: 0;
+    padding: 0.4rem 2rem;
+    background-color: var(--footer-grey);
+    color: var(--footer-highlight);
+}
+
+#footer > * {
+    display: inline-block;
+}
+
+#footer #info {
+    float:right;
+    cursor: pointer;
 }

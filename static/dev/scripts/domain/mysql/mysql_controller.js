@@ -1,5 +1,9 @@
-angular.module('app').controller('mysql_controller', [ '$scope', 'Auth',
-    function($scope, Auth) {
+angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'DataService',
+        'SQL_SERVER',
+        'SOLICITANTES', 'INSUMOS', 'MATERIAIS', 'GET_ALL_SOLICITANTES', 'GET_ALL_INSUMOS', 'GET_ALL_MATERIAIS',
+        'ROUTE_ADMIN', 'ROUTE_SOLUTIONS',
+    function($scope, $location, DataService, SQL_SERVER, SOLICITANTES, INSUMOS, MATERIAIS, GET_ALL_SOLICITANTES,
+             GET_ALL_INSUMOS, GET_ALL_MATERIAIS, ROUTE_ADMIN, ROUTE_SOLUTIONS) {
         console.log('mysql_controller')
 
         //$scope.shippingForUser = Auth.getUser().shipping? Auth.getUser().shipping: []
@@ -120,25 +124,139 @@ angular.module('app').controller('mysql_controller', [ '$scope', 'Auth',
             }
         ]
 
+        var mc = this
+
+        angular.element(document).ready(function () {
+            $scope.solicitantes = []
+            $scope.insumos = []
+            $scope.materiais = []
+
+            mc.route=$location.path().substring(1)
+            $('.'+mc.route + '_tab').hide()
+
+            switch(mc.route) {
+                case ROUTE_ADMIN:
+                    mysqlQuery(mc.solicitantes, SQL_SERVER)
+                    break
+                case ROUTE_SOLUTIONS:
+                    break
+            }
+        })
+
+        $scope.nav = function(place) {
+            mc.tab=place
+
+            switch (place) {
+                case SOLICITANTES:
+                    if($scope.solicitantes.length === 0) {
+                        DataService.send(GET_ALL_SOLICITANTES, GET_ALL_SOLICITANTES)
+                    }
+                    break
+                case INSUMOS:
+                    if($scope.insumos.length === 0) {
+                        DataService.send(GET_ALL_INSUMOS, GET_ALL_INSUMOS)
+                    }
+                    break
+                case MATERIAIS:
+                    if($scope.materiais.length === 0) {
+                        DataService.send(GET_ALL_MATERIAIS, GET_ALL_MATERIAIS)
+                    }
+            }
+
+            $('.'+ mc.route +'_tab').hide()
+            $('#'+place).show()
+        }
+
+        $scope.$on(GET_ALL_SOLICITANTES, function (type, tx_sol) {
+            $scope.solicitantes = tx_sol
+            $scope.$apply()
+            $('.modificar.'+SOLICITANTES).toggle()
+        })
+
+        $scope.$on(GET_ALL_INSUMOS, function (type, tx_sol) {
+            $scope.solicitantes = tx_sol
+            $scope.$apply()
+            $('.modificar.'+INSUMOS).toggle()
+        })
+
+        $scope.$on(GET_ALL_MATERIAIS, function (type, tx_sol) {
+            $scope.solicitantes = tx_sol
+            $scope.$apply()
+            $('.modificar.'+MATERIAIS).toggle()
+        })
+
         $scope.activate = function(id) {
             $('.order_detail').removeClass('active')
             $('#order_detail_' + id).toggleClass('active')
         }
 
+        $scope.toggle = function(type, item) {
+            $('.modificar.'+type+':not(#modificar_'+item+')').hide()
+            $('#modificar_'+item+'.'+type).toggle()
+        }
+
+        $scope.revert = function(type, item, index) {
+            if([SOLICITANTES, INSUMOS, MATERIAIS].includes(type)) {
+                for(var key in $scope[type][index]) {
+                    if(![MATERIAIS, '$$hashKey', 'id', 'id_pedido'].includes(key)) {
+                        console.log(key + ':'+ $('#modificar_' + item + ' input#' + key).data('initial') + ' -> ' + $scope[type][index][key])
+                        $('#modificar_' + item + '.' + type + ' input#' + key).val(
+                            $('#modificar_' + item + ' input#' + key).data('initial')
+                        )
+                    }
+                }
+            } else {
+                console.log('[mysql_controller] revert - invalid type')
+            }
+        }
+
+        $scope.delete = function(type, index) {
+            if([SOLICITANTES, INSUMOS, MATERIAIS].includes(type)) {
+                $.confirm({
+                    title: 'Você tem certeza?',
+                    content: 'Isso irá excluir o item.',
+                    confirm: function(){
+                        $scope[type].splice(index, 1)
+                    },
+                    confirmButtonClass: 'btn btn-danger',
+                    cancelButtonClass: 'btn btn-default'
+                })
+            } else {
+                console.log('[mysql_controller] delete - invalid type')
+            }
+        }
+
+
         $scope.hasShipping = function() {
             var has = $scope.shippingForUser.length > 0
             if(has) {
-                $('.diamante').addClass('hasShipping')
+                $('.diamante').addClass('hasSubpanel')
             } else {
-                $('.diamante').removeClass('hasShipping')
+                $('.diamante').removeClass('hasSubpanel')
             }
 
-            $('#dashboard #shippingSubPanel > .subnav').addClass('shadow')
-            $('#nav nav').removeClass('shaddow')
+            $('.mysql #shippingSubPanel > .subnav').addClass('shadow')
+            $('#nav nav').removeClass('shadow')
 
             return has
         }
 
-        $scope.on('$destroy', function(){})
+        $scope.hasSubpanel = function(bs) {
+            (bs)? $('.diamante').addClass('hasSubpanel'): $('.diamante').removeClass('hasSubpanel'); // these semicolons
+            (mc.route === 'admin')? $('.diamante').addClass('admin'): $('.diamante').removeClass('admin'); // are necessary
+            (mc.route === 'soluções')? $('.diamante').addClass('soluções'): $('.diamante').removeClass('soluções');
+
+            $('.mysql div:first-child > .subnav').addClass('shadow')
+            $('#nav nav').removeClass('shadow')
+
+            return bs
+        }
+
+        $scope.$on('$destroy', function(){
+            $('.mysql div:first-child > .subnav').removeClass('shadow')
+            $('#nav nav').addClass('shadow')
+            $('.diamante').removeClass('soluções admin')
+        })
+
     }
 ])

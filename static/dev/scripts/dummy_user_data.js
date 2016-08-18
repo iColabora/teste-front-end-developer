@@ -7,12 +7,12 @@
                   LOGIN_COMMAND, LOGIN_SUCCESS, LOGIN_FAILURE,
                   REGISTER_COMMAND, REGISTRATION_SUCCESS, REGISTRATION_FAILURE) {
 
-            var stream = dummy_service(DADOS_USUARIOS + DEFAULT_STREAM,
+            var svc = dummy_service(DADOS_USUARIOS + DEFAULT_STREAM,
                 REGISTER_COMMAND, REGISTRATION_SUCCESS, REGISTRATION_FAILURE,
                 LOGIN_COMMAND, LOGIN_SUCCESS, LOGIN_FAILURE
             )
 
-            stream.onMessage(function(message){
+            svc.onMessage(function(message){
                 var tx_response = JSON.parse(message)
                 tx_response = tx_response.data // we're just going to throw away http stuff
 
@@ -35,11 +35,11 @@
             return {
                 send: function (command, message) {
                     console.log('sending command: ' + command)
-                    stream.send(command, message)
+                    svc.send(command, message)
                 },
                 close: function () {
-                    stream.send(CLOSE)
-                    stream=null
+                    svc.send(CLOSE)
+                    svc=null
                 }
             }
         }

@@ -28,9 +28,12 @@
     <script charset="utf-8" src="scripts/routes.js"></script>
 
     <script charset="utf-8" src="scripts/dummy_user_data.js"><!-- dev user service --></script>
+    <script charset="utf-8" src="scripts/data_service.js"></script>
     <script charset="utf-8" src="scripts/auth_service.js"></script>
     <script charset="utf-8" src="scripts/res_service.js"></script>
+
     <script charset="utf-8" src="scripts/nav_controller.js"></script>
+    <script charset="utf-8" src="scripts/footer_controller.js"></script>
 
     <script charset="utf-8" src="scripts/domain/contas/contas_controller.js"></script>
     <script charset="utf-8" src="scripts/domain/contas/contas_service.js"></script>
@@ -43,5 +46,6 @@
 <body>
     <div ng-include ng-controller="navController" src="'hipermídia/nav_template.html'"></div>
     <ng-view></ng-view>
+    <div ng-include ng-controller="footerController" src="'hipermídia/footer_template.html'"></div>
 </body>
 </html>

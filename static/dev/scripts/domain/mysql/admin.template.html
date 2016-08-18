@@ -1,0 +1,15 @@
+<div id="admin" class="mysql" data-subpanel="{{hasSubpanel(true)}}">
+    <div id="actions">
+        <ul class="subnav nav navbar-nav navbar-left container-fluid">
+            <li id="admin_solicitantes" class="subnav admin nav-item" ng-click="nav('solicitantes')">Solicitantes</li>
+            <li id="admin_materiais" class="subnav admin nav-item" ng-click="nav('materiais')">Materiais</li>
+            <li id="admin_insumos" class="subnav admin nav-item" ng-click="nav('insumos')">Insumos</li>
+        </ul>
+
+    </div>
+
+    <div ng-include="'hipermídia/solicitantes_template.html'"></div>
+    <div id="insumos" class="admin_tab"></div>
+    <div id="materiais" class="admin_tab"></div>
+
+</div>

@@ -1,0 +1,10 @@
+.contas > form {
+    padding: 4rem;
+    border-radius: 0.4rem;
+    margin: 3rem 0;
+    background-color: white;
+}
+
+h2 {
+    margin: 1rem 0 3rem 0;
+}

@@ -39,6 +39,5 @@ angular.module('app').controller('contas_controller', [ '$scope', '$location', '
             Auth.setUser(null)
             $.alert({title: 'Falha de registro', content: reason })
         })
-
     }
 ])
