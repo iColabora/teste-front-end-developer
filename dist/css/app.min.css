@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import "https://fonts.googleapis.com/css?family=Montserrat";
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -4045,14 +4046,14 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333333;
+  color: #565351;
   white-space: nowrap;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #262626;
-  background-color: #f5f5f5;
+  color: #39bb9d;
+  background-color: #FFF;
 }
 
 .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
@@ -7270,42 +7271,14 @@ button.close {
     display: none !important;
   }
 }
+body {
+  margin-top: 75px;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
+}
+
 .icon-sprite, .icon-accessibility, .icon-drop, .icon-play, .icon-question-mark, .icon-search, .icon-task {
   background-image: url('../img/icon-sa49b362299.png');
   background-repeat: no-repeat;
-}
-
-body {
-  margin-top: 75px;
-}
-
-.navbar-nav > li > a {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-#start-process {
-  position: fixed;
-  width: 225px;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 75px;
-  background-color: #39bb9d;
-  color: #FFF;
-  font-weight: bold;
-  border: 0;
-  text-transform: uppercase;
-  padding: 0 20px;
-  margin: auto;
-}
-#start-process span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#brand-menu {
-  display: none;
 }
 
 .icon {
@@ -7327,27 +7300,6 @@ body {
   width: 30px;
   height: 30px;
   display: block;
-}
-
-.footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  color: #999;
-  background-color: #565351;
-}
-.footer .copy {
-  font-size: 1.25em;
-  padding: 1em 0;
-  margin: 0;
-  display: inline-block;
-}
-.footer .question-mark {
-  width: 30px;
-  height: 30px;
-  padding: 1em 0;
-  display: inline-block;
-  float: right;
 }
 
 .icon-accessibility {
@@ -7372,4 +7324,80 @@ body {
 
 .icon-task {
   background-position: 0 -165px;
+}
+
+.navbar-nav > li > a {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+@media only screen and (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding: 30px 15px;
+    box-sizing: border-box;
+    max-height: 75px;
+  }
+}
+
+.nav > li {
+  position: static;
+}
+
+@media only screen and (min-width: 768px) {
+  .dropdown-menu {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    right: 0;
+    margin: 0;
+  }
+  .dropdown-menu li {
+    float: left;
+    padding: 15px 10px;
+  }
+}
+
+.start-process-button {
+  position: fixed;
+  width: 225px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  background-color: #39bb9d;
+  color: #FFF;
+  font-weight: bold;
+  border: 0;
+  text-transform: uppercase;
+  padding: 0 20px;
+  margin: auto;
+}
+.start-process-button span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.footer {
+  width: 100%;
+  color: #999;
+  background-color: #565351;
+  position: fixed;
+  bottom: 0;
+}
+.footer .copy {
+  font-size: 1.25em;
+  padding: 1em 0;
+  margin: 0;
+  display: inline-block;
+}
+.footer .question-mark {
+  width: 30px;
+  height: 30px;
+  padding: 1em 0;
+  display: inline-block;
+  float: right;
+}
+
+.chart-div {
+  width: 100%;
+  margin: auto;
 }

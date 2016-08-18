@@ -1,0 +1,27 @@
+$icon-spacing: 4px;
+
+@import "compass/utilities/sprites";
+@import "icon/*.png";
+
+.icon {
+  width: 42px;
+  height: 42px;
+}
+
+.icon-play {
+  width: 22px;
+  height: 24px;
+}
+
+.icon-drop {
+  width: 16px;
+  height: 11px;
+}
+
+.icon-question-mark {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+@include all-icon-sprites;

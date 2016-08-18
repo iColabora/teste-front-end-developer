@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Dashboard</title>
+    <title>iColabora Test</title>
 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="css/app.min.css"/>
@@ -26,7 +27,22 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Dashboards</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                <span>Dashboards</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" id="orders-per-day-link">Pedidos por Dia</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="orders-per-requester-link">Pedidos por Solicitante</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="pending-orders-link">Pedidos Pendentes</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li><a href="#">Soluções</a></li>
                         <li><a href="#">Administração</a></li>
                     </ul>
@@ -53,30 +69,15 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" id="start-process">
+                <button type="button" id="start-process-button" class="start-process-button">
                     <span class="icon-play"></span>
                     <span>Iniciar Processo</span>
                 </button>
             </div>
         </nav>
-        <nav class="navbar" id="brand-menu">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Dashboard 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Dashboard 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Dashboard 3</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
     </header>
 
-    <div class="main">
+    <div class="main" id="content">
 
     </div>
 

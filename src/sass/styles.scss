@@ -1,92 +1,9 @@
-$icon-spacing: 4px;
-
 @import "bootstrap-compass";
 @import "bootstrap-variables";
 @import "bootstrap";
 
-@import "compass/utilities/sprites";
-@import "icon/*.png";
-
-body {
-  margin-top: $navbar-height;
-}
-
-.navbar-nav {
-  & > li {
-    & > a {
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-  }
-}
-
-#start-process {
-  position: fixed;
-  width: 225px;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: $navbar-height;
-  background-color: #39bb9d;
-  color: #FFF;
-  font-weight: bold;
-  border: 0;
-  text-transform: uppercase;
-  padding: 0 20px;
-  margin: auto;
-
-  span {
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
-#brand-menu {
-  display: none;
-}
-
-.icon {
-  width: 42px;
-  height: 42px;
-}
-
-.icon-play {
-  width: 22px;
-  height: 24px;
-}
-
-.icon-drop {
-  width: 16px;
-  height: 11px;
-}
-
-.icon-question-mark {
-  width: 30px;
-  height: 30px;
-  display: block;
-}
-
-.footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  color: #999;
-  background-color: #565351;
-
-  .copy {
-    font-size: 1.25em;
-    padding: 1em 0;
-    margin: 0;
-    display: inline-block;
-  }
-
-  .question-mark {
-    width: 30px;
-    height: 30px;
-    padding: 1em 0;
-    display: inline-block;
-    float: right;
-  }
-}
-
-@include all-icon-sprites;
+@import "layout/base";
+@import "layout/icons";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/chart";

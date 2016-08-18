@@ -1,0 +1,22 @@
+.footer {
+  width: 100%;
+  color: #999;
+  background-color: #565351;
+  position: fixed;
+  bottom: 0;
+
+  .copy {
+    font-size: 1.25em;
+    padding: 1em 0;
+    margin: 0;
+    display: inline-block;
+  }
+
+  .question-mark {
+    width: 30px;
+    height: 30px;
+    padding: 1em 0;
+    display: inline-block;
+    float: right;
+  }
+}
