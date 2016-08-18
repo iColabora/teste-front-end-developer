@@ -33,19 +33,12 @@
 <script src="mysql_lib.js"></script>
 <script>
 	window.onload = function(){
-		var mysql_query = "SELECT * FROM solicitantes ORDER BY nome ASC";
+		var mysql_query = "SELECT * FROM materiais";
 		mysqlQuery(mysql_query, function(result){
 			// mostra o resultado da query
 			var obj = JSON.parse(result);
 			var table_body =  document.getElementById("conteudo");
-			obj.forEach(function(el){
-				var html_body = "<tr>"+
-						"<td>"+el.id+"</td>"+
-						"<td>"+el.nome+"</td>"+
-						"<td>"+el.telefone+"</td>"+
-						"</tr>";
-				table_body.innerHTML += html_body;
-			});
+			console.log(result);
 		});
 	};
 </script>

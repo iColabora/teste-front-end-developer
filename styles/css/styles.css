@@ -80,7 +80,7 @@ body > .container {
 	border-width: 0;
 }
 .navbar-custom .navbar-nav > li {
-	padding: 7px 12px;
+	padding: 7px 0;
 }
 .navbar-custom .navbar-nav > li.process {
 	margin-left: 60px;
@@ -139,6 +139,16 @@ li.menu-search a, li.menu-accessibility a {
 	font-size: 1.2em;
 	font-family: 'hk_groteskregular';
 }
+.module label.moeda {
+	font-size: 18px;
+	display: inline-block;
+	vertical-align: text-top;
+	line-height: 0px;
+	font-weight: 300;
+}
+.module span.total-dinheiro {
+	font-size: 30px;
+}
 .field-content {
 	padding: 10px 0;
 }
@@ -183,6 +193,9 @@ li.menu-search a, li.menu-accessibility a {
 	}
 	li.profile {
 		margin-left: 8px;
+	}
+	li.menu-accessibility {
+		margin-right: 8px;
 	}
 	li.menu-search > a > span, li.menu-accessibility > a > span{
 		display: none;

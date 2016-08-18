@@ -1,51 +1,35 @@
 
 <div class="row insumo-{{=it.insumo}}">
-    <div class="col-lg-12">
+    <div class="col-md-12 col-sm-12">
         <hr>
-        <label class="pull-left">Insumo <span class="insumo-number">{{=it.insumo}}</span></label>
-        <a class="close-insumo pull-right" data-id="{{=it.insumo}}"><i class="fa fa-close"></i></a>
-    </div>
-    <div class="col-lg-3">
-        <div class="field-content">
-            <label for="insumo"  class="insumo">Insumo:</label>
-            <div class="content">
-                <select name="insumo" id="insumo" class="form-control">
-                    <option value="">Selecione...</option>
-                    <option value="Opção 1">Opção 1</option>
-                    <option value="Opção 2">Opção 2</option>
-                </select>
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="pull-left"><label class="pull-left">Insumo <span class="insumo-number">{{=it.insumo}}</span></label></div>
+                <div class="pull-right"><a class="close-insumo" data-id="{{=it.insumo}}"><i class="fa fa-close"></i></a></div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-md-6 col-sm-6">
         <div class="field-content">
-            <label for="marca_insumo"  class="marca_insumo">Marca:</label>
+            <label for="desc_insumo_{{=it.insumo}}"  class="desc_insumo">Descrição:</label>
             <div class="content">
-                <input type="text" name="marca_insumo" id="marca_insumo" class="form-control" required/>
+                <textarea name="desc_insumo" id="desc_insumo_{{=it.insumo}}" rows="6" class="form-control" required></textarea>
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-md-3 col-sm-3">
         <div class="field-content">
-            <label for="qtde_insumo"  class="qtde_insumo">Quantidade:</label>
+            <label for="qtde_insumo_{{=it.insumo}}"  class="qtde_insumo">Quantidade:</label>
             <div class="content">
-                <input type="number" onkeypress="return onlyNumber(event)" name="qtde_insumo" id="qtde_insumo" class="form-control" />
+                <input type="number" onkeypress="return onlyNumber(event)" name="qtde_insumo" id="qtde_insumo_{{=it.insumo}}" class="quantidade form-control" required/>
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-md-3 col-sm-3">
         <div class="field-content">
-            <label for="valor_insumo"  class="valor_insumo">Preço (R$):</label>
+            <label for="valor_insumo_{{=it.insumo}}"  class="valor_insumo">Preço (R$):</label>
             <div class="content">
-                <input type="text" placeholder="0,00" name="valor_insumo" id="valor_insumo" class="price form-control" />
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-12">
-        <div class="field-content">
-            <label for="desc_insumo"  class="desc_insumo">Descrição:</label>
-            <div class="content">
-                <textarea name="desc_insumo" id="desc_insumo" rows="6" class="form-control" required></textarea>
+                <input type="text" placeholder="0.00" name="valor_insumo" data-calcula="#qtde_insumo_{{=it.insumo}}" id="valor_insumo_{{=it.insumo}}" class="price form-control" required/>
             </div>
         </div>
     </div>

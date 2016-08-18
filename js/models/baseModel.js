@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {
+define(['backbone','mysql_lib'], function(Backbone) {
 	var BaseModel = Backbone.Model.extend({
         note:null,
         success:function(model,response){
@@ -22,11 +22,6 @@ define(['backbone'], function(Backbone) {
             options.beforeSend = function(xhr) {
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.setRequestHeader('Content-Type', 'application/json');
-                if ((options.removeBearer !== true))
-                    if (typeof localstorage !=='undefined')
-                        if ( localstorage.get('token')!=undefined)
-                            xhr.setRequestHeader('Bearer-Token', localstorage.get('token')); // This needs to be updated with the correct token
-
             };
             return Backbone.sync.call(this,method, collection, options);
         }

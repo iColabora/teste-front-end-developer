@@ -17,6 +17,9 @@ require.config({
         'jquery.price_format': {
             deps: ['jquery']
         },
+        'jquery.validate': {
+            deps: ['jquery']
+        },
         'jqueryValidation': {
             deps: ['jquery'],
             exports: 'JqueryValidate'
@@ -45,6 +48,7 @@ require.config({
         'bootstrap': 'lib/bootstrap.min',
         'text': 'lib/text/text',
         'jquery.price_format': 'lib/jquery-price-format/jquery.price_format.min',
+        'jquery.validate': 'lib/jquery-validation1.12.0/dist/jquery.validate.min',
         'modernizr': 'lib/modernizr2.6.2/modernizr-2.6.2.min',
         'templatesFolder': '../templates',
         'bootstrap-select': 'lib/bootstrap-select.min',
@@ -59,7 +63,7 @@ require.config({
     waitSeconds: 0
 });
 
-require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons','mysql_lib'],
+require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons'],
         function ($, Backbone, Router) {
 
             router = new Router();

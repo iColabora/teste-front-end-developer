@@ -5,6 +5,8 @@
         <title>Processo de envio de equipamento varejista</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="description" content="Shipment of a hardware retailer" />
+        <meta name="keywords" content="shipment, hardware, retailer, icolabora" />
 
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="57x57" href="img/logo/apple-icon-57x57.png">
@@ -44,6 +46,23 @@
 
     <body>
         <div id="main-wrapper"></div>
+
+        <div class="modal fade" id="globalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" style='width: 400px;' role="document">
+                <div class="modal-content" >
+                    <div class="modal-header" ><!--style="background-color: #8155b3"-->
+                        <button type="button" id="myModalClose" class="close" style="padding:5px" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" >Buscar pedido</h4>
+                    </div>
+                    <div class="modal-body" style="margin-bottom: 0px; text-align: center; padding: 20px;" >
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Coloque o pedido a procurar" aria-describedby="basic-addon2">
+                            <a class="input-group-addon busca-pedido btn" id="basic-addon2">Buscar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer class="footer">
             <div class="container">

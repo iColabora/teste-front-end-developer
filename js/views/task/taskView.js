@@ -1,4 +1,4 @@
-define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!templatesFolder/task/insumo.html', 'models/task/taskModel', 'text!templatesFolder/header/header.html','jquery.price_format','jquery-mask','jquery-cpfcnpj'], function (BaseView, doT, TaskTemplate, InsumoTemplate, TaskModel, HeaderTemplate) {
+define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!templatesFolder/task/insumo.html', 'models/task/taskModel', 'text!templatesFolder/header/header.html','jquery.price_format','jquery-mask','jquery-cpfcnpj','jquery.validate'], function (BaseView, doT, TaskTemplate, InsumoTemplate, TaskModel, HeaderTemplate) {
     var TaskView = BaseView.extend({
         el: '#main-wrapper',
         model: new TaskModel(),
@@ -6,13 +6,89 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
         headerTemplate: doT.template(HeaderTemplate),
         insumoTemplate: doT.template(InsumoTemplate),
         taskId: null,
-        qteInsumos: 1,
+        dataTask: new Object(),
+        qteInsumos: 2,
+        valorTotal: 0.00,
         events: {
             'click .add-insumo': '_addInsumo',
             'change .cep': '_validateCEP',
             'change #tel_solicitante': '_validateTel',
             'click #endereco_igual': '_checkMesmoEndereco',
             'change .cpf': '_validateCPF',
+            'click .btn-submit': '_SubmitForm',
+            'change .price': '_valorTotalPedido',
+            'change .quantidade': '_valorTotalPedido'
+        },
+        _valorTotalPedido: function(e){
+            var valor_material = ($('#valor_material').val() != '') ? $('#valor_material').val() : 0,
+                qtde_material = ($('#qtde_material').val() != '') ? $('#qtde_material').val() : 0,
+                valorTotalMaterial = valor_material * qtde_material,
+                valorTotalInsumos = 0;
+            for(var i = 1; i <= this.qteInsumos; i++) {
+                var valor_insumo = ($('#valor_insumo_'+i).val() != '') ? $('#valor_insumo_'+i).val() : 0,
+                    qtde_insumo = ($('#qtde_insumo_'+i).val() != '') ? $('#qtde_insumo_'+i).val() : 0;
+                valorTotalInsumos += valor_insumo * qtde_insumo;
+            }
+            var valorTotalPedido = valorTotalMaterial + valorTotalInsumos;
+            if(valorTotalPedido != 0)
+                $('.total-dinheiro').text(this.roundToTwo(valorTotalPedido));
+        },
+        roundToTwo: function (num) {
+            return +(Math.round(num + "e+2")  + "e-2");
+        },
+        _SubmitForm: function(e){
+            e.preventDefault();
+                this.dataTask.material = ($('select#material').val() != null) ? $('select#material').val() : '';
+                this.dataTask.marca = $('#marca').val();
+                this.dataTask.data_compra = $('#data_compra').val();
+                this.dataTask.qtde_material = $('#qtde_material').val();
+                this.dataTask.valor_pedido = $('#valor_material').val();
+                this.dataTask.nome_solicitante = $('#nome_solicitante').val();
+                this.dataTask.cpf_solicitante = $('#cpf_solicitante').val();
+                this.dataTask.tel_solicitante = $('#tel_solicitante').val();
+                this.dataTask.cep_solicitante = $('#cep_solicitante').val();
+                this.dataTask.end_solicitante = $('#end_solicitante').val();
+                this.dataTask.comp_solicitante = $('#comp_solicitante').val();
+                this.dataTask.cidade_solicitante = $('#cidade_solicitante').val();
+                this.dataTask.estado_solicitante = $('#estado_solicitante').val();
+                this.dataTask.cep_entrega = $('#cep_entrega').val();
+                this.dataTask.end_entrega = $('#end_entrega').val();
+                this.dataTask.comp_entrega = $('#comp_entrega').val();
+                this.dataTask.cidade_entrega = $('#cidade_entrega').val();
+                this.dataTask.estado_entrega = $('#estado_entrega').val();
+            if($('#endereco_igual').is(':checked')){
+                this.dataTask.cep_entrega = this.dataTask.cep_solicitante;
+                this.dataTask.end_entrega = this.dataTask.end_solicitante;
+                this.dataTask.comp_entrega = this.dataTask.comp_solicitante;
+                this.dataTask.cidade_entrega = this.dataTask.cidade_solicitante;
+                this.dataTask.estado_entrega = this.dataTask.estado_solicitante;
+            }
+            this.dataTask.insumos = new Array();
+            for(var i = 1; i <= this.qteInsumos; i++) {
+                this.dataTask.insumos[i-1] = new Object();
+                this.dataTask.insumos[i-1].descricao = $('#desc_insumo_'+i).val();
+                this.dataTask.insumos[i-1].quantidade = $('#qtde_insumo_'+i).val();
+                this.dataTask.insumos[i-1].preco = $('#valor_insumo_'+i).val();
+            }
+            if($(e.currentTarget).hasClass('disabled')){
+                $('.item-task').each(function () {
+                    if($(this).prop('required') && ($(this).val() == '' || $(this).val() == null)) {
+                        $(this).css('border-color','red');
+                    }
+                });
+                new PNotify({
+                    title: 'Error',
+                    text: "Prencha todos os campos marcados",
+                    type: 'error',
+                    hide: true,
+                    buttons: {closer: true, sticker: true},
+                    icon: 'fa fa-exclamation-circle'
+                });
+            }
+            else {
+                console.log(this.dataTask);
+            }
+
         },
         _validateCPF: function(e) {
             var cpfRegex = /^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}$/;
@@ -77,6 +153,9 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                 $(e.currentTarget).val('');
                 $('body').removeClass('window-disable');
                 notice.update(options);
+                $("#end_"+select).val('');
+                $("#cidade_"+select).val('');
+                $("#estado_"+select).val('');
                 return false;
             }
             var url = "http://viacep.com.br/ws/"+cep+"/json/",
@@ -96,6 +175,9 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                     $('body').removeClass('window-disable');
                     notice.update(options);
                     $(e.currentTarget).val('');
+                    $("#end_"+select).val('');
+                    $("#cidade_"+select).val('');
+                    $("#estado_"+select).val('');
                     return false;
                 }
                 try{
@@ -138,14 +220,28 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
             $('input.data').click();
             $('input.price').priceFormat({
                 prefix: '',
-                centsSeparator: ',',
-                thousandsSeparator: '.'
+                thousandsSeparator: ''
             });
             $('input#data_compra').mask('00/00/0000');
             $('.cep').mask('00000-000');
             $('.phone').mask('(00) 0000-0000');
             $('.cpf').mask('000.000.000-00', {reverse: true});
 
+            $('#task').bind('change keyup', function() {
+                if($(this).validate({
+                        errorPlacement: function(error,element) {
+                            return true;
+                        }
+                    }).checkForm()) {
+
+                    $('.btn-submit').removeClass('disabled');
+
+                } else {
+
+                    $('.btn-submit').addClass('disabled');
+
+                }
+            });
         },
         _addInsumo: function() {
             var that = this;
@@ -156,6 +252,10 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                 var idInsumo = $(e.currentTarget).data('id');
                 $('.insumo-'+idInsumo).remove();
                 that.qteInsumos--;
+            });
+            $('input.price').priceFormat({
+                prefix: '',
+                thousandsSeparator: ''
             });
         },
         close: function () {
