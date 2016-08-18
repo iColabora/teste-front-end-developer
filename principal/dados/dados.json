@@ -1,0 +1,6 @@
+{
+	'materiais':[
+		{'id':1,'id_pedido':1,'nome':'caneta','marca':'bic','preco':5.00,'quantidade':3},
+		{'id':1,'id_pedido':1,'nome':'lapis','marca':'bic','preco':3.00,'quantidade':4}
+	]
+}

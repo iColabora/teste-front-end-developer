@@ -1,0 +1,59 @@
+#header {
+  background-color: rgb(16,41,56);
+  color: #000000;
+}
+
+#header a{
+	color: white;
+}
+
+#header a:hover{
+	background-color: #39bb9d;
+	height: 60px;
+}
+
+
+#header ul li{
+	height: 60px;
+}
+
+#logo{
+	height: 40px;
+}
+
+#principal{
+	height: 80%;
+}
+
+#welcome{
+	height: 80%;
+	text-align: center;	
+}
+
+#footer {
+  	background-color: gray; 
+ }
+ 
+ #footer a:link,a:hover{
+ 	color: white;
+ 	text-decoration: none;
+ }
+ 
+ #footer p{
+	color: #ffffff;
+	font-weight: bold; 
+	padding: 12px;	
+ }
+ 
+ #question_sign{
+ 	font-size: 16pt;
+ }
+ 
+#opcoes_menu a{	
+	color: black;
+	height: 60px;
+}
+
+ .botoes{
+ 	height: 40px;
+ }

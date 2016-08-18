@@ -1,0 +1,102 @@
+<html lang="pt-br">
+	<head>
+		<meta name="charset" content="iso-8859-1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Teste Front End Developer - iColabora</title>
+		
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">		
+		<link rel="stylesheet" type="text/css" href="css/principal.css">
+		<link rel="stylesheet" type="text/css" href="css/formulario.css">   <!-- revisar -->		
+				
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>		
+		<script type="text/javascript" src="js/principal.js"></script>
+				
+	</head>
+	<body>
+	
+		<!-- 
+		<p>Boa sorte Renato! DO YOUR BEST!!</p>
+		 -->
+		 		
+		<nav class="navbar navbar-default">
+			<div class="container-fluid" id="header">
+				<div class="navbar-header">
+					<i class="navbar-brand">
+						<img src="img/logo.png" class="img-responsive" id="logo"/>
+					</i>
+				</div>
+				<ul class="nav navbar-nav">
+					<li><a href="#subdashboard" data-toggle="collapse">DASHBOARDS</a></li>
+					<li><a href="#">SOLUÇÕES</a></li>
+					<li><a href="#">ADMINISTRAÇÃO</a></li>
+					<li id="iniciar_processo"><a href="javascript:void(0)">INICIAR PROCESSO</a></li>										
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="javascript:void(0);">
+							<img class="botoes" src="img/search.png" alt="Procurar"/>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img class="botoes" src="img/access.png" alt="Acessibilidade"/>
+						</a>
+					</li>					
+					<li class="dropdown">
+						<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+							<img class="img-circle" src="img/avatar.jpg" alt="Perfil" width="30px"/>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" id="opcoes_menu">
+							<li><a href="">Configurações</a></li>
+							<li><a href="">Sair</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+				
+		<div id="subdashboard" class="collapse">				
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">						
+					<ul class="nav navbar-nav">							
+						<li><a href="#" id="dashboardDia">Pedidos/Dia</a></li>																	
+						<li><a href="#" id="dashboardSolicitante">Pedidos/Solicitante</a></li>																	
+						<!-- <li><a href="#" id="dashboardPendentes">Pedidos Pendentes</a></li>  -->																	
+					</ul>
+				</div>
+			</nav>
+		</div>
+				
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6" id="dashboard"></div>
+				<div class="col-sm-6" id="formulario"></div>
+			</div>
+			<div class="jumbotron" id="welcome">
+				<h2>Welcome!</h2>
+				<h4>Shipment Process of a Hardware Retailer</h4><br/>
+				<button type="button" class="btn btn-success btn-lg" id="iniciar_processo_button">
+				<span class="glyphicon glyphicon-list-alt"></span>
+				 Iniciar Processo
+				</button>
+			</div>			
+		</div>
+		<nav class="nav navbar-default" id="footer">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				<p> <a href="http://www.icolabora.com.br/" target="_blank"><img src="img/icolabora_min_white.png" alt="iColabora"> 2016 iColabora </a></p>					
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="javascript:void(0)">
+							<span class="glyphicon glyphicon-question-sign" id="question_sign"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</body>
+</html>

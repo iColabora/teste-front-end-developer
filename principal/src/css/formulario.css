@@ -1,0 +1,26 @@
+#formulario_processo {
+  background-color: #eeeeee;
+  border-radius: 3px;
+  padding: 15px; }
+
+#total_geral {
+  text-align: right; }
+
+.error {
+  color: red; }
+
+.error_message {
+  color: red;
+  font-size: 10; }
+
+.page-header {
+  border-bottom: 1px solid;
+  font-size: 14pt; }
+
+.row {
+  padding: 5px; }
+
+body {
+  font-family: Verdana; }
+
+/*# sourceMappingURL=formulario.css.map */

@@ -1,0 +1,43 @@
+/*
+Error: Invalid CSS after "	border": expected ";", was ": 1px"
+        on line 4 of main.scss
+
+1: 
+2: #welcome{
+3: 	height: 100%
+4: 	border: 1px
+5: }
+
+Backtrace:
+main.scss:4
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1189:in `expected'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1125:in `expected'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1120:in `tok!'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:777:in `block in try_declaration'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1165:in `call'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:1165:in `rethrow'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:782:in `try_declaration'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:711:in `declaration_or_ruleset'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:676:in `block_child'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:657:in `block'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:649:in `ruleset'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:675:in `block_child'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:665:in `block_contents'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:125:in `stylesheet'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/scss/parser.rb:41:in `parse'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/engine.rb:406:in `_to_tree'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:391:in `run'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/exec/base.rb:52:in `parse'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/lib/sass/exec/base.rb:19:in `parse!'
+C:/Ruby22/lib/ruby/gems/2.2.0/gems/sass-3.4.22/bin/sass:13:in `<top (required)>'
+C:/Ruby22/bin/sass:23:in `load'
+C:/Ruby22/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"	border\": expected \";\", was \": 1px\"\A         on line 4 of main.scss\A \A 1: \A 2: #welcome{\A 3: 	height: 100%\A 4: 	border: 1px\A 5: }"; }
