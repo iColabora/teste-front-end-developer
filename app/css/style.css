@@ -1,0 +1,51 @@
+.navbar {
+    margin-bottom: 0px;
+}
+.navbar-default .navbar-nav > li > a{
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 20px;
+}
+.divAutoComplete{
+    position: absolute;
+    z-index: 999;
+    width: 90%;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+       -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
+}
+.divAutoComplete > .list-group-item{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-control{
+  border-radius: 0px;
+}
+/*.primay-navbar .navbar-nav>.active>a{}*/
+.primay-navbar .navbar-nav > li > a:hover{
+  background: #2d4d61;
+  color: #ffffff;
+}
+.primay-navbar{
+  background: #102938;
+}
+.secondary-navbar{
+  margin-bottom: 20px;
+  border-color: transparent;
+  padding: 14px 0px 0px 0px;
+  background: #ffffff;
+}
+.secondary-navbar .text{
+  color: #102938;
+  font-weight: bold;
+}
+.div-btn-actions-inline button{
+  margin-top: 26px;
+}
+.container-add-insumo{
+  display: none;
+}
+.hide{
+  display: none !important;
+}

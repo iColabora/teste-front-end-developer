@@ -1,0 +1,29 @@
+{
+  "name": "teste-front-end-developer",
+  "version": "1.0.0",
+  "description": "> [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas) > > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br> > Essa prova consiste em testar seus conhecimentos com <b>HTML, CSS, JavaScript, SQL</b> entre outras coisas. <br> > O conjunto de interfaces disponibilizado leva em média <b>6 horas</b> para ser implementado;",
+  "main": "mysql_lib.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dejaneves/teste-front-end-developer.git"
+  },
+  "author": "Jaime Neves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dejaneves/teste-front-end-developer/issues"
+  },
+  "homepage": "https://github.com/dejaneves/teste-front-end-developer#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-htmlmin": "^2.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "serve-static": "^1.11.1"
+  }
+}
