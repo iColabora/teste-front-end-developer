@@ -1,10 +1,10 @@
-angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'DataService', 'Auth',
+angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'DataService', 'Auth', 'MySQL',
         'SQL_SERVER',
         'SOLICITANTES', 'INSUMOS', 'MATERIAIS',
         'GET_ALL_SOLICITANTES', 'GET_ALL_INSUMOS', 'GET_ALL_MATERIAIS', 'GET_MATERIAL',
         'ROUTE_ADMIN', 'ROUTE_SOLUTIONS',
-    function($scope, $location, DataService, Auth, SQL_SERVER, SOLICITANTES, INSUMOS, MATERIAIS, GET_ALL_SOLICITANTES,
-             GET_ALL_INSUMOS, GET_ALL_MATERIAIS, GET_MATERIAL, ROUTE_ADMIN, ROUTE_SOLUTIONS) {
+    function($scope, $location, DataService, Auth, MySQL, SQL_SERVER, SOLICITANTES, INSUMOS, MATERIAIS,
+             GET_ALL_SOLICITANTES, GET_ALL_INSUMOS, GET_ALL_MATERIAIS, GET_MATERIAL, ROUTE_ADMIN, ROUTE_SOLUTIONS) {
         console.log('mysql_controller')
 
         //$scope.shippingForUser = Auth.getUser().shipping? Auth.getUser().shipping: []
@@ -131,6 +131,7 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
             $scope.solicitantes = []
             $scope.insumos = []
             $scope.materiais = []
+            $scope.solicitante = {pais: 'Brasil'}
 
             mc.route=$location.path().substring(1)
             $('.'+ mc.route +'_tab').hide()
@@ -167,6 +168,9 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
                 case INSUMOS:
                     if($scope.insumos.length === 0) {
                         DataService.send(GET_ALL_INSUMOS, GET_ALL_INSUMOS)
+                        if($scope.materiais.length === 0) {
+                            DataService.send({event: GET_ALL_MATERIAIS}, GET_ALL_MATERIAIS)
+                        }
                     }
                     break
                 case MATERIAIS:
@@ -174,9 +178,8 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
                         DataService.send(GET_ALL_MATERIAIS, GET_ALL_MATERIAIS)
                     }
             }
-
             $('.'+ mc.route +'_tab').hide()
-            $('#'+place).show()
+            $('#'+place).show(0, function(){ $('.modificar.'+place+', ng-form.add').hide() })
         }
 
         $scope.$on(GET_ALL_SOLICITANTES, function (type, tx_sol) {
@@ -185,7 +188,7 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
                 tx_sol.concat(Auth.getUser().solicitantes): tx_sol
 
             $scope.safeApply()
-            $('.modificar.'+SOLICITANTES).toggle(0, function () { $('form.add').hide() })
+            $('.modificar.'+SOLICITANTES).toggle(0, function () { $('ng-form.add').hide() })
         })
 
         $scope.$on(GET_ALL_INSUMOS, function (type, tx_sol) {
@@ -199,16 +202,26 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
                     { event:GET_MATERIAL, idx: cnt++}, "SELECT * FROM materiais WHERE id = " + insumo.id_material)
             })
             $scope.safeApply()
-            $('.modificar.'+INSUMOS).toggle(0, function () { $('form.add').hide() })
+            $('.modificar.'+INSUMOS).toggle(0, function () { $('ng-form.add').hide() })
         })
 
         $scope.$on(GET_ALL_MATERIAIS, function (type, tx_sol) {
-            var materiais = Auth.getUser().materiais
-            $scope.materiais = ((materiais !== undefined) && materiais.length > 0)?
-                tx_sol.concat(Auth.getUser().materiais): tx_sol
+            if(('event' in tx_sol) && ($scope.materiais.length === 0)) {
+                var materiais = Auth.getUser().materiais
+                $scope.materiais = ((materiais !== undefined) && materiais.length > 0) ?
+                    tx_sol.concat(Auth.getUser().materiais) : tx_sol.tx_response
 
-            $scope.safeApply()
-            $('.modificar.'+MATERIAIS).toggle(0, function () { $('form.add').hide() })
+                $scope.safeApply()
+
+                if(mc.tab !== MATERIAIS ) { $('#'+MATERIAIS).hide() }
+            }else{
+                var materiais = Auth.getUser().materiais
+                $scope.materiais = ((materiais !== undefined) && materiais.length > 0)?
+                    tx_sol.concat(Auth.getUser().materiais): tx_sol
+
+                $scope.safeApply()
+                $('.modificar.'+MATERIAIS).toggle(0, function () { $('ng-form.add').hide() })
+            }
         })
 
         $scope.$on(GET_MATERIAL, function (type, response) {
@@ -230,7 +243,13 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
         /* toggles the add an item form for a type */
         $scope.toggle_add = function (type, event) {
             if([SOLICITANTES, INSUMOS, MATERIAIS].includes(type)) {
-                $('.'+type+' > form.add').toggle()
+                $('.'+type+' > ng-form.add').toggle()
+                $('ng-form.add input[name=cep]').change(function () { MySQL.test_CEP(this, 'ng-form.add') })
+                $('ng-form.add input[name=pais]').change(function() {
+                    if (/^\s*BRA[SZ]IL\s*$/i.test(''+$(this).val())){
+                        $('ng-form.add input[name=cep]').change()
+                    }
+                })
             } else {
                 console.log('[mysql_controller] toggle_add - invalid type')
             }
@@ -252,11 +271,21 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
         $scope.add = function (type) {
             if([SOLICITANTES, INSUMOS, MATERIAIS].includes(type)) {
                 var item = {}
-                $('#'+type+' form.add input.' + type).each(function(i,v){
-                    item[$(v).attr('name')] = $(v).val()
+                $('#'+type+' ng-form.add .field').each(function(i,v){
+                    var numeric = ($(v).attr('type') === 'number') || ($(v).attr('name') === 'id_material')
+                    item[$(v).attr('name')] = numeric? +$(v).val(): $(v).val()
                 })
 
-                item.id = 1 + $scope[type].reduce(function(p, c) { return (p > +c.id)? p: +c.id}, 0)
+                item.id = 1 + $scope[type].reduce(function(p, c) { return (p > +c.id)? p: +c.id}, -1)
+
+                if(type === INSUMOS) {
+                    item.materiais = angular.copy(
+                        $scope[MATERIAIS].reduce(function(p, c) {
+                            if(c.id === item.id_material) { return c }
+                            return p
+                        }, {id:-1})
+                    )
+                }
 
                 var u = Auth.getUser()
                 if(!(type in u)) {
@@ -268,8 +297,8 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location', 'D
                 $scope[type].push(item)
                 $scope.safeApply()
 
-                $('#'+type+' form.add input.' + type).each(function(i,v){ $(v).val('') })
-                $('.'+type+' > form.add').toggle()
+                $('#'+type+' ng-form.add .field').each(function(i,v){ $(v).val('') })
+                $('.'+type+' > ng-form.add').toggle()
             } else {
                 console.log('[mysql_controller] add - invalid type')
             }

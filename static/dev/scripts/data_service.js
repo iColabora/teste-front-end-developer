@@ -23,9 +23,12 @@
 
                 switch (e) {
                     case GET_ALL_SOLICITANTES:
-                    case GET_ALL_MATERIAIS:
                     case GET_ALL_INSUMOS:
                         $rootScope.$broadcast(e, tx_response)
+                        break
+                    case GET_ALL_MATERIAIS:
+                        (e === event)? $rootScope.$broadcast(e, tx_response):
+                            $rootScope.$broadcast(e, {event: event, tx_response: tx_response})
                         break
                     case GET_MATERIAL:
                         $rootScope.$broadcast(e, {event: event, tx_response: tx_response})

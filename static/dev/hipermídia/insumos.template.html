@@ -8,26 +8,7 @@
                     <fieldset>
                         <legend>insumo</legend>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="descricao">Descrição</label>
-                            <div class="col-md-8">
-                                <input id="descricao" name="descricao" placeholder="descricao" ng-model="insumo.descricao" data-initial="{{::insumo.descricao}}" value="{{insumo.descricao}}" class="form-control input-md" required="" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="preco">Preço</label>
-                            <div class="col-md-8">
-                                <input id="preco" name="preco" placeholder="preço" ng-model="insumo.preco" data-initial="{{::insumo.preco}}" value="{{insumo.preco}}" class="form-control input-md" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="quantidade">Quantidade</label>
-                            <div class="col-md-8">
-                                <input id="quantidade" name="quantidade" placeholder="quantidade" ng-model="insumo.quantidade" data-initial="{{::insumo.quantidade}}" value="{{insumo.quantidade}}" class="form-control input-md" required="" type="text">
-                            </div>
-                        </div>
+                        <div ng-include="'hipermídia/insumos_fields.template.html'"></div>
 
                         <div class="insumos_materiais col-md-8 col-md-offset-2">
                             <h4>Materiais</h4>
@@ -55,4 +36,34 @@
             </div>
         </li>
     </ul>
+    <div id="add_group" class="insumos">
+        <button class="btn btn-primary" ng-click="toggle_add('insumos', $event)">Adicionar</button>
+        <ng-form name="insumo_add" class="add form-horizontal">
+            <fieldset>
+                <legend>material</legend>
+
+                <div ng-include="'hipermídia/insumos_fields.template.html'"></div>
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="id_material">Material</label>
+                    <div class="col-md-8">
+                        <select id="id_material" name="id_material" class="field form-control">
+                            <option ng-repeat="material in materiais" value="{{material.id}}">{{material.nome}} - {{material.marca}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- controles -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit"></label>
+                    <div class="col-md-8">
+                        <button id="submit" name="submit" class="btn btn-success"  ng-disabled="insumo_add.$invalid || insumo_add.$pending" ng-click="add('insumos')">Adicionar</button>
+                        <button id="cancel" name="cancel" class="btn btn-default" ng-click="toggle_add('insumos', $event)">Apagar</button>
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </ng-form>
+    </div>
 </div>

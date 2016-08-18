@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'ngCpfCnpj', 'ui.mask'])
     .directive('stringToNumber', function() {
         return {
             require: 'ngModel',

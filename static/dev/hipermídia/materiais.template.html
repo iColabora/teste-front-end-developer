@@ -4,7 +4,7 @@
         <li id="material_{{material.id}}" class="materiais" ng-repeat="material in materiais">
             <button id="toggle_material_{{material.id}}" class="btn btn-default toggle" ng-click="toggle('materiais', material.id)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button> {{material.nome}} - {{material.marca}}
             <div id="modificar_{{material.id}}" class="modificar materiais">
-                <form class="form-horizontal">
+                <ng-form name="modificar_{{material.id}}" class="form-horizontal">
                     <fieldset>
                         <legend>material</legend>
 
@@ -21,14 +21,14 @@
 
 
                     </fieldset>
-                </form>
+                </ng-form>
 
             </div>
         </li>
     </ul>
     <div id="add_group" class="materiais">
         <button class="btn btn-primary" ng-click="toggle_add('materiais', $event)">Adicionar</button>
-        <form id="material_add" class="add form-horizontal">
+        <ng-form name="material_add" class="add form-horizontal">
             <fieldset>
                 <legend>material</legend>
 
@@ -38,13 +38,13 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="submit"></label>
                     <div class="col-md-8">
-                        <button id="submit" name="submit" class="btn btn-success" ng-click="add('materiais')">Adicionar</button>
+                        <button id="submit" name="submit" class="btn btn-success"  ng-disabled="material_add.$invalid || material_add.$pending" ng-click="add('materiais')">Adicionar</button>
                         <button id="cancel" name="cancel" class="btn btn-default" ng-click="toggle_add('materiais', $event)">Apagar</button>
                     </div>
                 </div>
 
 
             </fieldset>
-        </form>
+        </ng-form>
     </div>
 </div>

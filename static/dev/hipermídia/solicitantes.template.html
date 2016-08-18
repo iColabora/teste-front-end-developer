@@ -7,77 +7,7 @@
                 <form class="form-horizontal">
                     <fieldset>
                         <legend>Solicitante</legend>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nome">Nome</label>
-                            <div class="col-md-8">
-                                <input id="nome" name="nome" placeholder="nome" ng-model="solicitante.nome" data-initial="{{::solicitante.nome}}" value="{{solicitante.nome}}" class="form-control input-md" required="" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="cpf">CPF</label>
-                            <div class="col-md-8">
-                                <input id="cpf" name="cpf" placeholder="cpf" class="form-control input-md" ng-model="solicitante.cpf" data-initial="{{::solicitante.cpf}}" value="{{solicitante.cpf}}" required="" type="text">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="telefone">Telefone</label>
-                            <div class="col-md-8">
-                                <input id="telefone" name="telefone" placeholder="número de telefone" ng-model="solicitante.telefone" data-initial="{{::solicitante.telefone}}" value="{{solicitante.telefone}}" class="form-control input-md" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="rua">Rua</label>
-                            <div class="col-md-8">
-                                <input id="rua" name="rua" placeholder="rua" ng-model="solicitante.rua" data-initial="{{::solicitante.rua}}" value="{{solicitante.rua}}" class="form-control input-md" required="" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="numero">Número</label>
-                            <div class="col-md-8">
-                                <input id="numero" name="numero" placeholder="número" ng-model="solicitante.numero" data-initial="{{::solicitante.numero}}" value="{{solicitante.numero}}" class="form-control input-md" required="" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="bairro">Bairro</label>
-                            <div class="col-md-8">
-                                <input id="bairro" name="bairro" placeholder="bairro" ng-model="solicitante.bairro" data-initial="{{::solicitante.bairro}}" value="{{solicitante.bairro}}" class="form-control input-md" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="cidade">Cidade</label>
-                            <div class="col-md-8">
-                                <input id="cidade" name="cidade" placeholder="cidade" ng-model="solicitante.cidade" data-initial="{{::solicitante.cidade}}" value="{{solicitante.cidade}}" class="form-control input-md" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="estado">Estado</label>
-                            <div class="col-md-8">
-                                <input id="estado" name="estado" placeholder="estado" ng-model="solicitante.estado" data-initial="{{::solicitante.estado}}" value="{{solicitante.estado}}" class="form-control input-md" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="cep">CEP</label>
-                            <div class="col-md-8">
-                                <input id="cep" name="cep" placeholder="cep" ng-model="solicitante.cep" data-initial="{{::solicitante.cep}}" value="{{solicitante.cep}}" class="form-control input-md" required="" type="text">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="pais">País</label>
-                            <div class="col-md-8">
-                                <input id="pais" name="pais" placeholder="país" ng-model="solicitante.pais" data-initial="{{::solicitante.pais}}" value="{{solicitante.pais}}" class="form-control input-md" type="text">
-                            </div>
-                        </div>
+                        <div ng-include="'hipermídia/solicitantes_fields.template.html'"></div>
 
                         <!-- controles -->
                         <div class="form-group">
@@ -95,4 +25,25 @@
             </div>
         </li>
     </ul>
+    <div id="add_group" class="solicitantes">
+        <button class="btn btn-primary" ng-click="toggle_add('solicitantes', $event)">Adicionar</button>
+        <ng-form name="solicitante_add" class="add form-horizontal">
+            <fieldset>
+                <legend>solicitante</legend>
+
+                <div ng-include="'hipermídia/solicitantes_fields.template.html'"></div>
+
+                <!-- controles -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit"></label>
+                    <div class="col-md-8">
+                        <button id="submit" name="submit" class="btn btn-success"  ng-disabled="solicitante_add.$invalid || solicitante_add.$pending" ng-click="add('solicitantes')">Adicionar</button>
+                        <button id="cancel" name="cancel" class="btn btn-default" ng-click="toggle_add('solicitantes', $event)">Apagar</button>
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </ng-form>
+    </div>
 </div>
