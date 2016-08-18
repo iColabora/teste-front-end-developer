@@ -1,0 +1,274 @@
+/* GERAL */
+/* Font Face */
+@import url(fontes.css);
+/* Font Face */
+
+html, body {
+	background: #f9f9f9;
+    height: 100%;
+}
+
+html, body, .wrapper {
+    height: 100%;
+}
+
+body > .wrapper {
+    height: auto;
+    min-height: 100%;
+}
+
+a {
+	outline-style: none !important
+}
+
+body > .wrapper {
+	padding-top: -30px;
+}
+
+.content {
+	padding-bottom: 60px;
+}
+
+a, h4, p, label, button {
+	font-family: 'RobotoRegular';
+}
+
+/* FIM GERAL */
+
+/* HEADER */
+.navbar-brand {
+	background-image: url('images/logo-turbina.png');
+	height: 38px;
+	margin: 10px 20px 0;
+	width: 38px;
+}
+
+.navbar {
+	background-color: #102938;
+	height: 61px;
+	margin-bottom: 0;
+}
+
+/* menu left */
+.navbar-default .navbar-nav.left > li > a {
+	color: #ffffff;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding: 20px 15px;
+}
+
+.navbar-default .navbar-nav.left > li > a:hover,
+.navbar-default .navbar-nav.left > .active > a, 
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav.left > .active > a:focus, 
+.navbar-default .navbar-nav.left > .active > a:hover {
+	background-color: #102938;
+	color: #39bb9d;
+}
+
+.navbar-default .navbar-nav.left > .iniciar > a {
+	background: url('images/iniciar.png') no-repeat 20px center;
+	margin-left: 160px;
+	padding: 20px 40px;
+}
+
+.navbar-default .navbar-nav.left > .iniciar > a,
+.navbar-default .navbar-nav.left > .iniciar > a:hover {
+	background-color: #39bb9d;
+	color: #ffffff;
+}
+
+/* menu right */
+.nav.navbar-nav.navbar-right .lupa a {
+	background-image: url('images/lupa.png');
+	height: 24px;
+	margin: 20px 20px 0 0;
+	padding: 0;
+	width: 26px;
+}
+
+.nav.navbar-nav.navbar-right .lupa a:hover {
+	background-image: url('images/lupa-hover.png');
+}
+
+.nav.navbar-nav.navbar-right .pne a {
+	background-image: url('images/pne.png');
+	height: 24px;
+	margin: 20px 20px 0 20px;
+	padding: 0;
+	width: 21px;
+}
+
+.nav.navbar-nav.navbar-right .pne a:hover {
+	background-image: url('images/pne-hover.png');
+}
+
+.nav.navbar-nav.navbar-right .avatar a{
+	background-image: url('images/avatar.png');
+	height: 40px;
+	margin: 10px 0 0 20px;
+	width: 58px;
+}
+
+.nav.navbar-nav.navbar-right .avatar a:hover {
+	background-image: url('images/avatar-hover.png');
+}
+
+/* menu bottom*/
+.navbar-bottom {
+	background: #ffffff;
+	border-bottom: 2px solid #e8e8e8;
+	height: 50px;
+	margin-bottom: 20px;
+	padding-left: 20px;
+}
+
+.dashboard.navbar-bottom {
+	padding-left: 90px;
+}
+
+.nav.navbar-nav.bottom li a {
+	background: none;
+	color: #102938;	
+}
+
+.nav.navbar-nav.bottom li a:hover,
+.nav.navbar-nav.bottom .active a {
+	background: none;
+	color: #39bb9d;	
+}
+
+.nav.navbar-nav.bottom .tarefa {
+	background: url(images/tarefa.png) no-repeat 0 center;
+	margin-left: -20px;	
+}
+
+.nav.navbar-nav.bottom .tarefa a {
+	margin-left: 40px;
+}
+/* FIM HEADER */
+
+/* FORM */
+.formulario h4 {
+	color: #102938;
+	margin-bottom: 30px;
+}
+
+.formulario b {
+	color: #102938;
+}
+
+.formulario label {
+	color: #102938;
+	display: block;
+	margin-top: 10px;
+	font-weight: normal;
+}
+
+.formulario #insumo-selecionar {
+	margin-bottom: 5px;
+}
+
+.formulario input,
+.formulario select {
+	height: 25px;
+	width: 100%;
+}
+
+.formulario #buscar-pedido {
+	height: 30px;
+	margin-bottom: 30px;
+	width: 255px;
+}
+
+.formulario textarea {
+	height: 100px;
+	width: 100%;
+}
+
+.formulario button {
+	background: #102938;
+	border: none;
+	color: #ffffff;
+	float: right;
+	padding: 8px 12px;
+	margin-top: 10px;
+}
+
+.formulario button:hover {
+	background: #39BB9D;
+}
+
+.formulario .pesquisar,
+.formulario #buscar {
+	padding: 5px 10px;
+}
+
+.formulario #buscar {
+	float: none;
+}
+
+.formulario .bottom-button {
+	margin-top: 35px;
+}
+
+.formulario .none {
+	display: none;
+}
+
+.formulario .block {
+	display: block;
+}
+
+/* FIM FORM */
+
+/* FIM DASHBOARD */
+h1 {
+	color: #102938;
+	font-size: 22px;
+	text-align: center; 
+}
+
+#table-pedidos {
+	border: 1px solid #ccc;
+	margin-top: 30px;
+	text-align: center;
+}
+
+#table-pedidos thead {
+	background: #39BB9D;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#table-pedidos td {
+	border: 1px solid #102938;
+	padding: 10px 30px;
+}
+/* FIM DASHBOARD */
+
+/* FOOTER */
+.footer {
+	background-color: #565351;
+	border-top: 1px solid #d4d4d4;
+	height: 31px;
+	margin-top: -31px;
+}
+
+.footer .copyright {
+	color: #999999;
+	margin: 0;
+	padding-top: 5px;
+}
+
+.footer .info {
+	float: right;
+}
+
+.footer .info:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+
+/* FIM FOOTER */
