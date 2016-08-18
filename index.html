@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Shipment of a Hardware Retailer</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Style -->
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Calendario -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <!-- Ajax -->
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery-2.2.2.min.js"></script>
+    <!-- MySQL -->
+    <script src="js/mysql_lib.js" type="text/javascript"></script>
+    <!-- Formulario -->
+    <script src="js/formulario.js"></script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav left">
+              <li><a href="dashboard.html">Dashboards</a></li>
+              <li><a href="#">Soluções</a></li>
+              <li class="active"><a href="index.html">Administração</a></li>
+              <li class="iniciar"><a href="#">Iniciar Processo</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="lupa"><a href="#"></a></li>
+              <li class="pne"><a href="#"></a></li>
+              <li class="avatar"><a href="#"></a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+
+      <div class="navbar-bottom">
+        <div class="container">
+          <ul class="nav navbar-nav bottom">
+            <li class="tarefa"><a href="#">Tarefa</a></li>
+            <li class="active"><a href="#">Check if extra insurance is necessary</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="content">
+        <div class="container">
+          <div class="formulario">
+            <div class="col-md-12">
+              <input type="text" placeholder="Buscar por número do pedido" name="buscar-pedido" id="buscar-pedido">
+              <button id="buscar">Buscar</button>
+              <div id="conteudo">
+
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6 pedido">
+              <h4>Dados do Pedido</h4>
+              <label>Número do Pedido</label>
+                <input type="text" required name="numero-pedido" id="numero-pedido" onKeyPress="mascara(this,numeros);">
+              <label>Material</label>
+                <select name="material" id="material">
+                  <option value="impressora">Impressora</option>
+                  <option value="camera fotografica">Câmera Fotográfica</option>
+                  <option value="scanner">Scanner</option>
+                  <option value="leitor de codigo de barras">Leitor de Código de Barras</option>
+                </select>             
+              <label>Marca</label>
+                <input type="text" required name="marca-material" id="marca-material">
+              <label>Data de Compra</label>
+                <input type="text" required maxlength="10" name="data-compra" id="data-compra">
+              <label>Quantidade de Material</label>
+                <input type="text" required name="quantidade-material" id="quantidade-material" onKeyPress="mascara(this,quantidade);">
+              <label>Preço</label>
+                <input type="text" required name="preco-material" id="preco-material" onKeyPress="mascara(this,preco);">
+              <button id="avancar-pedido">Avançar</button>
+            </div>
+
+            <div class="col-xs-12 col-md-6 insumo hide">
+              <h4>Dados do Insumo</h4>
+              <label>Insumo</label>
+              <select name="insumo-selecionar" id="insumo-selecionar">
+                <option value="tinta colorida para impressora">Tinta Colorida para Impressora</option>
+                <option value="lentes para camera fotografica">Lentes para Câmera Fotográfica</option>
+                <option value="outro">Outro</option>
+              </select>
+              <input type="text" name="insumo" placeholder="Inserir novo insumo" id="insumo">
+              <label>Marca</label>
+                <input type="text" required name="marca-insumo" id="marca-insumo">
+              <label>Descrição</label>
+                <textarea type="text" required name="descricao-insumo" id="descricao-insumo"></textarea>
+              <label>Quantidade</label>
+                <input type="text" required name="quantidade-insumo" id="quantidade-insumo" onKeyPress="mascara(this,quantidade);">
+              <label>Preço</label>
+                <input type="text" required name="preco-insumo" id="preco-insumo" onKeyPress="mascara(this,preco);">
+              <button id="avancar-insumo">Avançar</button>
+            </div>
+
+            <div class="col-xs-12 col-md-6 solicitante hide">
+              <h4>Dados do Solicitante</h4>
+              <label>Nome Completo</label>
+                <input type="text" required name="nome" id="nome">
+              <label>Telefone</label>
+                <input type="phone" required name="telefone" id="telefone" placeholder="(00) 0000-0000" maxlength="15" onKeyPress="mascara(this,telefone);">
+              <label>CPF</label>
+                <input type="text" required name="cpf" id="cpf" placeholder="000.000.000-00" maxlength="14" onKeyPress="mascara(this,cpf);">
+              <label>CEP</label>
+                <input type="text" required name="cep" id="cep" class="cep" placeholder="00000000" maxlength="8" onKeyPress="mascara(this,cep);" cep='cep-entrega'>
+                <button id="getEndereco" class="pesquisar">Pesquisar</button>
+              <label class="bottom-button">Endereço</label>
+                <input type="text" required name="endereco" id="endereco">
+              <label>Complemento</label>
+                <input type="text" required name="complemento" id="complemento">
+              <label>Cidade</label>
+                <input type="text" required name="cidade" id="cidade">
+              <label>Estado</label>
+                <input type="text" required name="estado" id="estado">
+              <button id="avancar-solicitante">Avançar</button>
+            </div>
+
+            <div class="col-xs-12 col-md-6 entrega hide">
+              <h4>Dados de Entrega</h4>
+              <label>CEP</label>
+                <input type="text" required name="cep-entrega" id="cep-entrega" class="cep" placeholder="00000000" maxlength="8" onKeyPress="mascara(this,cep);">
+                <button id="getEntrega" class="pesquisar">Pesquisar</button>
+              <label class="bottom-button">Endereço</label>
+                <input type="text" required name="endereco-entrega" id="endereco-entrega">
+              <label>Complemento</label>
+                <input type="text" required name="complemento-entrega" id="complemento-entrega">
+              <label>Cidade</label>
+                <input type="text" required name="cidade-entrega" id="cidade-entrega">
+              <label>Estado</label>
+                <input type="text" required name="estado-entrega" id="estado-entrega">
+              <button id="avancar-entrega" onclick="calculo()">Fechar Pedido</button>
+            </div>
+
+            <div class="col-xs-12 col-md-6 col-md-offset-3 calculo hide">
+              <h4>Preço Total</h4>
+                <input type="text" id="preco-total" name="preco-total" value="" onKeyDown="mascara(this,preco);" onKeyPress="mascara(this,preco);" onKeyUp="mascara(this,preco);">
+              <button id="avancar-calculo" onclick="confirmacao()">Confirmar Pedido</button>
+            </div>
+
+          </div><!--/.formulario -->
+        </div><!--/.container -->
+      </div><!--/.content -->
+    </div><!--/.wrapper -->
+
+    <footer class="footer">
+      <div class="container">
+        <p class="copyright">&copy 2016 iColabora <a href="#" class="info"><img src="css/images/info.png" /></a></p>
+      </div>
+    </footer>
+
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
