@@ -1,0 +1,1 @@
+function mysqlQuery(e,t){if("string"==typeof e){var n="http://192.241.152.185/",s=new XMLHttpRequest;s.onreadystatechange=function(){4==s.readyState&&200==s.status&&void 0!=t&&"function"==typeof t&&t(s.responseText)},s.open("GET",n+e,!1),s.send()}else console.warn("Your query mysql is not a string")}

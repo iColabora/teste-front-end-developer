@@ -1,0 +1,188 @@
+<script type="text/javascript" src="js/funcoes.js"></script>
+<script type="text/javascript" src="js/consultarCEP.js"></script>
+
+<script type="text/javascript" src="js/mysql_lib.js"></script> 
+<script type="text/javascript" src="js/banco.js"></script>
+
+<script type="text/javascript" src="js/validacao.js"></script>
+
+<div>
+	<form role="form" id="formulario_processo" action="javascript:void(0)" method="POST">
+		<div class="page-header">
+			Dados do Pedido
+		</div>
+		<div>
+			<div class="row">
+				<div class="form-group col-xs-6 form-horizontal" id="grp_pedido">
+					<label class="required" id="label_pedido">Pedido:</label> 
+					<input class="form-control input input-sm" type="text" name="id_pedido" id="id_pedido">
+					<span id="id_validacao" class="error_message"></span>
+				</div>
+				<div class="form-group col-xs-6" id="grp_data">
+					<label class="required" id="label_data">Data:</label> 
+					<input class="form-control input input-sm" type="date" name="data_de_compra_pedido" id="id_data">
+					<span id="data_validacao" class="error_message"></span>
+				</div>							
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-xs-6" id="grp_material">
+					<label id="label_material">Material:</label>
+					<select name="form-materiais" class="form-control input-sm" id="material_opcao" onchange="escolherMaterial(this.value)">
+										
+					</select>						
+				</div>
+				<div class="form-group col-xs-6" id="grp_marca">
+					<label>Marca:</label> 
+					<input class="form-control input-sm" type="text" name="material_marca" id="material_marca" readonly>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-xs-5" id="grp_quantidade">
+					<label class="required">Qtde.:</label> 
+					<input type="number" min="0" name="material_quantidade" class="form-control input input-sm" id="material_quantidade" onchange="calcularPrecoTotalMat(this.value,document.getElementById('material_opcao').value)">
+					<span id="data_validacao" class="error_message"></span>
+				</div>
+				<div class="form-group col-xs-7" id="grp_preco">
+					<label>Preco Total:</label> 
+					<input type="number" name="material_preco_total" id="material_preco_total" class="form-control input-sm" readonly>
+				</div>			
+			</div>
+		</div>
+		
+		<div class="page-header">
+			Dados do Insumo
+		</div>
+		<div>
+			<div class="row">
+				<div class="form-group col-xs-6" id="insumo_descricao">
+					<label>Descrição:</label> 
+					<select name="insumo_opcao" class="form-control input-sm" id="insumo_opcao" onchange="escolherInsumo(this.value)">
+					
+					</select>
+				</div>
+				<div class="form-group col-xs-6" id="insumo_marca">
+					<label>Marca:</label> 
+					<input type="text" name="insumo_marca" class="form-control input-sm" id="insumo_marca" readonly>
+				</div>
+			</div>
+			<div class="row">			
+				<div class="form-group col-xs-6" id="insumo_quantidade">
+					<label class="required">Qtde.:</label> 
+					<input type="number" min="0" name="insumo_quantidade" class="form-control input input-sm" id="insumo_quantidade"  onchange="calcularPrecoTotalIns(this.value,document.getElementById('insumo_opcao').value)">
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+				<div class="form-group col-xs-6" id="insumo_preco">
+					<label>Preço:</label> 
+					<input type="number" name="insumo_preco_total" id="insumo_preco_total" class="form-control input-sm" readonly>
+				</div>
+			</div>
+			<div class="row" id="total_geral">
+				<h4>Total do Pedido: R$ 0,00 </h4> 
+			</div>
+		</div>
+		
+		<div class="page-header">
+			Dados do Solicitante
+		</div>
+		<div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label class="required">Nome Completo:</label> 
+					<input type="text" maxlength="255" name="solicitante_nome" class="form-control input input-sm" id="solicitante_nome">
+					<span id="nome_solicitante_validacao" class="error_message"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-6">
+					<label class="required">CPF:</label> 
+					<input type="text" name="solicitante_cpf" class="form-control input input-sm" id="solicitante_cpf">
+					<span id="cpf_validacao" class="error_message"></span>
+				</div>
+				<div class="form-group col-xs-6">
+					<label class="required">Telefone:</label> 
+					<input type="text" name="solicitante_telefone" class="form-control input input-sm" id="solicitante_telefone">
+					<span id="telefone_validacao" class="error_message"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label>CEP:</label> 
+					<input type="text" name="solicitante_cep" class="form-control input input-sm" id="solicitante_cep">
+					<span class="glyphicon glyphicon-search"></span>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label class="required">Endereço:</label> 
+					<input type="text" name="solicitante_endereco" class="form-control input input-sm" id="solicitante_endereco">
+					<span id="endereco_validacao" class="error_message"></span>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label class="required">Complemento:</label> 
+					<input type="text" name="solicitante_complemento" class="form-control input input-sm" id="solicitante_complemento">
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-8">
+					<label class="required">Cidade:</label> 
+					<input type="text" name="solicitante_cidade" class="form-control input input-sm" id="solicitante_cidade">
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+				<div class="form-group col-xs-4">
+					<label class="required">UF:</label> 
+					<select name="solicitante_estado" class="form-control input-sm" id="solicitante_uf"></select>
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="page-header">
+			Dados da Entrega
+		</div>
+		<div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label>CEP:</label> 
+					<input type="text" name="entrega_cep" class="form-control input input-sm" id="entrega_cep">
+					<span class="glyphicon glyphicon-search"></span>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label class="required">Endereço:</label> 
+					<input type="text" name="entrega_endereco" class="form-control input input-sm" id="entrega_endereco">
+					<span id="endereco_validacao" class="error_message"></span>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-12">
+					<label class="required">Complemento:</label> 
+					<input type="text" name="entrega_complemento" class="form-control input input-sm" id="entrega_complemento">
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-8">
+					<label class="required">Cidade:</label> 
+					<input type="text" name="entrega_cidade" class="form-control input input-sm" id="entrega_cidade">
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+				<div class="form-group col-xs-4">
+					<label class="required">UF:</label> 
+					<select name="solicitante_estado" class="form-control input-sm" id="entrega_uf"></select>
+					<span id="qtde_validacao" class="error_message"></span>
+				</div>
+			</div>
+		</div>	
+		
+		<input type="submit" class="btn btn-primary" id="submit_button" value="Enviar">
+		
+	</form>
+	<br/><br/><br/>	
+</div>
+

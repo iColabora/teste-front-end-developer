@@ -1,0 +1,22 @@
+{
+  "name": "icolaborateste",
+  "version": "0.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "teste-front-end-developer"
+  },
+  "author": "Renato Brito",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9"
+  }
+}
