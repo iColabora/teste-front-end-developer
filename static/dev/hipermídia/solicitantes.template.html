@@ -1,4 +1,5 @@
 <div id="solicitantes" class="admin_tab col-md-6 col-md-offset-3" ng-if="solicitantes.length > 0">
+    <h2>Solicitantes</h2>
     <ul class="list_solicitantes">
         <li id="solicitante_{{solicitante.id}}" class="solicitantes" ng-repeat="solicitante in solicitantes">
             <button id="toggle_solicitante_{{solicitante.id}}" class="btn btn-default toggle" ng-click="toggle('solicitantes', solicitante.id)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button> {{solicitante.nome}} - {{solicitante.cpf}}

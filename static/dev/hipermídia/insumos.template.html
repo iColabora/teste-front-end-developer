@@ -1,0 +1,58 @@
+<div id="insumos" class="admin_tab col-md-6 col-md-offset-3" ng-if="insumos.length > 0">
+    <h2>Insumos</h2>
+    <ul class="list_insumos">
+        <li id="insumo_{{insumo.id}}" class="insumos" ng-repeat="insumo in insumos">
+            <button id="toggle_insumo_{{insumo.id}}" class="btn btn-default toggle" ng-click="toggle('insumos', insumo.id)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button> {{insumo.descricao}}
+            <div id="modificar_{{insumo.id}}" class="modificar insumos">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>insumo</legend>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="descricao">Descrição</label>
+                            <div class="col-md-8">
+                                <input id="descricao" name="descricao" placeholder="descricao" ng-model="insumo.descricao" data-initial="{{::insumo.descricao}}" value="{{insumo.descricao}}" class="form-control input-md" required="" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="preco">Preço</label>
+                            <div class="col-md-8">
+                                <input id="preco" name="preco" placeholder="preço" ng-model="insumo.preco" data-initial="{{::insumo.preco}}" value="{{insumo.preco}}" class="form-control input-md" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="quantidade">Quantidade</label>
+                            <div class="col-md-8">
+                                <input id="quantidade" name="quantidade" placeholder="quantidade" ng-model="insumo.quantidade" data-initial="{{::insumo.quantidade}}" value="{{insumo.quantidade}}" class="form-control input-md" required="" type="text">
+                            </div>
+                        </div>
+
+                        <div class="insumos_materiais col-md-8 col-md-offset-2">
+                            <h4>Materiais</h4>
+                            <div class="col-md-10 col-md-offset-1">
+                                <div>{{insumo.materiais.nome}} - {{insumo.materiais.marca}}</div>
+                                <div>Preço {{insumo.materiais.preco}}</div>
+                                <div>Quantidade {{insumo.materiais.quantidade}}</div>
+                                <button class="btn btn-default" ng-click="loadMaterial(insumo.materiais.id)">Editar</button>
+                            </div>
+                        </div>
+
+                        <!-- controles -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="submit"></label>
+                            <div class="col-md-8">
+                                <button id="submit" name="submit" class="btn btn-warning" ng-click="revert('insumos', insumo.id, $index)">Reverter</button>
+                                <button id="delete" name="delete" class="btn btn-danger" ng-click="delete('insumos', $index)">Apagar</button>
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+
+            </div>
+        </li>
+    </ul>
+</div>

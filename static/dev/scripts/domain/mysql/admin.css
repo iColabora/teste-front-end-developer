@@ -17,10 +17,22 @@
     border-radius: 2rem;
 }
 
+.admin_tab h4 {
+    font-variant: small-caps;
+}
+
+.admin_tab h2 {
+    margin-bottom: 2rem;
+}
+
 ul {
     list-style-type: none;
 }
 
 button.toggle {
     margin: 0.5rem 0;
+}
+
+.insumos_materiais {
+    margin-bottom: 3rem;
 }

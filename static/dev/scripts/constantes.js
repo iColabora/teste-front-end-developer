@@ -23,5 +23,7 @@ angular.module('app')
     .constant('INSUMOS', 'insumos')
     .constant('MATERIAIS', 'materiais')
     .constant('GET_ALL_SOLICITANTES', 'SELECT * FROM solicitantes ORDER BY nome ASC')
-    .constant('GET_ALL_INSUMOS', 'SELECT * FROM insumos ORDER BY id_material ASC, precio DESC')
+    //.constant('GET_ALL_INSUMOS', 'SELECT * FROM insumos ORDER BY id_material ASC, precio DESC') // not sure what this doesn't work
+    .constant('GET_ALL_INSUMOS', 'SELECT * FROM insumos ORDER BY id_material ASC')
     .constant('GET_ALL_MATERIAIS', 'SELECT * FROM materiais ORDER BY marca ASC, nome ASC')
+    .constant('GET_MATERIAL', 'GET_MATERIAL')
