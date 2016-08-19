@@ -1,0 +1,14 @@
+<div class="input-group">
+    <input type="text" onkeypress="return inputPedido(event)" class="pedido form-control" placeholder="Coloque o pedido a procurar" aria-describedby="basic-addon2">
+    <a class="input-group-addon busca-pedido btn" id="basic-addon2" style="border-radius: 0px 2px 2px 0px;">Buscar</a>
+</div>
+<div class="info" style="text-align: left; margin-top: 20px;"></div>
+<script type="text/javascript">
+    function inputPedido(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla==8) return true;
+        patron =/[1-9]/;
+        te = String.fromCharCode(tecla);
+        return patron.test(te);
+    }
+</script>

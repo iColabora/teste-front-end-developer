@@ -14,7 +14,7 @@ define([ "jquery","backbone"
             routes: {
                 // When there is no hash bang on the url, the default method is called
                 "dashboard" : "dashboard",
-                "task(/:id)": "task",
+                "task": "task",
             },
             dashboard : function(){
                 if (this.currentDashboardView) this.currentDashboardView.close();
@@ -22,11 +22,11 @@ define([ "jquery","backbone"
                 this.currentDashboardView=dashboard;
                 dashboard.render();
             },
-            task : function(id){
+            task : function(){
                 if (this.currentTaskView) this.currentTaskView.close();
                 var task = new taskView();
                 this.currentTaskView=task;
-                task.render(id);
+                task.render();
 
             },
         });

@@ -33,7 +33,7 @@
 <script src="mysql_lib.js"></script>
 <script>
 	window.onload = function(){
-		var mysql_query = "SELECT * FROM materiais";
+		var mysql_query = "SELECT * FROM solicitantes";
 		mysqlQuery(mysql_query, function(result){
 			// mostra o resultado da query
 			var obj = JSON.parse(result);

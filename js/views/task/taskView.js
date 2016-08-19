@@ -1,9 +1,7 @@
-define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!templatesFolder/task/insumo.html', 'models/task/taskModel', 'text!templatesFolder/header/header.html','jquery.price_format','jquery-mask','jquery-cpfcnpj','jquery.validate'], function (BaseView, doT, TaskTemplate, InsumoTemplate, TaskModel, HeaderTemplate) {
+define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!templatesFolder/task/insumo.html','jquery.price_format','jquery-mask','jquery-cpfcnpj','jquery.validate'], function (BaseView, doT, TaskTemplate, InsumoTemplate) {
     var TaskView = BaseView.extend({
         el: '#main-wrapper',
-        model: new TaskModel(),
         template: doT.template(TaskTemplate),
-        headerTemplate: doT.template(HeaderTemplate),
         insumoTemplate: doT.template(InsumoTemplate),
         taskId: null,
         dataTask: new Object(),
@@ -17,7 +15,8 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
             'change .cpf': '_validateCPF',
             'click .btn-submit': '_SubmitForm',
             'change .price': '_valorTotalPedido',
-            'change .quantidade': '_valorTotalPedido'
+            'change .quantidade': '_valorTotalPedido',
+            'click .busca-pedido': '_buscaPedido'
         },
         _valorTotalPedido: function(e){
             var valor_material = ($('#valor_material').val() != '') ? $('#valor_material').val() : 0,
@@ -48,17 +47,23 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                 this.dataTask.tel_solicitante = $('#tel_solicitante').val();
                 this.dataTask.cep_solicitante = $('#cep_solicitante').val();
                 this.dataTask.end_solicitante = $('#end_solicitante').val();
+                this.dataTask.no_end_solicitante = $('#no_end_solicitante').val();
                 this.dataTask.comp_solicitante = $('#comp_solicitante').val();
+                this.dataTask.bairro_solicitante = $('#bairro_solicitante').val();
                 this.dataTask.cidade_solicitante = $('#cidade_solicitante').val();
                 this.dataTask.estado_solicitante = $('#estado_solicitante').val();
                 this.dataTask.cep_entrega = $('#cep_entrega').val();
                 this.dataTask.end_entrega = $('#end_entrega').val();
+                this.dataTask.no_end_entrega = $('#no_end_entrega').val();
+                this.dataTask.bairro_entrega = $('#bairro_entrega').val();
                 this.dataTask.comp_entrega = $('#comp_entrega').val();
                 this.dataTask.cidade_entrega = $('#cidade_entrega').val();
                 this.dataTask.estado_entrega = $('#estado_entrega').val();
             if($('#endereco_igual').is(':checked')){
                 this.dataTask.cep_entrega = this.dataTask.cep_solicitante;
                 this.dataTask.end_entrega = this.dataTask.end_solicitante;
+                this.dataTask.no_end_entrega = this.dataTask.no_end_solicitante;
+                this.dataTask.bairro_entrega = this.dataTask.bairro_solicitante;
                 this.dataTask.comp_entrega = this.dataTask.comp_solicitante;
                 this.dataTask.cidade_entrega = this.dataTask.cidade_solicitante;
                 this.dataTask.estado_entrega = this.dataTask.estado_solicitante;
@@ -86,7 +91,7 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                 });
             }
             else {
-                console.log(this.dataTask);
+                this.model.addPedido(this.dataTask);
             }
 
         },
@@ -196,23 +201,18 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
             e.preventDefault();
             window.history.back();
         },
-        beforeRender: function () {
-            BaseView.prototype.beforeRender.call(this); // calling super.afterRenderMethod()
+        initialize: function (options) {
+            BaseView.prototype.initialize.call(this, options); // calling super.initializeMethod()
+
         },
-        render: function (taskId) {
-            this.taskId = taskId;
-            this.model.loading = true;
-            BaseView.prototype.render.call(this); // calling super.afterRenderMethod()
+        render: function () {
+
+            BaseView.prototype.render.call(this);
             var that = this;
-            this.$el.html(this.headerTemplate({}));
             $('.actionbar ul.process').removeClass('hidden');
-            var that = this;
-            if(this.taskId == null){
-                this.$el.append(this.template({}));
-            }
-            else {
-                var notice = this.notification_wait();
-            }
+            $('.navbar-custom .navbar-nav li.dashboard').removeClass('active');
+            $('.actionbar ul.dashboard').addClass('hidden');
+            this.$el.empty().append(this.template({}));
             $('input#data_compra').datetimepicker({
                 format: 'DD/MM/YYYY',
                 locale: 'pt-br'
