@@ -3,28 +3,40 @@
   font-weight: bold;
   height: $navbar-height - 5px;
   border-bottom: 1px solid #CCC;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 
   .container-fluid {
     height: 100%;
   }
 
-  .title, .subtitle {
+  .task-title {
+    padding-right: 35px;
+    padding-left: 10px;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-right: 1px solid #CCC;
+      border-bottom: 1px solid #CCC;
+      bottom: -8px;
+      right: 10px;
+      transform: rotate(45deg);
+      background-color: #FFF;
+    }
+  }
+
+  .title {
     display: inline-table;
     height: 100%;
 
     & > span {
       vertical-align: middle;
       display: table-cell;
-
-      & ~ span {
-        margin-left: 10px;
-      }
     }
-  }
-
-  .title {
-    margin-right: 50px;
   }
 }
 
@@ -40,15 +52,15 @@
   }
 
   .btn {
-    padding: 10px 50px;
+    padding: 6px 25px;
   }
 }
 
 .btn {
   text-transform: uppercase;
-  padding: 10px 25px;
+  padding: 6px 15px;
 
-  &:hover {
+  &:hover, &:focus {
     background-color: #20cda6;
   }
 }
@@ -83,4 +95,12 @@ textarea {
   border-top: 1px solid #CCC;
   padding: 10px 7.5px;
   overflow: hidden;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+fieldset {
+  margin-bottom: 10px;
 }

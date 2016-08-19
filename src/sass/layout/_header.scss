@@ -52,15 +52,35 @@
     right: 0;
     margin: 0;
 
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-top: 1px solid #CCC;
+      border-left: 1px solid #CCC;
+      top: -8px;
+      left: 115px;
+      transform: rotate(45deg);
+      background-color: #FFF;
+    }
+
     li {
       float: left;
       padding: 15px 10px;
     }
   }
+
+  @media only screen and (min-width: $screen-md) {
+    &::before {
+      left: 215px;
+    }
+  }
 }
 
 .start-process-button {
-  position: fixed;
+
   width: 225px;
   top: 0;
   left: 0;
@@ -73,7 +93,11 @@
   text-transform: uppercase;
   padding: 0 10px;
   margin: auto;
-  display: table;
+  display: inline-table;
+
+  @media only screen and (min-width: 1400px) {
+    position: fixed;
+  }
 
   &:hover, &:focus {
     background-color: #20cda6;

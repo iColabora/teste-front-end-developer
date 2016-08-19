@@ -4,9 +4,7 @@
             <span>
                 <span class="icon-task"></span>
             </span>
-            <span>Tarefa</span>
-        </div>
-        <div class="subtitle">
+            <span class="task-title">Tarefa</span>
             <span>Check if extra insurance is necessary</span>
         </div>
     </div>
@@ -17,28 +15,61 @@
         <div class="row">
             <fieldset class="col-sm-6">
                 <legend>Dados do Pedido</legend>
-                <div class="form-group col-xs-4 col-sm-4">
+
+                <div class="form-group col-xs-6 col-sm-3">
                     <input type="text" id="numero_pedido" name="pedido[numero]" placeholder="Nº do Pedido" title="Nº do Pedido" class="form-control required" />
                     <span class="field-invalid" id="numero_pedido_invalido"></span>
                 </div>
-                <div class="form-group col-xs-8 col-sm-4">
-                    <input type="text" id="material_pedido" name="pedido[material]" placeholder="Material" title="Material" class="form-control required" />
-                    <span class="field-invalid" id="material_pedido_invalido"></span>
+
+                <div class="form-group col-xs-6 col-sm-3">
+                    <button type="button" class="btn btn-default" id="search-order">Buscar</button>
                 </div>
-                <div class="form-group col-xs-6 col-sm-4">
-                    <input type="text" id="marca_pedido" name="pedido[marca]" placeholder="Marca" title="Marca" class="form-control required" />
-                    <span class="field-invalid" id="marca_pedido_invalido"></span>
+
+                <div class="col-xs-12">
+                    <table class="table table-bordered table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Marca</th>
+                                <th>Quantidade</th>
+                                <th>Preço (R$)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fill-material-values">
+                            <tr data-index="0">
+                                <td>Impressora<input type="hidden" name="material[0][material]" value="Impressora" /></td>
+                                <td>Lexmark 2600 Series<input type="hidden" name="material[0][nome]" value="Lexmark 2600 Series" /></td>
+                                <td>2<input type="hidden" name="material[0][quantidade]" value="2" id="material_quantidade_0" /></td>
+                                <td>436<input type="hidden" name="material[0][preco]" value="436" id="material_preco_0" /></td>
+                            </tr>
+                            <tr data-index="1">
+                                <td>Hardware<input type="hidden" name="material[1][material]" value="Hardware" /></td>
+                                <td>Fonte Coolermaster 600w<input type="hidden" name="material[1][nome]" value="Fonte Coolermaster 600w" /></td>
+                                <td>3<input type="hidden" name="material[1][quantidade]" value="3" id="material_quantidade_1" /></td>
+                                <td>269<input type="hidden" name="material[1][preco]" value="269" id="material_preco_1" /></td>
+                            </tr>
+                            <tr data-index="2">
+                                <td>Impressora<input type="hidden" name="material[2][material]" value="Impressora" /></td>
+                                <td>HP Officejet Pro 6230<input type="hidden" name="material[2][nome]" value="HP Officejet Pro 6230" /></td>
+                                <td>1<input type="hidden" name="material[2][quantidade]" value="1" id="material_quantidade_2" /></td>
+                                <td>319<input type="hidden" name="material[2][preco]" value="319" id="material_preco_2" /></td>
+                            </tr>
+                            <tr data-index="3">
+                                <td>Utensilios<input type="hidden" name="material[3][material]" value="Utensilios" /></td>
+                                <td>Pendrive Kingston 16gb<input type="hidden" name="material[3][nome]" value="Pendrive Kingston 16gb" /></td>
+                                <td>5<input type="hidden" name="material[3][quantidade]" value="5" id="material_quantidade_3" /></td>
+                                <td>15<input type="hidden" name="material[3][preco]" value="15" id="material_preco_3" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="form-group col-xs-6 col-sm-4">
+
+                <div class="form-group col-xs-6 col-sm-6">
                     <input type="date" id="data_compra_pedido" name="pedido[data]" placeholder="Data de Compra" title="Data de Compra" class="form-control required" />
                     <span class="field-invalid" id="data_compra_pedido_invalido"></span>
                 </div>
-                <div class="form-group col-xs-6 col-sm-4">
-                    <input type="text" id="quantidade_material_pedido" name="pedido[quantidade_material]" placeholder="Quantidade" title="Quantidade" class="form-control required" />
-                    <span class="field-invalid" id="quantidade_material_pedido_invalido"></span>
-                </div>
-                <div class="form-group col-xs-6 col-sm-4">
-                    <input type="text" id="preco_pedido" name="pedido[preco]" placeholder="Preço Total" title="Preço Total" class="form-control" readonly />
+                <div class="form-group col-xs-6 col-sm-6">
+                    <input type="text" id="preco_pedido" name="pedido[preco]" placeholder="Preço Total" title="Preço Total" class="form-control" readonly value="0" />
                 </div>
             </fieldset>
 
@@ -239,7 +270,7 @@
 
         <div class="order-total-value">
             <div id="order-total-value">
-                <label>Total: </label><input type="text" name="total" class="form-control" readonly data-insurance-total="0" data-order-total="0" />
+                <label>Total (R$): </label><input type="text" name="total" class="form-control" readonly data-insurance-total="0" data-order-total="0" />
             </div>
         </div>
 

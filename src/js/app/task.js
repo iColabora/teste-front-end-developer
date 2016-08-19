@@ -6,8 +6,134 @@ $(function () {
   initTaskFormSubmitEvent();
   initRequiredValidationFields();
   initCheckSameAddressCheckbox();
+  initOrderTotal();
   initTotal();
+
+  $("#search-order").on('click', function () {
+    var q = "SELECT p.id AS id, DATE(p.data_de_compra) AS data_de_compra, " +
+        "p.cep AS cep_entrega, p.rua AS endereco_entrega, p.cidade AS cidade_entrega, p.estado AS estado_entrega, " +
+        "s.nome AS nome, s.telefone AS telefone, s.cpf AS cpf, s.cep AS cep_solicitante, s.rua AS endereco_solicitante, s.cidade AS cidade_solicitante, s.estado AS estado_solicitante " +
+        "FROM pedidos p " +
+        "JOIN solicitantes s ON s.id = p.id_solicitante " +
+        "WHERE p.id = " + $("#numero_pedido").val() + " " +
+        "ORDER BY p.data_de_compra";
+    mysqlQuery(q, function (result) {
+      if (JSON.parse(result)) {
+        result = JSON.parse(result);
+        fillRequesterAndShippingData(result);
+        searchMaterialData(result);
+      }
+    });
+  });
 });
+
+var fillRequesterAndShippingData = function (result) {
+  var data = new Date(result[0]['data_de_compra']);
+  $("#data_compra_pedido").val(result[0]['data_de_compra'].substr(0, 10));
+  $("#nome_solicitante").val(result[0]['nome']);
+
+  var x = result[0]['cpf'].replace(/\D/g, '').match(/(\d{3})(\d{3})(\d{3})(\d{2})/);
+  var cpf = x[1] + "." + x[2] + "." + x[3] + "-" + x[4];
+
+  $("#cpf_solicitante").val(cpf);
+
+  x = result[0]['telefone'].replace(/\D/g, '').match(/(\d{2})(\d{4})(\d{5})/);
+  if (x == null) {
+    x = result[0]['telefone'].replace(/\D/g, '').match(/(\d{2})(\d{4})(\d{4})/);
+  }
+  var tel = "(" + x[1] + ") " + x[2] + "-" + x[3];
+
+  $("#telefone_solicitante").val(tel);
+
+  x = result[0]['cep_solicitante'].replace(/\D/g, '').match(/(\d{5})(\d{3})/);
+  var cep = x[1] + "-" + x[2];
+
+  $("#cep_solicitante").val(cep);
+  $("#endereco_solicitante").val(result[0]['endereco_solicitante']);
+  $("#cidade_solicitante").val(result[0]['cidade_solicitante']);
+  $("#estado_solicitante").val(result[0]['estado_solicitante']);
+  $("#endereco_entrega").val(result[0]['endereco_entrega']);
+  $("#cidade_entrega").val(result[0]['cidade_entrega']);
+
+  x = result[0]['cep_entrega'].replace(/\D/g, '').match(/(\d{5})(\d{3})/);
+  cep = x[1] + "-" + x[2];
+
+  $("#cep_entrega").val(cep);
+  $("#estado_entrega").val(result[0]['estado_entrega']);
+};
+
+var searchMaterialData = function (result) {
+  var id = result[0]['id'];
+
+  var q = "SELECT m.id AS id, m.nome AS nome, m.marca AS marca, m.quantidade AS quantidade, m.preco AS preco " +
+      "FROM materiais m " +
+      "JOIN pedidos p ON m.id_pedido = p.id " +
+      "WHERE p.id = " + id;
+  mysqlQuery(q, function (result) {
+      result = JSON.parse(result);
+      fillMaterialValues(result);
+      searchInsuranceData(result);
+  });
+};
+
+var searchInsuranceData = function (result) {
+  var id = result[0]['id'];
+
+  var q = "SELECT m.marca AS marca, i.quantidade AS quantidade, i.preco AS preco, i.descricao AS descricao " +
+          "FROM insumos i " +
+          "JOIN materiais m ON m.id = i.id_material " +
+          "WHERE m.id = " + id;
+  mysqlQuery(q, function (result) {
+    result = JSON.parse(result);
+    fillInsuranceValues(result);
+  });
+};
+
+var fillInsuranceValues = function (result) {
+  $("#can-add-insurance").empty();
+  $.each(result, function (index, obj) {
+    var $tbody = $("#can-add-insurance");
+
+    var tds = "";
+
+    tds += createElement('td', obj['marca'] + createHiddenInput('insumo[' + index + '][marca]', obj['marca']));
+    tds += createElement('td', obj['descricao'] + createHiddenInput('insumo[' + index + '][descricao]', obj['descricao']));
+    tds += createElement('td', obj['quantidade'] + createHiddenInput('insumo[' + index + '][quantidade]', obj['quantidade'], "id='insumo_quantidade_" + index + "'"));
+    tds += createElement('td', obj['preco'] + createHiddenInput('insumo[' + index + '][preco]', obj['preco'], "id='insumo_valor_" + index + "'"));
+
+    var tr = "<tr data-index='" + index + "'>" + tds + "</tr>";
+
+    $tbody.append(tr);
+
+    recalcTotal();
+  });
+};
+
+var fillMaterialValues = function (result) {
+  $("#fill-material-values").empty();
+    $.each(result, function (index, obj) {
+        var $tbody = $("#fill-material-values");
+
+        var tds = "";
+
+        tds += createElement('td', obj['nome'] + createHiddenInput('material[' + index + '][nome]', obj['nome']));
+        tds += createElement('td', obj['marca'] + createHiddenInput('material[' + index + '][marca]', obj['marca']));
+        tds += createElement('td', obj['quantidade'] + createHiddenInput('material[' + index + '][quantidade]', obj['quantidade'], "id='material_quantidade_" + index + "'"));
+        tds += createElement('td', obj['preco'] + createHiddenInput('material[' + index + '][preco]', obj['preco'], "id='material_preco_" + index + "'"));
+
+        var tr = "<tr data-index='" + index + "'>" + tds + "</tr>";
+
+        $tbody.append(tr);
+    });
+};
+
+var recalcTotal = function () {
+  $("#order-total-value input").val(0);
+  $("#preco_pedido").val(0);
+
+  initOrderTotal();
+  initTotal();
+};
 
 var initTotal = function () {
   $("#can-add-insurance tr").each(function () {
@@ -18,11 +144,31 @@ var initTotal = function () {
     var result = Number(qtd) * Number(valor);
     calcTotal(result);
   });
+  calcTotal(Number($("#preco_pedido").val()));
+};
+
+var initOrderTotal = function () {
+  $("#fill-material-values tr").each(function () {
+    var self = $(this);
+    var index = self.data('index');
+    var qtd = $("#material_quantidade_" + index).val();
+    var valor = $("#material_preco_" + index).val();
+    var result = Number(qtd) * Number(valor);
+    calcOrderTotal(result);
+  });
+};
+
+var calcOrderTotal = function (total) {
+  var $input = $("#preco_pedido");
+  var current = isNaN(Number($input.val())) ? 0 : Number($input.val());
+  total += current;
+  $input.val(total);
 };
 
 var calcTotal = function (total) {
   var $input = $("#order-total-value input");
-  var current = Number($input.val());
+  var current = isNaN(Number($input.val())) ? 0 : Number($input.val());
+
   total += current;
   $input.val(total);
 };

@@ -7347,6 +7347,10 @@ body {
     padding-right: 45px;
   }
 }
+.home-container {
+  padding: 50px 0;
+}
+
 .icon-sprite, .icon-accessibility, .icon-drop, .icon-play, .icon-question-mark, .icon-search, .icon-task {
   background-image: url('../img/icon-s40a5f4b295.png');
   background-repeat: no-repeat;
@@ -7448,14 +7452,31 @@ body {
     right: 0;
     margin: 0;
   }
+  .dropdown-menu::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+    top: -8px;
+    left: 115px;
+    transform: rotate(45deg);
+    background-color: #FFF;
+  }
   .dropdown-menu li {
     float: left;
     padding: 15px 10px;
   }
 }
+@media only screen and (min-width: 992px) {
+  .dropdown-menu::before {
+    left: 215px;
+  }
+}
 
 .start-process-button {
-  position: fixed;
   width: 225px;
   top: 0;
   left: 0;
@@ -7468,7 +7489,12 @@ body {
   text-transform: uppercase;
   padding: 0 10px;
   margin: auto;
-  display: table;
+  display: inline-table;
+}
+@media only screen and (min-width: 1400px) {
+  .start-process-button {
+    position: fixed;
+  }
 }
 .start-process-button:hover, .start-process-button:focus {
   background-color: #20cda6;
@@ -7519,24 +7545,36 @@ body {
   font-weight: bold;
   height: 70px;
   border-bottom: 1px solid #CCC;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 .task-header .container-fluid {
   height: 100%;
 }
-.task-header .title, .task-header .subtitle {
+.task-header .task-title {
+  padding-right: 35px;
+  padding-left: 10px;
+  position: relative;
+}
+.task-header .task-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  bottom: -8px;
+  right: 10px;
+  transform: rotate(45deg);
+  background-color: #FFF;
+}
+.task-header .title {
   display: inline-table;
   height: 100%;
 }
-.task-header .title > span, .task-header .subtitle > span {
+.task-header .title > span {
   vertical-align: middle;
   display: table-cell;
-}
-.task-header .title > span ~ span, .task-header .subtitle > span ~ span {
-  margin-left: 10px;
-}
-.task-header .title {
-  margin-right: 50px;
 }
 
 .button-set {
@@ -7550,14 +7588,14 @@ body {
   }
 }
 .button-set .btn {
-  padding: 10px 50px;
+  padding: 6px 25px;
 }
 
 .btn {
   text-transform: uppercase;
-  padding: 10px 25px;
+  padding: 6px 15px;
 }
-.btn:hover {
+.btn:hover, .btn:focus {
   background-color: #20cda6;
 }
 
@@ -7590,4 +7628,12 @@ textarea {
   border-top: 1px solid #CCC;
   padding: 10px 7.5px;
   overflow: hidden;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+fieldset {
+  margin-bottom: 10px;
 }
