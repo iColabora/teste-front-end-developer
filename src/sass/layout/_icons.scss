@@ -4,23 +4,30 @@ $icon-spacing: 4px;
 @import "icon/*.png";
 
 .icon {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 30px;
 }
 
 .icon-play {
-  width: 22px;
-  height: 24px;
+  width: 16px;
+  height: 17px;
 }
 
 .icon-drop {
   width: 16px;
   height: 11px;
+  display: block;
 }
 
 .icon-question-mark {
   width: 30px;
   height: 30px;
+  display: block;
+}
+
+.icon-task {
+  width: 38px;
+  height: 28px;
   display: block;
 }
 

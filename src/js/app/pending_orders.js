@@ -26,7 +26,3 @@ function fillTable(orders) {
         $table.append(tableRow);
     });
 }
-
-function createElement(element, value) {
-    return "<" + element + ">" + value + "</" + element + ">";
-}

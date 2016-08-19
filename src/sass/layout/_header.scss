@@ -1,3 +1,10 @@
+@media only screen and (min-width: $screen-md)
+{
+  #brand {
+    margin-right: 60px;
+  }
+}
+
 .navbar-nav {
   & > li {
     & > a {
@@ -9,6 +16,26 @@
         box-sizing: border-box;
         max-height: $navbar-height;
       }
+    }
+  }
+}
+
+.navbar {
+  font-size: 15px;
+}
+
+@media only screen and (min-width: $screen-sm) {
+  .navbar-right {
+    li > a {
+      padding: 25px;
+    }
+
+    .user-profile-link {
+      padding: 15px 10px 15px 20px;
+    }
+
+    .user-profile-menu-tab {
+      padding: 35px 0;
     }
   }
 }
@@ -44,11 +71,28 @@
   font-weight: bold;
   border: 0;
   text-transform: uppercase;
-  padding: 0 20px;
+  padding: 0 10px;
   margin: auto;
+  display: table;
+
+  &:hover, &:focus {
+    background-color: #20cda6;
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
 
   span {
-    display: inline-block;
+    display: inline-table;
     vertical-align: middle;
+
+    & ~ span {
+      margin-left: 8px;
+    }
   }
 }

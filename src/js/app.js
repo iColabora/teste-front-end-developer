@@ -3,12 +3,11 @@ $(function () {
     loadContent("#orders-per-day-link", "orders-per-day.html");
     loadContent("#orders-per-requester-link", "orders-per-requester.html");
     loadContent("#pending-orders-link", "pending-orders.html");
+    loadContent("#start-process-button", "task.html");
 });
 
 var loadContent = function (selector, html_file) {
     $(selector).on('click', function (e) {
-        e.preventDefault();
-
         $.get(html_file, function (data) {
             $("#content").html(data);
 
@@ -18,3 +17,7 @@ var loadContent = function (selector, html_file) {
         });
     });
 };
+
+function createElement(element, value) {
+    return "<" + element + ">" + value + "</" + element + ">";
+}

@@ -141,11 +141,10 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 //
 //## For each of Bootstrap's buttons, define text, background and border color.
 
-// $btn-font-weight:                normal
-
-// $btn-default-color:              #333
-// $btn-default-bg:                 #fff
-// $btn-default-border:             #ccc
+$btn-font-weight:                bold;
+$btn-default-color:              #FFF;
+$btn-default-bg:                 #39bb9d;
+$btn-default-border:             #2d947c;
 
 // $btn-primary-color:              #fff
 // $btn-primary-bg:                 $brand-primary
@@ -170,7 +169,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 // $btn-link-disabled-color:        $gray-light
 
 // Allows for customizing button radius independently from global border radius
-// $btn-border-radius-base:         $border-radius-base
+$btn-border-radius-base:         0;
 // $btn-border-radius-large:        $border-radius-large
 // $btn-border-radius-small:        $border-radius-small
 
@@ -198,7 +197,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 // $input-border-radius-small:      $border-radius-small
 
 //** Border color for inputs on focus
-// $input-border-focus:             #66afe9
+$input-border-focus:             #39bb9d;
 
 //** Placeholder text color
 // $input-color-placeholder:        #999
@@ -318,7 +317,7 @@ $dropdown-link-hover-bg:         #FFF;
 //** Number of columns in the grid.
 // $grid-columns:              12
 //** Padding between columns. Gets divided in half for the left and right.
-$grid-gutter-width:         30px;
+$grid-gutter-width:         15px;
 // Navbar collapse
 //** Point at which the navbar becomes uncollapsed.
 // $grid-float-breakpoint:     $screen-sm-min

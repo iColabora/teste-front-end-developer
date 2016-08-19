@@ -1,0 +1,73 @@
+.task-header {
+  color: #102938;
+  font-weight: bold;
+  height: $navbar-height - 5px;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 10px;
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .title, .subtitle {
+    display: inline-table;
+    height: 100%;
+
+    & > span {
+      vertical-align: middle;
+      display: table-cell;
+
+      & ~ span {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .title {
+    margin-right: 50px;
+  }
+}
+
+.button-set {
+  border-top: 1px solid #CCC;
+  padding-top: 10px;
+  text-align: center;
+
+  @media only screen and (min-width: $screen-sm) {
+    .btn {
+      float: right;
+    }
+  }
+
+  .btn {
+    padding: 10px 50px;
+    text-transform: uppercase;
+    font-size: 15px;
+
+    &:hover {
+      background-color: #20cda6;
+    }
+  }
+}
+
+#can-disable-by-checkbox.disabled {
+  opacity: 0.6;
+}
+
+textarea {
+  resize: none;
+}
+
+.field-invalid {
+  color: #F00;
+  font-size: .9em;
+}
+
+.has-error {
+  border-color: #F00;
+
+  &:hover, &:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 000, 000, 0.6);
+    border-color: #F00;
+  }
+}

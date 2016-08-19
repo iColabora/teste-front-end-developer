@@ -1,0 +1,250 @@
+<div class="task-header">
+    <div class="container-fluid">
+        <div class="title">
+            <span>
+                <span class="icon-task"></span>
+            </span>
+            <span>Tarefa</span>
+        </div>
+        <div class="subtitle">
+            <span>Check if extra insurance is necessary</span>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <form class="task-form" method="POST" id="task-form" action="#">
+        <div class="row">
+            <fieldset class="col-sm-6">
+                <legend>Dados do Pedido</legend>
+                <div class="form-group col-xs-4 col-sm-4">
+                    <input type="text" id="numero_pedido" name="pedido[numero]" placeholder="Nº do Pedido" title="Nº do Pedido" class="form-control required" />
+                    <span class="field-invalid" id="numero_pedido_invalido"></span>
+                </div>
+                <div class="form-group col-xs-8 col-sm-4">
+                    <input type="text" id="material_pedido" name="pedido[material]" placeholder="Material" title="Material" class="form-control required" />
+                    <span class="field-invalid" id="material_pedido_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-sm-4">
+                    <input type="text" id="marca_pedido" name="pedido[marca]" placeholder="Marca" title="Marca" class="form-control required" />
+                    <span class="field-invalid" id="marca_pedido_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-sm-4">
+                    <input type="date" id="data_compra_pedido" name="pedido[data]" placeholder="Data de Compra" title="Data de Compra" class="form-control required" />
+                    <span class="field-invalid" id="data_compra_pedido_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-sm-4">
+                    <input type="text" id="quantidade_material_pedido" name="pedido[quantidade_material]" placeholder="Quantidade" title="Quantidade" class="form-control required" />
+                    <span class="field-invalid" id="quantidade_material_pedido_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-sm-4">
+                    <input type="text" id="preco_pedido" name="pedido[preco]" placeholder="Preço Total" title="Preço Total" class="form-control" readonly />
+                </div>
+            </fieldset>
+
+            <fieldset class="col-sm-6">
+                <legend>Dados do Insumo</legend>
+                <table class="table table-bordered table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>Marca</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Preço (R$)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="can-add-insurance">
+                        <tr>
+                            <td>HP</td>
+                            <td>Cartucho de Tinta Preto</td>
+                            <td>2</td>
+                            <td>39.90</td>
+                        </tr>
+                        <tr>
+                            <td>HP</td>
+                            <td>Cartucho de Tinta Colorido</td>
+                            <td>2</td>
+                            <td>79.90</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <button type="button" class="btn btn-default" id="modal-form-show" data-toggle="modal" data-target="#new-insurance-modal">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>Novo Insumo</span>
+                    </button>
+
+                    <div class="modal fade" tabindex="-1" role="dialog" id="new-insurance-modal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Novo Insumo</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="new-insurance-form row">
+                                        <div class="form-group col-xs-12 col-sm-4">
+                                            <input type="text" id="marca_insumo" name="insumo[marca]" placeholder="Marca" title="Marca" class="form-control required" />
+                                            <span class="field-invalid" id="marca_insumo_invalido"></span>
+                                        </div>
+                                        <div class="form-group col-xs-6 col-sm-4">
+                                            <input type="number" id="quantidade_insumo" name="insumo[quantidade]" placeholder="Quantidade" title="Quantidade" class="form-control required" step="1" />
+                                            <span class="field-invalid" id="quantidade_insumo_invalido"></span>
+                                        </div>
+                                        <div class="form-group col-xs-6 col-sm-4">
+                                            <input type="number" id="preco_insumo" name="insumo[preco]" placeholder="Preço" title="Preço" class="form-control required" step="0.01" />
+                                            <span class="field-invalid" id="preco_insumo_invalido"></span>
+                                        </div>
+                                        <div class="form-group col-xs-12">
+                                            <textarea id="descricao_insumo" name="insumo[descricao]" placeholder="Descrição" title="Descrição" class="form-control required"></textarea>
+                                            <span class="field-invalid" id="descricao_insumo_invalido"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                    <button type="submit" class="btn btn-default" id="add-new-insurance">Adicionar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="row">
+            <fieldset class="col-sm-6">
+                <legend>Dados do Solicitante</legend>
+                <div class="form-group col-xs-12 col-md-6">
+                    <input type="text" id="nome_solicitante" name="solicitante[nome]" placeholder="Nome Completo" title="Nome Completo" class="form-control required" />
+                    <span class="field-invalid" id="nome_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-md-3">
+                    <input type="text" id="cpf_solicitante" name="solicitante[cpf]" placeholder="CPF" title="CPF" class="form-control cpf-mask required" />
+                    <span class="field-invalid" id="cpf_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-md-3">
+                    <input type="text" id="telefone_solicitante" name="solicitante[telefone]" placeholder="Telefone" title="Telefone" class="form-control required" />
+                    <span class="field-invalid" id="telefone_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-md-3">
+                    <input type="text" id="cep_solicitante" name="solicitante[cep]" placeholder="CEP" title="CEP" class="form-control required" />
+                    <span class="field-invalid" id="cep_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-6 col-md-9">
+                    <input type="text" id="endereco_solicitante" name="solicitante[endereco]" placeholder="Endereço" title="Endereço" class="form-control required" />
+                    <span class="field-invalid" id="endereco_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                    <input type="text" id="complemento_solicitante" name="solicitante[complemento]" placeholder="Complemento" title="Complemento" class="form-control" />
+                    <span class="field-invalid" id="complemento_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-5 col-md-5">
+                    <input type="text" id="cidade_solicitante" name="solicitante[cidade]" placeholder="Cidade" title="Cidade" class="form-control required" />
+                    <span class="field-invalid" id="cidade_solicitante_invalido"></span>
+                </div>
+                <div class="form-group col-xs-3 col-md-3">
+                    <select id="estado_solicitante" name="solicitante[estado]" title="Estado" class="form-control required">
+                        <option value>UF - Selecione...</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                    <span class="field-invalid" id="estado_solicitante_invalido"></span>
+                </div>
+            </fieldset>
+
+            <fieldset class="col-sm-6">
+                <legend>Dados da Entrega</legend>
+                <div class="checkbox col-xs-12">
+                    <label><input type="checkbox" name="entrega[same_address]" id="check_same_address">Utilizar o mesmo endereço do Solicitante</label>
+                </div>
+                <div class="enabled" id="can-disable-by-checkbox">
+                    <div class="form-group col-xs-6 col-md-3">
+                        <input type="text" id="cep_entrega" name="entrega[cep]" placeholder="CEP" title="CEP" class="form-control required" />
+                        <span class="field-invalid" id="cep_entrega_invalido"></span>
+                    </div>
+                    <div class="form-group col-xs-6 col-md-9">
+                        <input type="text" id="endereco_entrega" name="entrega[endereco]" placeholder="Endereço" title="Endereço" class="form-control required" />
+                        <span class="field-invalid" id="endereco_entrega_invalido"></span>
+                    </div>
+                    <div class="form-group col-xs-4 col-md-4">
+                        <input type="text" id="complemento_entrega" name="entrega[complemento]" placeholder="Complemento" title="Complemento" class="form-control" />
+                        <span class="field-invalid" id="complemento_entrega_invalido"></span>
+                    </div>
+                    <div class="form-group col-xs-5 col-md-5">
+                        <input type="text" id="cidade_entrega" name="entrega[cidade]" placeholder="Cidade" title="Cidade" class="form-control required" />
+                        <span class="field-invalid" id="cidade_entrega_invalido"></span>
+                    </div>
+                    <div class="form-group col-xs-3 col-md-3">
+                        <select id="estado_entrega" name="entrega[estado]" title="Estado" class="form-control required">
+                            <option value>UF - Selecione...</option>
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                        <span class="field-invalid" id="estado_entrega_invalido"></span>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="button-set col-xs-12">
+            <button class="btn btn-default">Enviar</button>
+        </div>
+    </form>
+</div>
+
+<!-- build:js task.min.js -->
+<script src="js/vendor/jquery/jquery.mask.js"></script>
+<script src="js/app/queries.js"></script>
+<script src="js/app/task.js"></script>
+<!-- endbuild -->

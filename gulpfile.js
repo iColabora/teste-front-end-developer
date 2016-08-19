@@ -37,6 +37,11 @@ gulp.task('build-img', ['clean-img'], function () {
         .pipe(gulp.dest('./dist/img'));
 });
 
+gulp.task('copy-fonts', function () {
+    gulp.src('./src/fonts/**/*')
+        .pipe(gulp.dest('./dist/fonts'));
+})
+
 gulp.task('usemin', ['clean-css', 'clean-js', 'clean-html'], function () {
     return gulp.src('./src/**/*.html')
         .pipe(usemin({
@@ -46,8 +51,8 @@ gulp.task('usemin', ['clean-css', 'clean-js', 'clean-html'], function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', function () {
-    gulp.start('build-img', 'usemin');
+gulp.task('default', ['clean'], function () {
+    gulp.start('copy-fonts', 'build-img', 'usemin');
 });
 
 gulp.task('server', function () {

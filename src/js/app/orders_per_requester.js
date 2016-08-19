@@ -29,7 +29,6 @@ function drawChart(orders) {
 
 var query = "SELECT s.id AS id, s.nome AS nome, COUNT(p.id) AS total FROM pedidos p JOIN solicitantes s ON s.id = p.id_solicitante GROUP BY id";
 mysqlQuery(query, function (result) {
-    console.log(result);
     var orders = JSON.parse(result);
     drawChart(orders);
 });
