@@ -57,14 +57,14 @@
                         <tr data-index="0">
                             <td>HP<input type="hidden" name="insumo[0][marca]" value="HP"/></td>
                             <td>Cartucho de Tinta Preto<input type="hidden" name="insumo[0][descricao]" value="Cartucho de Tinta Preto"/></td>
-                            <td>2<input type="hidden" name="insumo[0][quantidade]" value="2"/></td>
-                            <td>39.90<input type="hidden" name="insumo[0][marca]" value="39.90"/></td>
+                            <td>2<input type="hidden" name="insumo[0][quantidade]" value="2" id="insumo_quantidade_0" /></td>
+                            <td>39.90<input type="hidden" name="insumo[0][preco]" value="39.90" id="insumo_valor_0" /></td>
                         </tr>
                         <tr data-index="1">
                             <td>HP<input type="hidden" name="insumo[1][marca]" value="HP"/></td>
                             <td>Cartucho de Tinta Colorido<input type="hidden" name="insumo[1][descricao]" value="Cartucho de Tinta Colorido"/></td>
-                            <td>2<input type="hidden" name="insumo[1][quantidade]" value="2"/></td>
-                            <td>79.90<input type="hidden" name="insumo[1][marca]" value="79.90"/></td>
+                            <td>2<input type="hidden" name="insumo[1][quantidade]" value="2" id="insumo_quantidade_1" /></td>
+                            <td>79.90<input type="hidden" name="insumo[1][preco]" value="79.90" id="insumo_valor_1" /></td>
                         </tr>
                     </tbody>
                 </table>
@@ -235,6 +235,12 @@
                     </div>
                 </div>
             </fieldset>
+        </div>
+
+        <div class="order-total-value">
+            <div id="order-total-value">
+                <label>Total: </label><input type="text" name="total" class="form-control" readonly data-insurance-total="0" data-order-total="0" />
+            </div>
         </div>
 
         <div class="button-set col-xs-12">
