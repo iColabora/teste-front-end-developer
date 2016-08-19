@@ -46,7 +46,6 @@ var material = {
       var el = $(event.currentTarget);
       value  = el.val();
       if(el.is(':checked')){
-        console.log($material);
         $material.showInsurance();
       } else if( el.is(':not(:checked)') ) {
         $material.hideInsurance();
