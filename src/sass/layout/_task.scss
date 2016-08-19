@@ -2,7 +2,7 @@
   color: #102938;
   font-weight: bold;
   height: $navbar-height - 5px;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid $default-border-color;
   margin-bottom: 25px;
 
   .container-fluid {
@@ -20,12 +20,12 @@
       position: absolute;
       width: 15px;
       height: 15px;
-      border-right: 1px solid #CCC;
-      border-bottom: 1px solid #CCC;
+      border-right: 1px solid $default-border-color;
+      border-bottom: 1px solid $default-border-color;
       bottom: -8px;
       right: 10px;
       transform: rotate(45deg);
-      background-color: #FFF;
+      background-color: $default-bg-color;
     }
   }
 
@@ -40,51 +40,8 @@
   }
 }
 
-.button-set {
-  border-top: 1px solid #CCC;
-  padding-top: 10px;
-  text-align: center;
-
-  @media only screen and (min-width: $screen-sm) {
-    .btn {
-      float: right;
-    }
-  }
-
-  .btn {
-    padding: 6px 25px;
-  }
-}
-
-.btn {
-  text-transform: uppercase;
-  padding: 6px 15px;
-
-  &:hover, &:focus {
-    background-color: #20cda6;
-  }
-}
-
 #can-disable-by-checkbox.disabled {
   opacity: 0.6;
-}
-
-textarea {
-  resize: none;
-}
-
-.field-invalid {
-  color: #F00;
-  font-size: .9em;
-}
-
-.has-error {
-  border-color: #F00;
-
-  &:hover, &:focus {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 000, 000, 0.6);
-    border-color: #F00;
-  }
 }
 
 #order-total-value {
@@ -92,15 +49,7 @@ textarea {
 }
 
 .order-total-value {
-  border-top: 1px solid #CCC;
+  border-top: 1px solid $default-border-color;
   padding: 10px 7.5px;
   overflow: hidden;
-}
-
-.form-control {
-  border-radius: 0;
-}
-
-fieldset {
-  margin-bottom: 10px;
 }

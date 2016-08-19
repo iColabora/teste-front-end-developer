@@ -1,44 +1,24 @@
+//inicializa a API de gráficos do google
+google.charts.load('current', {'packages':['line', 'corechart', 'bar']});
+
 $(function () {
-    google.charts.load('current', {'packages':['line', 'corechart', 'bar']});
+    //inicializa os eventos de navegação das páginas
     loadContent("#orders-per-day-link", "orders-per-day.html");
     loadContent("#orders-per-requester-link", "orders-per-requester.html");
     loadContent("#pending-orders-link", "pending-orders.html");
     loadContent("#start-process-button", "task.html");
+    loadContent("#brand", "home.html");
 });
 
-/*var routes = function () {
-  return {
-      home : 'home.html',
-      task : 'task.html',
-      pedidos : {
-          dia : 'orders-per-day.html',
-          solicitante : 'orders-per-requester.html',
-          pendentes : 'pending-orders.html'
-      }
-  };
-};
-
-var loadRoute = function () {
-    var location = window.location.hash.replace('#/', '');
-    if (routes()[location]) {
-        var hue = location.split('/');
-        loadContentByRoute(routes()[location][hue[1]]);
-    }
-    loadContentByRoute(routes()[location]);
-};
-
-var loadContentByRoute = function (html_file) {
-    $.get(html_file, function (data) {
-        $("#content").html(data);
-
-        if ($(".navbar-collapse").is(":visible") && $(".navbar-toggle").is(":visible")) {
-            $('.navbar-collapse').collapse('toggle');
-        }
-    });
-};*/
-
+/**
+ * Carrega o conteúdo de uma página html
+ *
+ * @param selector Seletor do link que será clicado
+ * @param html_file Arquivo HTML que será chumbado na página
+ */
 var loadContent = function (selector, html_file) {
     $(selector).on('click', function (e) {
+        loadModal();
         $.get(html_file, function (data) {
             $("#content").html(data);
 
@@ -46,17 +26,54 @@ var loadContent = function (selector, html_file) {
                 $('.navbar-collapse').collapse('toggle');
             }
         });
+        closeModal();
     });
 };
 
+/**
+ * Abre o modal de carregamento
+ */
+var loadModal = function () {
+  $("#modal-loading").modal('show');
+};
+
+/**
+ * Fecha o modal de carregamento
+ */
+var closeModal = function () {
+    $("#modal-loading").modal('hide');
+};
+
+/**
+ * Cria um elemento HTML de forma simples
+ *
+ * @param element Nome do elemento
+ * @param value Valor do elemento
+ *
+ * @returns {string}
+ */
 function createElement(element, value) {
     return "<" + element + ">" + value + "</" + element + ">";
 }
 
+/**
+ * Cria um elemento input hidden
+ *
+ * @param name Nome do campo
+ * @param value Valor do campo
+ * @param extra Dados extras do campo
+ *
+ * @returns {string}
+ */
 function createHiddenInput(name, value, extra) {
     return "<input type='hidden' name='" + name + "' value='" + value + "'" + extra + "/>";
 }
 
+/**
+ * Array completo com todas as UFs do Brasil
+ *
+ * @returns {string[]}
+ */
 var getUfArray = function () {
     return [
         "AC",
@@ -89,6 +106,12 @@ var getUfArray = function () {
     ];
 };
 
+/**
+ * Valida um CPF
+ *
+ * @param cpf
+ * @returns {boolean}
+ */
 var validateCpf = function (cpf) {
     cpf = cpf.replace(/[^\d]+/g,'');
     var numeros, digitos, soma, i, resultado, digitos_iguais;
@@ -127,16 +150,32 @@ var validateCpf = function (cpf) {
     }
 };
 
+/**
+ * Valida um telefone
+ *
+ * @param tel
+ */
 var validateTelephone = function (tel) {
   tel = tel.replace(/[^\d]+/g,'');
   return validateLength(tel, 10, 11);
 };
 
+/**
+ * Valida um CEP
+ *
+ * @param zip
+ */
 var validateZipcode = function (zip) {
   zip = zip.replace(/[^\d]+/g,'');
   return validateLength(zip, 8, 8);
 };
 
+/**
+ * Valida uma UF
+ *
+ * @param uf
+ * @returns {boolean}
+ */
 var validateUf = function (uf) {
   var ufs = getUfArray();
   for (var i = 0; i < ufs.length; i++) {
@@ -147,6 +186,15 @@ var validateUf = function (uf) {
   return false;
 };
 
+/**
+ * Valida o tamanho de uma string
+ *
+ * @param str
+ * @param min Quantidade minima de caracteres
+ * @param max Quantidade maxima de caracters
+ *
+ * @returns {boolean}
+ */
 var validateLength = function (str, min, max) {
     var length = str.length;
     if (length >= min) {
@@ -158,12 +206,24 @@ var validateLength = function (str, min, max) {
     return false;
 };
 
+/**
+ * Valida um numero do tipo inteiro
+ *
+ * @param int
+ * @returns {boolean}
+ */
 var validateInt = function (int) {
     int = Number(int);
     return (int > 0 && int === parseInt(int, 10));
 };
 
 
+/**
+ * Valida um numero do tipo decimal
+ *
+ * @param number
+ * @returns {boolean}
+ */
 var validateNumber = function (number) {
     number = Number(number);
     return (number > 0 && !isNaN(parseFloat(number)) && isFinite(number));

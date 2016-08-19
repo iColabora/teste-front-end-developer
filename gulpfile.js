@@ -37,22 +37,17 @@ gulp.task('build-img', ['clean-img'], function () {
         .pipe(gulp.dest('./dist/img'));
 });
 
-gulp.task('copy-fonts', function () {
-    gulp.src('./src/fonts/**/*')
-        .pipe(gulp.dest('./dist/fonts'));
-})
-
 gulp.task('usemin', ['clean-css', 'clean-js', 'clean-html'], function () {
     return gulp.src('./src/**/*.html')
         .pipe(usemin({
             js: [uglify],
-            css: [autoprefixer, usemin]
+            css: [autoprefixer, usemin, cssmin]
         }))
         .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', ['clean'], function () {
-    gulp.start('copy-fonts', 'build-img', 'usemin');
+    gulp.start('build-img', 'usemin');
 });
 
 gulp.task('server', function () {

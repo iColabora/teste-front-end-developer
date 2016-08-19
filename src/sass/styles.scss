@@ -2,9 +2,14 @@
 @import "bootstrap-variables";
 @import "bootstrap";
 
+@import "layout/vars";
+
 @import "layout/base";
+
 @import "layout/icons";
 @import "layout/header";
 @import "layout/footer";
+
 @import "layout/chart";
 @import "layout/task";
+@import "layout/form";

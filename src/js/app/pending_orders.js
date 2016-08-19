@@ -5,6 +5,11 @@ mysqlQuery(query, function (result) {
     fillTable(orders);
 });
 
+/**
+ * Preenche os dados da tabela de pedidos pendentes
+ *
+ * @param orders Resultado de uma consulta
+ */
 function fillTable(orders) {
     var $table = $("#orders-rows");
 
