@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "> [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas) > > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br> > Essa prova consiste em testar seus conhecimentos com <b>HTML, CSS, JavaScript, SQL</b> entre outras coisas. <br> > O conjunto de interfaces disponibilizado leva em média <b>6 horas</b> para ser implementado;",
   "main": "mysql_lib.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dejaneves/teste-front-end-developer.git"
