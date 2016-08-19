@@ -1,0 +1,139 @@
+/* Home
+   ========================================================================== */
+.title-container
+	margin-bottom 10px
+	padding-bottom 10px
+	text-transform uppercase
+	border-bottom 1px solid #39bb9d
+	&__title
+		font-size em(20px)
+		color #102938
+		display inline-block
+	&__btn
+		float right
+		width 28px
+		height 28px
+		background-image url('../images/ysistem-more.svg')
+		background-position center center
+		background-size contain
+		font-size 0
+.validado
+	position absolute
+	right 11px
+	top 50%
+	margin-top 10px
+	width 10px
+	height 10px
+	font-size 0
+	background-size contain
+	background-repeat repeat
+	&--erro
+		background-image url('../images/ysistem-error.svg')
+	&--ok
+		background-image url('../images/ysistem-ok.svg')
+fieldset
+	position relative
+label
+	display block
+	margin 5px 0
+	font-size em(14px)
+	text-transform uppercase
+	font-weight 400
+input
+	border-radius 10px
+	border 1px solid #ccc
+	padding 10px 35px 10px 10px
+	+placeholder()
+		color #39bb9d
+		font-style italic
+.separador
+	@extend .large-8
+	@extend .float-center
+	@extend .columns
+	margin-bottom 20px
+.grupo
+	@extend .large-12
+	@extend .columns
+	&-1
+		@extend .large-1
+		@extend .small-12
+		@extend .columns
+	&-2
+		@extend .large-2
+		@extend .small-12
+		@extend .columns
+	&-3
+		@extend .large-3
+		@extend .small-12
+		@extend .columns
+	&-4
+		@extend .large-4
+		@extend .small-12
+		@extend .columns
+	&-5
+		@extend .large-5
+		@extend .small-12
+		@extend .columns
+	&-6
+		@extend .large-6
+		@extend .small-12
+		@extend .columns
+	&-12
+		@extend .large-12
+		@extend .small-12
+		@extend .columns
+.total
+	@extend .large-3
+	@extend .float-right
+	padding-top 20px
+	padding-bottom 20px
+	&__title
+		color #102938
+		text-transform uppercase
+		font-size em(20px)
+	&__prize
+		font-weight bold
+		color #39bb9d
+		text-transform uppercase
+		font-size em(25px)
+.btn
+	width 100%
+	padding 15px 0
+	font-size em(14px)
+	font-weight 600
+	text-align center
+	text-transform uppercase
+	&--save
+		color #ffffff
+		background-color #34ab8f
+	&--add
+		color #ffffff
+		background-color #008abe
+.message
+	width 100%
+	margin-bottom 20px
+	text-align center
+	padding 8px 0
+	border-radius 10px
+	&--error
+		color #960000
+		background-color #e8bebe
+	&--wating
+		background-color yellow
+.buscar-pedido
+	@extend .grupo-2
+	position relative
+	&__input
+		width 100%
+		padding-right 50px
+	&__btn
+		@extend .header__opts__show
+		position absolute
+		right 30px		
+		margin-top 0
+		top 4px
+		padding 16px 0
+.form
+	@extend .large-12
+	&--hide
+		display none

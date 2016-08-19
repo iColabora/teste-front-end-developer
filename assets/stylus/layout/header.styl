@@ -1,0 +1,111 @@
+/* Header
+   ========================================================================== */
+body
+	font-family 'Open Sans', sans-serif
+	background-color #f9f9f9
+.header
+	width 100%
+	margin-bottom 40px
+	background-color #102938
+	&__logo
+		@extend .large-1
+		@extend .columns
+		text-align center
+		img
+			width 60px
+			margin-top 20px
+	&__menu
+		@extend .large-3
+		@extend .columns
+		padding-top 40px
+		&__link
+			display inline-block
+			list-style none
+			text-transform uppercase
+			margin-right 15px
+			&:last-child
+				margin-right 0
+			a
+				color #fff
+				font-weight 700
+			&--active
+				a
+					color #39bb9d
+	&__dashboards
+		width 100%
+		margin-top 20px
+		padding 15px 0
+		border-bottom 1px solid #e0e0e0
+		background-color #fff
+		&__link
+			float left
+			list-style none
+			text-transform uppercase
+			margin-right 25px
+			margin-top 15px
+			margin-bottom 15px
+			&:last-child
+				margin-right 0
+			a
+				color #000
+				font-weight 700
+			&--active
+				a
+					color #666666
+			&--tarefa
+				margin-top 10px
+				padding 5px 0 5px 50px
+				background-image url('../images/ysistem-task.svg')
+				background-repeat no-repeat
+				background-position left center
+				a
+					float left
+					width 100%
+					color #102938
+		&__content
+			@extend .large-12
+			@extend .columns
+	&__opts
+		@extend .large-2
+		@extend .large-offset-6
+		@extend .columns
+		position relative
+		&__show
+			float left
+			width 35px
+			height 35px
+			margin-top 40px
+			background-image url('../images/ysistem-search.svg')
+			font-size 0
+			background-repeat no-repeat
+			background-size contain
+		&__pedido
+			position absolute
+			left -89px
+			top 36px
+			width 150px
+			&__input
+				@extend .header__opts__show
+				position absolute
+				right 7px
+				top 5px
+				margin 0
+		&__acessiblity
+			float left
+			width 35px
+			height 35px
+			margin-left 20px
+			margin-top 40px
+			background-image url('../images/ysistem-acessiblity.svg')
+			font-size 0
+			background-repeat no-repeat
+			background-size contain
+		&__person
+			float left
+			width 66px
+			height 66px
+			margin-left 20px
+			margin-top 25px
+			img
+				border-radius 50%
+			

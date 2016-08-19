@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=yes">
+    <title>ySistem</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="theme-color" content="#102938">
+    <link rel="icon" sizes="192x192" href="images/favicon.png">
+	</head>
+<body>
+<main>
+<header class="header">
+	<div class="row expanded">
+		<div class="header__logo">
+			<img src="images/ysistem-logo.svg" alt="">
+		</div>
+		<div class="header__menu">
+			<ul>
+				<li class="header__menu__link"><a href="#">dashboads</a></li>
+				<li class="header__menu__link"><a href="#">soluções</a></li>
+				<li class="header__menu__link header__menu__link--active"><a href="#">administração</a></li>
+			</ul>
+		</div>
+		<div class="header__opts">
+				<button class="header__opts__show">search</button>
+				<button class="header__opts__acessiblity">acessibilty</button>
+				<a class="header__opts__person"><img src="images/person.jpg" alt=""></a>
+		</div>
+	</div><!-- row -->
+	<div class="header__dashboards">
+		<div class="row expanded">
+			<div class="header__dashboards__content">
+				<ul>
+					<li class="header__dashboards__link header__dashboards__link--tarefa"><a href="#">tarefa</a></li>
+					<li class="header__dashboards__link"><a href="#">Check if extra insurance is necessary</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header><!-- header -->
+<div  class="row expanded">
+<div class="separador">
+	<div class="large-12 float-center" id="message">
+	</div>
+	<div class="large-12 float-center">
+		<div class="row">
+			<div class="buscar-pedido">
+				<input type="text" name="idPedido" class="buscar-pedido__input" id="numPedido">
+				<button  class="buscar-pedido__btn" id="getPedido">search</button>
+			</div>
+			<div class="grupo-2">
+				<button type="button" class="btn btn--add" id="addPedido">adicionar pedido</button>
+			</div>
+		</div>
+	</div>
+</div>
+	<form action="" class="form form--hide">
+		<div class="separador">
+			<div class="title-container">
+				<h3 class="title-container__title">dados do pedido</h3>
+			</div>
+			<div class="grupo">
+				<div class="row">
+					<div class="grupo-2">
+						<fieldset>
+							<label for="">numero do pedido</label>
+							<input type="text" name="pedidoID" disabled="" readonly="">
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="separador">
+				<div class="title-container">
+					<h3 class="title-container__title">materiais</h3>
+					<button class="title-container__btn" type="button" id="materiaisAdd">+</button>
+				</div>
+				<div class="grupo">
+					<div class="row" id="materiais">
+						
+					</div>
+				</div>
+			</div><!-- materiais -->
+		<div class="separador">
+			<div class="title-container">
+				<h3 class="title-container__title">insumos</h3>
+				<button class="title-container__btn" type="button" id="insumosAdd">+</button>
+			</div>			
+			<div class="grupo">
+				<div class="row" id="insumos"></div>
+			</div>
+		</div>
+		<div class="separador">
+				<div class="title-container">
+					<h3 class="title-container__title">solicitante</h3>
+				</div>
+				<div class="grupo">
+					<div class="row">
+						<div class="grupo-6">
+							<fieldset>
+								<label for="">nome completo</label>
+								<input type="text" name="solicitanteNome">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-3">
+							<fieldset>
+								<label for="">telefone</label>
+								<input type="text" name="solicitanteTelefone">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-3">
+							<fieldset>
+								<label for="">cpf</label>
+								<input type="text" name="solicitanteCPF">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">cep</label>
+								<input type="text" name="solicitanteCEP">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-4">
+							<fieldset>
+								<label for="">endereço</label>
+								<input type="text" name="solicitanteEndereco">
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">complemento</label>
+								<input type="text" name="solicitanteComplemento">
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">cidade</label>
+								<input type="text" name="solicitanteCidade" disabled="">
+
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">uf</label>
+								<input type="text" name="solicitanteEstado" disabled="">
+							</fieldset>
+						</div>
+					</div>
+				</div>
+		</div><!-- Separador -->
+		<div class="separador">
+			<div class="title-container">
+				<h3 class="title-container__title">dados da entrega</h3>
+			</div>
+				<div class="grupo">
+					<div class="row">
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">cep</label>
+								<input type="text" name="pedidoCEP">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-4">
+							<fieldset>
+								<label for="">endereco</label>
+								<input type="text" name="pedidoEndereco" disabled="">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">complemento</label>
+								<input type="text" name="pedidoComplemento">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">cidade</label>
+								<input type="text" name="pedidoCidade" disabled="">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+						<div class="grupo-2">
+							<fieldset>
+								<label for="">uf</label>
+								<input type="text" name="pedidoEstado" disabled="">
+								<span class="validado validado--ok">validado</span>
+							</fieldset>
+						</div>
+					<div class="grupo-12">
+						<div class="total">
+							<span class="total__title">total</span>
+							<span class="total__prize">R$ 0,00</span>
+						</div>
+					</div>
+					</div><!-- Row -->					
+				</div>
+		</div><!-- Separador -->
+		<div class="separador">
+			<div class="grupo">
+				<div class="row">
+					<div class="grupo-2">
+						<button type="button" class="btn btn--save">salvar pedido</button>
+					</div><!-- row -->
+				</div>
+			</div>
+		</div><!-- Separador	
+	</form>
+	</div>
+</main><!-- row -->
+<script src="js/main.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
+</body>
+</html>
