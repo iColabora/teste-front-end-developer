@@ -1,0 +1,55 @@
+.task-header {
+  color: #102938;
+  font-weight: bold;
+  height: $navbar-height - 5px;
+  border-bottom: 1px solid $default-border-color;
+  margin-bottom: 25px;
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .task-title {
+    padding-right: 35px;
+    padding-left: 10px;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-right: 1px solid $default-border-color;
+      border-bottom: 1px solid $default-border-color;
+      bottom: -8px;
+      right: 10px;
+      transform: rotate(45deg);
+      background-color: $default-bg-color;
+    }
+  }
+
+  .title {
+    display: inline-table;
+    height: 100%;
+
+    & > span {
+      vertical-align: middle;
+      display: table-cell;
+    }
+  }
+}
+
+#can-disable-by-checkbox.disabled {
+  opacity: 0.6;
+}
+
+#order-total-value {
+  float: right;
+}
+
+.order-total-value {
+  border-top: 1px solid $default-border-color;
+  padding: 10px 7.5px;
+  overflow: hidden;
+}

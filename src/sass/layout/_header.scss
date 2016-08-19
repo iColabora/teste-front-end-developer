@@ -1,0 +1,121 @@
+@media only screen and (min-width: $screen-md)
+{
+  #brand {
+    margin-right: 60px;
+  }
+}
+
+.navbar-nav {
+  & > li {
+    & > a {
+      text-transform: uppercase;
+      font-weight: bold;
+
+      @media only screen and (min-width: $screen-sm) {
+        padding: 30px 15px;
+        box-sizing: border-box;
+        max-height: $navbar-height;
+      }
+    }
+  }
+}
+
+.navbar {
+  font-size: 15px;
+}
+
+@media only screen and (min-width: $screen-sm) {
+  .navbar-right {
+    li > a {
+      padding: 25px;
+    }
+
+    .user-profile-link {
+      padding: 15px 10px 15px 20px;
+    }
+
+    .user-profile-menu-tab {
+      padding: 35px 0;
+    }
+  }
+}
+
+.nav > li {
+  position: static;
+}
+
+.dropdown-menu {
+  @media only screen and (min-width: $screen-sm) {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    right: 0;
+    margin: 0;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-top: 1px solid $default-border-color;
+      border-left: 1px solid $default-border-color;
+      top: -8px;
+      left: 115px;
+      transform: rotate(45deg);
+      background-color: $default-bg-color;
+    }
+
+    li {
+      float: left;
+      padding: 15px 10px;
+    }
+  }
+
+  @media only screen and (min-width: $screen-md) {
+    &::before {
+      left: 215px;
+    }
+  }
+}
+
+.start-process-button {
+  width: 225px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $navbar-height;
+  background-color: $main-color;
+  color: $default-bg-color;
+  font-weight: bold;
+  border: 0;
+  text-transform: uppercase;
+  padding: 0 10px;
+  margin: auto;
+  display: inline-table;
+
+  @media only screen and (min-width: 1400px) {
+    position: fixed;
+  }
+
+  &:hover, &:focus {
+    background-color: $btn-hover-light;
+    color: $default-bg-color;
+    text-decoration: none;
+  }
+
+  div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  span {
+    display: inline-table;
+    vertical-align: middle;
+
+    & ~ span {
+      margin-left: 8px;
+    }
+  }
+}

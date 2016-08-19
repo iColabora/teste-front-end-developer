@@ -1,0 +1,50 @@
+.form-control {
+  border-radius: 0;
+}
+
+fieldset {
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+.field-invalid {
+  color: #F00;
+  font-size: .9em;
+}
+
+.has-error {
+  border-color: $alert-color;
+
+  &:hover, &:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba($alert-color, 0.6);
+    border-color: $alert-color;
+  }
+}
+
+.button-set {
+  border-top: 1px solid $default-border-color;
+  padding-top: 10px;
+  text-align: center;
+
+  @media only screen and (min-width: $screen-sm) {
+    .btn {
+      float: right;
+    }
+  }
+
+  .btn {
+    padding: 6px 25px;
+  }
+}
+
+.btn {
+  text-transform: uppercase;
+  padding: 6px 15px;
+
+  &:hover, &:focus {
+    background-color: $btn-hover-light;
+  }
+}

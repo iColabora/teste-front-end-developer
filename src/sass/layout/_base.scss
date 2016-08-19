@@ -1,0 +1,38 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat';
+
+body {
+  margin-top: $navbar-height;
+  margin-bottom: $navbar-height;
+  font-family: 'Montserrat', 'Helvetica', sans-serif;
+}
+
+@media only screen and (min-width: $screen-md)
+{
+  .container-fluid {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+
+.home-container {
+  padding: 50px 0;
+}
+
+.modal-gif {
+  width: 128px;
+  height: 50px;
+  position: fixed;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+
+  p {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 15px;
+    width: 128px;
+  }
+}

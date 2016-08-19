@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>iColabora Test</title>
+
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/app.min.css"/>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" id="brand" href="#/home">
+                        <img src="img/logo.png" width="50" height="50" />
+                    </a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#/home" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                <span>Dashboards</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#/pedidos/dia" id="orders-per-day-link">Pedidos por Dia</a>
+                                </li>
+                                <li>
+                                    <a href="#/pedidos/solicitante" id="orders-per-requester-link">Pedidos por Solicitante</a>
+                                </li>
+                                <li>
+                                    <a href="#/pedidos/pendentes" id="pending-orders-link">Pedidos Pendentes</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#/solutions">Soluções</a></li>
+                        <li><a href="#/admin">Administração</a></li>
+                    </ul>
+
+                    <a href="#/task" id="start-process-button" class="start-process-button">
+                        <div>
+                            <span class="icon-play"></span>
+                            <span>Iniciar Processo</span>
+                        </div>
+                    </a>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <div class="icon icon-search"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon icon-accessibility"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="user-profile-link">
+                                <img src="img/user.png" width="46" height="46" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="user-profile-menu-tab">
+                                <span class="icon-drop"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main" id="content">
+        <div class="container-fluid">
+            <div class="home-container col-sm-12 text-center">
+                <img src="img/ico-orange.png" title="Logo iColabora" alt="Logo iColabora" />
+
+                <h2>Teste realizado no processo seletivo para a vaga de Front-End Developer</h2>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <p class="copy">&copy 2016 iColabora</p>
+            <div class="question-mark">
+                <span class="icon icon-question-mark"></span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="modal-loading">
+        <div class="modal-gif">
+            <p>Carregando...</p>
+            <img src="img/ajax-loader.gif" />
+        </div>
+    </div>
+
+    <script src="js/app.min.js"></script>
+</body>
+</html>
