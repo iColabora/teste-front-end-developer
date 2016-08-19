@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Teste de Front-end</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body data-senna data-senna-surface>
+		<template id="tplInsume">
+			<div class="col-sm-12">
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="">Descrição</label>
+						<input type="text" class="form-control" placeholder="">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+						<label for="">Preço</label>
+						<input type="text" class="form-control" placeholder="">
+					</div>
+				</div>
+				<div class="col-sm-1">
+					<div class="form-group">
+						<label for="">Quantidade</label>
+						<input type="email" class="form-control" placeholder="">
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<main class="content">
+			<data ui-view></data>
+		</main>
+
+		<!-- Scripts -->
+		<script src="js/script.min.js"></script>
+
+</body>
+</html>
