@@ -13,6 +13,7 @@ define([ "jquery","backbone"
             // Backbone.js Routes
             routes: {
                 // When there is no hash bang on the url, the default method is called
+                '':  'dashboard',
                 "dashboard" : "dashboard",
                 "task": "task",
             },

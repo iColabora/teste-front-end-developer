@@ -38,6 +38,10 @@ require.config({
         },
         'datetimePicker': {
             deps: ['jquery']
+        },
+        'jqueryStorage': {
+            deps: ['jquery'],
+            exports: 'Storage'
         }
     },
     paths: {
@@ -54,6 +58,7 @@ require.config({
         'bootstrap-select': 'lib/bootstrap-select.min',
         'jquery-cpfcnpj': 'lib/jQuery-CPF-CNPJ-Validator-plugin-master/jquery.cpfcnpj.min',
         'jquery-mask': 'lib/jquery.mask.min',
+        'jqueryStorage': 'lib/jquery-storage1.7.2/jquery.storageapi.min',
         'moment': 'lib/moment-develop/min/moment-with-locales.min',
         'datetimePicker': 'lib/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min',
         'pnotify': 'lib/pnotify/pnotify.custom.min',
@@ -63,8 +68,12 @@ require.config({
     waitSeconds: 0
 });
 
-require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons'],
+require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons',"jqueryStorage"],
         function ($, Backbone, Router) {
+
+            //Create namespace and instance for localstorage
+            ns = $.initNamespaceStorage('teste-icolabora');
+            localstorage = ns.localStorage;
 
             router = new Router();
             PNotify.prototype.options.styling = "bootstrap3";
