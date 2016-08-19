@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="app">
 <head>
 	<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +7,10 @@
 	<title>Document</title>
   <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="vendor/animate.css/animate.min.css">
+	<link rel="stylesheet" href="vendor/chartist/dist/chartist.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-senna data-senna-surface>
 		<template id="tplInsume">
 			<div class="col-sm-12">
 				<div class="col-sm-3">
@@ -33,467 +34,39 @@
 			</div>
 		</template>
 
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top primay-navbar">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class=""><a href="#">Dashboard</a></li>
-            <li><a href="#about">Soluções</a></li>
-            <li><a href="#contact">Administração</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-    <nav class="navbar navbar-default navbar-static-top secondary-navbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="col-sm-3">
-              <span class="text">Tarefa</span>
-            </div>
-            <div class="col-sm-9">
-              <div class="text-left">
-                <span class="text">Check if extra insurance is necessary</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6"></div>
-        </div>
-      </div>
-    </nav>
-    <div class="container">
-			<form>
-					<!--	DADOS DO PEDIDO -->
-					<h2>Dados do Pedido</h2>
-					<hr>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-								    <label for="">Número de Pedido</label>
-								    <input type="text" class="form-control" placeholder="">
-								  </div>
-								</div>
-								<div class="col-sm-5">
-									<div class="form-group">
-										<label for="">Data de Compra</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-										<label for="">Tipo de Expedição</label>
-										<div class="clearfix"></div>
-										<div style="margin-top:5px"></div>
-										<label class="radio-inline">
-										  <input type="radio" name="typeShipment" id="typeShipment" checked="checked" value="normal"> Normal
-										</label>
-										<label class="radio-inline">
-										  <input type="radio" name="typeShipment" id="typeShipment" value="especial"> Especial
-										</label>
-									</div>
-								</div>
-								<div class="col-sm-6"></div>
-							</div>
-						</div>
-					</div>
-
-					<!--Seguradora -->
-					<div class="row">
-						<div class="col-sm-12">
-							<label class="checkbox-inline">
-							  <input type="checkbox" id="typeInsurance" value="sim"> Segurança Extra ?
-							</label>
-						</div>
-						<div class="container-insurance hide">
-							<div class="col-sm-12">
-								<h3>Seguradora</h3><hr>
-							</div>
-							<div class="col-sm-12">
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label for="">Nome</label>
-											<input type="text" autocomplete="off" class="form-control" placeholder="">
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label for="">Endereço</label>
-											<input type="text" autocomplete="off" class="form-control" placeholder="">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12">
-								<button type="button" class="btn btn-primary pull-right" title="Adicionar Seguradora">Adicionar ao Pedido</button>
-							</div>
-						</div>
-
-					</div>
-
-					<!-- Transportadora -->
-					<div class="row hide carriers">
-						<div class="col-sm-12">
-							<h3>Transportadora <small class="text-warning">Fazer orçamento com a trasportadora antes de adicionar</small> </h3>
-							<hr>
-						</div>
-						<div class="col-sm-12">
-							<div class="row">
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label for="">Nome</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label for="">Tipo</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label for="">Telefone</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label for="">Tipo de Pessoa</label>
-											<select class="form-control">
-											  <option>Física</option>
-											  <option>Juridica</option>
-											</select>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<div class="col-sm-12">
-							<button type="button" class="btn btn-primary pull-right" title="Adicionar Transportadora">Adicionar ao Pedido</button>
-						</div>
-					</div>
-
-					<h3>Materiais</h3><br>
-					<div class="row">
-						<div class="col-sm-3">
-							<div class="form-group">
-						    <label for="">Nome</label>
-						    <input type="text" name="nameMaterial" id="nameMaterial" class="form-control" autocomplete="off" placeholder="Pesquisar...">
-								<div class="divAutoComplete list-group"></div>
-						  </div>
-						</div>
-						<div class="col-sm-3">
-							<div class="form-group">
-								<label for="">Marca</label>
-								<input type="text" id="marcaMaterial" class="form-control" placeholder="">
-							</div>
-						</div>
-						<div class="col-sm-1">
-							<div class="form-group">
-					    	<label for="">Quantidade</label>
-					    	<input type="text" id="quantidadeMaterial" class="form-control" placeholder="">
-					  	</div>
-						</div>
-						<div class="col-sm-2">
-							<div class="form-group">
-								<label for="">Preço</label>
-								<input type="text" id="precoMaterial" class="form-control" placeholder="">
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="col-sm-6 div-btn-actions-inline">
-								<button type="button"  class="btn btn-sm btn-default btn-toggle-insumo" name="button" title="Adicionar insumos"> Insumos &nbsp; <span class="glyphicon glyphicon-th-list"></span></button>
-							</div>
-							<div class="col-sm-6 div-btn-actions-inline">
-								<button type="button" class="btn btn-sm btn-default" name="button" title="Adicionar material ao pedido"> Material &nbsp; <span class="glyphicon glyphicon-plus"></span></button>
-							</div>
-						</div>
-					</div>
-					<!-- Insumos -->
-					<div class="row container-add-insumo">
-						<div class="col-sm-12">
-								<h6>Insumos</h6>
-						</div>
-						<div class="row">
-							<div class="col-sm-12">
-								<div class="col-sm-3">
-									<div class="form-group">
-								    <label for="">Descrição</label>
-								    <input type="text" class="form-control" placeholder="">
-								  </div>
-								</div>
-
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label for="">Preço</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-
-								<div class="col-sm-1">
-									<div class="form-group">
-							    	<label for="">Quantidade</label>
-							    	<input type="email" class="form-control" placeholder="">
-							  	</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-sm-12" id="elementInsume">
-								<div class="col-sm-3">
-									<div class="form-group">
-								    <label for="">Descrição</label>
-								    <input type="text" class="form-control" placeholder="">
-								  </div>
-								</div>
-
-								<div class="col-sm-3">
-									<div class="form-group">
-										<label for="">Preço</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-
-								<div class="col-sm-1">
-									<div class="form-group">
-							    	<label for="">Quantidade</label>
-							    	<input type="email" class="form-control" placeholder="">
-							  	</div>
-								</div>
-
-								<div class="col-sm-1 parent-btn-actions">
-									<div class="div-btn-actions-inline">
-										<button type="button"  class="btn btn-sm btn-default btn-insert-insumo" name="button" title="Adicionar insumos"> Insumos &nbsp; <span class="glyphicon glyphicon-plus"></span></button>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-12">
-							<hr>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="panel panel-default">
-								<div class="panel-body">
-									Materiais adicionado ao pedido
-								</div>
-									<div class="table-responsive">
-								     <table class="table table-hover">
-									    <thead>
-										    <tr>
-											    <th class="col-sm-4">Nome</th>
-													<th class="col-sm-2">Marca</th>
-													<th class="col-sm-1">Quantidade</th>
-													<th class="col-sm-2 text-right">R$ Valor Unitário</th>
-													<th class="col-sm-2 text-right">R$ Valor Total</th>
-													<th class="col-sm-1">Ações</th>
-										    </tr>
-									    </thead>
-									    <tbody>
-										    <tr>
-											    <td>Celular Nexus 5</td>
-													<td>Samsung</td>
-													<td class="text-center">2</td>
-													<td class="text-right">500,00</td>
-													<td class="text-right">1000,00</td>
-													<td>
-														<button type="button" class="btn btn-sm btn-default" title="Exluir Registro"> <span class="glyphicon glyphicon-trash"></span> </button>
-													</td>
-										    </tr>
-												<tr>
-													<td>Celular Nexus 6</td>
-													<td>Samsung</td>
-													<td class="text-center">2</td>
-													<td class="text-right">500,00</td>
-													<td class="text-right">1000,00</td>
-													<td>
-														<button type="button" class="btn btn-sm btn-default" title="Exluir Registro"> <span class="glyphicon glyphicon-trash"></span> </button>
-													</td>
-												</tr>
-									    </tbody>
-								     </table>
-									</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- DADOS DO SOLICITANTE-->
-					<h3>Solicitante</h3>
-					<br>
-
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="form-group">
-						    <label for="">Nome Completo</label>
-						    <input type="email" class="form-control" placeholder="">
-						  </div>
-						</div>
-						<div class="col-sm-4">
-							<div class="form-group">
-								<label for="">Telefone</label>
-								<input type="text" class="form-control" placeholder="">
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="form-group">
-								<label for="">CPF</label>
-								<input type="text" class="form-control" placeholder="">
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-sm-12">
-							<h5>Endereço</h5>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12 col-sm-12">
-							<div class="row">
-								<div class="col-xs-12 col-sm-3">
-									<div class="form-group">
-								    <label for="">CEP</label>
-								    <input type="text" id="cep" autocomplete="off" class="form-control" maxlength="15" placeholder="">
-								  </div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12 col-sm-6">
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-								    <label for="">Rua</label>
-								    <input type="text" id="client_rua" class="form-control" placeholder="" >
-								  </div>
-								</div>
-								<div class="col-xs-12 col-sm-6">
-									<div class="form-group">
-								    <label for="">Complemento</label>
-								    <input type="text" id="client_complemento" class="form-control" placeholder="">
-								  </div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<div class="row">
-								<div class="col-xs-12 col-sm-4">
-									<div class="form-group">
-								    <label for="">Cidade</label>
-								    <input type="text" id="client_cidade" class="form-control" placeholder="">
-								  </div>
-								</div>
-								<div class="col-xs-12 col-sm-4">
-									<div class="form-group">
-								    <label for="">Estado</label>
-								    <input type="text" id="client_estado" class="form-control" placeholder="">
-								  </div>
-								</div>
-								<div class="col-xs-12 col-sm-4">
-									<div class="form-group">
-								    <label for="">Bairro</label>
-								    <input type="text" id="client_bairro" class="form-control" placeholder="">
-								  </div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- DADOS DA ENTREGA -->
-					<div class="row">
-						<div class="col-sm-6">
-							<h5 class="text-warning">Endereço de entrega</h5>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-xs-12 col-sm-3">
-							<div class="form-group">
-								<label for="">CEP</label>
-								<input type="text" id="delivery_cep" class="form-control" placeholder="">
-							</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="">Rua</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="">Complemento</label>
-										<input type="text" class="form-control" placeholder="">
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label for="">Bairro</label>
-										<input type="text" class="form-control" id="delivery_bairro" placeholder="">
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label for="">Cidade</label>
-										<input type="text" class="form-control" id="delivery_cidade" placeholder="">
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="form-group">
-										<label for="">Estado</label>
-										<input type="text" class="form-control" id="delivery_estado" placeholder="">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-
-
-			  <button type="submit" class="btn btn-default">Submit</button>
-
-			</form>
-    </div>
+		<data ui-view></data>
 
 		<!-- Scripts -->
 		<script src="vendor/jquery/dist/jquery.min.js"></script>
+		<script src="vendor/chartist/dist/chartist.min.js"></script>
+		<script src="vendor/angular/angular.min.js"></script>
+		<script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+
 		<script src="js/script.js"></script>
+		<script>
+			var app = angular.module('app',['ui.router']);
+
+			app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider){
+
+				$stateProvider
+				.state('page', {
+            url:'/page',
+            templateUrl:'common.html'
+        })
+        .state('page.pedido', {
+            url:'/pedido',
+            templateUrl:'views/pedido.html'
+        })
+				.state('page.dashboard', {
+            url:'/dashboard',
+            templateUrl:'views/dashboard.html'
+        });
+
+				$urlRouterProvider.otherwise('page/pedido');
+
+			}]);
+
+		</script>
+
 </body>
 </html>
