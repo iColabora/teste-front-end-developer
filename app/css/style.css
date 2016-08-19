@@ -10,6 +10,27 @@ body{
   font-weight: bold;
   padding: 20px;
 }
+.navbar-right .item-search {
+  height: 20px;
+  width: 21px;
+  top: 0px;
+  right: 10px;
+  color:green;
+}
+.navbar-right .item-accessbility {
+  height: 21px;
+  width: 20px;
+  top: 0px;
+  right: 10px;
+}
+.navbar-right .avatar {
+  height: 30px;
+  width: 30px;
+  top: 0px;
+  right: 10px;
+  background-color: #999999;
+}
+
 .divAutoComplete{
     position: absolute;
     z-index: 999;
@@ -25,8 +46,16 @@ body{
 .form-control{
   border-radius: 0px;
 }
-/*.primay-navbar .navbar-nav>.active>a{}*/
+
 .primay-navbar .navbar-nav > li > a:hover{
+  background: #2d4d61;
+  color: #ffffff;
+}
+.primay-navbar .navbar-nav>.active>a,
+.primay-navbar .navbar-nav>.active>a:focus,
+.primay-navbar .navbar-nav>.active>a:hover,
+.primay-navbar .navbar-nav>.open>a,
+.primay-navbar .navbar-nav>.open>a:focus{
   background: #2d4d61;
   color: #ffffff;
 }
@@ -38,6 +67,7 @@ body{
   border-color: transparent;
   padding: 14px 0px 0px 0px;
   background: #ffffff;
+  z-index: 999;
 }
 .secondary-navbar .text{
   color: #102938;
