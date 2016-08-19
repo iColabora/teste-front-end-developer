@@ -1,7 +1,8 @@
 (function() {
-    angular.module('app').service('DataService', ['$rootScope',
-        'SQL_SERVER', 'GET_ALL_SOLICITANTES', 'GET_ALL_MATERIAIS', 'GET_ALL_INSUMOS', 'GET_MATERIAL',
-        function ($rootScope, SQL_SERVER, GET_ALL_SOLICITANTES, GET_ALL_MATERIAIS, GET_ALL_INSUMOS, GET_MATERIAL) {
+    angular.module('app').service('DataService', ['$rootScope', 'SQL_SERVER',
+        'GET_ALL_SOLICITANTES', 'GET_ALL_MATERIAIS', 'GET_ALL_INSUMOS', 'GET_MATERIAL', 'GET_PEDIDOS_FOR_SOLICITANTE',
+        function ($rootScope, SQL_SERVER,
+                  GET_ALL_SOLICITANTES, GET_ALL_MATERIAIS, GET_ALL_INSUMOS, GET_MATERIAL, GET_PEDIDOS_FOR_SOLICITANTE) {
             var svc = sql_service(SQL_SERVER)
 
             svc.onMessage(function (event, message) {
@@ -22,10 +23,11 @@
                 }
 
                 switch (e) {
-                    case GET_ALL_SOLICITANTES:
-                    case GET_ALL_INSUMOS:
+                    case GET_PEDIDOS_FOR_SOLICITANTE:
                         $rootScope.$broadcast(e, tx_response)
                         break
+                    case GET_ALL_SOLICITANTES:
+                    case GET_ALL_INSUMOS:
                     case GET_ALL_MATERIAIS:
                         (e === event)? $rootScope.$broadcast(e, tx_response):
                             $rootScope.$broadcast(e, {event: event, tx_response: tx_response})

@@ -12,3 +12,20 @@ angular.module('app', ['ngRoute', 'ngCpfCnpj', 'ui.mask'])
             }
         }
     })
+    .directive('price', ['$filter', function($filter) {
+        return {
+            restrict:'A',
+            require: 'ngModel',
+            link: function(scope, element, attrs, ngModelController) {
+                ngModelController.$parsers.push(function(data) {
+                    data=$filter('comma2decimal')(data);
+                    return data;
+                });
+
+                ngModelController.$formatters.push(function(data) {
+                    data=$filter('decimal2comma')(data);
+                    return data;
+                });
+            }
+        }
+    }])

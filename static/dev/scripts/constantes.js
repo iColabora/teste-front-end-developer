@@ -5,7 +5,11 @@ angular.module('app')
 
     .constant('ROUTE_LOGIN', 'login')
     .constant('ROUTE_REGISTER', 'inscrever')
+
     .constant('ROUTE_DASHBOARD', 'painéis')
+    .constant('ROUTE_HOME', '')
+    .constant('ROUTE_INICIAL', 'inicial')
+
     .constant('ROUTE_ADMIN', 'admin')
     .constant('ROUTE_SOLUTIONS', 'soluções')
 
@@ -22,8 +26,11 @@ angular.module('app')
     .constant('SOLICITANTES', 'solicitantes')
     .constant('INSUMOS', 'insumos')
     .constant('MATERIAIS', 'materiais')
+    .constant('DASHBOARD', 'painéis')
+
     .constant('GET_ALL_SOLICITANTES', 'SELECT * FROM solicitantes ORDER BY nome ASC')
     //.constant('GET_ALL_INSUMOS', 'SELECT * FROM insumos ORDER BY id_material ASC, precio DESC') // not sure what this doesn't work
     .constant('GET_ALL_INSUMOS', 'SELECT * FROM insumos ORDER BY id_material ASC')
     .constant('GET_ALL_MATERIAIS', 'SELECT * FROM materiais ORDER BY marca ASC, nome ASC')
     .constant('GET_MATERIAL', 'GET_MATERIAL')
+    .constant('GET_PEDIDOS_FOR_SOLICITANTE', 'GET_PEDIDOS_FOR_SOLICITANTE')

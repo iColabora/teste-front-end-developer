@@ -14,8 +14,8 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="submit"></label>
                             <div class="col-md-8">
-                                <button id="submit" name="submit" class="btn btn-warning" ng-click="revert('materiais', material.id, $index)">Reverter</button>
-                                <button id="delete" name="delete" class="btn btn-danger" ng-click="delete('materiais', $index)">Apagar</button>
+                                <button id="submit" name="submit" class="btn btn-warning" ng-click="revert($event, 'materiais', material.id, $index)">Reverter</button>
+                                <button id="delete" name="delete" class="btn btn-danger" ng-click="delete($event, 'materiais', $index)">Apagar</button>
                             </div>
                         </div>
 
