@@ -21,3 +21,29 @@ var loadContent = function (selector, html_file) {
 function createElement(element, value) {
     return "<" + element + ">" + value + "</" + element + ">";
 }
+
+function createHiddenInput(name, value) {
+    return "<input type='hidden' name='" + name + "' value='" + value + "' />";
+}
+
+var validateLength = function (str, min, max) {
+    var length = str.length;
+    if (length >= min) {
+        if (max && length > max) {
+            return false;
+        }
+        return true;
+    }
+    return false;
+};
+
+var validateInt = function (int) {
+    int = Number(int);
+    return (int > 0 && int === parseInt(int, 10));
+};
+
+
+var validateNumber = function (number) {
+    number = Number(number);
+    return (number > 0 && !isNaN(parseFloat(number)) && isFinite(number));
+};

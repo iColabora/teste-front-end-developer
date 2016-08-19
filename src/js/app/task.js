@@ -24,9 +24,14 @@ $(function () {
     e.preventDefault();
 
     $(".required").each(function (index, obj) {
-      $(this).addClass('has-error');
       var id = $(this).attr('id');
-      var $span = $("#" + id + "_invalido").html('Campo Obrigatório');
+      if (! $(this).attr('disabled') && $(this).val() == "") {
+        $(this).addClass('has-error');
+        $("#" + id + "_invalido").html('Campo Obrigatório');
+      } else {
+        $(this).removeClass('has-error');
+         $("#" + id + "_invalido").html('');
+      }
     })
   });
 
@@ -100,12 +105,14 @@ var initNewInsuranceFormEvent = function () {
     if (! errors) { //validacao
       var tds = "";
 
-      tds += createElement('td', $marca.val());
-      tds += createElement('td', $preco.val());
-      tds += createElement('td', $quantidade.val());
-      tds += createElement('td', $descricao.val());
+      var index = $("#can-add-insurance tr:last-child").data('index') + 1;
 
-      var tr = createElement('tr', tds);
+      tds += createElement('td', $marca.val() + createHiddenInput('insumo[' + index + '][marca]', $marca.val()));
+      tds += createElement('td', $descricao.val() + createHiddenInput('insumo[' + index + '][descricao]', $descricao.val()));
+      tds += createElement('td', $quantidade.val() + createHiddenInput('insumo[' + index + '][quantidade]', $quantidade.val()));
+      tds += createElement('td', $preco.val() + createHiddenInput('insumo[' + index + '][preco]', $preco.val()));
+
+      var tr = "<tr data-index='" + index + "'>" + tds + "</tr>";
 
       $("#can-add-insurance").append(tr);
       $("#new-insurance-modal .close").click();
@@ -118,26 +125,4 @@ var initNewInsuranceFormEvent = function () {
 
     return false;
   })
-};
-
-var validateLength = function (str, min, max) {
-  var length = str.length;
-  if (length >= min) {
-    if (max && length > max) {
-      return false;
-    }
-    return true;
-  }
-  return false;
-};
-
-var validateInt = function (int) {
-  int = Number(int);
-  return (int > 0 && int === parseInt(int, 10));
-};
-
-
-var validateNumber = function (number) {
-  number = Number(number);
-  return (number > 0 && !isNaN(parseFloat(number)) && isFinite(number));
 };
