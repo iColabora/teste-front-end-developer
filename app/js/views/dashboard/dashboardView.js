@@ -42,6 +42,8 @@ define([
                     $('.navbar-custom .navbar-nav li.dashboard').addClass('active');
                     $('.actionbar ul.process').addClass('hidden');
                     $('.actionbar ul.dashboard').removeClass('hidden');
+                    $('li.dashboard-selected').removeClass('active');
+                    $('.dashboard1').addClass('active');
                     this.notification_wait();
                     this.model.graficoPedidosDia();
 

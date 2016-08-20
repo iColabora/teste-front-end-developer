@@ -66,7 +66,7 @@ define(['backbone', 'models/baseModel'], function (Backbone, BaseModel) {
                 obj.forEach(function(a) {
                     $('table.pedidos-pendentes tbody').append('<tr>' +
                             '<td>'+ a.id+'</td>'+
-                            '<td>'+ that.converterData(a.data_de_compra)+'</td>'+
+                            '<td>'+ a.data_de_compra.slice(0,10).replace(/(\d{4})\-(\d{2})\-(\d{2})/, "$3/$2/$1")+'</td>'+
                             '<td>'+a.rua+' '+a.numero+', Bairro '+a.bairro+'. Cidade: '+a.cidade+' - '+a.estado+'</td>'+
                         '</tr>');
                 });
@@ -80,13 +80,6 @@ define(['backbone', 'models/baseModel'], function (Backbone, BaseModel) {
                 }
             });
         },
-        converterData: function(a) {
-            var e = new Date(a),
-                r = e.getDate(),
-                t = e.getMonth() + 1,
-                o = e.getFullYear();
-            return r + "/" + t + "/" + o
-        },
         graficoPedidosDia: function() {
             var mysql_query = "SELECT data_de_compra as data, count(*) as quantidade FROM pedidos GROUP BY data_de_compra",
                 that = this,
@@ -95,7 +88,7 @@ define(['backbone', 'models/baseModel'], function (Backbone, BaseModel) {
             mysqlQuery(mysql_query, function(response) {
                 var obj = JSON.parse(response);
                     obj.forEach(function(a) {
-                        var date = that.converterData(a.data);
+                        var date = a.data.slice(0,10).replace(/(\d{4})\-(\d{2})\-(\d{2})/, "$3/$2/$1");
                         labels.push(date);
                         dados.push(a.quantidade)
                     });
@@ -158,7 +151,7 @@ define(['backbone', 'models/baseModel'], function (Backbone, BaseModel) {
                 }
                 else {
                     $('.modal-body .info').empty().html(
-                        '<strong>Data do pedido:</strong> '+obj[0].data_de_compra+'<br>'+
+                        '<strong>Data do pedido:</strong> '+obj[0].data_de_compra.slice(0,10).replace(/(\d{4})\-(\d{2})\-(\d{2})/, "$3/$2/$1")+'<br>'+
                         '<strong>Destino: </strong>'+
                         obj[0].rua+' '+obj[0].numero+', Bairro '+obj[0].bairro+'. Cidade: '+obj[0].cidade+' - '+obj[0].estado
                     );
