@@ -158,7 +158,6 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location',
 
         /* called when all data is available from pedidios, insumos, and materiais */
         function build_shipping_list () {
-            console.log('called')
             var u = Auth.getUser()
 
             var total = 0
@@ -229,6 +228,12 @@ angular.module('app').controller('mysql_controller', [ '$scope', '$location',
             $('#nav nav').removeClass('shadow')
 
             return has
+        }
+
+        $scope.hasClient = function() {
+            var u = Auth.getUser()
+            console.log('client' in u)
+            return 'client' in u
         }
 
         $scope.hasSubpanel = function(bs) {

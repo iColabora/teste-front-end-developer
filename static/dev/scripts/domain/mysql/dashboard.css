@@ -11,9 +11,8 @@
     color: rgba(0,0,0, 0.6);
 }
 
-#dashboard #select_client {
+#dashboard #select_client, #dashboard #new_order {
     margin-top: 5rem;
-    margin-bottom: 5rem;
     padding: 2rem;
     border-radius: 1rem;
     background-color: white;
@@ -27,7 +26,7 @@ ul.list_clients > li {
 }
 
 .order_detail {
-    margin-top: 10rem;
+    margin-top: 3rem;
     margin-bottom: 10rem;
     padding: 2rem;
     border-radius: 1rem;

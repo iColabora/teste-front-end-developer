@@ -28,6 +28,15 @@ angular.module('app').service('DashboardService', ['$rootScope', 'Auth', 'DataSe
                 $scope.solicitante = client
                 DataService.send(GET_PEDIDOS_FOR_SOLICITANTE, Contract.GET_PEDIDOS_FOR_SOLICITANTE(client.id))
                 $scope.safeApply()
+            }),
+            new_order: controller_wrapper(function(client) {
+                if(client !== undefined) {
+
+                }
+            }),
+            get_client: controller_wrapper(function(){
+                var u = Auth.getUser()
+                return u.client
             })
         }
     }

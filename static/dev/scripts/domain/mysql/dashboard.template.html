@@ -4,10 +4,21 @@
             <li id="order_{{order.id}}" class="subnav order nav-item" ng-repeat="order in shippingForUser" ng-click="activate(order.id)">
                 {{order.solicitante.nome}}-{{order.data_de_compra}}
             </li>
-            <li id="close_client" class="subnav nav navbar-nav navbar-right container-fluid" ng-click="activate('painéis')">
-                <span class="close_client glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </ul>
+    </div>
+    <div ng-if="!hasShipping()" id="select_client" class="row col-md-6 col-md-offset-3" ng-init="nav('painéis')">
+        <ul class="list_clients">
+            <li id="solicitante_{{solicitante.id}}" class="solicitantes" ng-repeat="solicitante in solicitantes">
+                <button id="select_solicitante_{{solicitante.id}}" class="btn btn-default toggle" ng-click="select(solicitante.id)">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </button> {{solicitante.nome}} - {{solicitante.cpf}}
             </li>
         </ul>
+    </div>
+    <div id="new_order" class="col-md-6 col-md-offset-3 row">
+        <button class="btn btn-success" ng-if="hasClient()" ng-click="new_order(get_client())">Novo Encomenda</button>
+        <button class="btn btn-success" ng-if="!hasClient()" ng-click="new_order()">Novo Encomenda</button>
+        <button class="btn btn-default" ng-click="activate('painéis')">Voltar</button>
     </div>
     <div ng-if="hasShipping()" id="shippingInspection">
         <div id="order_detail_{{order.id}}" class="order_detail col-md-offset-3 col-md-6" ng-repeat="order in shippingForUser">
@@ -60,14 +71,5 @@
                 <h4 class="total">Total</h4><span class="total">{{order.total}}</span>
             </section>
         </div>
-    </div>
-    <div ng-if="!hasShipping()" id="select_client" class="col-md-6 col-md-offset-3" ng-init="nav('painéis')">
-        <ul class="list_clients">
-            <li id="solicitante_{{solicitante.id}}" class="solicitantes" ng-repeat="solicitante in solicitantes">
-                <button id="select_solicitante_{{solicitante.id}}" class="btn btn-default toggle" ng-click="select(solicitante.id)">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                </button> {{solicitante.nome}} - {{solicitante.cpf}}
-            </li>
-        </ul>
     </div>
 </div>
