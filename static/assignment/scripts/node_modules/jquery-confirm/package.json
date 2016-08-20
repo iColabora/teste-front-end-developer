@@ -1,0 +1,58 @@
+{
+  "name": "jquery-confirm",
+  "version": "1.5.1",
+  "title": "jquery-confirm.js | A multipurpose alert and confirm plugin",
+  "description": "A jQuery plugin that provides great set of features like, Auto-close, Ajax-loading, background-dismiss, themes and more.",
+  "homepage": "http://craftpip.github.io/jquery-confirm/",
+  "author": {
+    "name": "Boniface Periera",
+    "url": "http://github.com/craftpip/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/craftpip/jquery-confirm/blob/master/LICENSE"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/craftpip/jquery-confirm.git"
+  },
+  "main": "dist/jquery-confirm.min.js",
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/craftpip/jquery-confirm/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "jquery",
+    "confirm",
+    "alert",
+    "dialog"
+  ],
+  "license": "MIT",
+  "gitHead": "305b9f9b54d810aaf7f7026d6daf1d4bc137883a",
+  "_id": "jquery-confirm@1.5.1",
+  "_shasum": "6c7e2c2e941923106c5b46701358a7a59b47a689",
+  "_from": "jquery-confirm@latest",
+  "_npmVersion": "1.4.28",
+  "_npmUser": {
+    "name": "bonifacepereira",
+    "email": "bonifacepereira@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "bonifacepereira",
+      "email": "bonifacepereira@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "6c7e2c2e941923106c5b46701358a7a59b47a689",
+    "tarball": "https://registry.npmjs.org/jquery-confirm/-/jquery-confirm-1.5.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/jquery-confirm/-/jquery-confirm-1.5.1.tgz"
+}
