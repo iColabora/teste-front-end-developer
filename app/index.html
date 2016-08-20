@@ -60,9 +60,9 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav nav-custom">
                         <li class="dashboard"><a href="#dashboard">DASHBOARD</a></li>
-                        <li class="dashboard1"><a href="#dashboard/1">Quantidade de pedidos por dia</a></li>
-                        <li class="dashboard2"><a href="#dashboard/2">Pedidos por solicitante</a></li>
-                        <li class="dashboard3"><a href="#dashboard/3">Pedidos pendentes</a></li>
+                        <li class="dashboard1 dashboard-selected"><a data-select="1" class="dashboard-selected" style="cursor: pointer">Quantidade de pedidos por dia</a></li>
+                        <li class="dashboard2 dashboard-selected"><a style="cursor: pointer" class="dashboard-selected" data-select="2">Pedidos por solicitante</a></li>
+                        <li class="dashboard3 dashboard-selected"><a style="cursor: pointer" data-select="3" class="dashboard-selected">Pedidos pendentes</a></li>
                         <li><a href="javascript:void(0);">SOLUÇÕES</a></li>
                         <li><a href="javascript:void(0);">ADMINISTRAÇÃO</a></li>
                         <li class="process">
@@ -95,7 +95,7 @@
                                 <img src="./img/user-profile-img.jpg" title="photo" alt="photo">
                             </div>
                             <div class="options">
-                                <a href="javascript:void(0);">EDITAR PERFIL</a> <span>|</span> <a href="javascript:void(0);">SAIR</a>
+                                <a href="C">EDITAR PERFIL</a> <span>|</span> <a href="javascript:void(0);">SAIR</a>
                             </div>
                         </li>
                     </ul>
@@ -106,9 +106,9 @@
 
         <div class="navbar navbar-fixed-top actionbar">
             <ul class="dashboard hidden">
-                <li><a href="#dashboard/1">Quantidade de pedidos por dia</a></li>
-                <li><a href="#dashboard/2">Pedidos por solicitante</a></li>
-                <li><a href="#dashboard/3">Pedidos pendentes</a></li>
+                <li class="dashboard1 dashboard-selected active"><a data-select="1" class="dashboard-selected" style="cursor: pointer">Quantidade de pedidos por dia</a></li>
+                <li class="dashboard2 dashboard-selected"><a style="cursor: pointer" class="dashboard-selected" data-select="2">Pedidos por solicitante</a></li>
+                <li class="dashboard3 dashboard-selected"><a style="cursor: pointer" data-select="3" class="dashboard-selected">Pedidos pendentes</a></li>
             </ul>
             <ul class="process hidden">
                 <li>
@@ -139,7 +139,7 @@
                     <p class="text-muted">© 2016 iColabora</p>
                 </div>
                 <div class="pull-right">
-                    <a href="#help" class="help">
+                    <a href="javascript:void(0);" class="help">
                         <i class="fa fa-question-circle" aria-hidden="true"></i>
                     </a>
                 </div>

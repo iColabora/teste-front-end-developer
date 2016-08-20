@@ -55,6 +55,7 @@ require.config({
         'jquery.validate': 'lib/jquery-validation1.12.0/dist/jquery.validate.min',
         'modernizr': 'lib/modernizr2.6.2/modernizr-2.6.2.min',
         'templatesFolder': '../templates',
+        'charts': 'lib/chart',
         'bootstrap-select': 'lib/bootstrap-select.min',
         'jquery-cpfcnpj': 'lib/jQuery-CPF-CNPJ-Validator-plugin-master/jquery.cpfcnpj.min',
         'jquery-mask': 'lib/jquery.mask.min',
@@ -68,7 +69,7 @@ require.config({
     waitSeconds: 0
 });
 
-require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons',"jqueryStorage"],
+require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons',"jqueryStorage",'charts'],
         function ($, Backbone, Router) {
 
             //Create namespace and instance for localstorage

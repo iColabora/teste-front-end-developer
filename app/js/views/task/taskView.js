@@ -87,10 +87,17 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                     type: 'error',
                     hide: true,
                     buttons: {closer: true, sticker: true},
-                    icon: 'fa fa-exclamation-circle'
+                    icon: 'fa fa-check'
                 });
             }
             else {
+                var contadorPedidos = localstorage.get('contadorPedidos');
+                if (contadorPedidos== undefined) {
+                    localstorage.set('contadorPedidos',5);
+                    contadorPedidos = localstorage.get('contadorPedidos');
+                }
+                localstorage.set('contadorPedidos',contadorPedidos+1);
+                this.dataTask.idPedido = localstorage.get('contadorPedidos');
                 this.model.addPedido(this.dataTask);
             }
 

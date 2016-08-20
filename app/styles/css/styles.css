@@ -181,7 +181,7 @@ li.menu-search a, li.menu-accessibility a {
 	.navbar-custom .navbar-nav > li.process > a:focus, .navbar-custom .navbar-nav > li.process > a:hover {
 		color: #102938 !important;
 	}
-	.navbar-custom .navbar-nav li.active a, .navbar-custom .navbar-nav li > a:focus, .navbar-custom .navbar-nav > li > a:hover {
+	.navbar-custom .navbar-nav li.active a, .navbar-custom .navbar-nav li > a:focus, .navbar-custom .navbar-nav > li > a:hover,.actionbar ul.dashboard li.active a {
 		background: transparent !important;
 		color: #39bb9d !important;
 	}
