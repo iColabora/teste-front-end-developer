@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="iColabora">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iColabora</title>
+    <link rel="stylesheet" href="dist/css/style.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <script src="js/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery-2.2.2.min.js"></script>
+    <script src="dist/js/viacep.min.js"></script>
+    <script src="js/services/app.js"></script>
+    <script src="js/contollers/formulario-controller.js"></script>
+</head>
+<body  ng-controller="formController">
+    <div class="header">
+        <a href="#" class="logo"><img src="images/logo.png" width="45" height="45" alt="logo"></a>
+        <div class="collapse navbar-collapse">
+            <ul class="menu nav navbar-nav">
+                <li><a href="#">Dashboads</a></li>
+                <li><a href="#">Soluções</a></li>
+                <li><a href="#">Administração</a></li>
+            </ul>
+            <div>
+                <div class="botao-central nav navbar-nav navbar-left"><a href="#"><i class="fa fa-play" aria-hidden="true"></i> INICIAR PROCESSO</a></div>
+            </div>
+            <ul class="menu-right nav navbar-nav navbar-right">
+                <li style="padding-top:9%;color:#4a5c68;"><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <li style="padding-top:9%;color:#4a5c68;"><a href="#"><i class="fa fa-wheelchair" aria-hidden="true"></i></a></li>
+                <li class="dropdown"><a class="dropdown-toggle" href="#"><img src="images/avatar.png" width="45" height="45" alt=""><span class="caret"></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="titulo">
+       <div class="container col-md-1">
+           <img src="images/task.png" alt="task"> Tarefa
+       </div>
+       <div class="container col-md-10">
+           <h4>Check if extra insurance is necessary</h4>
+       </div>
+    </div>
+    <!-- inicio da pagina -->
+    <br>
+    <div class="container-fluid">
+
+
+        <!-- coluna 1 -->
+        <div class="row col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Dados do Pedido</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group row">
+                    <label for="numeroDoPedido" class="col-md-4 col-form-label">Número do Pedido:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="number" id="numeroDoPedido">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="dataDaCompra" class="col-md-4 col-form-label">Data da Compra:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="date" id="dataDaCompra">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Dados do Solicitante</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group row">
+                    <label for="nome" class="col-md-4 col-form-label">Nome Completo:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="nome">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tel" class="col-md-4 col-form-label">Telefone:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="tel" id="tel">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cpf" class="col-md-4 col-form-label">CPF:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="number" id="cpf" placeholder="000.000.000-00">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cep" class="col-md-4 col-form-label">CEP:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="cep" placeholder="00000-000">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="rua" class="col-md-4 col-form-label">Endereço:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="rua">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="numero" class="col-md-4 col-form-label">Numero:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="numero">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="complemento" class="col-md-4 col-form-label">Complemento:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="complemento">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cidade" class="col-md-4 col-form-label">Cidade:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="cidade">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="uf" class="col-md-4 col-form-label">Estado:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" id="uf">
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+        <!-- coluna 2 -->
+
+        <div class="row col-sm-4">
+        <div class="materiais panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title text-center">Materiais</h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group row">
+                    <label for="material" class="col-md-4 col-form-label">Material:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="text" id="material" ng-model="material.nome">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="marca" class="col-md-4 col-form-label">Marca:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="text" id="marca" ng-model="material.marca">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="quantidadeDoMaterial" class="col-md-4 col-form-label">Quantidade:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="number" id="quantidadeDoMaterial" ng-model="material.quantidade">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="precoMaterial" class="col-md-4 col-form-label">Preço:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="number" id="precoMaterial" ng-model="material.preco">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-12 text-center">
+                        <button class="btn btn-success btn-block" ng-click="adicionaMaterial(material)" ng-disabled="!material.nome || !material.marca || !material.quantidade || !material.preco">Adicionar Material</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- coluna 3 -->
+
+        <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title text-center">Insumos</h4>
+            </div>
+            <div class="panel-body">
+               <div class="form-group row">
+                    <label for="marcaInsumo" class="col-md-4 col-form-label">Marca:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="text" id="marcaInsumo" ng-model="insumo.marca">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="descricaoInsumo" class="col-md-4 col-form-label">Descrição:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="text" id="descricaoInsumo" ng-model="insumo.descricao">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="quantidadeInsumo" class="col-md-4 col-form-label">Quantidade:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="number" id="quantidadeInsumo" ng-model="insumo.quantidade">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="precoInsumo" class="col-md-4 col-form-label">Preço:</label>
+                    <div  class="col-md-8">
+                        <input class="form-control" type="number" id="precoInsumo" ng-model="insumo.preco">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-12 text-center">
+                        <button class="btn btn-success btn-block" ng-click="adicionaInsumo(insumo)" ng-disabled="!insumo.marca || !insumo.descricao || !insumo.quantidade || !insumo.preco">Adicionar Insumo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- coluna 4 -->
+
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title text-center">Detalhes do Pedido</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="container col-sm-6"  ng-show="materiais.length > 0 || insumos.length > 0">
+
+                    <h4>Materiais</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Material</th>
+                            <th>Marca</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                        </tr>
+                        <tr ng-repeat="material in materiais">
+                            <td>{{material.nome}}</td>
+                            <td>{{material.marca}}</td>
+                            <td>{{material.quantidade}}</td>
+                            <td>{{material.preco}},00</td>
+                        </tr>
+                    </table>
+
+
+                    <h4>Insumos</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Marca</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                        </tr>
+                        <tr ng-repeat="insumo in insumos">
+                            <td>{{insumo.marca}}</td>
+                            <td>{{insumo.descricao}}</td>
+                            <td>{{insumo.quantidade}}</td>
+                            <td>{{insumo.preco}},00</td>
+                        </tr>
+                    </table>
+
+
+                    </div>
+                    <div class="alert alert-danger text-center" ng-show="materiais.length == 0 && insumos.length == 0">Adicione os materiais e insumos</div>
+                    <div class="col-sm-6" ng-show="materiais.length > 0 || insumos.length > 0">
+
+                        <div class="text-center">
+                            <h4 ng-show="materiais.length > 0">Valor total dos materiais: R$ {{totalMateriais}},00</h4>
+                            <h4 ng-show="insumos.length > 0">Valor total dos insumos: R$ {{totalInsumos}},00</h4>
+                            <h3>Total do Pedido: R$ {{totalInsumos + totalMateriais}},00</h3><br>
+                            <button class="btn btn-primary btn-lg">Salvar Pedido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+
+    <!-- rodapé -->
+    <div class="footer">
+        <h6 class="text-left col-md-6">© 2016 iColabora</h6>
+        <h6 class="text-right col-md-6" style="font-size: 20px"><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a></h6>
+    </div>
+</body>
+</html>

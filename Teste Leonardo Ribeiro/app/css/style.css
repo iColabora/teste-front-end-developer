@@ -1,0 +1,59 @@
+body{
+    background-color: #f9f9f9 !important;
+}
+.header{
+    height: %;
+    width: 100%;
+    background-color: #102938;
+}
+.botao-central{
+    background-color: #39bb9d;
+    color: #ffffff;
+    font: 700 13px / 16px Helvetica Neue;
+    font-family: HelveticaNeue;
+    position: absolute;
+    left: 45.8%;
+    padding-top: 3.3rem;
+    padding-left: 10px !important;
+    padding-right: 10px;
+    padding-bottom: 3.4rem;
+}
+.logo{
+    float: left;
+    margin-left: 2.1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.menu{
+    font: 700 12px Helvetica Neue;
+    text-transform: uppercase;
+    padding-left: 3% !important;
+    margin-top: 0.8% !important;
+}
+.header a{
+    color: #f9f9f9 !important;
+}
+.menu-right{
+    font-size: 20px;
+    color: gray;
+}
+.titulo{
+    padding-top: 1%;
+    background-color: #ffffff;
+    height: 75px;
+    border-bottom: 1px solid gray;
+}
+.footer{
+    background-color: #565351;
+    height: 40px;
+    color: #999999;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+.col-form-label{
+    padding-top: 10px;
+}
+.materiais{
+    margin-left: 5%;
+}
