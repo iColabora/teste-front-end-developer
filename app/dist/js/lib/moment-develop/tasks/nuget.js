@@ -1,0 +1,1 @@
+module.exports=function(e){e.config("nugetpack",{dist:{src:"Moment.js.nuspec",dest:"./"}}),e.config("nugetpush",{dist:{src:"Moment.js.*.nupkg"}}),e.config("clean.nuget",{src:"Moment.js.*.nupkg"}),e.registerTask("nuget-publish",["nugetpack","nugetpush","clean:nuget"])};

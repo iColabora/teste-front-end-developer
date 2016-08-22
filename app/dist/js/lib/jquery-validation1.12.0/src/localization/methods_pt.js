@@ -1,0 +1,1 @@
+jQuery.extend(jQuery.validator.methods,{date:function(e,t){return this.optional(t)||/^\d\d?\/\d\d?\/\d\d\d?\d?$/.test(e)}});

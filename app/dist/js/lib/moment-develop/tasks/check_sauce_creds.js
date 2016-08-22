@@ -1,0 +1,1 @@
+module.exports=function(e){e.registerTask("check-sauce-creds",function(){process.env.SAUCE_USERNAME===undefined?(e.log.writeln("No sauce credentials found"),e.task.clearQueue()):e.log.writeln("Sauce credentials found")})};

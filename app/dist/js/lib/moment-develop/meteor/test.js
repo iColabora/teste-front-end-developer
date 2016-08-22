@@ -1,0 +1,1 @@
+Tinytest.add("Moment.is",function(e){e.ok(moment.isMoment(moment()),{message:"simple moment object"})});

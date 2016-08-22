@@ -1,0 +1,1 @@
+var gulp=require("gulp"),minifycss=require("gulp-minify-css"),notify=require("gulp-notify");gulp.task("default",function(){gulp.src("./styles/css/styles.css").pipe(minifycss()).pipe(gulp.dest("./styles/css/min")).pipe(notify("CSS OK!"))});

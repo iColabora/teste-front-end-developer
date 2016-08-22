@@ -62,14 +62,13 @@ require.config({
         'jqueryStorage': 'lib/jquery-storage1.7.2/jquery.storageapi.min',
         'moment': 'lib/moment-develop/min/moment-with-locales.min',
         'datetimePicker': 'lib/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min',
-        'pnotify': 'lib/pnotify/pnotify.custom.min',
         'pnotify.buttons': 'lib/pnotify/pnotify.custom.min',
         'mysql_lib': 'lib/mysql_lib'
     },
     waitSeconds: 0
 });
 
-require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify', 'pnotify.buttons',"jqueryStorage",'charts'],
+require(["jquery", "backbone", "router", "bootstrap", 'bootstrap-select', 'moment', 'datetimePicker', 'pnotify.buttons',"jqueryStorage",'charts'],
         function ($, Backbone, Router) {
 
             //Create namespace and instance for localstorage

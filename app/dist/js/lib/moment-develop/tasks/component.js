@@ -1,0 +1,1 @@
+module.exports=function(e){e.registerTask("component",function(){var t=JSON.parse(e.file.read("component.json"));t.files=e.file.expand("locale/*.js"),t.files.unshift("moment.js"),e.file.write("component.json",JSON.stringify(t,!0,2)+"\n")})};
