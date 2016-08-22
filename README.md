@@ -108,7 +108,7 @@
       console.log(result);
     });
   ``` 
-  * **Para mais informações, baixe a pasta `exemplo-query` para um exemplo de como utilizar a biblioteca, ou acesse o link no [jsbin](http://jsbin.com/vefeyelofi/edit?html,output)**
+  * **Para mais informações, baixe a pasta `exemplo-query` para um exemplo de como utilizar a biblioteca, ou acesse o link no [jsbin](http://jsbin.com/bahewexuze/1/edit?html,output)**
 
 ## Submissão
 
