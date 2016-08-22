@@ -163,7 +163,6 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                     buttons: {closer: true, sticker: true}
                 };
                 $(e.currentTarget).val('');
-                $('body').removeClass('window-disable');
                 notice.update(options);
                 $("#end_"+select).val('');
                 $("#cidade_"+select).val('');
@@ -184,7 +183,6 @@ define(['views/baseView', 'doT', 'text!templatesFolder/task/task.html','text!tem
                         buttons: {closer: true, sticker: true},
                         icon: 'fa fa-exclamation-circle'
                     };
-                    $('body').removeClass('window-disable');
                     notice.update(options);
                     $(e.currentTarget).val('');
                     $("#end_"+select).val('');

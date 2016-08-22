@@ -115,7 +115,6 @@ define(['backbone', 'models/baseModel'], function (Backbone, BaseModel) {
                     }
                 });
                 PNotify.removeAll();
-                $('body').addClass('window-disable');
             });
         },
         buscaPedido: function(idPedido) {
@@ -158,7 +157,6 @@ define(['backbone', 'models/baseModel'], function (Backbone, BaseModel) {
                 }
                 $('.pedido').val('');
                 PNotify.removeAll();
-                $('body').addClass('window-disable');
             });
         },
         parse: function (response) {

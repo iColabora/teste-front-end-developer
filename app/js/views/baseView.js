@@ -13,7 +13,6 @@ define(['backbone', 'doT','text!templatesFolder/header/buscaPedido.html', 'model
                     sticker: false
                 }
             });
-            $('body').addClass('window-disable');
             return notice;
         },
         notification_done: function (notice) {
@@ -28,7 +27,6 @@ define(['backbone', 'doT','text!templatesFolder/header/buscaPedido.html', 'model
                 },
                 icon: 'fa fa-check'
             };
-            $('body').removeClass('window-disable');
             notice.update(options);
         },
         initialize: function (options) {
