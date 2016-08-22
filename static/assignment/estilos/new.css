@@ -1,0 +1,44 @@
+div.section { margin-top: 1rem;}
+
+section { clear:both }
+
+section.solicitante > ul:first-child {
+    margin-top: 1rem;
+}
+
+.field {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.control-label {
+    text-align: right;
+    margin-top: 1.2rem;
+}
+
+#add_material + div.row > button, #selected_materiais, #add_sol_row > button,
+#add_insumo + div.row > button, #selected_insumos {
+    margin-top: 1rem;
+}
+
+ul#selected_solicitante, ul#selected_entrega, ul#selected_materiais, ul#selected_insumos {
+    list-style: none;
+}
+
+.quantity {
+    margin-top: -1.4rem;
+}
+.quantity .inline-title {
+    margin-left: -1.2rem;
+}
+
+.row.background-grey {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+span.total {
+    display: inline-block;
+    padding-top: 1rem;
+    float: right;
+}

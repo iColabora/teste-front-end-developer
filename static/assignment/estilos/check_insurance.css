@@ -1,0 +1,44 @@
+ul.list_clients {
+    list-style: none;
+}
+ul.list_clients > li {
+    margin: 1rem 0;
+}
+
+.order_detail {
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.order_detail ul {
+    list-style: none;
+}
+
+span.solicitante {
+    font-weight: bold;
+}
+
+.order_detail > section:not(:last-child) {
+    border-bottom: solid 0.3rem #F9F9F9;
+}
+
+.order_detail h3, .order_detail h5, .materiais_label {
+    font-variant: all-small-caps;
+}
+.order_detail h4 {
+    font-variant: small-caps;
+}
+
+h4.total {
+    margin-top: 2rem;
+    float: left
+}
+span.total {
+    margin-top: 2rem;
+    float: right
+}
+
+.material_de_insumo {
+    padding: 0 2rem;
+}

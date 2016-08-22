@@ -1,0 +1,27 @@
+<div id="dashboard">
+    <div id="subNav"></div>
+    <section id="quantity">
+        <div class="interface col-md-6 col-md-offset-3">
+            <div id="quantity_graph" class="graph"></div>
+        </div>
+    </section>
+    <section id="ppp">
+        <div class="interface col-md-6 col-md-offset-3">
+            <div id="ppp_graph" class="graph"></div>
+        </div>
+    </section>
+    <section id="pending">
+        <div class="interface col-md-6 col-md-offset-3">
+            <div id="pending_table" class="">
+                <div class="row tile">
+                    <div class="sol col-md-6 inline-title">nome</div>
+                    <div class="sol col-md-6 inline-title">pendentes</div>
+                </div>
+               <div ng-repeat="sol in pending_table" class="row">
+                   <div class="sol col-md-6 nome">{{sol[0]}}</div>
+                   <div class="sol col-md-6 pendentes">{{sol[1]}}</div>
+               </div>
+            </div>
+        </div>
+    </section>
+</div>

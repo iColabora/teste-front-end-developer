@@ -1,0 +1,172 @@
+<div id="new">
+    <div class="interface col-md-6 col-md-offset-3">
+        <h3>Novo Remessa</h3>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="data">Data de Compra</label>
+            <div class="col-md-8">
+                <datepicker date-format="yyyy-MM-dd HH:mm:ss">
+                    <input id="data" name="data" class="field form-control input-md" placeholder="data" ng-model="data_de_compra" class="form-control input-md" required="" type="text">
+                </datepicker>
+            </div>
+        </div>
+
+        <div id="select_solicitante">
+            <legend>Solicitante</legend>
+
+            <button class="btn btn-default" ng-click="toggle_add('novo_solicitante', $event)">Novo</button> -<strong>O</strong>-
+
+            <select ng-model="selected_solicitante_index" ng-change="select('solicitante')">
+                <option class="select form-control" ng-repeat="solicitante in solicitantes" value="{{$index}}">{{solicitante.nome}} - {{solicitante.cpf}}</option>
+            </select>
+
+            <ng-form id="add_sol_form" name="add_sol_form" ng-show="show_novo_solicitante">
+                <div ng-include="'hipermídia/solicitantes_fields.template.html'"></div>
+
+                <!-- controles -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit_sol"></label>
+                    <div class="col-md-8">
+                        <button id="submit_sol" class="btn btn-default"  ng-disabled="add_sol_form.$invalid || add_sol_form.$pending" ng-click="add('solicitante')">Gerar</button>
+                        <button id="cancel_sol" class="btn btn-danger" ng-click="toggle_add('novo_solicitante', $event)">Cancelar</button>
+                    </div>
+                </div>
+            </ng-form>
+
+            <section class="solicitante" ng-show="selected_solicitante">
+                <ul id="selected_solicitante">
+                    <li><span class="solicitante">{{selected_solicitante.nome}}</span> - {{selected_solicitante.cpf}}</li>
+                    <li>{{selected_solicitante.telefone}}</li>
+                    <li><h5>Endereço</h5></li>
+                    <li>{{selected_solicitante.rua}} {{selected_solicitante.numero}}</li>
+                    <li>{{selected_solicitante.complemento}}</li>
+                    <li>{{selected_solicitante.bairro}}, {{selected_solicitante.cidade}}-{{selected_solicitante.estado}}</li>
+                    <li>{{selected_solicitante.cep}}</li>
+                    <li>{{selected_solicitante.pais}}</li>
+                </ul>
+            </section>
+
+        </div>
+
+        <div id="add_entrega" class="section">
+            <legend>Entrega</legend>
+
+            <button class="btn btn-default" ng-click="toggle_add('editar_entrega', $event)">Editar</button>
+            <ng-form id="add_entrega_form" name="add_entrega_form" ng-show="show_editar_entrega">
+                <div ng-include="'hipermídia/entrega_fields.template.html'"></div>
+            </ng-form>
+
+            <section class="entrega" ng-show="entregaAvailable()">
+                <ul id="selected_entrega">
+                    <li>{{novo_entrega.rua}} {{novo_entrega.numero}}</li>
+                    <li>{{novo_entrega.complemento}}</li>
+                    <li>{{novo_entrega.bairro}}, {{novo_entrega.cidade}}-{{novo_entrega.estado}}</li>
+                    <li>{{novo_entrega.cep}}</li>
+                    <li>{{novo_entrega.pais}}</li>
+                </ul>
+            </section>
+        </div>
+
+        <legend>Pedido</legend>
+        <div id="add_materiais" class="section">
+            <legend>Materiais</legend>
+
+            <ng-form id="add_material">
+                <div class="col-md-2 quantity">
+                    <span class="inline-title">Quantidade</span> <input id="select_material_quantity" name="quantity" class="form-control input-md" ng-model="material_quantity" required="" type="number">
+                </div>
+                <select ng-model="selected_material_index" required="" type="numeric">
+                    <option class="select form-control" ng-repeat="material in source_materiais" value="{{$index}}">{{material.nome}} - {{material.marca}}</option>
+                </select>
+
+                <button class="btn btn-primary" ng-click="select('material')" ng-disabled="shouldDisableButton('add_material')">Adicionar</button>
+            </ng-form>
+            <div class="row">
+                <button class="btn btn-default" ng-click="toggle_add('add_material', $event)">Novo</button>
+            </div>
+
+            <ng-form id="add_material_form" name="add_material_form" ng-show="show_add_material">
+                <div ng-include="'hipermídia/materiais_fields.template.html'"></div>
+
+                <!-- controles -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit_material"></label>
+                    <div class="col-md-8">
+                        <button id="submit_material" class="btn btn-default" ng-disabled="add_material_form.$invalid || add_material_form.$pending" ng-click="add('material')">Gerar</button>
+                        <button id="cancel_material" class="btn btn-danger" ng-click="toggle_add('add_material', $event)">Cancelar</button>
+                    </div>
+                </div>
+            </ng-form>
+
+            <section class="materiais">
+                <ul id="selected_materiais">
+                    <li ng-repeat="material in selected_materiais">
+                        <div class="row"><large>{{material.nome}} - {{material.marca}}</large></div>
+                        <div class="row"><span class="inline-title">Preço</span> {{material.preco}} <span class="inline-title">Quantidade</span> {{material.quantidade}}</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div id="add_insumos" class="section">
+            <legend>Insumos</legend>
+
+            <ng-form id="add_insumo">
+                <div class="col-md-2 quantity">
+                    <span class="inline-title">Quantidade</span> <input id="select_insumo_quantity" name="quantity" class="form-control input-md" ng-model="insumo_quantity" required="" type="number">
+                </div>
+                <select ng-model="selected_insumo_index" required="" type="numeric">
+                    <option class="select form-control" ng-repeat="insumo in source_insumos" value="{{$index}}">{{insumo.descricao}} PARA {{insumo.material.nome}}</option>
+                </select>
+
+                <button class="btn btn-primary" ng-click="select('insumo')" ng-disabled="shouldDisableButton('add_insumo')">Adicionar</button>
+            </ng-form>
+            <div class="row">
+                <button class="btn btn-default" ng-click="toggle_add('add_insumo', $event)">Novo</button>
+            </div>
+
+            <ng-form id="add_insumo_form" name="add_insumo_form" ng-show="show_add_insumo">
+                <div ng-include="'hipermídia/insumos_fields.template.html'"></div>
+
+                <div class="form_group">
+                    <label class="col-md-4 control-label" for="material">para Material</label>
+                    <div class="col-md-8">
+                        <select id="material" ng-model="selected_material_para_novo_insumo_index" required="">
+                            <option class="select form-control" ng-repeat="material in source_materiais" value="{{$index}}">{{material.nome}} - {{material.marca}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- controles -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="submit_insumo"></label>
+                    <div class="col-md-8">
+                        <button id="submit_insumo" class="btn btn-default" ng-disabled="add_insumo_form.$invalid || add_insumo_form.$pending" ng-click="add('insumo')">Gerar</button>
+                        <button id="cancel" class="btn btn-danger" ng-click="toggle_add('add_insumo', $event)">Cancelar</button>
+                    </div>
+                </div>
+            </ng-form>
+
+            <section class="insumos">
+                <ul id="selected_insumos">
+                    <li ng-repeat="insumo in selected_insumos">
+                        <div class="row"><large>{{insumo.descricao}} {{insumo.marca}}</large></div>
+                        <div class="row"><span class="inline-title">Preço</span> {{insumo.preco}} <span class="inline-title">Quantidade</span> {{insumo.quantidade}}</div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="row">
+            <section class="summary">
+                <div ng-show="!selected_solicitante" id="missing_solicitante" class="alert alert-warning"><strong>Atenção.</strong> Ausência de solicitante</div>
+                <div ng-show="!data_de_compra" id="missing_data_de_compra" class="alert alert-warning"><strong>Atenção.</strong> Ausência de data de compra</div>
+                <div ng-show="!entregaAvailable() && selected_solicitante" id="missing_entrega" class="alert alert-warning"><strong>Atenção.</strong> Ausência de entrega</div>
+                <div ng-show="!hasItens()" id="missing_itens_para_pedido" class="alert alert-warning"><strong>Atenção.</strong> Ausência de itens do pedido</div>
+
+                <div class="row background-grey"><h4 class="total col-md-6">Total</h4><div class="col-md-6"><span class="total">{{precoTotal()}}</span></div></div>
+                <button class="btn btn-success really_big" ng-disabled="!pedido" ng-click="beginTransaction()">Enviar</button>
+            </section>
+        </div>
+    </div>
+</div>

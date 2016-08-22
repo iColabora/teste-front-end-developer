@@ -1,0 +1,37 @@
+{
+  "name": "cpf_cnpj",
+  "version": "0.0.4",
+  "authors": [
+    "Nando Vieira <fnando.vieira@gmail.com>"
+  ],
+  "description": "Validate, generate and format CPF/CNPJ numbers",
+  "main": "build/cpf_cnpj.js",
+  "keywords": [
+    "cpf",
+    "cnpj",
+    "document"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/fnando/cpf_cnpj.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "spec",
+    "lib",
+    "Gruntfile.js",
+    "package.json",
+    "index.js"
+  ],
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.4",
+    "commit": "8e2bba469102ece73ea72fbf6b52ab907960ed85"
+  },
+  "_source": "https://github.com/fnando/cpf_cnpj.js.git",
+  "_target": "~0.0.3",
+  "_originalSource": "cpf_cnpj"
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Remessa</title>
+
+    <!-- normalize -->
+    <link rel="stylesheet" type="text/css" href="estilos/normalize.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jquery, jquery-confirm dialogs -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/2.5.1/jquery-confirm.min.js"></script>
+    <link rel="stylesheet" href="scripts/node_modules/jquery-confirm/css/jquery-confirm.css">
+
+    <!-- angular -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+    <script type="text/javascript" src="scripts/bower_components/angular-ui-mask/dist/mask.js"></script>
+
+    <!-- remessa app -->
+    <link rel="stylesheet" type="text/css" href="estilos/remessa.css">
+    <script charset="utf-8" src="scripts/mysql_lib.js"></script>
+
+    <!-- cpf -->
+    <script src="scripts/bower_components/cpf_cnpj/build/cpf.js"></script>
+    <script src="scripts/bower_components/cpf_cnpj/build/cnpj.js"></script>
+    <script src="scripts/bower_components/ng-cpf-cnpj/lib/ngCpfCnpj.js"></script>
+    <!-- angular datepicker -->
+    <link href="scripts/bower_components/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="scripts/bower_components/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+    <!-- moment -->
+    <script src="scripts/bower_components/moment/moment.js"></script>
+
+    <script charset="utf-8" src="scripts/app.js"></script>
+    <script charset="utf-8" src="scripts/constantes.js"></script>
+    <script charset="utf-8" src="scripts/routes.js"></script>
+
+    <script charset="utf-8" src="scripts/data_service.js"></script>
+    <script charset="utf-8" src="scripts/res_service.js"></script>
+    <script charset="utf-8" src="scripts/ViaCEP_service.js"></script>
+
+    <script charset="utf-8" src="scripts/pedidos_controller.js"></script>
+    <script charset="utf-8" src="scripts/pedidos_service.js"></script>
+
+    <script charset="utf-8" src="scripts/dashboard_controller.js"></script>
+
+    <script charset="utf-8" src="scripts/new_controller.js"></script>
+
+    <script charset="utf-8" src="scripts/init_controller.js"></script>
+    <script charset="utf-8" src="scripts/nav_controller.js"></script>
+    <script charset="utf-8" src="scripts/footer_controller.js"></script>
+
+
+</head>
+<body>
+<div ng-include ng-controller="navController" src="'hipermídia/nav.template.html'"></div>
+<ng-view></ng-view>
+<div ng-controller="initController"></div>
+<div ng-include ng-controller="footerController" src="'hipermídia/footer.template.html'"></div>
+</body>
+</html>

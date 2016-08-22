@@ -1,0 +1,68 @@
+<div id="select_pedido">
+    <div ng-show="!hasClient()" id="select_client" class="row col-md-6 col-md-offset-3 interface" ng-init="nav('painéis')">
+        <ul class="list_clients">
+            <li id="solicitante_{{solicitante.id}}" class="solicitantes" ng-repeat="solicitante in data.solicitantes">
+                <span class="glyphicon glyphicon-user"></span> <a class="pointer" ng-click="select(solicitante.id)">{{solicitante.nome}} - {{solicitante.cpf}}</a>
+            </li>
+        </ul>
+    </div>
+    <div ng-show="hasShipping()" id="shippingInspection">
+        <div id="order_detail_{{order.id}}" class="interface order_detail col-md-offset-3 col-md-6" ng-repeat="order in data.shipping">
+            <h3>{{order.data_de_compra}}</h3>
+
+            <section class="solicitante">
+                <h4>Solicitante</h4>
+                <ul id="orderer_{{order.id}}" class="orderer">
+                    <li><span class="solicitante">{{order.solicitante.nome}}</span> - {{order.solicitante.cpf}}</li>
+                    <li>{{order.solicitante.telefone}}</li>
+                    <li><h5>Endereço</h5></li>
+                    <li>{{order.solicitante.rua}} {{order.solicitante.numero}}</li>
+                    <li>{{order.solicitante.bairro}}, {{order.solicitante.cidade}}-{{order.solicitante.estado}}</li>
+                    <li>{{order.solicitante.cep}}</li>
+                    <li>{{order.solicitante.pais}}</li>
+                </ul>
+            </section>
+
+            <br />
+
+            <section class="destino">
+                <h4>Destino de entrega</h4>
+                <ul id="destination_{{order.id}}" class="destination">
+                    <li>{{order.rua}} {{order.numero}}</li>
+                    <li>{{order.bairro}}, {{order.cidade}}-{{order.estado}}</li>
+                    <li>{{order.cep}}</li>
+                    <li>{{order.pais}}</li>
+                </ul>
+            </section>
+
+            <br />
+
+            <section class="itens">
+                <h3>Itens</h3>
+                <ul id="insumo_{{insumo.id}}"  class="insumos" ng-repeat="insumo in order.insumos">
+                    <li>
+                        <span class="quantidade">{{insumo.quantidade}}</span>
+                        <span class="descricao">{{insumo.descricao}}</span>&#32;-&#32;
+                        <span class="preco">{{insumo.preco}}</span>
+                        <span class="materiais_label">Para</span> <span class="materiais">{{insumo.material.nome}}</span>
+                    </li>
+                </ul>
+                <ul id="material_{{material.id}}" class="materiais" ng-repeat="material in order.materiais">
+                    <li>
+                        <span class="quantidade">{{material.quantidade}}</span>&#32;
+                        <span class="título">{{material.marca}} {{material.nome}}</span>&#32;-&#32;
+                        <span class="preco">{{material.preco}}</span>
+                    </li>
+                </ul>
+                <div class="row"><h4 class="total col-md-6">Total</h4><div class="col-md-6"><span class="total">{{order.total()}}</span></div></div>
+                <div ng-show="!order.extra_insurance" class="alert alert-warning fade in">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Atenção.</strong> Pedido não tem seguro extra
+                </div>
+                <button id="button_extra_insurance" ng-show="!order.extra_insurance" class="btn btn-primary" ng-click="insure(order.id)">Adicionar um seguro extra</button>
+                <div id="insured"  ng-show="order.extra_insurance" ><i>Seu pacote foi atribuído seguro extra</i></div>
+            </section>
+        </div>
+    </div>
+
+</div>

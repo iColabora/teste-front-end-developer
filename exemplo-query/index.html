@@ -34,12 +34,16 @@
 	<script>
 		window.onload = function(){
 
-			var mysql_query = "SELECT * FROM solicitantes ORDER BY nome ASC";
+			var mysql_query = "SELECT * FROM materiais ORDER BY foo ASC";
 
 		  	mysqlQuery(mysql_query, function(result){
+				console.dir(result)
+
 		    	// mostra o resultado da query
 		    	var obj = JSON.parse(result);
-		    	var table_body =  document.getElementById("conteudo");
+				console.dir(obj)
+
+				var table_body =  document.getElementById("conteudo");
 
 			    obj.forEach(function(el){
 			    	var html_body = "<tr>"+
