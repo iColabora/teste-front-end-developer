@@ -5,10 +5,10 @@
             <li class="nav-item">
                 <!-- more precisely, this could be a hasSubnav() function. at the moment this is accurate -->
                 <div ng-if="showDiamante($index)" class="diamante"></div>
-                <a ng-href="/dashboard">Dashboard</a>
+                <a ng-href="#/dashboard">Dashboard</a>
             </li>
             <!-- more precisely, this could be a hasSubnav() function. at the moment these is accurate -->
-            <li class="nav-item soluções"><a href="#/insurance">Soluções</a></li>
+            <li class="nav-item soluções"><a href="#/new">Soluções</a></li>
             <li class="nav-item administração"><a href="#/">Administração</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -19,7 +19,7 @@
                 <a href="#/accessibility"><div id="accessibility" class="img"></div></a>
             </li>
             <li class="nav-item img user_portrait_container" ng-click="resetClient()">
-                <a href="#/painéis" class="no_margin"><span id="user_portrait" class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                <a href="#/inicial" class="no_margin"><span id="user_portrait" class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
             </li>
         </ul>
     </nav>

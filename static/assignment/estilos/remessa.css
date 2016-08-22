@@ -3,7 +3,7 @@ html {
     width: 100vw;
 }
 
-body {
+body, .background-grey {
     background-color: #F9F9F9;
 }
 
@@ -30,8 +30,19 @@ body {
     position: relative;
 }
 
+.inline-title-major {
+    font-variant: small-caps;
+}
+.inline-title {
+    font-variant: all-small-caps;
+}
+
 .pointer {
     cursor: pointer;
+}
+
+.really_big {
+    zoom: 150%;
 }
 
 .subnav {

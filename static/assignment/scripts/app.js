@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'ngCpfCnpj', 'ui.mask'])
+angular.module('app', ['ngRoute', 'ngCpfCnpj', 'ui.mask', '720kb.datepicker'])
     .directive('stringToNumber', function() {
         return {
             require: 'ngModel',

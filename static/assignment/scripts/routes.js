@@ -4,34 +4,62 @@
             function config($routeProvider) {
                 $routeProvider.
                     when('/', {
-                        templateUrl: 'hipermídia/select_pedido.template.html',
+                        templateUrl: 'hipermídia/check_insurance.template.html',
                         controller: 'pedidos_controller',
                         resolve: {
                             factory: function (Res) {
-                                controllersAndServices(Res, {styles: 'estilos/select_pedido.css'})
+                                controllersAndServices(Res, {styles: 'estilos/check_insurance.css'})
                             }
                         }
                     }).
-                    when('/insurance', {
-                        templateUrl: '/hipermídia/insurance_check.template.html?id=:id',
-                        controller: 'insurance_controller',
+                    when('/inicial', {
+                        templateUrl: 'hipermídia/check_insurance.template.html',
+                        controller: 'pedidos_controller',
                         resolve: {
                             factory: function (Res) {
-                                controllersAndServices(Res, {styles: 'estilos/insurance_check.css'})
+                                controllersAndServices(Res, {styles: 'estilos/check_insurance.css'})
+                            }
+                        }
+                    }).
+                    when('/check/:id_sol/:id_pedido', {
+                        templateUrl: 'hipermídia/check_insurance.template.html',
+                        controller: 'pedidos_controller',
+                        resolve: {
+                            factory: function (Res) {
+                                controllersAndServices(Res, {styles: 'estilos/check_insurance.css'})
+                            }
+                        }
+                    }).
+                    when('/list', {
+                        templateUrl: 'hipermídia/check_insurance.template.html',
+                        controller: 'pedidos_controller',
+                        resolve: {
+                            factory: function (Res) {
+                                controllersAndServices(Res, {styles: 'estilos/check_insurance.css'})
+                            }
+                        }
+                    }).
+                    when('/new', {
+                        templateUrl: 'hipermídia/new.template.html',
+                        controller: 'new_controller',
+                        resolve: {
+                            factory: function (Res) {
+                                controllersAndServices(Res, {styles: 'estilos/new.css'})
                             }
                         }
                     }).
                     when('/dashboard', {
-                        templateUrl: '/hypermídia/dashboard.template.html',
+                        templateUrl: 'hipermídia/dashboard.template.html',
                         controller: 'dashboard_controller',
                         resolve: {
                             factory: function (Res) {
-                                controllersAndServices(Res, {styles: 'estilos/dashboard.css'})
+                                controllersAndServices(Res, {styles: 'estilos/dashboard.css' ,
+                                    scripts: 'https://cdn.plot.ly/plotly-latest.min.js'})
                             }
                         }
                     }).
 
-                    otherwise('/')
+                otherwise('/')
             }
         ])
 

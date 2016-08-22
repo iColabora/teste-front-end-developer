@@ -1,0 +1,9 @@
+#pending .row.title {
+    background-color: #F9F9F9;
+}
+#pending .row:not(.title):nth-child(odd) {
+    background-color: lightgrey;
+}
+#pending .row:not(.title):nth-child(odd) {
+    background-color: whitesmoke;
+}

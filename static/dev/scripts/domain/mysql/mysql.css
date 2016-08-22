@@ -1,8 +1,0 @@
-.mysql > div:first-child {
-    margin-top: -1.9rem;
-}
-
-.mysql > div:first-child > .subnav {
-    width: 100vw;
-    background-color: white;
-}

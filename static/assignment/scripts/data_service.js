@@ -1,11 +1,16 @@
 (function() {
-    angular.module('app').service('DataService', ['$rootScope', 'SQL_SERVER',
+    angular.module('app').service('DataService', ['$rootScope', 'DBContract','SQL_SERVER',
         'GET_ALL_SOLICITANTES', 'GET_ALL_MATERIAIS', 'GET_ALL_INSUMOS', 'GET_MATERIAL',
         'GET_PEDIDOS_FOR_SOLICITANTE', 'GET_MATERIAIS_FOR_PEDIDO', 'GET_INSUMOS_FOR_PEDIDO',
-        function ($rootScope, SQL_SERVER,
+        'ISSUE_EXTRA_INSURANCE', 'GET_SOURCE_MATERIAIS', 'GET_SOURCE_INSUMOS',
+        'POST_SOLICITANTE', 'POST_MATERIAL', 'POST_INSUMO', 'POST_PEDIDO',
+        function ($rootScope, DBContract, SQL_SERVER,
                   GET_ALL_SOLICITANTES, GET_ALL_MATERIAIS, GET_ALL_INSUMOS, GET_MATERIAL, GET_PEDIDOS_FOR_SOLICITANTE,
-                  GET_MATERIAIS_FOR_PEDIDO, GET_INSUMOS_FOR_PEDIDO) {
+                  GET_MATERIAIS_FOR_PEDIDO, GET_INSUMOS_FOR_PEDIDO,
+                  ISSUE_EXTRA_INSURANCE, GET_SOURCE_MATERIAIS, GET_SOURCE_INSUMOS,
+                  POST_SOLICITANTE, POST_MATERIAL, POST_INSUMO, POST_PEDIDO) {
             var svc = sql_service(SQL_SERVER)
+            svc.isNoOp = DBContract.isNoOp // TODO - fix database to handle insurance, sources, and remove this
 
             svc.onMessage(function (event, message) {
                 var tx_response
@@ -17,7 +22,7 @@
                     return
                 }
 
-                //console.dir(tx_response)
+                //console.dir([event, tx_response])
 
                 var e = event
                 if (typeof event !== 'string') {
@@ -25,12 +30,19 @@
                 }
 
                 switch (e) {
-                    case GET_PEDIDOS_FOR_SOLICITANTE:
+                    case GET_SOURCE_MATERIAIS:
+                    case GET_SOURCE_INSUMOS:
+                    case ISSUE_EXTRA_INSURANCE:
+                    case POST_SOLICITANTE:
+                    case POST_MATERIAL:
+                    case POST_INSUMO:
+                    case POST_PEDIDO:
                         $rootScope.$broadcast(e, tx_response)
                         break
                     case GET_ALL_SOLICITANTES:
                     case GET_ALL_INSUMOS:
                     case GET_ALL_MATERIAIS:
+                    case GET_PEDIDOS_FOR_SOLICITANTE:
                         (e === event)? $rootScope.$broadcast(e, tx_response):
                             $rootScope.$broadcast(e, {event: event, tx_response: tx_response})
                         break
@@ -53,8 +65,17 @@
     var sql_service = function (uri) {
         return {
             uri: uri,
+            isNoOp: function() { return false }, // TODO - fix database to handle insurance, sources, and remove this
             message_handler: function () {},
             send: function (event, sql) {
+                // TODO - fix database to handle insurance, sources, and remove this
+                if(this.isNoOp(event)) {
+                    console.log('[DataService] - forging request for service ' + event);
+                    var my = this
+                    setTimeout(function () { my.message_handler(event, sql) }, Math.random() * 3000 )
+                    return
+                }
+
                 console.log('[DataService] sql_service object - sending sql: ' + sql + ' to ' + this.uri)
                 var self = this
                 mysqlQuery(sql, this.uri, function (){ self.receive(event, arguments[0]) })
