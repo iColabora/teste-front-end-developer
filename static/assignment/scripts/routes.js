@@ -54,7 +54,7 @@
                         resolve: {
                             factory: function (Res) {
                                 controllersAndServices(Res, {styles: 'estilos/dashboard.css' ,
-                                    scripts: 'https://cdn.plot.ly/plotly-latest.min.js'})
+                                    scripts: 'scripts/plotly.min.1.16.2.js'})
                             }
                         }
                     }).

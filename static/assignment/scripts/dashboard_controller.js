@@ -1,6 +1,7 @@
 angular.module('app').controller('dashboard_controller', ['$rootScope', '$scope', 'DataService', 'DBContract',
     'GET_ALL_SOLICITANTES', 'GET_PEDIDOS_FOR_SOLICITANTE',
-    function ($rootScope, $scope, DataService, DBContract, GET_ALL_SOLICITANTES, GET_PEDIDOS_FOR_SOLICITANTE) {
+    function ($rootScope, $scope, DataService, DBContract,
+              GET_ALL_SOLICITANTES, GET_PEDIDOS_FOR_SOLICITANTE) {
         console.log('dashboard_controller')
 
         /* ppp graph */
@@ -20,10 +21,9 @@ angular.module('app').controller('dashboard_controller', ['$rootScope', '$scope'
                 $scope.pending_table[x.id] = [x.nome,0]
             })
 
-            $scope.pending_table = $scope.pending_table.filter(function (r) { return r !== undefined})
-
-            Plotly.newPlot('ppp_graph',data, layout)
+            wait_on_plotly('ppp_graph',data.ppp_graph, layout.ppp_graph)
         })
+
         $scope.$on(GET_PEDIDOS_FOR_SOLICITANTE, function (type, tx_response) {
             tx_response.tx_response.forEach(function (x) {
                 if($rootScope.dummy.insurance_issued.includes(x.id)){
@@ -33,12 +33,16 @@ angular.module('app').controller('dashboard_controller', ['$rootScope', '$scope'
                     $scope.ppp_graph.pending[tx_response.event.id_sol]++
                 }
             })
-            Plotly.newPlot('ppp_graph',data.ppp_graph, layout.ppp_graph)
-
-
-            console.dir($scope.pending_table)
-
+            wait_on_plotly('ppp_graph',data.ppp_graph, layout.ppp_graph)
         })
+
+        function wait_on_plotly(ele,idata,ilayout) {
+            if(typeof Plotly !== undefined) {
+                Plotly.newPlot(ele,idata, ilayout)
+            } else {
+                $timeout(function () { wait_on_plotly(ele,idata, ilayout) }, 150)
+            }
+        }
 
         var data = {}
         data.ppp_graph = [
@@ -62,9 +66,9 @@ angular.module('app').controller('dashboard_controller', ['$rootScope', '$scope'
         layout.ppp_graph = { barmode: 'stack' }
 
 
-        angular.element(document).ready(function () {
-            Plotly.newPlot('ppp_graph', data.ppp_graph, layout.ppp_graph )
 
+        angular.element(document).ready(function () {
+            wait_on_plotly('ppp_graph', data.ppp_graph, layout.ppp_graph )
         })
     }
 ])
