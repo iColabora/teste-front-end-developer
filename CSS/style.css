@@ -1,0 +1,153 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+	font-family: Helvetica, sans-serif;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+.logo{
+    padding: 0px 20px 10px;
+    position: relative;
+    top: 12px;
+}
+
+#menu{
+	height: 60px;
+	text-align: center;
+	background-color: #102938;
+}
+
+.container-3{
+	/*width: 33%;*/
+    display: inline-block;
+}
+
+.menu-inline{
+	list-style: none;
+	display: inline-block;
+}
+
+.menu a.active{
+	color: #39bb9d;
+}
+
+.menu-inline li{
+	margin-right: 8px;
+	display: inline-block;
+}
+
+.menu-inline li:last-child{
+	margin-right: 0px;
+}
+
+.menu-topo a{
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.menu-item{
+    top: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.menu-perfil{
+	top: 16px;
+	margin-right: 30px;
+}
+
+[class^="icon-"], [class*=" icon-"]{
+	position: absolute;
+	background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.icon-arrow-down{
+	width: 8px;
+	height: 6px;
+	top: 15px;
+    left: 38px;
+	background-image: url(../img/arrow-down.png);
+	background-size: 8px 6px;
+}
+
+.icon-question{
+	width: 15px;
+	height: 15px;
+    right: 15px;
+	background-image: url(../img/question.png);
+	background-size: 15px 15px;	
+}
+
+button .icon-play{
+    left: 12px;
+    top: 23px;
+	width: 11px;
+	height: 12px;
+	background-image: url(../img/play.png);
+	background-size: 11px 12px;
+}
+
+.btn-green{
+	color: white;
+	background-color: #39bb9d;
+}
+
+.btn-start{
+	top: 0px;
+	height: 60px;
+	font-weight: bold;
+    padding-left: 30px!important;
+    border-radius: 0px!important;
+}
+
+.btn{
+    line-height: 20px;
+    display: inline-block;
+    padding: 4px 12px;
+    vertical-align: middle;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.dropdown-menu{
+	display: none;
+}
+
+.pull-right{
+	float: right;
+}
+.pull-left{
+	float: left;
+}
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+.margin-r{
+	margin-right: 15px;
+}
+.margin-l{
+	margin-left: 15px;
+}
+
+
+footer{
+    color: #999999;
+    height: 15px;
+    padding: 8px 0px;
+    position: absolute;
+    background: #565351;
+    width: 100%;
+    bottom: 0px;
+}
