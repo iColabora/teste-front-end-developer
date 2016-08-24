@@ -1,32 +1,10 @@
-//#--Classe para criar objeto com pedidos--#
-function getPedidosCompleto(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, getMateriaisQuery){
-
-	//#--Resultados dos querys--#
-	var solicitantes;
-	var pedidos;
-	var insumos;
-	var materiais;
-
-	mysqlQuery(getSolicitantesQuery, function(result){
-		solicitantes = JSON.parse(result);
-	});
-	mysqlQuery(getPedidosQuery, function(result){
-		pedidos = JSON.parse(result);
-	});
-	mysqlQuery(getInsumosQuery, function(result){
-		insumos = JSON.parse(result);
-		console.log(insumos.length);
-	});
-	mysqlQuery(getMateriaisQuery, function(result){
-		materiais = JSON.parse(result);
-	});
-
+function createObject(pedidos, solicitantes, materiais, insumos){
 
 	function addSolicitanteToPedido(nPedido, solicitante){
 		pedidos[nPedido]["solicitante"] = solicitante;
 	}
 
-	function addMaterialToPedido(nPedido, nMaterial, material){
+	function addMaterialToPedido(nPedido, material){
 		pedidos[nPedido]["materiais"] = [];
 		pedidos[nPedido].materiais.push(material);
 	}
@@ -35,12 +13,10 @@ function getPedidosCompleto(getPedidosQuery, getSolicitantesQuery, getInsumosQue
 		for(var i = 0; i<pedidos[nPedido].materiais.length; i++){
 			if(pedidos[nPedido].materiais[i].id===idMaterial){
 				pedidos[nPedido].materiais[i].insumos.push(insumo);
-				console.log("here");
 			}
 		}
 	}
 
-	//#--Pega Materiais e insumos referentes a cada pedido--#
 	for(var i = 0; i<pedidos.length; i++){
 
 		for(var j = 0; j<solicitantes.length; j++){//Verifica quem é o solicitante de cada pedido
@@ -53,7 +29,7 @@ function getPedidosCompleto(getPedidosQuery, getSolicitantesQuery, getInsumosQue
 
 			if(pedidos[i].id === materiais[j].id_pedido){//Verifica se material faz parte do pedido
 				materiais[j]["insumos"] = [];
-				addMaterialToPedido(i, j, materiais[j]);
+				addMaterialToPedido(i, materiais[j]);
 
 				//Material foi adicionado, então deve adicionar seus insumos
 				for(var k = 0; k<insumos.length; k++){
@@ -63,18 +39,31 @@ function getPedidosCompleto(getPedidosQuery, getSolicitantesQuery, getInsumosQue
 				}
 			}
 		}
-
 	}
-
+	
 	return pedidos;
 }
 
-
-var getSolicitantes = "SELECT * FROM solicitantes";
-var getPedidos = "SELECT * FROM pedidos ORDER BY id ASC";
-var getInsumos = "SELECT * FROM insumos";
-var getMateriais = "SELECT * FROM materiais";
-
-var mPedidos = getPedidosCompleto(getPedidos, getSolicitantes, getInsumos, getMateriais);
-
-console.log(mPedidos);
+function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, getMateriaisQuery, callback){//Realiza as Query de forma síncrona
+	var solicitantes;
+	var pedidos;
+	var insumos;
+	var materiais;
+	
+	mysqlQuery(getSolicitantesQuery, function(result1){
+		solicitantes = JSON.parse(result1);
+		mysqlQuery(getPedidosQuery, function(result2){
+			pedidos = JSON.parse(result2);
+			mysqlQuery(getInsumosQuery, function(result3){
+				insumos = JSON.parse(result3);
+				mysqlQuery(getMateriaisQuery, function(result4){
+					materiais = JSON.parse(result4);
+					if(typeof callback === "function"){
+						console.log()
+					}
+					callback(createObject(pedidos, solicitantes, materiais, insumos));
+				});
+			});
+		});
+	});
+}

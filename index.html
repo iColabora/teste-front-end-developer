@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/getpedidosclass.js"></script>
+	<script src="mysql_lib.js"></script>
+	<title></title>
+
+</head>
+<body>
+	
+	<header id="topBar">		
+		
+		<div id="menuItemsWrapper">
+			<img id="logo" src="assets/logo_turbina.png"/>
+			<ul id="menuItems" class="topBarList">
+				<li id="dashboardItem"><a href="#"><h4>DASHBOARD</h4></a></li>
+				<li id="solutionItem"><a href="#"><h4>SOLUÇÕES</h4></a></li>
+				<li id="admItem"><a href="#"><h4>ADMINISTRAÇÃO</h4></a></li>
+			</ul>
+		</div>
+			
+
+		<div id="iniciarProcessoDiv">
+			<div id="buttonWrapper">
+				<img src="assets/play.png"/>
+				<h4>INICIAR PROCESSO</h4>
+			</div>
+		</div>
+		<div id="optionsMenuWrapper">
+			<div id="optionWrapper">
+				<ul id="optionsMenu" class="topBarList">
+					<li id="searchIcon"><img src="assets/look_glass.png"/></li>
+					<li id="assistIcon"><img src="assets/assist.png"/></li>
+					<li id="profileImg"><img id="profile" src="assets/mike_dias.png"/></li>
+					<li id="dropIcon"><img src="assets/drop_down.png"/></li>
+				</ul>
+			</div>
+		</div>
+		
+	</header>
+
+	<section id="mainBody">
+		
+		<header id="bodyHeader">
+			<div id="typeDiv">
+				<div id="typeWrapper">
+					<img src="assets/task.png">
+					<p>Tarefa</p>
+				</div>
+			</div>
+			<div id="taskDiv">
+				<p>Check if extra insurance is needed</p>
+			</div>
+		</header>
+
+
+	</section>
+
+	<script>
+		window.onload = function(){
+
+			function makeRoundImage(imgOb){
+				$(imgOb).css({
+					'display': 'block',
+					'-moz-border-radius': ($(imgOb).height()/2)+'px',
+					
+					'-webkit-border-radius': ($(imgOb).height()/2)+'px',
+					
+					'border-radius': ($(imgOb).height()/2)+'px',
+				});
+			}
+
+			var getSolicitantes = "SELECT * FROM solicitantes";
+			var getPedidos = "SELECT * FROM pedidos ORDER BY id ASC";
+			var getInsumos = "SELECT * FROM insumos";
+			var getMateriais = "SELECT * FROM materiais";
+
+			var mPedidos;
+			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj){
+				mPedidos = obj;
+			});
+			
+			makeRoundImage($("#profileImg").find('img')[0]);
+		};
+	</script>
+</body>
+</html>

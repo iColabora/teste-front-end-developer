@@ -1,0 +1,210 @@
+@charset "utf-8";
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+body{
+	min-width: 1368px;
+}
+/*CSS for the TopBar Elements*/
+#topBar{
+	min-width: 1200px;
+    width: 100%;
+    height: 72px;
+    background-color: #102938;
+    overflow: hidden;
+    position: fixed;
+    z-index: 100;
+}
+
+#topBar h4{
+	color: #fff;
+}
+
+#topBar ul li{
+	margin-left: 8px;
+	margin-right: 8px;
+	display: inline-flex;
+}
+
+
+/*CSS for the MenuItems*/
+#menuItemsWrapper{
+	position: absolute;
+	height: 100%;
+	width: 45%;
+	left: 0;
+	
+}
+
+#menuItemsWrapper ul{
+	text-align: center;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+
+#logo{
+	position: absolute;
+	max-width: 58%;
+	max-height: 58%;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	left: 35px;
+}
+
+/*CSS for Iniciar Processos*/
+#iniciarProcessoDiv{
+	position: absolute;
+	left: 51%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	height: 100%;
+	width: 210px;
+	background-color: #39bb9d;
+}
+
+#iniciarProcessoDiv:hover, #optionsMenu li img:hover{
+	cursor:pointer;
+}
+
+#buttonWrapper{	
+	position: absolute;
+	height: 17px;
+	width: 90%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+#buttonWrapper img{
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+#buttonWrapper h4{
+	position: relative;
+	float: right;
+}
+
+/*CSS for OptionsMenu*/
+#optionsMenuWrapper{
+	position: absolute;
+	height: 100%;
+	width: 400px;
+	right: 0;	
+}
+
+#optionWrapper{
+	position: absolute;
+	width: 300px;
+	height: 100%;
+	right: 0px;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+
+#optionsMenu{
+	width: auto;
+	position: absolute;
+	top:0;right:15px;bottom:0;
+	display: inline-flex;
+	height: 100%;
+}
+
+#optionsMenu li{
+	height: 100%;
+	position: relative;
+	width: auto;
+	max-height: 100%;
+}
+
+#optionsMenu li img{
+	position: relative;
+	height: 32%;
+	width: auto;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#profileImg img{
+	display: none;
+	height: 65% !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+#dropIcon img{
+	height: 12% !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important
+}
+
+#dropIcon{
+	margin:0px !important;
+}
+
+/*CSS for The Main Body*/
+#mainBody{
+	position: absolute;
+	top: 72px; left: 0px; right: 0px; bottom: 0px;
+}
+
+/*CSS for The Body Header*/
+#bodyHeader{
+	position: absolute;
+	top: 0px; left: 0px; right: 0px;
+	height: 72px;
+	-webkit-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+    -moz-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+	box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+}
+
+#typeDiv{
+	position: relative;
+	height: 100%;
+	float: left;
+	width: 140px;
+	border:1px solid red;
+}
+
+#typeWrapper{
+	position: absolute;
+	height: 80%;
+	width: 70%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	line-height: 58px;
+}
+
+#typeWrapper img{
+	position: relative;
+	float: left;
+	height: 50%;
+	width: auto;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+
+#typeWrapper p{
+	position: relative;
+	float: right;
+	height: 100%;
+	width: auto;
+}
