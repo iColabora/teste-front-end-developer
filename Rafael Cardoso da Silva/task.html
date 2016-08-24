@@ -1,3 +1,121 @@
-<div id="content">
-	<p>TASK</p>
-</div>
+<h1>TASK</h1>
+
+<form>
+
+	<div class="row">
+	
+		<div class="form-container col-md-4">
+			<h2>Dados do Pedido</h2>
+			<div class="form-group">
+			  <label class="control-label" for="numero">Número do pedido:</label>
+			  <input type="text" class="form-control" id="numero" name="numero">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="data">Data do pedido:</label>
+			  <input type="date" class="form-control" id="data" name="data">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="preco-total">Preço total:</label>
+			  <input type="text" class="form-control" id="preco-total" name="preco-total" readonly>
+		  	</div>	
+		</div>
+
+		<div class="form-container col-md-4">
+			<h2>Materiais</h2>
+			<table class="table tb-materiais">
+			  <thead>
+			    <tr>
+			      <th>Material</th>
+			      <th>Marca</th>
+			      <th>Quantidade</th>
+			      <th>Preço</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  </tbody>
+			</table>		  	
+		</div>
+
+		<div class="form-container col-md-4">
+			<h2>Insumos</h2>
+			<table class="table tb-insumos">
+			  <thead>
+			    <tr>
+			      <th>Marca</th>
+			      <th>Descrição</th>
+			      <th>Quantidade</th>
+			      <th>Preço</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="form-container dados-solicitante col-md-4">
+			<h2>Dados do Solicitante</h2>
+
+			<div class="form-group">
+			  <label class="control-label" for="nome">Nome:</label>
+			  <input type="text" class="form-control" id="nome" name="nome">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="telefone">Telefone:</label>
+			  <input type="text" class="form-control" id="telefone" name="telefone">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="cpf">CPF:</label>
+			  <input type="tel" class="form-control" id="cpf" name="cpf">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="cep">CEP:</label>
+			  <input type="tel" class="form-control" id="cep" name="cep" maxlength="9">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="endereco">Endereço:</label>
+			  <input type="text" class="form-control endereco" id="endereco" name="endereco" readonly>
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="cidade">Cidade:</label>
+			  <input type="text" class="form-control cidade" id="cidade" name="cidade" readonly>
+		  	</div>		
+			<div class="form-group">
+			  <label class="control-label" for="estado">Estado:</label>
+			  <input type="text" class="form-control estado" id="estado" name="estado" readonly maxlength="2">
+		  	</div>		
+		</div>
+
+		<div class="form-container col-md-6">
+			<h2>Dados da Entrega</h2>
+			<div class="form-group">
+			  <label class="control-label" for="cep-entrega">CEP:</label>
+			  <input type="tel" class="form-control" id="cep-entrega" name="cep-entrega" maxlength="9">
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="endereco-entrega">Endereço:</label>
+			  <input type="text" class="form-control endereco" id="endereco-entrega" name="endereco-entrega" readonly>
+		  	</div>	
+			<div class="form-group">
+			  <label class="control-label" for="cidade-entrega">Cidade:</label>
+			  <input type="text" class="form-control cidade" id="cidade-entrega" name="cidade-entrega" readonly>
+		  	</div>		
+			<div class="form-group">
+			  <label class="control-label" for="estado-entrega">Estado:</label>
+			  <input type="text" class="form-control estado" id="estado-entrega" name="estado-entrega" readonly maxlength="2">
+		  	</div>	
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input same-address" type="checkbox" value="">
+			    Mesmo endereço do solicitante
+			  </label>
+			</div>
+		  	<button class="btn btn-primary pull-right" type="submit">Salvar</button>
+		</div>
+	</div>
+
+</form>
+
+<script src="js/src/task.js"></script>
