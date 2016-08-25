@@ -1,5 +1,18 @@
 $(function(){
 	
+
+// select * from pedidos 
+// inner join materiais on pedidos.id = materiais.id_pedido
+// inner join insumos on pedidos.id = insumos.id_pedido
+// right join solicitantes on pedidos.id_solicitante = solicitantes.id
+
+// GROUP BY pedidos.id
+
+// select * from pedidos 
+// right join 
+
+// right join solicitantes on pedidos.id_solicitante = solicitantes.id
+	
 	// show submenu 	
 	$("nav.submenu").hide();
 	$("nav#task").show();
@@ -23,6 +36,77 @@ $(function(){
 	$("#numero").change(function(){
 		loadOrder( $(this).val() );
 	});
+
+	// submit form
+	$(".bt-submit").click(function(e){
+		e.preventDefault();
+
+		// calculos
+
+
+		if( validateForm() ){
+			// dont submit form
+			$(".bt-submit").removeClass("disabled");
+		}
+	});
+
+	function validateForm(){
+		var validate = true;
+
+
+
+		return validate;
+	}
+
+	// load materiais
+	loadMaterias();
+	function loadMaterias(){
+		var mysql_query = "SELECT * FROM materiais";
+
+	  	mysqlQuery(mysql_query, function(result){
+	    	// mostra o resultado da query
+	    	var obj = JSON.parse(result);
+
+	    	for( var i = 0; i <= 3; i++ ){
+	    		var item = ""+
+	    		"<tr>"+
+		    		"<td>"+obj[i].nome+"</td>"+
+		    		"<td>"+obj[i].marca+"</td>"+
+		    		"<td>"+obj[i].quantidade+"</td>"+
+		    		"<td>"+obj[i].preco+"</td>"+
+	    		"</tr>";
+
+	    		// add material
+	    		$(".tb-materiais tbody").append( item );
+	    	}
+	  	});		
+	}
+
+	// load insumos
+	loadInsumos();
+	function loadInsumos(){
+		var mysql_query = "SELECT * FROM insumos RIGHT JOIN materiais ON insumos.id_material = materiais.id";
+
+	  	mysqlQuery(mysql_query, function(result){
+	    	// mostra o resultado da query
+	    	var obj = JSON.parse(result);
+
+	    	console.log(obj);
+
+	    	for( var i = 0; i <= 1; i++ ){
+	    		var item = ""+
+	    		"<tr>"+
+		    		"<td>"+obj[i].marca+"</td>"+
+		    		"<td>"+obj[i].descricao+"</td>"+
+		    		"<td>"+obj[i].quantidade+"</td>"+
+		    		"<td>"+obj[i].preco+"</td>"+
+	    		"</tr>";
+
+	    		// add material
+	    		$(".tb-insumos tbody").append( item );
+	    	}
+	  	});		
+	}
 
 	function loadOrder(){
 
