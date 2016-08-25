@@ -1,0 +1,157 @@
+	
+
+
+/ * --- 1. MENU --- * /
+.nav-bar-header {
+    posição : absoluto ;
+    width : 100 % ;
+    esquerda : 0 ;
+    top : 0 ;
+    text-align : center ;
+    margem : auto ;
+	fundo : # 102938 ;
+}
+.navbar-toggle {
+    z-index : 3 ;
+}
+
+.navbar-default {
+	
+	fundo : # 102938 ;
+	color : # fff ;
+	font-style : bold ;	
+}
+
+-.navbar-navegação modificado {
+	margin-top : 5 px ;
+	margin-right : 20 px ;
+	preenchimento : 10 px ;
+	color : # fff ;
+	font-style : " negrito " ;
+	vertical-align : middle ;
+}
+
+.navbar-default  .navbar-nav > li > um {
+	color : # fff ;
+	font-weight : bold ;
+	vertical-align : middle ;
+	preenchimento : 10 px ;
+}
+
+.navbar-default  .navbar-nav > li > um : o foco , .navbar-default  .navbar-nav > li > a : hover {
+/ * Background-color: # 4d5a62; * /
+	text-decoration : nenhum ;
+	color : # 39bb9d ;
+	font-weight : bold ;
+	vertical-align : middle ;
+}
+
+.nav > li > a : active {
+/ * Background-color: # 4d5a62; * /
+	text-decoration : nenhum ;
+}
+
+.nav > li > a : focus {
+/ * Background-color: # 4d5a62; * /
+	text-decoration : nenhum ;
+}
+
+um : o foco , a : hover {
+
+	text-decoration : nenhum ;
+	color : # 39bb9d ;
+}
+
+.navbar-nav > li {
+	
+	preenchimento : 10 px  15 px ;
+	
+}
+
+.navbar {
+	margin-bottom : 0 ;
+}
+
+.custom-mid-botão , .custom-mid-button > li > Centro> um   {
+
+color : # fff ;
+
+font-weight : bold ;
+
+vertical-align : middle ;
+
+margin-top :;
+
+/ * Padding: 20px; * /
+}
+
+
+.custom-mid-button > li > Centro> a : hover {
+
+	text-decoration : nenhum ;
+	color : # 39bb9d ;
+	font-weight : bold ;
+	vertical-align : middle ;
+
+}
+
+/ * --- 2. BARRA ABAIXO DO MENU --- * /
+
+-.nav-barra do meio {
+    posição : parente ;
+    width : 100 % ;
+    esquerda : 0 ;
+    top : 0 ;
+    text-align : esquerda ;
+    margem : auto ;
+	fundo : #fff ;
+}
+
+
+.custom-text {
+
+	color : # 102938 ;
+	font-weight : bold ;
+	font-size : 20 px ;
+	font-family : " Helvetica " ;
+
+}
+
+
+
+/ * --- 3. IMAGENS (logotipo da marca e perfil pic) --- * /
+
+.logo {
+	posição : parente ;
+	estofamento : 0  2 % ;
+}
+
+.Especial-img 
+{
+    posição : parente ;
+    top : -5 px ;
+    flutuar : esquerda ;
+    esquerda : -5 px ;
+}
+
+
+/ * --- 5. BOTÃO Iniciar PROCESSO - * /
+
+.btn2 {
+  -webkit- border-radius : 0 ;
+  -moz- border-radius : 0 ;
+  border-radius : 0 px ;
+  font-family : Arial ;
+  color : #ffffff ;
+  fundo : # 39bb9d ;
+  preenchimento : 20 px  20 px  28 px  20 px ;
+  text-decoration : nenhum ;
+  font-weight : bold ;
+  / * Margin-top: -20; * /
+}
+
+.btn2 : hover {
+  fundo : # 34ad91 ;
+  text-decoration : nenhum ;
+  color : # fff ;
+}
