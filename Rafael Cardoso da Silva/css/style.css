@@ -15,14 +15,15 @@ main {
 
 .navbar-header .navbar-toggle {
   border-color: #ddd; 
-    margin-top: 12px;
+  margin-top: 12px;
+  position: absolute;
+  right: 15px;
 }
 
 .navbar-header .navbar-toggle .icon-bar {
   background-color: #888; }
 
 #menu {
-  height: 60px;
   text-align: center;
   background: #102938;
   padding: 0px 15px;
@@ -31,13 +32,15 @@ main {
 footer {
   color: #999999;
   height: 30px;
-  padding: 8px 15px;
+  padding: 5px 15px;
   background: #565351;
   width: 100%;
 }
 
 .logo {
   top: 12px;
+  display: inline-block;
+  height: 60px;
   position: relative; }
 
 .nav{
@@ -55,7 +58,8 @@ footer {
   color: #39bb9d; 
 }
 
-.nav a:hover{
+.nav a:hover,
+.nav a:focus{
  color: #39bb9d; 
  background-color: inherit!important;
 }
@@ -111,6 +115,7 @@ footer {
 
 .submenu{
   text-align: left;
+  position: relative;
   padding-bottom: 10px;
   border: solid 1px #DCDCDC;
 }
@@ -124,5 +129,31 @@ footer {
   color: #4A4A4A;
 }
 
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+}
+
+.thead-default th {
+    color: #55595c;
+    background-color: #eceeef;
+}
 
 
+#task-menu{
+  position: relative;
+}
+
+#task-menu:before{
+    content: '';
+    left: 55px;
+    width: 10px;
+    height: 10px;
+    bottom: -6px;
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: #FFF;
+    border-right: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+}

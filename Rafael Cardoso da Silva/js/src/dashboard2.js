@@ -1,17 +1,37 @@
-$(function(){
+function initDashboard2(){
 
 	// show submenu 
 	$("nav.submenu").hide();
 	$("nav#dashboard").show();
 	
-	var mysql_query = "SELECT count(*) as pedidos, data_de_compra FROM pedidos GROUP BY id_solicitante";
+	var mysql_query = "SELECT count(*) AS pedidos, s.nome FROM pedidos p JOIN solicitantes s ON p.id_solicitante = s.id GROUP BY s.id";
 
   	mysqlQuery(mysql_query, function(result){
-    	// mostra o resultado da query
     	var obj = JSON.parse(result);
 
-    	console.log(obj);
+    	// set callback to chart
+	    google.charts.setOnLoadCallback(draw);
 
+	    function draw() {
+
+	        var data = new google.visualization.DataTable();
+	        data.addColumn('string', 'Solicitante');
+	        data.addColumn('number', 'Pedidos');
+
+	        var rows = [];
+
+	        $.each(obj, function (index, obj) {
+	            var row = [
+	                obj['nome'],
+	                obj['pedidos']
+	            ];
+	            rows.push(row);
+	        });
+	        data.addRows(rows);
+	        
+	        // show chart
+	        var chart = new google.visualization.BarChart( document.getElementById("chart") );
+	        chart.draw(data, null);
+	    }
   	});
-
-});
+}
