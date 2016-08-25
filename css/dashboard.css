@@ -71,6 +71,10 @@ body{
 	background-color: #39bb9d;
 }
 
+#iniciarProcessoDiv:hover{
+	background-color: #8EE4D1;
+}
+
 #iniciarProcessoDiv:hover, #optionsMenu li img:hover{
 	cursor:pointer;
 }
@@ -157,6 +161,10 @@ body{
 	margin:0px !important;
 }
 
+#searchIcon:hover, #assistIcon:hover{
+	cursor:pointer;
+	background-color:#335061;
+}
 /*CSS for The Main Body*/
 #mainBody{
 	position: absolute;
@@ -250,7 +258,7 @@ body{
 	white-space:nowrap;
 }
 
-#wrapper div{
+.tile{
 	display: inline-block;
 	margin: 15px;
 	height: 90%;
@@ -259,4 +267,44 @@ body{
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
+}
+
+/*CSS for pedidos header*/
+
+#pedidosWrap{
+	position: relative;
+	width: 95%;
+	height: 95%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	border: 1px solid red;
+}
+
+#pedidosWrap header{
+	position: absolute;
+	top: 0; right:0; left:0;
+	height: 30px;
+	border: 1px solid green;
+	text-align: center;
+}
+
+#pedidosTitle{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+#pedidosWrap h3{
+	display: inline-flex;
+}
+
+#price{
+	top: 50%;
+	transform: translateY(-50%,-50%);
+	-webkit-transform: translateY(-50%,-50%);
+	float:right;
 }
