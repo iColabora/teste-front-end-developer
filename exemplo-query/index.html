@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Exemplo Mysql_lib</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<style type="text/css">
 		table th,
 		table td{
@@ -11,11 +12,17 @@
 			padding: 5px;
 			border: 1px solid #cccccc;
 			border-collapse:collapse;
-		}		
+		}
 	</style>
 </head>
 <body>
-	
+
+
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 	<h3>Solicitantes</h3>
 	<table>
 		<thead>
@@ -31,27 +38,26 @@
 	</table>
 
 	<script src="mysql_lib.js"></script>
+	<script src="main.js"></script>
+
 	<script>
 		window.onload = function(){
 
-			var mysql_query = "SELECT * FROM solicitantes ORDER BY nome ASC";
+			var mysql_query = "SELECT * FROM insumos ";
 
 		  	mysqlQuery(mysql_query, function(result){
 		    	// mostra o resultado da query
 		    	var obj = JSON.parse(result);
-		    	var table_body =  document.getElementById("conteudo");
-
 			    obj.forEach(function(el){
-			    	var html_body = "<tr>"+
-										"<td>"+el.id+"</td>"+
-										"<td>"+el.nome+"</td>"+
-										"<td>"+el.telefone+"</td>"+
-									"</tr>";
-					table_body.innerHTML += html_body;
+			    console.log(el);
 			    });
 
 		  	});
 		};
 	</script>
+
+	<script src="main.js"></script>
+
 </body>
+
 </html>

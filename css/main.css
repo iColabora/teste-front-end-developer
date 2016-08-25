@@ -1,0 +1,87 @@
+*{
+  margin:0px;
+}
+ .navigation {
+  list-style: none;
+  margin: 0;
+  background: #102938;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-start;
+
+
+
+}
+
+ .navigation a {
+  text-decoration: none;
+  display: block;
+  padding: 2em 1em;
+  font-size: 1.2em;
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  text-transform: uppercase;
+
+}
+
+.navigation .menu:hover {
+ text-decoration: none;
+ display: block;
+background: #39bb9d;
+ text-align: left;
+ padding: 2em 1em;
+}
+.navigation a:hover{
+   text-decoration: none;
+}
+
+.logo{
+ padding: 10px 10px;
+  width: 100px;
+  margin-right: 70px;
+margin-left: -25px;
+
+}
+.login{
+  justify-content: flex-end;
+
+}
+
+.ativo{
+   flex: 1 0 auto;
+   background: #39bb9d;
+   margin-left: 150px;
+}
+.triangle{
+  margin-right: 10px;
+    padding: -5px;
+
+}
+
+.container{
+  margin: 0px;
+  width: 100%  !important;
+  padding: 0px;
+}
+.navigation .icons{
+  font-size: 25px;
+   padding: 0em 1em !important;
+   margin-top: 30px;
+     color: #4a5c68;
+}
+
+.navigation .icons:hover{
+  text-decoration: none;
+  display: block;
+ background: #102938;
+  text-align: left;
+  color: white;
+}
+
+.navigation .profile{
+  font-size: 25px;
+   padding: 0em 1em !important;
+   margin-top: 12px;
+     color: #4a5c68;
+}

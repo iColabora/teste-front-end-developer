@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Exemplo Mysql_lib</title>
+
+	<link rel="stylesheet" href="css/next-step.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/formulario.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+
+
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="menu">
+
+				<ul class="navigation">
+					<li><img src="logo.png" class="logo" alt=""></li>
+					<li><a href="dashboard.html" class="menu">dashboard</a></li>
+					<li><a href="#" class="menu">soluçoes</a></li>
+					<li><a href="#" class="menu">administraçao</a></li>
+					<li>
+						<a href="index.html" class="ativo">
+							<spen class="triangle">&#9658</spen>inciar processo</a>
+					</li>
+					<li><a href="#" class="icons login"><span class=" glyphicon glyphicon-search"></span></a></li>
+					<li><a href="#" class="icons login"><span class="  glyphicon glyphicon-wrench"></span></a></li>
+					<li>
+						<a href="#" class="profile login"><img src="profile.png" alt=""></span>
+						</a>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<section>
+				<div class="wizard">
+					<div class="wizard-inner">
+						<div class="connecting-line"></div>
+						<ul class="nav nav-tabs" role="tablist">
+
+							<li role="presentation" class="active">
+								<a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Pedidos">
+									<span class="round-tab">
+	                                <i class="glyphicon glyphicon-folder-open"></i>
+	                            </span>
+								</a>
+							</li>
+
+							<li role="presentation" class="disabled">
+								<a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Dados do Pedido">
+									<span class="round-tab">
+	                                <i class="glyphicon glyphicon-pencil"></i>
+	                            </span>
+								</a>
+							</li>
+							<li role="presentation" class="disabled">
+								<a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Dados do Material">
+									<span class="round-tab">
+	                                <i class="	glyphicon glyphicon-file"></i>
+	                            </span>
+								</a>
+							</li>
+							<li role="presentation" class="disabled">
+								<a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Dados do Solicitante">
+									<span class="round-tab">
+																	<i class="	glyphicon glyphicon-user"></i>
+															</span>
+								</a>
+							</li>
+							<li role="presentation" class="disabled">
+								<a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Dados da Entrega">
+									<span class="round-tab">
+																	<i class="	glyphicon glyphicon-shopping-cart"></i>
+															</span>
+								</a>
+							</li>
+
+							<li role="presentation" class="disabled">
+								<a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Finalizar">
+									<span class="round-tab">
+	                                <i class="glyphicon glyphicon-ok"></i>
+	                            </span>
+								</a>
+							</li>
+
+						</ul>
+					</div>
+
+
+					<div class="tab-content">
+						<div class="tab-pane active" role="tabpanel" id="step1">
+							<form class="text-center style_form" id="formDadosDoPedido">
+								<h3>Selecione seu pedido</h3>
+
+								<select id="pedidos">
+
+								</select>
+
+
+
+								<br>
+								<button type="button" name="button" class=" next-step btn-dadosDoPedido">Continuar</button>
+
+
+
+
+							</form>
+
+						</div>
+						<div class="tab-pane" role="tabpanel" id="step2">
+							<form class="text-center style_form" id="formDadosMeterial">
+								<h3>Dados do Pedido</h3>
+								<p>Materais do pedido :</p>
+								<select id="materiais">
+
+								</select>
+								<br>
+
+								<br> Preço:
+								<br>
+								<input type="number" name="precoMaterial" id="precoMaterial" required="required">
+								<br>
+								<br> Quantidade:
+								<br>
+								<input type="number" name="qtdMaterial" id="qtdMaterial" required="required">
+
+								<br> Total:
+								<br>
+								<input type="number" name="totalMaterial" id="totalMaterial" required="required">
+								<br>
+								<br>
+								<ul class="list-inline pull-right">
+									<li>
+										<button type="button" class="btn prev-step">Voltar</button>
+									</li>
+									<li>
+										<button type="button" class="btn next-step btn-dadosDoMaterial">Salvar e continuar</button>
+									</li>
+								</ul>
+							</form>
+						</div>
+
+						<div class="tab-pane" role="tabpanel" id="step3">
+							<form class="text-center style_form" id="formDadosInsumo">
+								<!--os insumos sao listados de acordo com o material selecionado-->
+								<h3>Dados do Material</h3>
+								<p>Insumos do material :</p>
+								<select id="insumos">
+
+								</select>
+								<br>
+
+								<br> Descriçao:
+								<br>
+								<input type="text" name="descricao" id="descricao" required="required">
+								<br>
+								<br> Preço:
+								<br>
+								<input type="number" name="precoInsumo" id="precoInsumo" required="required">
+								<br>
+								<br> Quantidade:
+								<br>
+								<input type="number" name="quantidadeInsumo" id="quantidadeInsumo" required="required">
+								<br>
+								<br> Total:
+								<br>
+								<input type="number" name="totalInsumo" id="totalInsumo" required="required">
+
+								<br>
+								<br>
+								<ul class="list-inline pull-right">
+									<li>
+										<button type="button" class="btn btn-default prev-step">Anterior</button>
+									</li>
+
+									<li>
+
+										<button type="button" class="btn btn-primary btn-info-full next-step btn-dadosDoSolicitante">Salvar e Continuar</button>
+									</li>
+								</ul>
+							</form>
+
+
+						</div>
+						<div class="tab-pane" role="tabpanel" id="step4">
+							<form class="text-center style_form" id="formDadosDoSolicitante">
+								<!--os insumos sao listados de acordo com o material selecionado-->
+								<h3>Dados do Solicitante</h3>
+								<p>Informaçoes de Contato :</p>
+								<br>
+								<label>Nome:</label>
+								<input type="text" name="nome" id="nome" required="required">
+								<br>
+								<label>Telefone:</label>
+								<input type="text" name="telefone" id="telefone" required="required">
+								<br>
+								<label>CPF:</label>
+								<input type="text" name="cpf" id="cpf" required="required">
+								<br>
+								<label>Endereco:</label>
+								<input type="text" name="endereco" id="endereco" required="required">
+								<br>
+								<label>Cidade:</label>
+								<input type="text" name="cidade" id="cidade" required="required">
+								<br>
+								<label>Estado:</label>
+								<input type="text" name="estado" id="estado" required="required">
+								<br>
+								<ul class="list-inline pull-right">
+									<li>
+										<button type="button" class="btn btn-default prev-step">Anterior</button>
+									</li>
+									<li>
+
+										<button type="button" class="btn btn-primary btn-info-full next-step btn-dadosDaEntrega">Salvar e Continuar</button>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<div class="tab-pane" role="tabpanel" id="step5">
+							<form class="text-center style_form" id="formDadosDoSolicitante">
+								<!--os insumos sao listados de acordo com o material selecionado-->
+								<h3>Dados da Entrega</h3>
+
+
+								<label>CEP:</label>
+								<input type="number" name="cepEntrega" id="cepEntrega" required="required">
+								<br>
+								<label>Complemento:</label>
+								<input type="text" name="complementoEntrega" id="complementoEntrega" required="required">
+
+								<br>
+								<label>Endereco:</label>
+								<input type="text" name="enderecoEntrega" id="enderecoEntrega" required="required">
+								<br>
+								<label>Cidade:</label>
+								<input type="text" name="cidadeEntrega" id="cidadeEntrega" required="required">
+								<br>
+								<label>Estado:</label>
+								<input type="text" name="estadoEntrega" id="estadoEntrega" required="required">
+								<br>
+								<br>
+								<label>Total:</label>
+								<input type="number" name="total" id="total" required="required">
+								<br>
+
+								<ul class="list-inline pull-right">
+									<li>
+										<button type="button" class="btn btn-default prev-step">Anterior</button>
+									</li>
+									<li>
+
+										<button type="button" class="btn btn-primary btn-info-full next-step  btn-Finalizar">Salvar e Continuar</button>
+									</li>
+								</ul>
+							</form>
+						</div>
+						<div class="tab-pane" role="tabpanel" id="complete">
+							<div class="finalizado">
+							<h3>Pedido Feito com sucesso!</h3>
+							<p>Muito obrigado.</p>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					</form>
+				</div>
+			</section>
+		</div>
+	</div>
+
+
+
+	<!--------------------------->
+
+
+
+	<!--jquery-->
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.js"></script>
+
+	<script src="js/next-step.js" charset="utf-8"></script>
+	<script src="js/bootstrap.js" charset="utf-8"></script>
+	<script src="js/mysql_lib.js" charset="utf-8"></script>
+	<script src="js/formulario1.js" charset="utf-8"></script>
+
+
+
+
+
+
+</body>
+
+</html>

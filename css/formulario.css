@@ -1,0 +1,116 @@
+.tab-pane{
+  padding-top: 20px !important;
+}
+/*formulario padrao*/
+.style_form {
+    margin: 0 auto;
+    /* To see the outline of the form */
+
+    background: #102938;
+    height: auto !important;
+    text-align: left;
+    padding: 20px 0px 10px 0px;
+    color: white;
+    width: 35%;
+    text-align: center;
+    border-radius: 10px;
+
+}
+
+.style_form h1 {
+    margin-bottom: 30px;
+}
+::-webkit-input-placeholder {
+    color: #5292b6;
+    padding: 10px;
+}
+
+.style_form div+ div {
+    margin-top: 1em;
+}
+*:focus {
+    outline: none;
+    box-shadow: none;
+
+}
+button, input, optgroup, select, textarea  {
+    font: 2em sans-serif;
+    margin-top: 1px;
+    width: 70%;
+    margin: 7px !important;
+    background: #39bb9d;
+    box-sizing: border-box;
+    height: 40px;
+    /* To harmonize the look & feel of text field border */
+    border: none;
+    border-bottom: 1px solid #fff;
+    text-align: center;
+
+
+}
+
+/*botoes do form*/
+.style_form button, .style_form ul, .style_form li{
+
+  text-align: center;
+    width: 100% !important;
+    color: white;
+    font-size: 15px;
+  display: flex;;
+  justify-content: center;
+  padding: 2px !important;
+  margin: 1px auto !important;
+
+}
+.style_form button{
+      background: #39bb9d;
+      margin: 1px;
+}
+.style_form   button:hover {
+    transition: 0.5s;
+    color: #39bb9d;
+    background: white;
+}
+
+
+/*formualrio do meterial*/
+#formDadosMeterial{
+  height: 500px !important;
+}
+#formDadosMeterial  ul > button{
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-end;
+
+}
+
+/*formualrio do insumo*/
+#formDadosInsumo{
+  height: 620px !important;
+  margin-bottom: 10px;
+}
+#formDadosMeterial  ul > button{
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-end;
+
+}
+
+label{
+  display: inline-block;
+  width: 20%;
+}
+
+#formDadosDoSolicitante{
+  height: 560px !important;
+
+}
+
+#formDadosDoSolicitante ul{
+  margin-top: 20px !important;
+}
+
+
+.finalizado{
+  text-align: center;
+}
