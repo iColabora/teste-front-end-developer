@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
 	<script src="js/jquery-3.1.0.min.js"></script>
 	<script src="js/getpedidosclass.js"></script>
+	<script src="js/mousewheel.js"></script>
 	<script src="mysql_lib.js"></script>
 	<title></title>
 
@@ -58,8 +59,33 @@
 			</div>
 		</header>
 
+		<div id="wrapper">
+			<div id="pedidos">
+				<header id="pedidosHeader">
+					<h3>Pedido</h3>
+					<p>Preço Total:</p>
+				</header>
+
+				<section>
+					<div>
+						
+					</div>
+				</section>
+			</div>
+
+			<div id="isumos"></div>
+			<div id="solicitantes"></div>
+			<div id="entrega"></div>
+			<div id="graphs"></div>
+		</div>
+
+		<footer>			
+			<p>©2016 iColabora</p>
+		</footer>
 
 	</section>
+
+
 
 	<script>
 		window.onload = function(){
@@ -82,7 +108,14 @@
 
 			var mPedidos;
 			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj){
-				mPedidos = obj;
+				console.log(obj);
+			});
+
+			$("body").mousewheel(function(event, delta) {
+
+				this.scrollLeft -= (delta * 30);
+				event.preventDefault();
+
 			});
 			
 			makeRoundImage($("#profileImg").find('img')[0]);

@@ -1,24 +1,25 @@
 @charset "utf-8";
 *{
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none;
-    list-style: none;
-    font-family: "Helvetica Neue", sans-serif;
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+	font-family: "Helvetica Neue", sans-serif;
 }
 
 body{
-	min-width: 1368px;
+	min-width: 1360px;
+	min-height: 768px;
 }
 /*CSS for the TopBar Elements*/
 #topBar{
 	min-width: 1200px;
-    width: 100%;
-    height: 72px;
-    background-color: #102938;
-    overflow: hidden;
-    position: fixed;
-    z-index: 100;
+	width: 100%;
+	height: 72px;
+	background-color: #102938;
+	overflow: hidden;
+	position: fixed;
+	z-index: 100;
 }
 
 #topBar h4{
@@ -30,7 +31,6 @@ body{
 	margin-right: 8px;
 	display: inline-flex;
 }
-
 
 /*CSS for the MenuItems*/
 #menuItemsWrapper{
@@ -165,11 +165,11 @@ body{
 
 /*CSS for The Body Header*/
 #bodyHeader{
-	position: absolute;
-	top: 0px; left: 0px; right: 0px;
+	position: fixed;
+	top: 72px; left: 0px; right: 0px;
 	height: 72px;
 	-webkit-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
-    -moz-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+	-moz-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
 	box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
 }
 
@@ -178,7 +178,6 @@ body{
 	height: 100%;
 	float: left;
 	width: 140px;
-	border:1px solid red;
 }
 
 #typeWrapper{
@@ -207,4 +206,57 @@ body{
 	float: right;
 	height: 100%;
 	width: auto;
+}
+
+#taskDiv{
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 300px;
+}
+
+#taskDiv p{
+	width: 90%;
+	margin: auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+/*CSS for Body Footer*/
+#mainBody footer{
+	position: fixed;
+	width: 100%;
+	height: 36px;
+	background: #565351;
+	bottom: 0;
+}
+
+#mainBody footer p{
+	position: absolute;
+	color: #999999;
+	left: 70px;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+/*CSS for main wrapper*/
+#wrapper{
+	position: absolute;
+	top:72px; bottom:36px;
+	white-space:nowrap;
+}
+
+#wrapper div{
+	display: inline-block;
+	margin: 15px;
+	height: 90%;
+	width: 640px;
+	border: 1px solid black;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
 }
