@@ -5,37 +5,31 @@
   font-family: Helvetica, sans-serif; }
 
 main {
-  background-color: #f9f9f9; 
-  padding: 20px 0px;
-}
+  background-color: #f9f9f9;
+  padding: 20px 0px; }
 
-.navbar{
-  margin-bottom: 0px!important;
-}
+.navbar {
+  margin-bottom: 0px !important; }
 
 .navbar-header .navbar-toggle {
-  border-color: #ddd; 
+  border-color: #ddd;
   margin-top: 12px;
   position: absolute;
-  right: 15px;
-}
-
-.navbar-header .navbar-toggle .icon-bar {
-  background-color: #888; }
+  right: 15px; }
+  .navbar-header .navbar-toggle .icon-bar {
+    background-color: #888; }
 
 #menu {
   text-align: center;
   background: #102938;
-  padding: 0px 15px;
-}
+  padding: 0px 15px; }
 
 footer {
   color: #999999;
   height: 30px;
   padding: 5px 15px;
   background: #565351;
-  width: 100%;
-}
+  width: 100%; }
 
 .logo {
   top: 12px;
@@ -43,48 +37,39 @@ footer {
   height: 60px;
   position: relative; }
 
-.nav{
+.nav {
   top: 5px;
-  position: relative;
-}
+  position: relative; }
+  .nav a.active {
+    color: #39bb9d; }
+  .nav a:hover,
+  .nav a:focus {
+    color: #39bb9d;
+    background-color: inherit !important; }
 
-.menu a{
+.menu a {
   color: white;
   font-weight: bold;
-  text-transform: uppercase; 
-}
+  text-transform: uppercase; }
 
-.nav a.active {
-  color: #39bb9d; 
-}
-
-.nav a:hover,
-.nav a:focus{
- color: #39bb9d; 
- background-color: inherit!important;
-}
-
-.container-start{
-    display: inline-block;
-  }
-
-.container-start .btn-start {
-  height: 60px;
-  color: white;
-  background-color: #39bb9d; 
-  position: relative;
-  text-transform: uppercase;
-  padding-left: 30px !important;
-  border-radius: 0px !important; }
-
-.container-start .btn-start .icon-play {
-  left: 12px;
-  top: 23px;
-  width: 11px;
-  height: 12px;
-  position: absolute;
-  background-image: url(../img/play.png);
-  background-size: 11px 12px; }
+.container-start {
+  display: inline-block; }
+  .container-start .btn-start {
+    height: 60px;
+    color: white;
+    background-color: #39bb9d;
+    position: relative;
+    text-transform: uppercase;
+    padding-left: 30px !important;
+    border-radius: 0px !important; }
+    .container-start .btn-start .icon-play {
+      left: 12px;
+      top: 23px;
+      width: 11px;
+      height: 12px;
+      position: absolute;
+      background-image: url(../img/play.png);
+      background-size: 11px 12px; }
 
 .icon-question {
   width: 15px;
@@ -93,11 +78,10 @@ footer {
   background-size: 15px 15px;
   display: inline-block; }
 
-.menu-perfil{
+.menu-perfil {
   position: relative;
   bottom: 5px;
-  margin-right: 20px;
-}
+  margin-right: 20px; }
 
 .icon-arrow-down {
   width: 8px;
@@ -110,41 +94,28 @@ footer {
   background-repeat: no-repeat;
   display: inline-block; }
 
-
-/*# sourceMappingURL=style.css.map */
-
-.submenu{
+.submenu {
   text-align: left;
   position: relative;
   padding-bottom: 10px;
-  border: solid 1px #DCDCDC;
-}
-
-.submenu li{
-  list-style: none;
-  display: inline-block!important;
-}
-
-.submenu li a{
-  color: #4A4A4A;
-}
+  border: solid 1px #DCDCDC; }
+  .submenu li {
+    list-style: none;
+    display: inline-block !important; }
+    .submenu li a {
+      color: #4A4A4A; }
 
 .table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #eceeef;
-}
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef; }
 
 .thead-default th {
-    color: #55595c;
-    background-color: #eceeef;
-}
+  color: #55595c;
+  background-color: #eceeef; }
 
-
-#task-menu{
-  position: relative;
-}
-
-#task-menu:before{
+#task-menu {
+  position: relative; }
+  #task-menu:before {
     content: '';
     left: 55px;
     width: 10px;
@@ -155,5 +126,6 @@ footer {
     transform: rotate(45deg);
     background-color: #FFF;
     border-right: 1px solid #DCDCDC;
-    border-bottom: 1px solid #DCDCDC;
-}
+    border-bottom: 1px solid #DCDCDC; }
+
+/*# sourceMappingURL=style.css.map */

@@ -16,21 +16,29 @@ module.exports = function(grunt){
 			}
 		},
 		cssmin: {
-		  options: {
-		    shorthandCompacting: false,
-		    roundingPrecision: -1
-		  },
-		  target: {
-		    files: {
-		      'css/style.min.css': 'css/style.css'
+		  	options: {
+		    	shorthandCompacting: false,
+		    	roundingPrecision: -1
+		  	},
+		  	target: {
+		    	files: {
+		      		'css/style.min.css': 'css/style.css'
+		    	}
+		  	}
+		},
+	  	uglify: {
+		    js: {
+				files: {
+	        		'js/scripts.min.js': 'js/src/*.js'
+		      	}
 		    }
-		  }
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default',['cssmin', 'watch']);
+	grunt.registerTask('default',['sass', 'cssmin', 'uglify', 'watch']);
 }

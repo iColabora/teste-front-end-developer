@@ -160,11 +160,18 @@ function initTask(){
 			type: "GET",
 			success: function(data){
 
-				// update form data
-				cep.parents(".form-container").find(".endereco").val( data.logradouro );
-				cep.parents(".form-container").find(".cidade").val( data.localidade );
-				cep.parents(".form-container").find(".estado").val( data.uf );
-				updateAddressDelivery();
+				if(! data.erro ){
+					// update form data
+					cep.parents(".form-container").find(".endereco").val( data.logradouro );
+					cep.parents(".form-container").find(".cidade").val( data.localidade );
+					cep.parents(".form-container").find(".estado").val( data.uf );
+					updateAddressDelivery();
+				}else{
+					alert("CEP inválido");
+				}
+			},
+			error: function () {
+				alert("CEP inválido");
 			}
 		})
 	}
