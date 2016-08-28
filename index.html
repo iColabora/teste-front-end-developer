@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="css/animation_load.css" />
+
+    <!--Importando arquvos para o dataTable e ajustes-->
+    <style >
+        
+        @import "css/jquery.dataTables.css";
+        .table {
+            margin-top: 50px
+        }
+        #marca {
+
+            margin-right: 30px        
+        }
+        .modal_teste {
+            margin-bottom: 40px
+        }
+
+        .esconder_div{
+            display: none;
+        }
+
+    </style>
+
+    <title>Startmin - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">F
+        </div>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <!-- Sidebar -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-fw"></i>Menu<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a id="btn_solicitantes" href="#">Solicitantes</a>
+                            </li>
+                            <li>
+                                <a id="btn_pedidos" href="#">Pedidos</a>
+                            </li>
+                            <li>
+                                <a id="btn_materiais" href="#">Materiais</a>
+                            </li>
+                            <li>
+                                <a id="btn_insumos" href="#">Insumos</a>
+                            </li>
+                            <li>
+                                <a id="btn_grafico" href="#">Gráficos</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div id="teste" class="container-fluid">
+                
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header"></h1>
+                </div>
+            </div>
+
+            <!--Tabelas-->
+            <div id="div_materiais" class="esconder_div">
+                <table id="tabela_materiais" width="1020" class="table" cellpadding="0" cellspacing="0" border="0">
+                </table>
+            </div>
+
+            <div id="div_solicitantes" class="esconder_div">
+                <table id="tabela_solicitantes" width="1020" class="table" cellpadding="0" cellspacing="0" border="0">
+                </table>
+            </div>
+
+            <div id="div_pedidos" class="esconder_div">
+                <table id="tabela_pedidos" width="1020" class="table" cellpadding="0" cellspacing="0" border="0">
+                </table>
+            </div>
+
+            <div id="recebe_dados"></div>
+
+            <!--Animação Loading-->
+            <div id ='load' class="cssload-preloader">
+                <span>L</span>
+                <span>o</span>
+                <span>a</span>
+                <span>d</span>
+                <span>i</span>
+                <span>n</span>
+                <span>g</span>
+
+            </div>
+            <!--Fim-->      
+
+            <div id="div_insumos" class="esconder_div">
+                <table id="tabela_insumos" width="1020" class="table" cellpadding="0" cellspacing="0" border="0">
+                </table>
+            </div>
+            <!--Fim-->
+
+            <!-- Button trigger modal -->
+            <div class="esconder_div" id="modal_solicitantes">
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalSolicitantes">
+                Cadastro de Solicitantes
+            </button>
+            </div>
+            
+            <div class="esconder_div" id="modal_pedidos">
+            <button id="button_modal_pedidos" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalPedidos">
+                Cadastro de Pedidos
+            </button>
+            </div>
+            
+            <div class="esconder_div" id="modal_materiais">
+            <button  id="button_modal_materiais" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalMateriais">
+                Cadastro de Materiais
+            </button>
+            </div>
+            
+            <div class="esconder_div" id="modal_insumos">
+            <button id="button_modal_insumos" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalInsumos">
+                Cadastro de Insumos
+            </button>
+            </div>
+
+            <div class="esconder_div" id="div_grafico_1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            <div class="esconder_div" id="div_grafico_2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModalSolicitantes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Dados do Solicitante</h4>
+      </div>
+      <div class="modal-body">
+
+        <form id="form_solicitantes" action="" method="POST">
+
+            <label>Nome:</label><br>
+            <input type="text" id="nome_s" name="nome_s"><br>
+
+            <label>Telefone:</label><br>
+            <input type="text" id="telefone_s" name="telefone_s"><br>
+
+            <label>CPF:</label><br>
+            <input type="text" id="cpf_s" name="cpf_s"><br>
+
+            <label>Cep:</label><br>
+            <input type="text" id="cep_s" name="cep_s"><br>
+
+            <label>Rua:</label><br>
+            <input type="text" id="rua_s" name="rua_s"><br>
+
+            <label>Número:</label><br>
+            <input type="text" id="numero_s" name="numero_s"><br>
+
+            <label>Bairro:</label><br>
+            <input type="text" id="bairro_s" name="bairro_s"><br>
+
+            <label>Cidade:</label><br>
+            <input type="text" id="cidade_s" name="cidade_s"><br>
+
+            <label>Estado:</label><br>
+            <input type="text" id="estado_s" name="estado_s"><br>
+
+            <label>País:</label><br>
+            <input type="text" id="pais_s" name="pais_s"><br>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button id="submit_solicitantes" type="button" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim do Modal-->
+
+<!-- Modal -->
+<div class="modal fade" id="myModalPedidos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Dados do Pedido</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form_pedidos">
+
+            <label>Solicitante:</label><br>
+            <!--Popular esse select com jquery mais ajax-->
+            <select id="select_solicitantes" name="select_solicitantes">
+            </select><button type="button" id="button_buscar_solicitantes">Buscar</button>
+            <br>
+
+            <label>Data de Compra:</label><br>
+            <input type="date" id="data_de_compra_p" name="data_de_compra_p" required><br><br>
+
+            <h4 class="modal-title" id="myModalLabel">Dados de Entrega</h4>
+
+            <!--Povoar os campos automaticamente com o jquery mais ajax-->
+            <label>Cep:</label><br>
+            <input type="text" id="cep_p" name="cep_p" required><br>
+
+            <label>Rua:</label><br>
+            <input type="text" id="rua_p" name="rua_p" required><br>
+
+            <label>Número:</label><br>
+            <input type="text" id="numero_p" name="numero_p" required><br>
+
+            <label>Bairro:</label><br>
+            <input type="text" id="bairro_p" name="bairro_p" required><br>
+
+            <label>Cidade:</label><br>
+            <input type="text" id="cidade_p" name="cidade_p" required><br>
+
+            <label>Estado:</label><br>
+            <input type="text" id="estado_p" name="estado_p" required><br>
+
+            <label>País:</label><br>
+            <input type="text" id="pais_p" name="pais_p" required><br>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button id="submit_pedidos" type="button" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim do Modal-->
+
+<!-- Modal -->
+<div class="modal fade" id="myModalMateriais" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Dados dos Materiais</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form_materiais">
+            <label>Vincular ao pedido:</label><br>
+
+            <select id="select_pedidos" name="select_pedidos">
+            </select></br><br>
+
+            <label>Nome:</label><br>
+            <input type="text" id="nome_m" name="nome_m"><br>
+
+            <label>Preço:</label><br>
+            <input type="text" id="preco_m" name="preco_m"><br>
+
+            <label>Quantidade:</label><br>
+            <input type="text" id="quantidade_m" name="quantidade_m">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button id="submit_materiais" type="button" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim do Modal-->
+
+<!-- Modal -->
+<div class="modal fade" id="myModalInsumos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Dados do Insumo</h4>
+      </div>
+      <div class="modal-body">
+        <form id="form_insumos">
+            <label>Pedido:</label><br>
+            <select id="select_insumos_pedidos" name="select_insumos_pedidos">
+            </select></br><br>
+
+            <label>Material:</label><br>
+            <select id="select_insumos_material" name="select_insumos_material">
+            </select></br><br>
+
+            <label>Descrição:</label><br>
+            <input type="text" id="descricao_i" name="descricao_i"><br>
+
+            <label>Preço:</label><br>
+            <input type="text" id="preco_i" name="preco_i"><br>
+
+            <label>Quantidade:</label><br>
+            <input type="text" id="quantidade_i" name="quantidade_i"><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button id="submit_insumos" type="button" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fim do Modal-->
+
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="js/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/startmin.js"></script>  
+<script src="js/dataTables/jquery.dataTables.js"></script>
+
+<!--Gráfico em javascript-->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="js/grafico.js"></script>
+
+<!--Chama controle de menu em javascript-->
+<script src="js/controle.js"></script>
+
+</body>
+</html>
