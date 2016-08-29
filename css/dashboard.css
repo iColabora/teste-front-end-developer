@@ -6,6 +6,9 @@
 	list-style: none;
 	font-family: "Helvetica Neue", sans-serif;
 }
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
+}
 
 body{
 	min-width: 1360px;
@@ -71,11 +74,11 @@ body{
 	background-color: #39bb9d;
 }
 
-#iniciarProcessoDiv:hover{
+#iniciarProcessoDiv:hover, #searchPedidoButton:hover{
 	background-color: #8EE4D1;
 }
 
-#iniciarProcessoDiv:hover, #optionsMenu li img:hover{
+#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover{
 	cursor:pointer;
 }
 
@@ -179,6 +182,8 @@ body{
 	-webkit-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
 	-moz-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
 	box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+	z-index: 5;
+	background-color: white;
 }
 
 #typeDiv{
@@ -256,17 +261,23 @@ body{
 	position: absolute;
 	top:72px; bottom:36px;
 	white-space:nowrap;
+	min-height: 570px;
 }
 
 .tile{
 	display: inline-block;
 	margin: 15px;
 	height: 90%;
-	width: 640px;
-	border: 1px solid black;
+	width: 830px;
+	-webkit-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
+    -moz-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
+    box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
-	border-radius: 30px;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border: 3px solid #e0e0e0;
 }
 
 /*CSS for pedidos header*/
@@ -279,14 +290,12 @@ body{
 	top: 50%;
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
-	border: 1px solid red;
 }
 
 #pedidosWrap header{
 	position: absolute;
 	top: 0; right:0; left:0;
-	height: 30px;
-	border: 1px solid green;
+	height: 60px;
 	text-align: center;
 }
 
@@ -303,8 +312,92 @@ body{
 }
 
 #price{
-	top: 50%;
-	transform: translateY(-50%,-50%);
-	-webkit-transform: translateY(-50%,-50%);
+	position: relative;
+	height: 100%;
 	float:right;
+	text-align: center;
+	line-height: 60px;
+}
+
+#pedidosSection{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	top: 60px; bottom:0; left:0;
+	float: left;
+}
+
+#pedidosSection .formDiv{
+	position: relative;
+	width: 50%;
+	max-height: 75px;
+}
+
+#pedidosNumDiv {	
+ 	position: absolute;
+	top: 0px; right:0; left:0;
+	height: 45px;
+	display: inline-flex;
+	padding: 15px;
+}
+
+.formInput, .materialSelect{
+	position: relative;
+	width: 100%;
+	margin-right: 10px;
+	border: 3px solid #D0D0D0;
+	padding: 5px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+#searchPedidoButton{
+	position: relative;
+	width: 20%;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	background-color: #39bb9d;
+	color: #F4F4F4;
+}
+
+#rightUpperSection{
+	position: absolute;
+	top: 0px; right:0; left:0;
+	height: 45px;
+	padding: 15px;
+	display: flex;
+}
+
+#lowerPedidosFormDiv header{
+	position: absolute;
+	top: 95px; right:0; left:0;
+}
+
+#downSection{
+	position: absolute;
+	top: 155px; right:0; left:0; bottom:0;
+	display: inline-flex;
+	flex-wrap:wrap;
+}
+
+.materialLine{
+	position: relative;
+	width: 100%;
+	margin: 20px;
+	display: inline-flex;
+}
+
+.materialSelect{
+	height: 100% !important;
+}
+.materialQtdSelect{
+	position: relative;
+	width: 20;
+	border: 3px solid #D0D0D0;
+	padding: 5px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 }

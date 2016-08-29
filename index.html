@@ -4,9 +4,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/dashboard.min.css">
+	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
 	<script src="js/jquery-3.1.0.min.js"></script>
-	<script src="js/mytest.min.js"></script>
+	<script src="js/mytest.js"></script>
+	<script src="js/mask.js"></script>
 	<script src="js/mousewheel.js"></script>
 	<script src="mysql_lib.js"></script>
 	<title></title>
@@ -66,11 +67,111 @@
 						<h3 id="pedidosTitle">Pedidos</h3>
 						<h3 id="price">Preço total: R$127,99</h3>
 					</header>
-					<div id="pedidosSection">
-						<form id="pedidosForm">
-							
-						</form>
-					</div>
+					<section id="pedidosSection">
+						<div id="leftPedidosFormDiv" class="formDiv">
+							<div id="pedidosNumDiv">
+								<input class="formInput" id="pedidoNumberInput" placeholder="Número do Pedido"  maxlength="6" />
+								<button id="searchPedidoButton" type="button" name="searchPedidosButton"><h2>🔍</h2></button>
+							</div>
+						</div>
+						<div id="rightPedidosFormDiv" class="formDiv">
+							<div id="rightUpperSection">
+								<input class="formInput" id="marcaInput" placeholder="Marca" />
+								<input class="formInput" id="dataInput" placeholder="Data" />
+							</div>
+						</div>
+						<div id="lowerPedidosFormDiv">
+							<header>
+								<h3 id="pedidosTitle">Materiais</h3>
+							</header>
+							<div>
+								<div id="downSection">
+
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca1">
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+										</select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca1">
+								 			<option>1</option>
+								 			<option>2</option>
+								 			<option>3</option>
+								 			<option>4</option>
+								 			<option>5</option>
+								 			<option>6</option>
+								 			<option>7</option>
+								 			<option>8</option>
+
+								 		</select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca2">
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+										</select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca2">
+								 			<option>1</option>
+								 			<option>2</option>
+								 			<option>3</option>
+								 			<option>4</option>
+								 			<option>5</option>
+								 			<option>6</option>
+								 			<option>7</option>
+								 			<option>8</option>
+
+								 		</select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca3">
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+										</select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca3">
+								 			<option>1</option>
+								 			<option>2</option>
+								 			<option>3</option>
+								 			<option>4</option>
+								 			<option>5</option>
+								 			<option>6</option>
+								 			<option>7</option>
+								 			<option>8</option>
+
+								 		</select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca4">
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+											<option>Material 1</option>
+										</select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca4">
+								 			<option>1</option>
+								 			<option>2</option>
+								 			<option>3</option>
+								 			<option>4</option>
+								 			<option>5</option>
+								 			<option>6</option>
+								 			<option>7</option>
+								 			<option>8</option>
+
+								 		</select> 
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</section>
 				</div>
 
 				
@@ -92,17 +193,10 @@
 
 	<script>
 		window.onload = function(){
-
-			function makeRoundImage(imgOb){
-				$(imgOb).css({
-					'display': 'block',
-					'-moz-border-radius': ($(imgOb).height()/2)+'px',
-					
-					'-webkit-border-radius': ($(imgOb).height()/2)+'px',
-					
-					'border-radius': ($(imgOb).height()/2)+'px',
-				});
-			}
+			var solicitantes;
+			var pedidos;
+			var insumos;
+			var materiais;
 
 			var getSolicitantes = "SELECT * FROM solicitantes";
 			var getPedidos = "SELECT * FROM pedidos ORDER BY id ASC";
@@ -114,13 +208,17 @@
 				console.log(obj);
 			});
 
-			$("body").mousewheel(function(event, delta) {
+			mysqlQuery(getMateriais, function(result4){
+				console.log(result4);
+			});
 
+			$("body").mousewheel(function(event, delta) {
 				this.scrollLeft -= (delta * 30);
 				event.preventDefault();
-
 			});
 			
+			setPedidoInputHandle();	
+
 			makeRoundImage($("#profileImg").find('img')[0]);
 		};
 	</script>

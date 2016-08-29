@@ -44,12 +44,18 @@ function createObject(pedidos, solicitantes, materiais, insumos){
 	return pedidos;
 }
 
-function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, getMateriaisQuery, callback){//Realiza as Query de forma síncrona
-	var solicitantes;
-	var pedidos;
-	var insumos;
-	var materiais;
-	
+function makeRoundImage(imgOb){
+	$(imgOb).css({
+		'display': 'block',
+		'-moz-border-radius': ($(imgOb).height()/2)+'px',
+		
+		'-webkit-border-radius': ($(imgOb).height()/2)+'px',
+		
+		'border-radius': ($(imgOb).height()/2)+'px',
+	});
+}
+
+function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, getMateriaisQuery, callback){//Realiza as Query de forma síncrona	
 	mysqlQuery(getSolicitantesQuery, function(result1){
 		solicitantes = JSON.parse(result1);
 		mysqlQuery(getPedidosQuery, function(result2){
@@ -66,4 +72,16 @@ function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, g
 			});
 		});
 	});
+}
+
+function setPedidoInputHandle(){
+	$("#pedidoNumberInput").mask("9999");
+
+	$("#pedidoNumberInput").siblings().click(function(event){
+		event.preventDefault();
+		var num = $("#pedidoNumberInput").val();
+		console.log(num);
+	});
+
+	$("#dataInput").mask("99/99/9999",{placeholder:"DD/MM/YYYY"});
 }
