@@ -272,17 +272,15 @@ body{
 	-webkit-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
     -moz-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
     box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
-	-moz-border-radius: 30px;
-	-webkit-border-radius: 30px;
-	border-radius: 50px;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 	border: 3px solid #e0e0e0;
 }
 
 /*CSS for pedidos header*/
 
-#pedidosWrap{
+.tileInnerWrap{
 	position: relative;
 	width: 95%;
 	height: 95%;
@@ -290,9 +288,10 @@ body{
 	top: 50%;
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
+	border: 1px solid red;
 }
 
-#pedidosWrap header{
+.tileInnerWrap header{
 	position: absolute;
 	top: 0; right:0; left:0;
 	height: 60px;
@@ -307,7 +306,7 @@ body{
 	-webkit-transform: translate(-50%,-50%);
 }
 
-#pedidosWrap h3{
+.tileInnerWrap h3{
 	display: inline-flex;
 }
 
@@ -400,4 +399,31 @@ body{
 	border-radius: 8px;
 	-moz-border-radius: 8px;
 	-webkit-border-radius: 8px;
+}
+
+/*CSS for GraphTile*/
+
+#graphLeft{
+	position: absolute;
+	top: 0; left:0;
+	height: 50%;
+	width: 50%;
+}
+
+#graphRight{
+	position: absolute;
+	top: 0; right:0;
+	height: 50%;
+	width: 50%;
+}
+
+#pedidosTableWrap{
+	position: absolute;
+	bottom: 0; right:0; left:0;
+	height: 50%;
+}
+
+.charts{
+	position: absolute;	
+	top:0; bottom: 0; right:0; left:0;
 }

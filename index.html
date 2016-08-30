@@ -9,6 +9,7 @@
 	<script src="js/mytest.js"></script>
 	<script src="js/mask.js"></script>
 	<script src="js/mousewheel.js"></script>
+	<script src="js/chart.js"></script>
 	<script src="mysql_lib.js"></script>
 	<title></title>
 
@@ -60,9 +61,20 @@
 			</div>
 		</header>
 
-		<div id="wrapper">
+		<div id="wrapper">		
+			<div id="graphs" class="tile">
+				<div class="tileInnerWrap">
+					<div id="graphLeft">
+						<canvas id="myLeftChart" height="200" class="charts"></canvas>
+					</div>
+					<div id="graphRight"></div>
+					<div id="pedidosTableWrap"></div>
+
+				</div>
+
+			</div>
 			<div id="pedidos" class="tile">
-				<div id="pedidosWrap">
+				<div class="tileInnerWrap">
 					<header>
 						<h3 id="pedidosTitle">Pedidos</h3>
 						<h3 id="price">Preço total: R$127,99</h3>
@@ -180,7 +192,6 @@
 			<div id="isumos" class="tile"></div>
 			<div id="solicitantes" class="tile"></div>
 			<div id="entrega" class="tile"></div>
-			<div id="graphs" class="tile"></div>
 		</div>
 
 		<footer>			
@@ -204,8 +215,24 @@
 			var getMateriais = "SELECT * FROM materiais";
 
 			var mPedidos;
-			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj){
-				console.log(obj);
+			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, chartData){
+				var myLineChart = new Chart($("#myLeftChart"), {
+					type: 'bar',
+					data: chartData,
+					options: {
+						title: {
+							display: true,
+							text: 'Pedidos por Solicitante'
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true
+								}
+							}]
+						}
+	   				}
+	   			});
 			});
 
 			mysqlQuery(getMateriais, function(result4){

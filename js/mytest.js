@@ -18,6 +18,7 @@ function createObject(pedidos, solicitantes, materiais, insumos){
 	}
 
 	for(var i = 0; i<pedidos.length; i++){
+		
 
 		for(var j = 0; j<solicitantes.length; j++){//Verifica quem é o solicitante de cada pedido
 			if(pedidos[i].id_solicitante === solicitantes[j].id){
@@ -59,15 +60,13 @@ function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, g
 	mysqlQuery(getSolicitantesQuery, function(result1){
 		solicitantes = JSON.parse(result1);
 		mysqlQuery(getPedidosQuery, function(result2){
-			pedidos = JSON.parse(result2);
+			pedidos = setDataCompra(JSON.parse(result2));
+			console.log(pedidos);
 			mysqlQuery(getInsumosQuery, function(result3){
 				insumos = JSON.parse(result3);
 				mysqlQuery(getMateriaisQuery, function(result4){
 					materiais = JSON.parse(result4);
-					if(typeof callback === "function"){
-						console.log()
-					}
-					callback(createObject(pedidos, solicitantes, materiais, insumos));
+					callback(createObject(pedidos, solicitantes, materiais, insumos), setChartData(pedidos, solicitantes, materiais, insumos));
 				});
 			});
 		});
@@ -84,4 +83,65 @@ function setPedidoInputHandle(){
 	});
 
 	$("#dataInput").mask("99/99/9999",{placeholder:"DD/MM/YYYY"});
+}
+
+function setChartData(pedidos, solicitantes, materiais, insumos){
+
+	var nomes = [];
+	var pedidosPorId = [];
+
+	for(var j = 0; j<solicitantes.length; j++){
+		var count=0;
+		for(var i = 0; i<pedidos.length; i++){
+			if(pedidos[i].id_solicitante===solicitantes[j].id){
+				count++;
+			}
+		}
+		pedidosPorId.push(count);
+		var nome = solicitantes[j].nome.split(' ');
+		var length = solicitantes[j].nome.split(' ').length;
+		console.log(nome[0]+' '+nome[length-1]);
+		nomes.push(nome[0]+' '+nome[length-1]);
+	}
+		
+	//console.log(pedidosPorId);
+	//console.log(nomes);
+
+	var data = {
+		labels: nomes,
+		datasets: [
+			{
+				label: "Número de Pedidos",
+				fill: false,
+				lineTension: 0.1,
+				backgroundColor: "rgba(75,192,192,0.4)",
+				borderColor: "rgba(75,192,192,1)",
+				borderCapStyle: 'butt',
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: 'miter',
+				pointBorderColor: "rgba(75,192,192,1)",
+				pointBackgroundColor: "#fff",
+				pointBorderWidth: 1,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: "rgba(75,192,192,1)",
+				pointHoverBorderColor: "rgba(220,220,220,1)",
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: pedidosPorId,
+				spanGaps: false,
+			}
+		]
+	};
+
+	return data;
+}
+
+function setDataCompra(pedidos){
+	for(var i = 0; i<pedidos.length; i++){
+		var dia = pedidos[i].data_de_compra.split(" ")[0].split("-")[2]+"/"+pedidos[i].data_de_compra.split(" ")[0].split("-")[1];
+		pedidos[i]["dia_de_compra"] = dia;
+	}
+	return pedidos;
 }
