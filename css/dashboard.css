@@ -132,7 +132,7 @@ body{
 #optionsMenu li{
 	height: 100%;
 	position: relative;
-	width: auto;
+	max-width: 43px;
 	max-height: 100%;
 }
 

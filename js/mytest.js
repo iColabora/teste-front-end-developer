@@ -66,7 +66,11 @@ function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, g
 				insumos = JSON.parse(result3);
 				mysqlQuery(getMateriaisQuery, function(result4){
 					materiais = JSON.parse(result4);
-					callback(createObject(pedidos, solicitantes, materiais, insumos), setChartData(pedidos, solicitantes, materiais, insumos));
+					callback(
+						createObject(pedidos, solicitantes, materiais, insumos),
+						setPedidosPorSolicitante(pedidos, solicitantes),
+						setPedidosPorDia(pedidos)
+					);
 				});
 			});
 		});
@@ -85,7 +89,52 @@ function setPedidoInputHandle(){
 	$("#dataInput").mask("99/99/9999",{placeholder:"DD/MM/YYYY"});
 }
 
-function setChartData(pedidos, solicitantes, materiais, insumos){
+function setPedidosPorDia(pedidos){
+	var pedidosPorDia = [];
+	var dias = [];
+
+	for(var i = 0; i<pedidos.length; i++){
+		dias.push(pedidos[i].dia_de_compra.split('/'));
+	}
+
+	dias.sort(function(a,b){
+		return a[1] - b[1];
+	})
+
+	console.log(dias);
+	var data = {
+		labels: dias,
+		datasets: [
+			{
+				label: "Número de Pedidos",
+				fill: false,
+				lineTension: 0.1,
+				backgroundColor: "rgba(75,192,192,0.4)",
+				borderColor: "rgba(75,192,192,1)",
+				borderCapStyle: 'butt',
+				borderDash: [],
+				borderDashOffset: 0.0,
+				borderJoinStyle: 'miter',
+				pointBorderColor: "rgba(75,192,192,1)",
+				pointBackgroundColor: "#fff",
+				pointBorderWidth: 1,
+				pointHoverRadius: 5,
+				pointHoverBackgroundColor: "rgba(75,192,192,1)",
+				pointHoverBorderColor: "rgba(220,220,220,1)",
+				pointHoverBorderWidth: 2,
+				pointRadius: 1,
+				pointHitRadius: 10,
+				data: pedidosPorDia,
+				spanGaps: false,
+			}
+		]
+	};
+
+	return data;
+}
+
+
+function setPedidosPorSolicitante(pedidos, solicitantes){
 
 	var nomes = [];
 	var pedidosPorId = [];
@@ -97,15 +146,15 @@ function setChartData(pedidos, solicitantes, materiais, insumos){
 				count++;
 			}
 		}
-		pedidosPorId.push(count);
+		
 		var nome = solicitantes[j].nome.split(' ');
 		var length = solicitantes[j].nome.split(' ').length;
-		console.log(nome[0]+' '+nome[length-1]);
-		nomes.push(nome[0]+' '+nome[length-1]);
+		nome = nome[0]+' '+nome[length-1];
+		
+		nomes.push(nome);
+		pedidosPorId.push(count);//Ordenado
 	}
 		
-	//console.log(pedidosPorId);
-	//console.log(nomes);
 
 	var data = {
 		labels: nomes,

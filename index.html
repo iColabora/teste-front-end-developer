@@ -67,7 +67,9 @@
 					<div id="graphLeft">
 						<canvas id="myLeftChart" height="200" class="charts"></canvas>
 					</div>
-					<div id="graphRight"></div>
+					<div id="graphRight">
+						<canvas id="myRightChart" height="200" class="charts"></canvas>
+					</div>
 					<div id="pedidosTableWrap"></div>
 
 				</div>
@@ -215,14 +217,32 @@
 			var getMateriais = "SELECT * FROM materiais";
 
 			var mPedidos;
-			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, chartData){
-				var myLineChart = new Chart($("#myLeftChart"), {
+			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, pedidosPorSolicitanteData, pedidosPorDiaData){
+				var pedidosPorSolicitanteChart = new Chart($("#myLeftChart"), {
 					type: 'bar',
-					data: chartData,
+					data: pedidosPorSolicitanteData,
 					options: {
 						title: {
 							display: true,
 							text: 'Pedidos por Solicitante'
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true
+								}
+							}]
+						}
+	   				}
+	   			});
+
+				var pedidosPorDiaChart = new Chart($("#myRightChart"), {
+					type: 'bar',
+					data: pedidosPorDiaData,
+					options: {
+						title: {
+							display: true,
+							text: 'Pedidos por Dia'
 						},
 						scales: {
 							yAxes: [{
@@ -239,7 +259,7 @@
 				console.log(result4);
 			});
 
-			$("body").mousewheel(function(event, delta) {
+			$("body, html").mousewheel(function(event, delta) {
 				this.scrollLeft -= (delta * 30);
 				event.preventDefault();
 			});
