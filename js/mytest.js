@@ -89,6 +89,28 @@ function setPedidoInputHandle(){
 	$("#dataInput").mask("99/99/9999",{placeholder:"DD/MM/YYYY"});
 }
 
+function orderArrayByDate(dias){
+	var temp;
+	var day1;
+	var day2;
+	
+	for(var i = 0; i<dias.length; i++){
+		dias[i].number =  parseInt(dias[i][0])+ parseInt(dias[i][1])*200;
+	}
+
+	for(var i = 0; i<dias.length; i++){
+		for(var j = i+1; j<dias.length; j++){
+			if(dias[i].number>dias[j].number){
+				temp = dias[i];
+				dias[i] = dias[j];
+				dias[j] = temp;
+			}
+		}
+	}
+
+	console.log(dias);
+}
+
 function setPedidosPorDia(pedidos){
 	var pedidosPorDia = [];
 	var dias = [];
@@ -97,11 +119,10 @@ function setPedidosPorDia(pedidos){
 		dias.push(pedidos[i].dia_de_compra.split('/'));
 	}
 
-	dias.sort(function(a,b){
-		return a[1] - b[1];
-	})
+	dias = orderArrayByDate(dias);
 
 	console.log(dias);
+
 	var data = {
 		labels: dias,
 		datasets: [
