@@ -40,8 +40,7 @@ body{
 	position: absolute;
 	height: 100%;
 	width: 45%;
-	left: 0;
-	
+	left: 0;	
 }
 
 #menuItemsWrapper ul{
@@ -78,9 +77,10 @@ body{
 	background-color: #8EE4D1;
 }
 
-#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover{
+#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover, #pedidosTableWrap table tr:hover{
 	cursor:pointer;
 }
+
 
 #buttonWrapper{	
 	position: absolute;
@@ -267,7 +267,7 @@ body{
 .tile{
 	display: inline-block;
 	margin: 15px;
-	height: 90%;
+	height: 95%;
 	width: 830px;
 	-webkit-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
     -moz-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
@@ -288,7 +288,6 @@ body{
 	top: 50%;
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
-	border: 1px solid red;
 }
 
 .tileInnerWrap header{
@@ -421,9 +420,28 @@ body{
 	position: absolute;
 	bottom: 0; right:0; left:0;
 	height: 50%;
+	padding-top: 10px;
 }
 
 .charts{
 	position: absolute;	
 	top:0; bottom: 0; right:0; left:0;
+}
+
+#pedidosTableWrap table{
+	height: 100%;
+	border: 3px solid #D0D0D0;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+#pedidosTableWrap tbody tr:hover{
+	background-color: #8EE4D1;
+}
+.dataTables_filter, .dataTables_info { display: none !important; }
+
+#pedidosTable_wrapper{
+	height: 80%;
+	margin-top:10px;
 }
