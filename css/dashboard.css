@@ -1,0 +1,463 @@
+@charset "utf-8";
+*{
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+	font-family: "Helvetica Neue", sans-serif;
+}
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
+}
+
+body{
+	min-width: 1360px;
+	min-height: 600px;
+}
+/*CSS for the TopBar Elements*/
+#topBar{
+	min-width: 1200px;
+	width: 100%;
+	height: 72px;
+	background-color: #102938;
+	overflow: hidden;
+	position: fixed;
+	z-index: 100;
+}
+
+#topBar h4{
+	color: #fff;
+}
+
+#topBar ul li{
+	margin-left: 8px;
+	margin-right: 8px;
+	display: inline-flex;
+}
+
+/*CSS for the MenuItems*/
+#menuItemsWrapper{
+	position: absolute;
+	height: 100%;
+	width: 45%;
+	left: 0;	
+}
+
+#menuItemsWrapper ul{
+	text-align: center;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+
+#logo{
+	position: absolute;
+	max-width: 58%;
+	max-height: 58%;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	left: 35px;
+}
+
+/*CSS for Iniciar Processos*/
+#iniciarProcessoDiv{
+	position: absolute;
+	left: 51%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	height: 100%;
+	width: 210px;
+	background-color: #39bb9d;
+}
+
+#iniciarProcessoDiv:hover, #searchPedidoButton:hover{
+	background-color: #8EE4D1;
+}
+
+#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover, #pedidosTableWrap table tr:hover{
+	cursor:pointer;
+}
+
+
+#buttonWrapper{	
+	position: absolute;
+	height: 17px;
+	width: 90%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+#buttonWrapper img{
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+#buttonWrapper h4{
+	position: relative;
+	float: right;
+}
+
+/*CSS for OptionsMenu*/
+#optionsMenuWrapper{
+	position: absolute;
+	height: 100%;
+	width: 400px;
+	right: 0;	
+}
+
+#optionWrapper{
+	position: absolute;
+	width: 300px;
+	height: 100%;
+	right: 0px;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+
+#optionsMenu{
+	width: auto;
+	position: absolute;
+	top:0;right:15px;bottom:0;
+	display: inline-flex;
+	height: 100%;
+}
+
+#optionsMenu li{
+	height: 100%;
+	position: relative;
+	max-width: 43px;
+	max-height: 100%;
+}
+
+#optionsMenu li img{
+	position: relative;
+	height: 32%;
+	width: auto;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#profileImg img{
+	display: none;
+	height: 65% !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+#dropIcon img{
+	height: 12% !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important
+}
+
+#dropIcon{
+	margin:0px !important;
+}
+
+#searchIcon:hover, #assistIcon:hover{
+	cursor:pointer;
+	background-color:#335061;
+}
+/*CSS for The Main Body*/
+#mainBody{
+	position: absolute;
+	top: 72px; left: 0px; right: 0px; bottom: 0px;
+}
+
+/*CSS for The Body Header*/
+#bodyHeader{
+	position: fixed;
+	top: 72px; left: 0px; right: 0px;
+	height: 72px;
+	-webkit-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+	-moz-box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+	box-shadow: 0px 3px 0px 0px rgba(224,224,224,1);
+	z-index: 5;
+	background-color: white;
+}
+
+#typeDiv{
+	position: relative;
+	height: 100%;
+	float: left;
+	width: 140px;
+}
+
+#typeWrapper{
+	position: absolute;
+	height: 80%;
+	width: 70%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	line-height: 58px;
+}
+
+#typeWrapper img{
+	position: relative;
+	float: left;
+	height: 50%;
+	width: auto;
+	top:50%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+}
+
+#typeWrapper p{
+	position: relative;
+	float: right;
+	height: 100%;
+	width: auto;
+}
+
+#taskDiv{
+	position: relative;
+	float: left;
+	height: 100%;
+	width: 300px;
+}
+
+#taskDiv p{
+	width: 90%;
+	margin: auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+/*CSS for Body Footer*/
+#mainBody footer{
+	position: fixed;
+	width: 100%;
+	height: 36px;
+	background: #565351;
+	bottom: 0;
+}
+
+#mainBody footer p{
+	position: absolute;
+	color: #999999;
+	left: 70px;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+/*CSS for main wrapper*/
+#wrapper{
+	position: absolute;
+	top:72px; bottom:36px;
+	white-space:nowrap;
+	min-height: 515px;
+}
+
+.tile{
+	display: inline-block;
+	margin: 15px;
+	height: 85%;
+	width: 830px;
+	-webkit-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
+    -moz-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
+    box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 3px solid #e0e0e0;
+}
+
+/*CSS for pedidos header*/
+
+.tileInnerWrap{
+	position: relative;
+	width: 95%;
+	height: 95%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+.tileInnerWrap header{
+	position: absolute;
+	top: 0; right:0; left:0;
+	height: 60px;
+	text-align: center;
+}
+
+#pedidosTitle{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+.tileInnerWrap h3{
+	display: inline-flex;
+}
+
+#price{
+	position: relative;
+	height: 100%;
+	float:right;
+	text-align: center;
+	line-height: 60px;
+}
+
+#pedidosSection{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	top: 60px; bottom:0; left:0;
+	float: left;
+}
+
+#pedidosSection .formDiv{
+	position: relative;
+	width: 50%;
+	max-height: 75px;
+}
+
+#pedidosNumDiv {	
+ 	position: absolute;
+	top: 0px; right:0; left:0;
+	height: 45px;
+	display: inline-flex;
+	padding: 15px;
+}
+
+.formInput, .materialSelect{
+	position: relative;
+	width: 100%;
+	margin-right: 10px;
+	border: 3px solid #D0D0D0;
+	padding: 5px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+#searchPedidoButton{
+	position: relative;
+	width: 20%;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	background-color: #39bb9d;
+	color: #F4F4F4;
+}
+
+#rightUpperSection{
+	position: absolute;
+	top: 0px; right:0; left:0;
+	height: 45px;
+	padding: 15px;
+	display: flex;
+}
+
+#lowerPedidosFormDiv header{
+	position: absolute;
+	top: 95px; right:0; left:0;
+}
+
+#downSection{
+	position: absolute;
+	top: 155px; right:0; left:0; bottom:0;
+	display: inline-flex;
+	flex-wrap:wrap;
+}
+
+.materialLine{
+	position: relative;
+	width: 100%;
+	margin: 5px 15px;
+	display: inline-flex;
+}
+
+.materialSelect{
+	height: 100% !important;
+}
+.materialQtdSelect{
+	position: relative;
+	width: 20;
+	border: 3px solid #D0D0D0;
+	padding: 5px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+/*CSS for GraphTile*/
+
+#graphLeft{
+	position: absolute;
+	top: 0; left:0;
+	height: 50%;
+	width: 50%;
+}
+
+#graphRight{
+	position: absolute;
+	top: 0; right:0;
+	height: 50%;
+	width: 50%;
+}
+
+#pedidosTableWrap{
+	position: absolute;
+	bottom: 0; right:0; left:0;
+	height: 50%;
+	padding-top: 10px;
+}
+
+.charts{
+	position: absolute;	
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);	
+}
+
+#pedidosTableWrap table{
+	height: 100%;
+	border: 3px solid #D0D0D0;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+#pedidosTableWrap tbody tr:hover{
+	background-color: #8EE4D1;
+}
+
+#pedidosTableWrap tbody tr{
+	min-height: 10px !important;
+}
+
+#pedidosTableWrap tbody td{
+	text-align:center; 
+	vertical-align:middle;
+}
+
+
+
+
+.dataTables_filter, .dataTables_info { display: none !important; }
+
+#pedidosTable_wrapper{
+	height: 80%;
+	margin-top:10px;
+}

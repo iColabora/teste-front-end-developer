@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+	<link rel="stylesheet" type="text/css" href="css/datatables.css">
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/mytest.js"></script>
+	<script src="js/mask.js"></script>
+	<script src="js/mousewheel.js"></script>
+	<script src="js/chart.js"></script>
+	<script src="mysql_lib.js"></script>
+	<script src="js/datatables.js"></script>
+	<title></title>
+
+</head>
+<body>
+	
+	<header id="topBar">		
+		
+		<div id="menuItemsWrapper">
+			<img id="logo" src="assets/logo_turbina.png"/>
+			<ul id="menuItems" class="topBarList">
+				<li id="dashboardItem"><a href="#"><h4>DASHBOARD</h4></a></li>
+				<li id="solutionItem"><a href="#"><h4>SOLUÇÕES</h4></a></li>
+				<li id="admItem"><a href="#"><h4>ADMINISTRAÇÃO</h4></a></li>
+			</ul>
+		</div>
+			
+
+		<div id="iniciarProcessoDiv">
+			<div id="buttonWrapper">
+				<img src="assets/play.png"/>
+				<h4>INICIAR PROCESSO</h4>
+			</div>
+		</div>
+		<div id="optionsMenuWrapper">
+			<div id="optionWrapper">
+				<ul id="optionsMenu" class="topBarList">
+					<li id="searchIcon"><img src="assets/look_glass.png"/></li>
+					<li id="assistIcon"><img src="assets/assist.png"/></li>
+					<li id="profileImg"><img id="profile" src="assets/mike_dias.png"/></li>
+					<li id="dropIcon"><img src="assets/drop_down.png"/></li>
+				</ul>
+			</div>
+		</div>
+		
+	</header>
+
+	<section id="mainBody">
+		
+		<header id="bodyHeader">
+			<div id="typeDiv">
+				<div id="typeWrapper">
+					<img src="assets/task.png">
+					<p>Tarefa</p>
+				</div>
+			</div>
+			<div id="taskDiv">
+				<p>Check if extra insurance is needed</p>
+			</div>
+		</header>
+
+		<div id="wrapper">		
+			<div id="graphs" class="tile">
+				<div class="tileInnerWrap">
+					<div id="graphLeft">
+						<canvas id="myLeftChart" height="200" class="charts"></canvas>
+					</div>
+					<div id="graphRight">
+						<canvas id="myRightChart" height="200" class="charts"></canvas>
+					</div>
+					<div id="pedidosTableWrap">
+						<table id="pedidosTable"></table>
+					</div>
+
+				</div>
+
+			</div>
+			<div id="pedidos" class="tile">
+				<div class="tileInnerWrap">
+					<header>
+						<h3 id="pedidosTitle">Pedidos</h3>
+						<h3 id="price">Preço total: R$127,99</h3>
+					</header>
+					<section id="pedidosSection">
+						<div id="leftPedidosFormDiv" class="formDiv">
+							<div id="pedidosNumDiv">
+								<input class="formInput" id="pedidoNumberInput" placeholder="Número do Pedido"  maxlength="6" />
+								<button id="searchPedidoButton" type="button" name="searchPedidosButton"><h2>🔍</h2></button>
+							</div>
+						</div>
+						<div id="rightPedidosFormDiv" class="formDiv">
+							<div id="rightUpperSection">
+								<input class="formInput" id="marcaInput" placeholder="Marca" />
+								<input class="formInput" id="dataInput" placeholder="Data" />
+							</div>
+						</div>
+						<div id="lowerPedidosFormDiv">
+							<header>
+								<h3 id="pedidosTitle">Materiais</h3>
+							</header>
+							<div>
+								<div id="downSection">
+
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca1"></select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca1"></select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca2"></select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca2"></select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca3"></select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca3"></select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="selectMarca4"></select>
+								 		<select class="materialQtdSelect" id="selectQtdMarca4"></select> 
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+
+				
+			</div>
+
+			<div id="isumos" class="tile"></div>
+			<div id="solicitantes" class="tile"></div>
+			<div id="entrega" class="tile"></div>
+		</div>
+
+		<footer>			
+			<p>©2016 iColabora</p>
+		</footer>
+
+	</section>
+
+
+
+	<script>
+		window.onload = function(){
+			var solicitantes;
+			var pedidos;
+			var insumos;
+			var materiais;
+
+			var getSolicitantes = "SELECT * FROM solicitantes";
+			var getPedidos = "SELECT * FROM pedidos ORDER BY id ASC";
+			var getInsumos = "SELECT * FROM insumos";
+			var getMateriais = "SELECT * FROM materiais";
+
+			var mPedidos;
+			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, pedidosPorSolicitanteData, pedidosPorDiaData){
+				var pedidosPorSolicitanteChart = new Chart($("#myLeftChart"), {
+					type: 'bar',
+					data: pedidosPorSolicitanteData,
+					options: {
+						responsive: false,
+						title: {
+							display: true,
+							text: 'Pedidos por Solicitante'
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true,
+									max: 5,
+									min: 0,
+									stepSize: 1
+								}
+							}]
+						}
+	   				}});
+				var pedidosPorDiaChart = new Chart($("#myRightChart"), {
+					type: 'bar',
+					data: pedidosPorDiaData,
+					options: {
+						responsive: false,
+						min: 1,
+						title: {
+							display: true,
+							text: 'Pedidos por Dia'
+						},
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero:true,
+									max: 5,
+									min: 0,
+									stepSize: 1
+								}
+							}]
+						}
+	   				}});
+				var dataSet = getDataSetPedidos(obj);
+				var table = $('#pedidosTable').DataTable({
+					data: dataSet,	
+						columns: [
+							{ title: "Número do Pedido Pendente" },
+							{ title: "Solicitante" },
+							{ title: "Data de Compra" },
+						]
+					});
+				$('#pedidosTable tbody').on( 'click', 'tr', function(){
+					if ($(this).hasClass('selected')){
+						$(this).removeClass('selected');
+					}
+					else {
+						var array = [];
+						table.$('tr.selected').removeClass('selected');
+						$(this).addClass('selected');
+						//setPedidoByNumer(parseInt($(this).find('td').first().html()));
+					}
+				});
+			});
+
+				
+					
+			
+
+			$("body, html").mousewheel(function(event, delta) {
+				this.scrollLeft -= (delta * 30);
+				event.preventDefault();
+			});
+			
+			setPedidoInputHandle();
+
+			makeRoundImage($("#profileImg").find('img')[0]);
+		};
+	</script>
+</body>
+</html>
