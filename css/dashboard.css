@@ -12,7 +12,7 @@ input:focus, select:focus, textarea:focus, button:focus {
 
 body{
 	min-width: 1360px;
-	min-height: 768px;
+	min-height: 600px;
 }
 /*CSS for the TopBar Elements*/
 #topBar{
@@ -261,13 +261,13 @@ body{
 	position: absolute;
 	top:72px; bottom:36px;
 	white-space:nowrap;
-	min-height: 570px;
+	min-height: 515px;
 }
 
 .tile{
 	display: inline-block;
 	margin: 15px;
-	height: 95%;
+	height: 85%;
 	width: 830px;
 	-webkit-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
     -moz-box-shadow: 10px 10px 23px -6px rgba(0,0,0,0.84);
@@ -383,7 +383,7 @@ body{
 .materialLine{
 	position: relative;
 	width: 100%;
-	margin: 20px;
+	margin: 5px 15px;
 	display: inline-flex;
 }
 
@@ -425,7 +425,10 @@ body{
 
 .charts{
 	position: absolute;	
-	top:0; bottom: 0; right:0; left:0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);	
 }
 
 #pedidosTableWrap table{
@@ -439,6 +442,19 @@ body{
 #pedidosTableWrap tbody tr:hover{
 	background-color: #8EE4D1;
 }
+
+#pedidosTableWrap tbody tr{
+	min-height: 10px !important;
+}
+
+#pedidosTableWrap tbody td{
+	text-align:center; 
+	vertical-align:middle;
+}
+
+
+
+
 .dataTables_filter, .dataTables_info { display: none !important; }
 
 #pedidosTable_wrapper{
