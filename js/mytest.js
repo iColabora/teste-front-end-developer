@@ -19,7 +19,7 @@ function createObject(pedidos, solicitantes, materiais, insumos){
 
 	for(var i = 0; i<pedidos.length; i++){
 		
-
+		pedidos[i]["isPendente"] = true;
 		for(var j = 0; j<solicitantes.length; j++){//Verifica quem é o solicitante de cada pedido
 			if(pedidos[i].id_solicitante === solicitantes[j].id){
 				addSolicitanteToPedido(i, solicitantes[j]);
@@ -63,19 +63,25 @@ function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, g
 			pedidos = setDataCompra(JSON.parse(result2));
 			mysqlQuery(getInsumosQuery, function(result3){
 				insumos = JSON.parse(result3);
+				//var cleanInsumos = getCleanInsumos(insumos);
+
 				mysqlQuery(getMateriaisQuery, function(result4){
 					materiais = JSON.parse(result4);
-					console.log(materiais);
+					console.log(JSON.parse(result4));
+					//var cleanMateriais = getCleanMateriais(materiais);
+
 					$(".materialSelect").each(function(){
+						$(this).append("<option value=0>Nenhum</option>");
 						for(var i = 0; i<materiais.length; i++){
-							$(this).append("<option value="+materiais[i].id+">"+materiais[i].nome+" "+materiais[i].marca+"-- Preço:R$"+materiais[i].preco+",00"+"</option>")
+							$(this).append("<option value="+materiais[i].id+">"+materiais[i].nome+" "+materiais[i].marca+"-- Preço:R$"+materiais[i].preco+",00"+"</option>");
 						}
 					});
 					
 					callback(
 						createObject(pedidos, solicitantes, materiais, insumos),
 						setPedidosPorSolicitante(pedidos, solicitantes),
-						setPedidosPorDia(pedidos)
+						setPedidosPorDia(pedidos),
+						insumos
 					);
 				});
 			});
@@ -183,10 +189,12 @@ function setPedidosPorDia(pedidos){
 function getDataSetPedidos(pedidos){
 	var pedidosArray = [];
 	for(var i = 0; i<pedidos.length; i++){
-		pedidosArray[i] = new Array();
-		pedidosArray[i].push(pedidos[i].numero);
-		pedidosArray[i].push(pedidos[i].solicitante.nome);
-		pedidosArray[i].push(pedidos[i].data_de_compra.split(' ')[0]);
+		if(pedidos[i].isPendente){
+			pedidosArray[i] = new Array();
+			pedidosArray[i].push(pedidos[i].numero);
+			pedidosArray[i].push(pedidos[i].solicitante.nome);
+			pedidosArray[i].push(pedidos[i].data_de_compra.split(' ')[0]);
+		}
 	}
 
 	return pedidosArray;
@@ -216,30 +224,28 @@ function setPedidosPorSolicitante(pedidos, solicitantes){
 
 	var data = {
 		labels: nomes,
-		datasets: [
-			{
-				label: "Número de Pedidos",
-				fill: false,
-				lineTension: 0.1,
-				backgroundColor: "rgba(75,192,192,0.4)",
-				borderColor: "rgba(75,192,192,1)",
-				borderCapStyle: 'butt',
-				borderDash: [],
-				borderDashOffset: 0.0,
-				borderJoinStyle: 'miter',
-				pointBorderColor: "rgba(75,192,192,1)",
-				pointBackgroundColor: "#fff",
-				pointBorderWidth: 1,
-				pointHoverRadius: 5,
-				pointHoverBackgroundColor: "rgba(75,192,192,1)",
-				pointHoverBorderColor: "rgba(220,220,220,1)",
-				pointHoverBorderWidth: 2,
-				pointRadius: 1,
-				pointHitRadius: 10,
-				data: pedidosPorId,
-				spanGaps: false,
-			}
-		]
+		datasets: [{
+			label: "Número de Pedidos",
+			fill: false,
+			lineTension: 0.1,
+			backgroundColor: "rgba(75,192,192,0.4)",
+			borderColor: "rgba(75,192,192,1)",
+			borderCapStyle: 'butt',
+			borderDash: [],
+			borderDashOffset: 0.0,
+			borderJoinStyle: 'miter',
+			pointBorderColor: "rgba(75,192,192,1)",
+			pointBackgroundColor: "#fff",
+			pointBorderWidth: 1,
+			pointHoverRadius: 5,
+			pointHoverBackgroundColor: "rgba(75,192,192,1)",
+			pointHoverBorderColor: "rgba(220,220,220,1)",
+			pointHoverBorderWidth: 2,
+			pointRadius: 1,
+			pointHitRadius: 10,
+			data: pedidosPorId,
+			spanGaps: false,
+		}]
 	};
 
 	return data;
@@ -251,4 +257,19 @@ function setDataCompra(pedidos){
 		pedidos[i]["dia_de_compra"] = dia;
 	}
 	return pedidos;
+}
+
+function getDataSetInsumos(insumos){
+	var dataInsumos = [];
+	console.log(insumos);
+
+	return dataInsumos;
+}
+
+function getCleanInsumos(insumos){
+
+}
+
+function getCleanMateriais(materiais){
+
 }

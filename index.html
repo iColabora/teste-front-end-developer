@@ -77,7 +77,6 @@
 					</div>
 
 				</div>
-
 			</div>
 			<div id="pedidos" class="tile">
 				<div class="tileInnerWrap">
@@ -127,11 +126,28 @@
 						</div>
 					</section>
 				</div>
-
-				
 			</div>
 
-			<div id="isumos" class="tile"></div>
+			<div id="isumos" class="tile">
+				<div class="tileInnerWrap">
+					<header id="insumosHeader">
+						<h3>Insumos</h3>
+					</header>
+					<div id="insumosHeader2">
+						<div id="insumosWrapper">
+							<select class="materialSelect formInput" id="materialSelectInsumos"></select>
+							<select id="insumosSelect" class="formInput"></select>						
+							<select id="insumosQtdSelect" class="formInput"></select>
+							<button id="addInsumosButton" type="button" name="addInsumosButton"><h1>+</h1></button>
+						</div>
+					</div>
+					<section id="tableSectionInsumos">						
+						<table id="insumosTable">
+
+						</table>
+					</section>
+				</div>
+			</div>
 			<div id="solicitantes" class="tile"></div>
 			<div id="entrega" class="tile"></div>
 		</div>
@@ -157,7 +173,7 @@
 			var getMateriais = "SELECT * FROM materiais";
 
 			var mPedidos;
-			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, pedidosPorSolicitanteData, pedidosPorDiaData){
+			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, pedidosPorSolicitanteData, pedidosPorDiaData, insumos){
 				var pedidosPorSolicitanteChart = new Chart($("#myLeftChart"), {
 					type: 'bar',
 					data: pedidosPorSolicitanteData,
@@ -199,31 +215,36 @@
 							}]
 						}
 	   				}});
-				var dataSet = getDataSetPedidos(obj);
-				var table = $('#pedidosTable').DataTable({
-					data: dataSet,	
+				var dataSetPedidos = getDataSetPedidos(obj);
+				var dataSetInsumos = getDataSetInsumos(insumos);
+				console.log(obj);
+				var pedidosTable = $('#pedidosTable').DataTable({
+					data: dataSetPedidos,	
 						columns: [
-							{ title: "Número do Pedido Pendente" },
-							{ title: "Solicitante" },
-							{ title: "Data de Compra" },
-						]
-					});
+						{title: "Número do Pedido Pendente" },
+						{title: "Solicitante" },
+						{title: "Data de Compra" },
+					]
+				});
 				$('#pedidosTable tbody').on( 'click', 'tr', function(){
-					if ($(this).hasClass('selected')){
+					if($(this).hasClass('selected')){
 						$(this).removeClass('selected');
-					}
-					else {
-						var array = [];
-						table.$('tr.selected').removeClass('selected');
+					}else{
+						pedidosTable.$('tr.selected').removeClass('selected');
 						$(this).addClass('selected');
 						//setPedidoByNumer(parseInt($(this).find('td').first().html()));
 					}
 				});
-			});
 
-				
-					
-			
+				var insumosTable = $('#insumosTable').DataTable({
+					data: dataSetInsumos,	
+					columns: [
+						{ title: "Número do Pedido Pendente" },
+						{ title: "Solicitante" },
+						{ title: "Data de Compra" },
+					]
+				});
+			});
 
 			$("body, html").mousewheel(function(event, delta) {
 				this.scrollLeft -= (delta * 30);

@@ -73,11 +73,11 @@ body{
 	background-color: #39bb9d;
 }
 
-#iniciarProcessoDiv:hover, #searchPedidoButton:hover{
+#iniciarProcessoDiv:hover, #searchPedidoButton:hover, #addInsumosButton:hover{
 	background-color: #8EE4D1;
 }
 
-#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover, #pedidosTableWrap table tr:hover{
+#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover, #pedidosTableWrap table tr:hover, #addInsumosButton:hover{
 	cursor:pointer;
 }
 
@@ -288,6 +288,7 @@ body{
 	top: 50%;
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
+	border: 1px solid red;
 }
 
 .tileInnerWrap header{
@@ -297,7 +298,7 @@ body{
 	text-align: center;
 }
 
-#pedidosTitle{
+#pedidosTitle, #insumosHeader h3{
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -350,7 +351,7 @@ body{
 	-webkit-border-radius: 8px;
 }
 
-#searchPedidoButton{
+#searchPedidoButton, #addInsumosButton{
 	position: relative;
 	width: 20%;
 	border-radius: 8px;
@@ -392,7 +393,6 @@ body{
 }
 .materialQtdSelect{
 	position: relative;
-	width: 20;
 	border: 3px solid #D0D0D0;
 	padding: 5px;
 	border-radius: 8px;
@@ -452,12 +452,49 @@ body{
 	vertical-align:middle;
 }
 
-
-
-
 .dataTables_filter, .dataTables_info { display: none !important; }
 
 #pedidosTable_wrapper{
 	height: 80%;
 	margin-top:10px;
+}
+
+/*CSS for Insumos Tile*/
+
+#insumosHeader{
+	position: absolute;
+	top:0; right:0; left:0;
+	height: 60px;
+	border: 1px solid black;
+}
+
+#insumosHeader2{
+	position: absolute;
+	top:60px; right:0; left:0;
+	height: 75px;
+	border: 1px solid black;
+}
+
+#insumosWrapper{
+	position: absolute;
+	top: 50%; left: 0; right: 0;
+	height: 45px;	
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	display: inline-flex;
+}
+
+#insumosTable{
+	display: none;
+}
+
+#insumosQtdSelect{
+	width: 50px !important;
+}
+
+#tableSectionInsumos{
+	position: absolute;
+	bottom:0; left: 0; right: 0;
+	height: 67%;
+	border: 1px solid red;
 }
