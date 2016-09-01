@@ -296,7 +296,11 @@ body{
 	text-align: center;
 }
 
-#pedidosTitle, #insumosHeader h1{
+.tileHeader{
+	border:1px solid black;
+}
+
+.tileHeader h1{
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -521,22 +525,20 @@ body{
 /*CSS for solicitante tile*/
 
 #solicitantes header{
-	border: 1px solid black;
 }
 
-#solicitantes section{
-	border: 1px solid black;
+#solicitantes section, #entrega section{
 	position: absolute;	
 	top:62px; bottom:0; left:0; right: 0;
 	display: flex;
 	flex-direction: column;
+	border: 1px solid black;
 }
 
 .solicitanteDiv{
 	position: relative;
-	height: 20%;
+	height: 25%;
 	width: 100%;
-	border: 1px solid blue;
 }
 
 .solicitanteInput{
@@ -570,7 +572,28 @@ body{
 	display: inline-flex;
 }
 
-#solicitanteNumInput, #solicitanteUFInput{
+#solicitanteNumInput, #solicitanteUFInput, #entregaUFInput{
 	width: 50px !important;
 }
 
+/*CSS for entrega tile*/
+.entregaDiv{
+	position: relative;
+	height: 33%;
+	width: 100%;
+	border: 1px solid green;
+}
+
+.entregaInnerDiv{
+	position: absolute;
+	top: 50%; left: 50%;
+	height: 45px;
+	width: 100%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	display: inline-flex	
+}
+
+#entregaCEPInput{
+	width: 20%;
+}

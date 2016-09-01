@@ -80,9 +80,8 @@
 			</div>
 			<div id="pedidos" class="tile">
 				<div class="tileInnerWrap">
-					<header>
+					<header class="tileHeader">
 						<h1 id="pedidosTitle">Pedidos</h1>
-						<h1 id="price">Preço total: R$127,99</h1>
 					</header>
 					<section id="pedidosSection">
 						<div id="leftPedidosFormDiv" class="formDiv">
@@ -130,7 +129,7 @@
 
 			<div id="isumos" class="tile">
 				<div class="tileInnerWrap">
-					<header id="insumosHeader">
+					<header class="tileHeader">
 						<h1>Insumos</h1>
 					</header>
 					<div id="insumosHeader2">
@@ -151,13 +150,14 @@
 
 			<div id="solicitantes" class="tile">
 				<div class="tileInnerWrap">
-					<header>
-						<h1 id="pedidosTitle">Solicitante</h1>						
+					<header class="tileHeader">
+						<h1>Dados do Solicitante</h1>
 					</header>
 					<section id="solicitanteSection">
 						<div class="solicitanteDiv" id="solicitanteNomeDiv">
 							<div class="solicitanteInnerDiv" id="solicitanteNomeDiv">
 								<input required class="formInput" id="nomeInput" placeholder="Nome do Solicitante"/>
+								<input required class="formInput" id="solicitanteCPFInput" placeholder="CPF: 000.000.000-00"  maxlength="8" />
 							</div>
 						</div>
 						<div class="solicitanteDiv" id="solicitanteDiv2">
@@ -165,11 +165,13 @@
 								<div class="solicitanteInnerDiv" id="solicitanteCEPDiv">
 									<input required class="formInput" id="solicitanteCEPInput" placeholder="CEP: 00000-00"  maxlength="8" />
 									<button class="myButton" id="searchSolicitanteCEPButton" type="button" name="searchSolicitanteCEPButton"><h1>🔍</h1></button>
+									
 								</div>								
 							</div>
 							<div id="rightDiv">
 								<div class="solicitanteInnerDiv" id="solicitanteCPFDiv">
-									<input required class="formInput" id="solicitanteCPFInput" placeholder="CPF: 000.000.000-00"  maxlength="8" />
+									<input required class="formInput" id="solicitanteCidadeInput" placeholder="Cidade" />
+									<input class="formInput" id="solicitanteUFInput" placeholder="UF" maxlength="2" />
 								</div>
 							</div>
 						</div>
@@ -184,19 +186,34 @@
 								<input class="formInput" id="solicitanteNumInput" placeholder="Número" />
 							</div>
 						</div>
-						<div class="solicitanteDiv" id="solicitanteDiv5">
-						<div class="solicitanteInnerDiv" id="solicitanteEstadoDiv">
-								<input required class="formInput" id="solicitanteCidadeInput" placeholder="Cidade" />
-								<input class="formInput" id="solicitanteUFInput" placeholder="UF" maxlength="2" />
-							</div>
-						</div>
 					</section>
 				</div>
 			</div>
 
 			<div id="entrega" class="tile">
 				<div class="tileInnerWrap">
-				
+					<header class="tileHeader">
+						<h1>Endereço de Entrega</h1>
+					</header>
+					<section id="entregaSection">
+						<div class="entregaDiv" id="entregaDiv1">
+							<div class="entregaInnerDiv" id="entregaEndDiv">
+								<input required class="formInput" id="entregaEndInput" placeholder="Endereço" />
+							</div>
+						</div>
+						<div class="entregaDiv" id="entregaDiv2">
+							<div class="entregaInnerDiv" id="entregaCompDiv">
+								<input required class="formInput" id="entregaCompInput" placeholder="Complemento" />
+							</div>
+						</div>
+						<div class="entregaDiv" id="entregaDiv3">
+							<div class="entregaInnerDiv" id="entregaCompDiv">
+								<input required class="formInput" id="entregaCidadeInput" placeholder="Cidade" />
+								<input class="formInput" id="entregaUFInput" placeholder="UF" maxlength="2" />
+								<input required class="formInput" id="entregaCEPInput" placeholder="CEP: 00000-00"  maxlength="8" />
+							</div>
+						</div>
+					</section>
 				</div>
 			</div>
 		</div>

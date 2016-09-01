@@ -48,10 +48,8 @@ function createObject(pedidos, solicitantes, materiais, insumos){
 function makeRoundImage(imgOb){
 	$(imgOb).css({
 		'display': 'block',
-		'-moz-border-radius': ($(imgOb).height()/2)+'px',
-		
-		'-webkit-border-radius': ($(imgOb).height()/2)+'px',
-		
+		'-moz-border-radius': ($(imgOb).height()/2)+'px',		
+		'-webkit-border-radius': ($(imgOb).height()/2)+'px',		
 		'border-radius': ($(imgOb).height()/2)+'px',
 	});
 }
@@ -109,6 +107,7 @@ function setPedidoInputHandle(){
 	$("#solicitanteNomeInput").mask("99999-999");
 	$("#solicitanteCPFInput").mask("999.999.999-99");
 	$("#solicitanteNumInput").mask("9999999");
+	$("#entregaCEPInput").mask("99999-999");
 }
 
 function orderAndFormatArrayByDate(dias){
