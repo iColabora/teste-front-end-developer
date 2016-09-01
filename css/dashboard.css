@@ -82,6 +82,8 @@ body{
 }
 
 #buttonWrapper{	
+
+	/**/
 	position: absolute;
 	height: 17px;
 	width: 90%;
