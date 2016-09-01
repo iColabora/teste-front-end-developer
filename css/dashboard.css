@@ -73,11 +73,11 @@ body{
 	background-color: #39bb9d;
 }
 
-#iniciarProcessoDiv:hover, .myButton:hover{
+#iniciarProcessoDiv:hover, .myButton:hover, #finishButtonDiv:hover{
 	background-color: #8EE4D1;
 }
 
-#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #pedidosTableWrap table tr:hover, .myButton:hover, #tableSectionInsumos table tr:hover{
+#iniciarProcessoDiv:hover, #finishButtonDiv:hover, #optionsMenu li img:hover, #pedidosTableWrap table tr:hover, .myButton:hover, #tableSectionInsumos table tr:hover{
 	cursor:pointer;
 }
 
@@ -596,4 +596,17 @@ body{
 
 #entregaCEPInput{
 	width: 20%;
+}
+
+/*CSS for Finish Button*/
+
+#finishButtonDiv{
+	position: absolute;
+	top: 0; bottom: 0; right: 0;
+	width: 140px;
+	background-color: #39bb9d;
+}
+
+#finishButtonText{	
+	color: #F4F4F4;
 }
