@@ -73,14 +73,13 @@ body{
 	background-color: #39bb9d;
 }
 
-#iniciarProcessoDiv:hover, #searchPedidoButton:hover, #addInsumosButton:hover{
+#iniciarProcessoDiv:hover, .myButton:hover{
 	background-color: #8EE4D1;
 }
 
-#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #searchPedidoButton:hover, #pedidosTableWrap table tr:hover, #addInsumosButton:hover{
+#iniciarProcessoDiv:hover, #optionsMenu li img:hover, #pedidosTableWrap table tr:hover, .myButton:hover, #tableSectionInsumos table tr:hover{
 	cursor:pointer;
 }
-
 
 #buttonWrapper{	
 	position: absolute;
@@ -288,7 +287,6 @@ body{
 	top: 50%;
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
-	border: 1px solid red;
 }
 
 .tileInnerWrap header{
@@ -298,7 +296,7 @@ body{
 	text-align: center;
 }
 
-#pedidosTitle, #insumosHeader h3{
+#pedidosTitle, #insumosHeader h1{
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -343,7 +341,9 @@ body{
 .formInput, .materialSelect{
 	position: relative;
 	width: 100%;
-	margin-right: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
+	max-height: 60px;
 	border: 3px solid #D0D0D0;
 	padding: 5px;
 	border-radius: 8px;
@@ -351,7 +351,8 @@ body{
 	-webkit-border-radius: 8px;
 }
 
-#searchPedidoButton, #addInsumosButton{
+.myButton{
+	max-height: 60px;
 	position: relative;
 	width: 20%;
 	border-radius: 8px;
@@ -382,6 +383,7 @@ body{
 }
 
 .materialLine{
+	max-height: 60px;
 	position: relative;
 	width: 100%;
 	margin: 5px 15px;
@@ -392,6 +394,7 @@ body{
 	height: 100% !important;
 }
 .materialQtdSelect{
+	max-height: 60px;
 	position: relative;
 	border: 3px solid #D0D0D0;
 	padding: 5px;
@@ -428,7 +431,13 @@ body{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	-webkit-transform: translate(-50%,-50%);	
+	-webkit-transform: translate(-50%,-50%);
+	image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -o-crisp-edges;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 #pedidosTableWrap table{
@@ -439,15 +448,15 @@ body{
 	-webkit-border-radius: 8px;
 }
 
-#pedidosTableWrap tbody tr:hover{
+#pedidosTableWrap tbody tr:hover, #tableSectionInsumos tbody tr:hover{
 	background-color: #8EE4D1;
 }
 
-#pedidosTableWrap tbody tr{
+#pedidosTableWrap tbody tr, #tableSectionInsumos tbody tr{
 	min-height: 10px !important;
 }
 
-#pedidosTableWrap tbody td{
+#pedidosTableWrap tbody td, #tableSectionInsumos tbody td{
 	text-align:center; 
 	vertical-align:middle;
 }
@@ -465,27 +474,29 @@ body{
 	position: absolute;
 	top:0; right:0; left:0;
 	height: 60px;
-	border: 1px solid black;
 }
 
 #insumosHeader2{
 	position: absolute;
 	top:60px; right:0; left:0;
 	height: 75px;
-	border: 1px solid black;
 }
 
 #insumosWrapper{
 	position: absolute;
 	top: 50%; left: 0; right: 0;
-	height: 45px;	
+	height: 45px;
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	display: inline-flex;
 }
 
 #insumosTable{
-	display: none;
+	height: 100%;
+	border: 3px solid #D0D0D0;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
 }
 
 #insumosQtdSelect{
@@ -496,5 +507,70 @@ body{
 	position: absolute;
 	bottom:0; left: 0; right: 0;
 	height: 67%;
-	border: 1px solid red;
 }
+
+#insumosTable td{
+	padding: 10px 10px !important
+}
+
+#insumosTable button{
+	width: 50%;
+	height: 180%;
+}
+
+/*CSS for solicitante tile*/
+
+#solicitantes header{
+	border: 1px solid black;
+}
+
+#solicitantes section{
+	border: 1px solid black;
+	position: absolute;	
+	top:62px; bottom:0; left:0; right: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.solicitanteDiv{
+	position: relative;
+	height: 20%;
+	width: 100%;
+	border: 1px solid blue;
+}
+
+.solicitanteInput{
+	position: absolute;
+	width: 95%;
+	height: 35px;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+}
+
+#leftDiv{
+	position: absolute;
+	top: 0; left: 0; bottom: 0;
+	width: 50%;
+}
+
+#rightDiv{
+	position: absolute;
+	top: 0; right: 0; bottom: 0;
+	width: 50%;
+}
+
+.solicitanteInnerDiv{
+	position: absolute;
+	top: 50%; left: 50%;
+	height: 45px;
+	width: 100%;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	display: inline-flex;
+}
+
+#solicitanteNumInput, #solicitanteUFInput{
+	width: 50px !important;
+}
+

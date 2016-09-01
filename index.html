@@ -81,25 +81,25 @@
 			<div id="pedidos" class="tile">
 				<div class="tileInnerWrap">
 					<header>
-						<h3 id="pedidosTitle">Pedidos</h3>
-						<h3 id="price">Preço total: R$127,99</h3>
+						<h1 id="pedidosTitle">Pedidos</h1>
+						<h1 id="price">Preço total: R$127,99</h1>
 					</header>
 					<section id="pedidosSection">
 						<div id="leftPedidosFormDiv" class="formDiv">
 							<div id="pedidosNumDiv">
-								<input class="formInput" id="pedidoNumberInput" placeholder="Número do Pedido"  maxlength="6" />
-								<button id="searchPedidoButton" type="button" name="searchPedidosButton"><h2>🔍</h2></button>
+								<input required class="formInput" id="pedidoNumberInput" placeholder="Número do Pedido"  maxlength="6" />
+								<button class="myButton" id="searchPedidoButton" type="button" name="searchPedidosButton"><h2>🔍</h2></button>
 							</div>
 						</div>
 						<div id="rightPedidosFormDiv" class="formDiv">
 							<div id="rightUpperSection">
-								<input class="formInput" id="marcaInput" placeholder="Marca" />
-								<input class="formInput" id="dataInput" placeholder="Data" />
+								<input required class="formInput" id="marcaInput" placeholder="Marca" />
+								<input required class="formInput" id="dataInput" placeholder="Data" />
 							</div>
 						</div>
 						<div id="lowerPedidosFormDiv">
 							<header>
-								<h3 id="pedidosTitle">Materiais</h3>
+								<h1 id="pedidosTitle">Materiais</h1>
 							</header>
 							<div>
 								<div id="downSection">
@@ -131,14 +131,14 @@
 			<div id="isumos" class="tile">
 				<div class="tileInnerWrap">
 					<header id="insumosHeader">
-						<h3>Insumos</h3>
+						<h1>Insumos</h1>
 					</header>
 					<div id="insumosHeader2">
 						<div id="insumosWrapper">
 							<select class="materialSelect formInput" id="materialSelectInsumos"></select>
 							<select id="insumosSelect" class="formInput"></select>						
-							<select id="insumosQtdSelect" class="formInput"></select>
-							<button id="addInsumosButton" type="button" name="addInsumosButton"><h1>+</h1></button>
+							<select id="insumosQtdSelect" class="formInput materialQtdSelect"></select>
+							<button class="myButton" id="addInsumosButton" type="button" name="addInsumosButton"><h1>+</h1></button>
 						</div>
 					</div>
 					<section id="tableSectionInsumos">						
@@ -148,8 +148,57 @@
 					</section>
 				</div>
 			</div>
-			<div id="solicitantes" class="tile"></div>
-			<div id="entrega" class="tile"></div>
+
+			<div id="solicitantes" class="tile">
+				<div class="tileInnerWrap">
+					<header>
+						<h1 id="pedidosTitle">Solicitante</h1>						
+					</header>
+					<section id="solicitanteSection">
+						<div class="solicitanteDiv" id="solicitanteNomeDiv">
+							<div class="solicitanteInnerDiv" id="solicitanteNomeDiv">
+								<input required class="formInput" id="nomeInput" placeholder="Nome do Solicitante"/>
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv2">
+							<div id="leftDiv">
+								<div class="solicitanteInnerDiv" id="solicitanteCEPDiv">
+									<input required class="formInput" id="solicitanteCEPInput" placeholder="CEP: 00000-00"  maxlength="8" />
+									<button class="myButton" id="searchSolicitanteCEPButton" type="button" name="searchSolicitanteCEPButton"><h1>🔍</h1></button>
+								</div>								
+							</div>
+							<div id="rightDiv">
+								<div class="solicitanteInnerDiv" id="solicitanteCPFDiv">
+									<input required class="formInput" id="solicitanteCPFInput" placeholder="CPF: 000.000.000-00"  maxlength="8" />
+								</div>
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv3">
+							<div class="solicitanteInnerDiv" id="solicitanteEndDiv">
+								<input required class="formInput" id="solicitanteEndInput" placeholder="Endereço" />
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv4">
+							<div class="solicitanteInnerDiv" id="solicitanteCompDiv">
+								<input required class="formInput" id="solicitanteCompInput" placeholder="Complemento" />
+								<input class="formInput" id="solicitanteNumInput" placeholder="Número" />
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv5">
+						<div class="solicitanteInnerDiv" id="solicitanteEstadoDiv">
+								<input required class="formInput" id="solicitanteCidadeInput" placeholder="Cidade" />
+								<input class="formInput" id="solicitanteUFInput" placeholder="UF" maxlength="2" />
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+
+			<div id="entrega" class="tile">
+				<div class="tileInnerWrap">
+				
+				</div>
+			</div>
 		</div>
 
 		<footer>			
@@ -216,8 +265,10 @@
 						}
 	   				}});
 				var dataSetPedidos = getDataSetPedidos(obj);
-				var dataSetInsumos = getDataSetInsumos(insumos);
+				var dataSetInsumos = getDataSetInsumos(obj, 248);
+
 				console.log(obj);
+
 				var pedidosTable = $('#pedidosTable').DataTable({
 					data: dataSetPedidos,	
 						columns: [
@@ -239,9 +290,12 @@
 				var insumosTable = $('#insumosTable').DataTable({
 					data: dataSetInsumos,	
 					columns: [
-						{ title: "Número do Pedido Pendente" },
-						{ title: "Solicitante" },
-						{ title: "Data de Compra" },
+						{ title: "Material" },
+						{ title: "Insumo" },
+						{ title: "Preço" },
+						{ title: "Qtd" },
+						{ title: "Apagar" },
+
 					]
 				});
 			});

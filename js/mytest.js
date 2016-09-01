@@ -71,7 +71,7 @@ function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, g
 					//var cleanMateriais = getCleanMateriais(materiais);
 
 					$(".materialSelect").each(function(){
-						$(this).append("<option value=0>Nenhum</option>");
+						$(this).append("<option value='' disabled selected hidden>Escolha um material</option>");
 						for(var i = 0; i<materiais.length; i++){
 							$(this).append("<option value="+materiais[i].id+">"+materiais[i].nome+" "+materiais[i].marca+"-- Preço:R$"+materiais[i].preco+",00"+"</option>");
 						}
@@ -105,6 +105,10 @@ function setPedidoInputHandle(){
 			$(this).append("<option value="+id+">"+i+"</option>")	
 		}
 	});
+
+	$("#solicitanteNomeInput").mask("99999-999");
+	$("#solicitanteCPFInput").mask("999.999.999-99");
+	$("#solicitanteNumInput").mask("9999999");
 }
 
 function orderAndFormatArrayByDate(dias){
@@ -220,7 +224,6 @@ function setPedidosPorSolicitante(pedidos, solicitantes){
 		nomes.push(nome);
 		pedidosPorId.push(count);//Ordenado
 	}
-		
 
 	var data = {
 		labels: nomes,
@@ -259,17 +262,26 @@ function setDataCompra(pedidos){
 	return pedidos;
 }
 
-function getDataSetInsumos(insumos){
+function getDataSetInsumos(pedidos, num){
 	var dataInsumos = [];
-	console.log(insumos);
+
+	for(var i = 0; i<pedidos.length; i++){
+		if(pedidos[i].numero === num){
+			var pedido = pedidos[i];
+			for(var j = 0; j<pedidos[i].materiais.length; j++){
+				var material = pedidos[i].materiais[j];
+				for(var k = 0; k<pedidos[i].materiais[j].insumos.length; k++){
+					var insumo = pedidos[i].materiais[j].insumos[k];
+					dataInsumos[k] = new Array();
+					dataInsumos[k].push(material.nome+" "+material.marca);
+					dataInsumos[k].push(insumo.descricao);
+					dataInsumos[k].push("R$"+Math.round(parseFloat(insumo.preco/insumo.quantidade)*100)/100);
+					dataInsumos[k].push(parseInt(insumo.quantidade));
+					dataInsumos[k].push('<button class="myButton" id="deleteInsumosButton" type="button" name="deleteInsumosButton"><h1>X</h1></button>');
+				}
+			}
+		}
+	}
 
 	return dataInsumos;
-}
-
-function getCleanInsumos(insumos){
-
-}
-
-function getCleanMateriais(materiais){
-
 }
