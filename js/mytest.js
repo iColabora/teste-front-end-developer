@@ -1,3 +1,4 @@
+var pedido;
 function createObject(pedidos, solicitantes, materiais, insumos){
 
 	function addSolicitanteToPedido(nPedido, solicitante){
@@ -76,7 +77,7 @@ function performQuerys(getPedidosQuery, getSolicitantesQuery, getInsumosQuery, g
 }
 
 function setDomListenersAndLike(pedidosPendentes, insumosTable, pedidosTable, materiais, insumos){
-	var pedido;
+
 	//Listener para os inputs e máscaras
 	$("#pedidoNumberInput").mask("9");
 	$("#dataInput").mask("99/99/9999",{placeholder:"DD/MM/YYYY"});
@@ -100,15 +101,13 @@ function setDomListenersAndLike(pedidosPendentes, insumosTable, pedidosTable, ma
 	});
 
 	$('#pedidosTable tbody').on( 'click', 'tr', function(){
-		if($(this).hasClass('selected')){
-			$(this).removeClass('selected');
-		}else{
-			pedidosTable.$('tr.selected').removeClass('selected');
-			$(this).addClass('selected');
-			var id = parseInt($(this).find('td').first().html());
-			pedido = setPedidoFromNum(insumosTable, pedidosPendentes, id);
-			updateTotalCost(pedido);
-		}
+		
+		$(this).addClass('selected').siblings().removeClass('selected');
+
+		var id = parseInt($(this).find('td').first().html());
+		pedido = setPedidoFromNum(insumosTable, pedidosPendentes, id);
+		updateTotalCost(pedido);
+		
 	});
 
 	$("#addInsumosButton").click(function(){
@@ -120,8 +119,6 @@ function setDomListenersAndLike(pedidosPendentes, insumosTable, pedidosTable, ma
 					pedido.insumos.push(insumos[i]);
 					pedido.insumos[pedido.insumos.length-1].id_pedido = pedido.id;
 					pedido.insumos[pedido.insumos.length-1].quantidade = parseInt(insumoToAdd[1].value)+1;
-
-					console.log(pedido.insumos);
 					setInsumosTable(insumosTable, pedido);
 					updateTotalCost(pedido);
 					return;
@@ -176,6 +173,39 @@ function setDomListenersAndLike(pedidosPendentes, insumosTable, pedidosTable, ma
 			$("#entregaNumInput")[0].value = [];
 		});
 	});
+
+	$("#finishPedidoButton").click(function(){
+		if(pedido.insumos.length>1){
+			if(pedido.materiais.length==4){							
+				if(pedidos[pedido.id-1].id == pedido.id){
+					
+					pedido.isPendente = false;	
+					pedidos[pedido.id-1] = pedido;
+					setPedidosTable(pedidosTable, pedidos);
+					clearAll();
+					$('#pedidosTable tbody').on( 'click', 'tr', function(){
+		
+						$(this).addClass('selected').siblings().removeClass('selected');
+
+						var id = parseInt($(this).find('td').first().html());
+						pedido = setPedidoFromNum(insumosTable, pedidosPendentes, id);
+						updateTotalCost(pedido);
+						
+					});
+
+					console.log(pedidos);
+
+				}
+			}else if(pedido.materiais.length<4){
+				alert("Por favor, escolha 4 materiais");
+			}else{
+				alert("HOW DID THIS HAPPEN");
+			}
+		}else{
+			alert("Escolha, no mínimo, dois insumos");
+		}
+	});
+
 	updateTotalCost(pedido);
 }
 
@@ -260,6 +290,13 @@ function setPedidosPorDia(pedidos){
 
 function getDataSetPedidos(pedidos){
 	var pedidosArray = [];
+
+	for(var i = 0; i<pedidos.length; i++){
+		if(!pedidos[i].isPendente){
+			pedidos.splice(i, 1);
+		}
+	}
+
 	for(var i = 0; i<pedidos.length; i++){
 		if(pedidos[i].isPendente){
 			pedidosArray[i] = new Array();
@@ -360,7 +397,7 @@ function setPedidoFromNum(insumosTable, pedidos, id){
 	clearMaterialSelect();
 
 	for(var i = 0; i<pedidos.length; i++){
-		if(pedidos[i].id == id){
+		if(pedidos[i].id == id && pedidos[i].isPendente){
 			var pedido = pedidos[i];
 			$("#pedidoNumberInput")[0].value = pedido.id;
 			$("#dataInput")[0].value = pedido.data_de_compra.split(' ')[0];
@@ -390,27 +427,9 @@ function setPedidoFromNum(insumosTable, pedidos, id){
 		}
 	}
 
-	$("#dataInput")[0].value = [];
-	$("#nomeInput")[0].value = [];
-	$("#solicitanteCPFInput")[0].value = [];
-	$("#solicitanteCEPInput")[0].value = [];
-	$("#solicitanteCidadeInput")[0].value = [];
-	$("#solicitanteUFInput")[0].value = [];
-	$("#solicitanteEndInput")[0].value = [];
-	$("#solicitanteBairroInput")[0].value = [];
-	$("#solicitanteNumInput")[0].value = [];
-
-	$("#entregaCEPInput")[0].value = [];
-	$("#entregaCidadeInput")[0].value = [];
-	$("#entregaUFInput")[0].value = [];
-	$("#entregaEndInput")[0].value = [];
-	$("#entregaBairroInput")[0].value = [];
-	$("#entregaNumInput")[0].value = [];
+	clearAll();
 
 	updateTotalCost(pedido);
-
-	clearInsumoTable();
-	clearMaterialSelect();
 }
 
 function setSelectedValue(id, valueToSet) {
@@ -423,6 +442,28 @@ function setSelectedValue(id, valueToSet) {
 	}
 }
 
+function setPedidosTable(pedidosTable, pedidos){
+
+	var dataSetPedidos = getDataSetPedidos(pedidos);
+
+	console.log(dataSetPedidos);
+
+	$("#pedidosTableWrap").children().remove();
+
+	$("#pedidosTableWrap").append("<table id='pedidosTable'></table>")
+
+	pedidosTable = $('#pedidosTable').DataTable({
+		"lengthMenu": [5],
+		data: dataSetPedidos,	
+			columns: [
+			{title: "Número do Pedido Pendente" },
+			{title: "Solicitante" },
+			{title: "Data de Compra" },
+		]
+	});
+}
+
+
 function setInsumosTable(insumosTable, pedido){
 	var dataSetInsumos = getDataSetInsumos(pedido);
 
@@ -431,7 +472,7 @@ function setInsumosTable(insumosTable, pedido){
 	$("#tableSectionInsumos").append("<table id='insumosTable'></table>")
 
 	var insumosTable = $('#insumosTable').DataTable({
-		"lengthMenu": [8	],
+		"lengthMenu": [8],
 		data: dataSetInsumos,
 		columns: [
 			{ title: "Insumo" },
@@ -501,7 +542,6 @@ function getEndPeloCep(cep, callback){
 }
 
 function updateTotalCost(pedido){
-
 	if(typeof pedido != "undefined"){
 		var cost = 0;
 		for(var i = 0; i<pedido.materiais.length; i++){
@@ -512,11 +552,121 @@ function updateTotalCost(pedido){
 			cost += pedido.insumos[i].preco* pedido.insumos[i].quantidade;
 		}
 
-		$("#finishButtonText").text("Preço Total: R$"+parseFloat(Math.round(cost * 100) / 100).toFixed(2));
+		$("#finishButtonText").text("Preço Total: R$"+parseFloat(Math.round(cost*100)/100).toFixed(2));
 	}else{
 		$("#finishButtonText").text("Preço Total: R$0,00");
-	}
-	
-
-	
+	}	
 }
+
+function clearAll(){
+	$("#dataInput")[0].value = [];
+	$("#nomeInput")[0].value = [];
+	$("#solicitanteCPFInput")[0].value = [];
+	$("#solicitanteCEPInput")[0].value = [];
+	$("#solicitanteCidadeInput")[0].value = [];
+	$("#solicitanteUFInput")[0].value = [];
+	$("#solicitanteEndInput")[0].value = [];
+	$("#solicitanteBairroInput")[0].value = [];
+	$("#solicitanteNumInput")[0].value = [];
+
+	$("#entregaCEPInput")[0].value = [];
+	$("#entregaCidadeInput")[0].value = [];
+	$("#entregaUFInput")[0].value = [];
+	$("#entregaEndInput")[0].value = [];
+	$("#entregaBairroInput")[0].value = [];
+	$("#entregaNumInput")[0].value = [];
+
+	$("#finishButtonText").text("Preço Total: R$0,00");
+	clearInsumoTable();
+	clearMaterialSelect();
+}
+
+window.onload = function(){
+	var solicitantes;
+	var pedidos;
+	var insumos;
+	var materiais;
+
+	var getSolicitantes = "SELECT * FROM solicitantes";
+	var getPedidos = "SELECT * FROM pedidos ORDER BY id ASC";
+	var getInsumos = "SELECT * FROM insumos";
+	var getMateriais = "SELECT * FROM materiais";
+
+	var mPedidos;
+	performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(pedidosPendentes, pedidosPorSolicitanteData, pedidosPorDiaData, insumos, 
+				materiais){
+		//Charts. Todos os pedidos(Tanto pendentes quanto concluidos)
+		var pedidosPorSolicitanteChart = new Chart($("#myLeftChart"), {
+			type: 'bar',
+			data: pedidosPorSolicitanteData,
+			options: {
+				responsive: false,
+				title: {
+					display: true,
+					text: 'Pedidos por Solicitante'
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true,
+							max: 5,
+							min: 0,
+							stepSize: 1
+						}
+					}]
+				}
+				}});
+		var pedidosPorDiaChart = new Chart($("#myRightChart"), {
+			type: 'bar',
+			data: pedidosPorDiaData,
+			options: {
+				responsive: false,
+				min: 1,
+				title: {
+					display: true,
+					text: 'Pedidos por Dia'
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true,
+							max: 5,
+							min: 0,
+							stepSize: 1
+						}
+					}]
+				}
+				}});
+
+		var insumosTable = $('#insumosTable').DataTable({
+			data: [],
+			columns: [
+				{ title: "Insumo" },
+				{ title: "Preço" },
+				{ title: "Qtd" },
+				{ title: "Apagar" },
+			]
+		});
+		var pedidosTable = $('#pedidosTable').DataTable({
+			data: [],
+				columns: [
+				{title: "Número do Pedido Pendente" },
+				{title: "Solicitante" },
+				{title: "Data de Compra" },
+			]
+		});
+
+		setPedidosTable(pedidosTable, pedidosPendentes);
+
+		setDomListenersAndLike(pedidosPendentes, insumosTable, pedidosTable, materiais, insumos);
+
+		setInsumosSelect(insumos);				
+	});
+
+	$("body, html").mousewheel(function(event, delta) {
+		this.scrollLeft -= (delta * 30);
+		event.preventDefault();
+	});
+
+	makeRoundImage($("#profileImg").find('img')[0]);
+};
