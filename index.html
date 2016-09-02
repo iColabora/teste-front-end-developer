@@ -62,7 +62,7 @@
 				<p>Check if extra insurance is needed</p>
 			</div>
 			<div id="priceDiv">
-				<h4 id="finishButtonText">Preço total: R$200,00</h4>
+				<h4 id="finishButtonText">Preço total: R$0,00</h4>
 			</div>
 			
 		</header>
@@ -96,7 +96,6 @@
 						</div>
 						<div id="rightPedidosFormDiv" class="formDiv">
 							<div id="rightUpperSection">
-								<input required class="formInput" id="marcaInput" placeholder="Marca" />
 								<input required class="formInput" id="dataInput" placeholder="Data" />
 							</div>
 						</div>
@@ -108,20 +107,20 @@
 								<div id="downSection">
 
 									<div class="materialLine">
-										<select class="materialSelect" id="selectMarca1"></select>
-								 		<select class="materialQtdSelect" id="selectQtdMarca1"></select> 
+										<select class="materialSelect" id="0" required></select>
+								 		<select class="materialQtdSelect" id="00"></select> 
 									</div>
 									<div class="materialLine">
-										<select class="materialSelect" id="selectMarca2"></select>
-								 		<select class="materialQtdSelect" id="selectQtdMarca2"></select> 
+										<select class="materialSelect" id="1" required></select>
+								 		<select class="materialQtdSelect" id="11"></select> 
 									</div>
 									<div class="materialLine">
-										<select class="materialSelect" id="selectMarca3"></select>
-								 		<select class="materialQtdSelect" id="selectQtdMarca3"></select> 
+										<select class="materialSelect" id="2" required></select>
+								 		<select class="materialQtdSelect" id="22"></select> 
 									</div>
 									<div class="materialLine">
-										<select class="materialSelect" id="selectMarca4"></select>
-								 		<select class="materialQtdSelect" id="selectQtdMarca4"></select> 
+										<select class="materialSelect" id="3" required></select>
+								 		<select class="materialQtdSelect" id="33"></select> 
 									</div>
 									
 								</div>
@@ -138,7 +137,6 @@
 					</header>
 					<div id="insumosHeader2">
 						<div id="insumosWrapper">
-							<select class="materialSelect formInput" id="materialSelectInsumos"></select>
 							<select id="insumosSelect" class="formInput"></select>						
 							<select id="insumosQtdSelect" class="formInput materialQtdSelect"></select>
 							<button class="myButton" id="addInsumosButton" type="button" name="addInsumosButton"><h1>+</h1></button>
@@ -182,11 +180,13 @@
 						<div class="solicitanteDiv" id="solicitanteDiv3">
 							<div class="solicitanteInnerDiv" id="solicitanteEndDiv">
 								<input required class="formInput" id="solicitanteEndInput" placeholder="Endereço" />
+
 							</div>
 						</div>
 						<div class="solicitanteDiv" id="solicitanteDiv4">
 							<div class="solicitanteInnerDiv" id="solicitanteCompDiv">
-								<input required class="formInput" id="solicitanteCompInput" placeholder="Complemento" />
+								<!--<input required class="formInput" id="solicitanteCompInput" placeholder="Complemento" />-->
+								<input required class="formInput" id="solicitanteBairroInput" placeholder="Bairo" />
 								<input class="formInput" id="solicitanteNumInput" placeholder="Número" />
 							</div>
 						</div>
@@ -207,7 +207,10 @@
 						</div>
 						<div class="entregaDiv" id="entregaDiv2">
 							<div class="entregaInnerDiv" id="entregaCompDiv">
-								<input required class="formInput" id="entregaCompInput" placeholder="Complemento" />
+								<!--<input required class="formInput" id="entregaCompInput" placeholder="Complemento" />-->
+								<input required class="formInput" id="entregaBairroInput" placeholder="Bairo" />
+
+								<input class="formInput" id="entregaNumInput" placeholder="Número" />
 							</div>
 						</div>
 						<div class="entregaDiv" id="entregaDiv3">
@@ -248,7 +251,9 @@
 			var getMateriais = "SELECT * FROM materiais";
 
 			var mPedidos;
-			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(obj, pedidosPorSolicitanteData, pedidosPorDiaData, insumos){
+			performQuerys(getPedidos, getSolicitantes, getInsumos, getMateriais, function(pedidosPendentes, pedidosPorSolicitanteData, pedidosPorDiaData, insumos, 
+						materiais){
+				//Charts. Todos os pedidos(Tanto pendentes quanto concluidos)
 				var pedidosPorSolicitanteChart = new Chart($("#myLeftChart"), {
 					type: 'bar',
 					data: pedidosPorSolicitanteData,
@@ -290,10 +295,18 @@
 							}]
 						}
 	   				}});
-				var dataSetPedidos = getDataSetPedidos(obj);
-				var dataSetInsumos = getDataSetInsumos(obj, 248);
 
-				console.log(obj);
+				var dataSetPedidos = getDataSetPedidos(pedidosPendentes);
+				console.log(pedidosPendentes);
+				var insumosTable = $('#insumosTable').DataTable({
+					data: [],
+					columns: [
+						{ title: "Insumo" },
+						{ title: "Preço" },
+						{ title: "Qtd" },
+						{ title: "Apagar" },
+					]
+				});
 
 				var pedidosTable = $('#pedidosTable').DataTable({
 					data: dataSetPedidos,	
@@ -303,35 +316,16 @@
 						{title: "Data de Compra" },
 					]
 				});
-				$('#pedidosTable tbody').on( 'click', 'tr', function(){
-					if($(this).hasClass('selected')){
-						$(this).removeClass('selected');
-					}else{
-						pedidosTable.$('tr.selected').removeClass('selected');
-						$(this).addClass('selected');
-						//setPedidoByNumer(parseInt($(this).find('td').first().html()));
-					}
-				});
 
-				var insumosTable = $('#insumosTable').DataTable({
-					data: dataSetInsumos,	
-					columns: [
-						{ title: "Material" },
-						{ title: "Insumo" },
-						{ title: "Preço" },
-						{ title: "Qtd" },
-						{ title: "Apagar" },
+				setDomListenersAndLike(pedidosPendentes, insumosTable, pedidosTable, materiais, insumos);
 
-					]
-				});
+				setInsumosSelect(insumos);				
 			});
 
 			$("body, html").mousewheel(function(event, delta) {
 				this.scrollLeft -= (delta * 30);
 				event.preventDefault();
 			});
-			
-			setPedidoInputHandle();
 
 			makeRoundImage($("#profileImg").find('img')[0]);
 		};

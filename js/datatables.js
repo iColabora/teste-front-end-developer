@@ -11376,7 +11376,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "Sem dados para preencher tablea",
+			"sEmptyTable": "Sem dados para preencher tabela",
 	
 	
 			/**
