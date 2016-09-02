@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/dashboard.min.css">
+	<link rel="stylesheet" type="text/css" href="css/datatables.css">
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/mytest.min.js"></script>
+	<script src="js/mask.js"></script>
+	<script src="js/mousewheel.js"></script>
+	<script src="js/chart.js"></script>
+	<script src="mysql_lib.js"></script>
+	<script src="js/datatables.js"></script>
+	<title></title>
+
+</head>
+<body>
+	
+	<header id="topBar">		
+		
+		<div id="menuItemsWrapper">
+			<img id="logo" src="assets/logo_turbina.png"/>
+			<ul id="menuItems" class="topBarList">
+				<li id="dashboardItem"><a href="#"><h4>DASHBOARD</h4></a></li>
+				<li id="solutionItem"><a href="#"><h4>SOLUÇÕES</h4></a></li>
+				<li id="admItem"><a href="#"><h4>ADMINISTRAÇÃO</h4></a></li>
+			</ul>
+		</div>
+			
+
+		<div id="iniciarProcessoDiv">
+			<div id="buttonWrapper">
+				<img src="assets/play.png"/>
+				<h4>INICIAR PROCESSO</h4>
+			</div>
+		</div>
+		<div id="optionsMenuWrapper">
+			<div id="optionWrapper">
+				<ul id="optionsMenu" class="topBarList">
+					<li id="searchIcon"><img src="assets/look_glass.png"/></li>
+					<li id="assistIcon"><img src="assets/assist.png"/></li>
+					<li id="profileImg"><img id="profile" src="assets/mike_dias.png"/></li>
+					<li id="dropIcon"><img src="assets/drop_down.png"/></li>
+				</ul>
+			</div>
+		</div>
+		
+	</header>
+
+	<section id="mainBody">
+		
+		<header id="bodyHeader">
+			<div id="typeDiv">
+				<div id="typeWrapper">
+					<img src="assets/task.png">
+					<p>Tarefa</p>
+				</div>
+			</div>
+			<div id="taskDiv">
+				<p>Check if extra insurance is needed</p>
+			</div>
+			<div id="priceDiv">
+				<h4 id="finishButtonText">Preço total: R$0,00</h4>
+			</div>
+			
+		</header>
+
+		<div id="wrapper">		
+			<div id="graphs" class="tile">
+				<div class="tileInnerWrap">
+					<div id="graphLeft">
+						<canvas id="myLeftChart" height="200" class="charts"></canvas>
+					</div>
+					<div id="graphRight">
+						<canvas id="myRightChart" height="200" class="charts"></canvas>
+					</div>
+					<div id="pedidosTableWrap">
+						<table id="pedidosTable"></table>
+					</div>
+
+				</div>
+			</div>
+			<div id="pedidos" class="tile">
+				<div class="tileInnerWrap">
+					<header class="tileHeader">
+						<h1 id="pedidosTitle">Pedidos</h1>
+					</header>
+					<section id="pedidosSection">
+						<div id="leftPedidosFormDiv" class="formDiv">
+							<div id="pedidosNumDiv">
+								<input required class="formInput" id="pedidoNumberInput" placeholder="Número do Pedido"  maxlength="6" />
+								<button class="myButton" id="searchPedidoButton" type="button" name="searchPedidosButton"><h2>🔍</h2></button>
+							</div>
+						</div>
+						<div id="rightPedidosFormDiv" class="formDiv">
+							<div id="rightUpperSection">
+								<input required class="formInput" id="dataInput" placeholder="Data" />
+							</div>
+						</div>
+						<div id="lowerPedidosFormDiv">
+							<header>
+								<h1 id="pedidosTitle">Materiais</h1>
+							</header>
+							<div>
+								<div id="downSection">
+
+									<div class="materialLine">
+										<select class="materialSelect" id="0" ></select>
+								 		<select class="materialQtdSelect" id="00"></select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="1" ></select>
+								 		<select class="materialQtdSelect" id="11"></select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="2" ></select>
+								 		<select class="materialQtdSelect" id="22"></select> 
+									</div>
+									<div class="materialLine">
+										<select class="materialSelect" id="3" ></select>
+								 		<select class="materialQtdSelect" id="33"></select> 
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+
+			<div id="isumos" class="tile">
+				<div class="tileInnerWrap">
+					<header class="tileHeader">
+						<h1>Insumos</h1>
+					</header>
+					<div id="insumosHeader2">
+						<div id="insumosWrapper">
+							<select id="insumosSelect" class="formInput"></select>						
+							<select id="insumosQtdSelect" class="formInput materialQtdSelect"></select>
+							<button class="myButton" id="addInsumosButton" type="button" name="addInsumosButton"><h1>+</h1></button>
+						</div>
+					</div>
+					<section id="tableSectionInsumos">						
+						<table id="insumosTable">
+
+						</table>
+					</section>
+				</div>
+			</div>
+
+			<div id="solicitantes" class="tile">
+				<div class="tileInnerWrap">
+					<header class="tileHeader">
+						<h1>Dados do Solicitante</h1>
+					</header>
+					<section id="solicitanteSection">
+						<div class="solicitanteDiv" id="solicitanteNomeDiv">
+							<div class="solicitanteInnerDiv" id="solicitanteNomeDiv">
+								<input required class="formInput" id="nomeInput" placeholder="Nome do Solicitante"/>
+								<input required class="formInput" id="solicitanteCPFInput" placeholder="CPF: 000.000.000-00"  maxlength="8" />
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv2">
+							<div id="leftDiv">
+								<div class="solicitanteInnerDiv" id="solicitanteCEPDiv">
+									<input required class="formInput" id="solicitanteCEPInput" placeholder="CEP: 00000-00"  maxlength="8" />
+									<button class="myButton" id="searchSolicitanteCEPButton" type="button" name="searchSolicitanteCEPButton"><h1>🔍</h1></button>
+									
+								</div>								
+							</div>
+							<div id="rightDiv">
+								<div class="solicitanteInnerDiv" id="solicitanteCPFDiv">
+									<input required class="formInput" id="solicitanteCidadeInput" placeholder="Cidade" />
+									<input class="formInput" id="solicitanteUFInput" placeholder="UF" maxlength="2" />
+								</div>
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv3">
+							<div class="solicitanteInnerDiv" id="solicitanteEndDiv">
+								<input required class="formInput" id="solicitanteEndInput" placeholder="Endereço" />
+
+							</div>
+						</div>
+						<div class="solicitanteDiv" id="solicitanteDiv4">
+							<div class="solicitanteInnerDiv" id="solicitanteCompDiv">
+								<!--<input required class="formInput" id="solicitanteCompInput" placeholder="Complemento" />-->
+								<input required class="formInput" id="solicitanteBairroInput" placeholder="Bairo" />
+								<input class="formInput" id="solicitanteNumInput" placeholder="Número" />
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+
+			<div id="entrega" class="tile">
+				<div class="tileInnerWrap">
+					<header class="tileHeader">
+						<h1>Endereço de Entrega</h1>
+					</header>
+					<section id="entregaSection">
+						<div class="entregaDiv" id="entregaDiv1">
+							<div class="entregaInnerDiv" id="entregaEndDiv">
+								<input required class="formInput" id="entregaEndInput" placeholder="Endereço" />
+							</div>
+						</div>
+						<div class="entregaDiv" id="entregaDiv2">
+							<div class="entregaInnerDiv" id="entregaCompDiv">
+								<!--<input required class="formInput" id="entregaCompInput" placeholder="Complemento" />-->
+								<input required class="formInput" id="entregaBairroInput" placeholder="Bairo" />
+
+								<input class="formInput" id="entregaNumInput" placeholder="Número" />
+							</div>
+						</div>
+						<div class="entregaDiv" id="entregaDiv3">
+							<div class="entregaInnerDiv" id="entregaCompDiv">
+								<input required class="formInput" id="entregaCidadeInput" placeholder="Cidade" />
+								<input class="formInput" id="entregaUFInput" placeholder="UF" maxlength="2" />
+								<input required class="formInput" id="entregaCEPInput" placeholder="CEP: 00000-00"  maxlength="8" />
+							</div>
+						</div>
+						<div class="entregaDiv" id="entregaDiv4">
+							<div class="entregaInnerDiv" id="entregaButtonDiv">
+								<button class="myButton" id="finishPedidoButton" type="button" name="finishPedidoButton"><h1>Finalizar Pedido</h1></button>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+		<footer>			
+			<p>©2016 iColabora</p>
+		</footer>
+
+	</section>
+</body>
+</html>
