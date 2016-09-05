@@ -1,0 +1,27 @@
+.rlAccordion > h3 {
+  background-color: #007197;
+  background-image: -moz-linear-gradient(center bottom, #005d7c 0%, #0088b5 100%);
+  background-image: -o-linear-gradient(center bottom, #005d7c 0%, #0088b5 100%);
+  background-image: -webkit-linear-gradient(left bottom, left top, color-stop(0, #005d7c), color-stop(1, #0088b5));
+  background-image: -ms-linear-gradient(top, #005d7c 0%, #0088b5 100%);
+  background-image: linear-gradient(top, #005d7c 0%, #0088b5 100%);
+  border: 1px solid #1D4253;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0 auto;
+  padding: 3%;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 #004E68;
+}
+.rlAccordion > h3 > span {
+  float: right;
+  font-family: arial, serif, sans-serif;
+}
+.rlAccordion > h3 + div {
+  display: none;
+  padding: 2% 5%;
+}

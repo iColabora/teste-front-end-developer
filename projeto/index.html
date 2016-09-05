@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  	<link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
+  	<link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+
+  	<script src="assets/js/mysql_lib.js"></script>
+  	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<script>
+  		google.charts.load("current", {packages:["corechart"]});
+  	</script>
+	<title>Shipment of a hardware retailer</title>
+</head>
+<body>
+	<header class="header">
+		<div class="wrapper">
+			<h1 class="logo">
+				<img src="assets/img/logo.png" class="img logo-img" />
+			</h1>
+			<div class="header-center">
+				<nav class="nav">
+					<ul class="ul">
+						<li class="li link-menu" id="dashboards"><a href="" data-item="1">Dashboads</a></li>
+						<li class="li link-menu" id="solucoes"><a href="" data-item="2">Task</a></li>
+						<li class="li link-menu" id="admin"><a href="" data-item="3">Administração</a></li>
+					</ul>
+				</nav>
+				<div class="block-processo">
+					<a href="#">Iniciar Processo</a>
+				</div>
+			</div>
+			<nav class="nav-opcoes">
+				<ul class="ul">
+					<li class="li busca">
+						<button type="submit" id="btn-search" class="search"><i class="fa fa-search search-icon"></i></button>
+						<button type="submit" id="btn-clear" class="search"><i class="fa fa-times"></i></button>
+						<input type="text" name="busca" placeholder="Buscar Pedidos" class="search-input left" />
+					</li>
+					<li class="li"><i class="fa fa-wheelchair"></i></li>
+					<li class="li"><i class="fa fa-user"></i></li>
+				</ul>
+			</nav>
+		</div> 
+	</header>
+	<!-- TASK -->
+	<section id="tarefa" class="section">
+		<div class="informations">
+			<div class="wrapper">
+				<h3 class="tarefa-titulo"><i class="fa fa-users"></i>Tarefa</h3>
+				Check if extra insurance is necessary
+			</div>
+		</div>
+		<div class="wrapper">
+			<aside class="navigation">
+				<ul class="ul">
+					<li class="li tab" id="pedidos" data-tab="1">Pedidos</li>
+					<li class="li tab" id="isumos" data-tab="2">Insumos</li>
+					<li class="li tab" id="solicitantes" data-tab="3">Solicitantes</li>
+				</ul>
+			</aside>
+			<!-- TESTE -->
+			<div id="teste"></div>
+			<!-- SECTION BUSCA -->
+			<div id="section-busca" class="section-content">
+				<div id="form-search" class="form-consulta">
+					<form id="search-result" class="consulta"></form>					
+				</div>
+			</div>
+			<!-- SECTION PEDIDO -->
+			<div id="section-pedido" class="section-content content" >
+				<table id="tb-pedido">
+					<thead>
+						<tr>
+							<th class="th"> #</th>
+							<th class="th">Solicitante</th>
+							<th class="th">Data da compra</th>
+							<th class="th"></th>
+						</tr>
+					</thead>
+					<!-- LISTAGEM PEDIDO -->
+					<tbody id="conteudo-pedido">
+					</tbody>
+				</table>
+				<!-- FORM PEDIDO -->
+				<div id="" class="form-consulta form-pedido task">
+					<form id="consulta-pedido" class="consulta"></form>
+				</div>
+			</div>	
+			<!-- SECTION INSUMO -->
+			<div id="section-insumo" class="section-content content" >
+				<table>
+					<thead>
+						<tr>
+							<th class="th"><i class="fa fa-hashtag" aria-hidden="true"></i></th>
+							<th class="th">Marca</th>
+							<th class="th">Descricao</th>
+							<th class="th">Quantidade</th>
+							<th class="th">Preço</th>
+							<th class="th"></th>
+						</tr>
+					</thead>
+					<!-- LISTAGEM INSUMO -->
+					<tbody id="conteudo">
+					</tbody>
+				</table>
+				<!-- FORM INSUMO -->
+				<div class="form-insumo form-consulta">
+					<form id="consulta-insumo"></form>
+				</div>
+			</div>		
+			<!-- SECTION SOLICITANTE -->
+			<div id="section-solicitante" class="section-content content" >
+				<div class="block-busca-solicitante">
+					<input text="type" class="input cep" id="cep" name="cep" placeholder="Informe o CEP" />			
+				</div>
+				<div class="">
+					
+				</div>
+				<!-- FORM INSUMO -->
+				<!-- <div class="form-insumo form-consulta">
+					<form id="consulta-insumo"></form>
+				</div> -->
+
+			</div>	
+		</div>
+	</section>
+
+	<!-- DASHBOARD -->
+	<section id="dashboard" class="section">
+		<div class="informations">
+			<div class="wrapper">
+				<ul class="ul dash-lista">
+					<li class="li dash-item" data-graf="1">Quantidade de pedidos por dia</li>
+					<li class="li dash-item" data-graf="2">Pedidos por solicitante</li>
+					<li class="li dash-item" data-graf="3">Pedidos pendentes</li>
+				</ul>
+			</div>
+		</div>
+		<div class="wrapper">
+			<!-- QTD DE PEDIDOS POR dia -->
+			<div id="section-pedidos-dia" class="section-dashboard">
+				<div class="grafico">
+					<div id="pedidos-dia-chart" style="width: 900px; height: 500px;"></div>
+				</div>
+			</div>
+			<!-- PEDIDOS POR solicitante -->
+			<div id="section-pedidos-solicitantes" class="section-dashboard">
+				<div class="conteudo-pedidos-solicitantes">
+					<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+				</div>
+			</div>
+			<!-- PEDIDOS PENDENTES -->
+			<div id="section-pedidos-pendentes" class="section-dashboard">
+				<table id="tb-pedidos-pendentes">
+					<thead>
+						<th class="th"> #</th>
+						<th class="th">Solicitante</th>
+						<th class="th">Data da compra</th>
+						<th class="th"></th>
+					</thead>
+					<tbody id="conteudo-pedido-pendentes"></tbody>
+				</table>
+				<!-- FORM PEDIDO -->
+				<div id="" class="form-consulta form-pedido dashboard">
+					<form id="consulta-pedido-dashboard" class="consulta"></form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="both"></div>
+	<footer class="footer">
+		<p class="footer-copyright">&copy 2016 iColabora</p>
+		<a href="" class="footer-ajuda">
+			<img src="assets/img/help-icon.png" title="Ajuda" />
+		</a>
+	</footer>
+	<script src="assets/js/jquery-3.1.0.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+	<script src="assets/js/event-scripts.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/db-scripts.js"></script>
+</body>
+</html>

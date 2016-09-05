@@ -1,0 +1,44 @@
+@media screen and (max-width: 768px) {
+	.header {
+    	height: 100%;
+
+    	.logo {
+    		display: block;
+    		text-align: center;
+    		float: none;
+    	}
+
+    	&-center {
+    		width: 100%;
+    		text-align: center;
+   			display: block;
+
+   			.block-processo a {
+   				position: relative;
+    			width: 100%;
+    			padding: 15px 0px;
+   			}
+
+   			.nav{
+    			display: block;
+    			margin: auto;
+    			text-align: center;
+    			float: none;
+
+    			.ul .li { 
+    				width: 100%;
+    			    padding: 15px 0px 15px 0px;
+    			}
+   			}
+    	}
+
+    	.nav-opcoes {
+    		text-align: center;
+    		float: none;
+    	}
+	} 
+  	
+  	.footer {
+  		position: initial;
+  	}
+}

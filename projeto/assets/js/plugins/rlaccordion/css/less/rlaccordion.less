@@ -1,0 +1,29 @@
+.rlAccordion {
+	> h3 {
+		background-color: #007197;
+		background-image: -moz-linear-gradient( center bottom, rgb(0,93,124) 0%, rgb(0,136,181) 100%);
+		background-image: -o-linear-gradient( center bottom, rgb(0,93,124) 0%, rgb(0,136,181) 100%);
+		background-image: -webkit-linear-gradient( left bottom, left top, color-stop(0,rgb(0,93,124)), color-stop(1, rgb(0,136,181)));
+		background-image: -ms-linear-gradient(top, rgb(0,93,124) 0%,rgb(0,136,181) 100%);
+		background-image: linear-gradient(top, rgb(0,93,124) 0%,rgb(0,136,181) 100%);
+		border: 1px solid #1D4253;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+		color: #fff;
+		font-family: "Times New Roman", Times, serif;
+		font-size: 1.4em;
+		font-weight: normal;
+		margin: 0 auto;
+		padding: 3%;
+		text-decoration: none;
+		text-shadow: 1px 1px 0 #004E68;
+		> span { // inherit font-size
+			float: right;
+			font-family: arial, serif, sans-serif;
+		}
+		+ div {
+			display: none;
+			padding: 2% 5%;
+		}
+	}
+}

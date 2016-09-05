@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+
+@import url('reset.less');
+@import url('fonts.less');
+
+
+html {
+  overflow-y: scroll;
+}  /* avoid jumping in firefox when displaying the scroll */
+
+body {
+	background-image: url(../img/bg.png);
+	font-family: helvetica, arial, sans-serif;
+	font-size: 62.5%; /* 1em = 10px */
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2.2em;
+}
+
+h3 {
+	font-size: 1.8em;
+}
+
+h4 {
+	font-size: 1.6em;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+p {
+	color: #fff;
+	font-size: 1.4em;
+	line-height: 1.4em;
+	margin-bottom: 10px;
+	text-shadow: 1px 2px 3px #000;
+}
+
+ul {
+	list-style-type: none;
+}
+
+input,
+textarea,
+textarea:focus,
+a:focus, a:active {
+	border: none;
+	outline: none;
+}
+
+#wrapper {
+	margin: 0 auto;
+	position: relative;
+	max-width: 640px;
+}
+
+
+/* Header
+__________________________________________ */
+
+header {
+	float: left;
+	margin: 0 auto;
+	position: relative;
+	max-width: 100%;
+	width: 100%;
+}
+
+.logo {
+	float: left;
+	max-width: 100%;
+	width: 100%;
+}
+
+.logo a {
+	color: #242628;
+	display: block;
+	float: left;
+	font-family: 'ChunkFiveRegular',Arial,sans-serif;
+	font-size: 3.7em;
+	line-height: 2em;
+	text-decoration: none;
+	text-transform: capitalize;
+	text-shadow: 1px 1px #555;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-webkit-transition: all 1s ease;
+	text-align: center;
+	max-width: 100%;
+	width: 100%;
+}
+
+.logo a:hover {
+	color: #333433;
+	text-shadow: 1px 1px #666;
+}
+
+.follow {
+	float: left;
+	margin: 0 0 4%;
+	width: 100%;
+}
+
+.btn {
+	background-color: #007197;
+	background-image: -moz-linear-gradient( center bottom, rgb(0,93,124) 0%, rgb(0,136,181) 100%);
+	background-image: -o-linear-gradient( center bottom, rgb(0,93,124) 0%, rgb(0,136,181) 100%);
+	background-image: -webkit-linear-gradient( left bottom, left top, color-stop(0,rgb(0,93,124)), color-stop(1, rgb(0,136,181)));
+	background-image: -ms-linear-gradient(top, rgb(0,93,124) 0%,rgb(0,136,181) 100%);
+	background-image: linear-gradient(top, rgb(0,93,124) 0%,rgb(0,136,181) 100%);
+	border: 1px solid #1D4253;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.55);
+	color: #FFFFFF;
+	display: block;
+	font-size: 1.2em;
+	margin: 0 auto;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #004e68;
+	&:hover {
+		background-color: #0081ab;
+		background-image: -moz-linear-gradient( center bottom, rgb(0,116,154) 0%, rgb(0,165,198) 100%);
+		background-image: -o-linear-gradient( center bottom, rgb(0,116,154) 0%, rgb(0,165,198) 100%);
+		background-image: -webkit-linear-gradient(left bottom, left top, color-stop(0, rgb(0,116,154)), color-stop(1, rgb(0,165,198)));
+		background-image: -ms-linear-gradient(top, rgb(0,116,154) 0%,rgb(0,165,198) 100%);
+		background-image: linear-gradient(top, rgb(0,116,154) 0%,rgb(0,165,198) 100%);
+		transition: all 1s ease;
+		-webkit-transition: all 1s ease;
+	}
+	&:active {
+		background-color: #006486;
+		background-image: -moz-linear-gradient( center bottom, rgb(0,133,166) 0%, rgb(0,83,122) 100%);
+		background-image: -o-linear-gradient( center bottom, rgb(0,133,166) 0%, rgb(0,83,122) 100%);
+		background-image: -webkit-linear-gradient(left bottom, left top, color-stop(0, rgb(0,133,166)), color-stop(1, rgb(0,83,122)));
+		background-image: -ms-linear-gradient(top, rgb(0,133,166) 0%,rgb(0,83,122) 100%);
+		background-image: linear-gradient(top, rgb(0,133,166) 0%,rgb(0,83,122) 100%);
+		box-shadow: 0 0 2px rgba(0, 0, 0, 0.75);
+	}
+
+	span {
+		border-radius: 5px;
+		border-top: 1px solid #00B8D3;
+		display: block;
+		font-weight: bold;
+		padding: 2% 0;
+		&:active {
+			border-top-color: transparent;
+		}
+	}
+}
+
+
+
+/* Main
+__________________________________________ */
+
+.main-wrapper {
+	float: left;
+	width: 100%;
+	h2 {
+		color: #242628;
+		display: block;
+		font-family: 'ChunkFiveRegular',Arial,sans-serif;
+		font-size: 3em;
+		font-weight: bold;
+		line-height: 2em;
+		margin: 6% 0 1%;
+		text-decoration: none;
+		text-transform: capitalize;
+		text-shadow: 1px 1px #555;
+		-moz-transition: all 1s ease;
+		-ms-transition: all 1s ease;
+		-o-transition: all 1s ease;
+		-webkit-transition: all 1s ease;
+		text-align: center;
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+@import url('rlaccordion.less');
+
+
+/* Footer
+__________________________________________ */
+
+footer {
+	float: left;
+	margin: 0 auto;
+	max-width: 100%;
+	width: 100%;
+}
+
+.copy p {
+	float: right;
+	font-size: 1.2em;
+	margin: 6% 0;
+	opacity: 0.3;
+	transition: all 1s ease;
+	-webkit-transition: all 1s ease;
+	&:hover {
+		opacity: 0.9;
+	}
+}
+
+
+/* IE7
+__________________________________________ */
+
+/* position of minus and plus sign in IE7 */
+
+/* if your html structure is based in HTML5, consider use a SHIV*/
+
+.ie7 .rlAccordion h3 span {
+	position: absolute;
+	right: 20px;
+}

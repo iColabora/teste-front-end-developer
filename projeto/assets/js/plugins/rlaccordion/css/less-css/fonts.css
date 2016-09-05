@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* --------------------- ChunkFiveRegular -------------------- */
+@font-face {
+  font-family: 'ChunkFiveRegular';
+  src: url('../font/ChunkFive-fontfacekit/Chunkfive-webfont.eot');
+  src: url('../font/ChunkFive-fontfacekit/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'), url('../font/ChunkFive-fontfacekit/Chunkfive-webfont.woff') format('woff'), url('../font/ChunkFive-fontfacekit/Chunkfive.otf') format('otf'), url('../font/ChunkFive-fontfacekit/Chunkfive-webfont.ttf') format('truetype'), url('../font/ChunkFive-fontfacekit/Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

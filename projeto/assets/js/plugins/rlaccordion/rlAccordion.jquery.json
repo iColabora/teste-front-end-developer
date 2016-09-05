@@ -1,0 +1,29 @@
+{
+    "name": "rlAccordion",
+    "title": "rlAccordion",
+    "description": "A jQuery accordion plugin responsive, flexible & adaptative with plus & minus signs unicode characters.",
+    "keywords": [
+        "accordion",
+        "animation",
+        "ui",
+        "responsive",
+        "effect"
+    ],
+    "version": "0.1.4",
+        "author": {
+        "name": "Rodrigo Ludgero",
+        "email": "info@rodrigoludgero.com",
+        "url": "http://rodrigoludgero.com"
+    },
+    "licenses": [
+        {
+          "type": "MIT",
+          "url": "https://github.com/Rodrigo-Ludgero/rlaccordion/blob/master/README.md"
+        }
+    ],
+    "homepage": "http://rodrigoludgero.com/rlaccordion/rlaccordion.html",
+    "demo": "http://rodrigoludgero.com/rlaccordion/rlaccordion.html",
+    "dependencies": {
+        "jquery": ">=1.6"
+    }
+}
