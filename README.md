@@ -1,4 +1,4 @@
-# Teste para candidatos à vaga de Front-End developer
+﻿# Teste para candidatos à vaga de Front-End developer
 > [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas)
 >
 > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br>
@@ -116,3 +116,5 @@ Para iniciar o teste, faça um fork deste repositório, crie uma branch com o se
 Se você apenas clonar o repositório não vai conseguir fazer push e depois vai ser mais complicado fazer o pull request.
 
 **Boa sorte! =D**
+
+
