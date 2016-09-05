@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/mysql_lib.js" type="text/javascript"></script>
+</head>
+<body>
+<main>
+	<div class="header">
+		<nav class="navbar">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		      	<img src="img/logo.png">
+		      </a>
+		    </div>
+		    <ul class="navbar-nav">
+			    <li class="active"><a href="#">Dashboards</a></li>
+			    <li><a href="#">Soluções</a></li>
+			    <li><a href="#">Adminstração</a></li>  
+		    </ul>
+		    <ul class="process">
+		    	<li><img src="img/icon.png"><button id="action">Inciar Processo</button></li> 
+		    </ul>
+		    <ul class="options">
+		    	<li class="none" id="text-finding"><input type="text" name="finding"></li>
+		    	<li id="finding"><img src="img/find.png"></li>
+		    	<li><img src="img/especial.png"></li>
+		    	<li><img src="img/profile.png"></li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
+	<section id="view-body">
+		<table>
+		<h1>Informações do(s) Pedido(s)</h1>
+			<thead>
+				<tr>
+					<th>Número do Pedido</th>
+					<th>Material</th>
+					<th>Marca</th>
+					<th>Data de Compra</th>
+					<th>Quantidade de Material</th>
+					<th>Preço total</th>
+				</tr>
+			</thead>
+			<tbody id="rel_pedidos">
+
+			</tbody>
+		</table>
+		<!-- Informações de Insumos -->
+		<table>
+		<h1>Informações do(s) Insumo(s)</h1>
+			<thead>
+				<tr>
+					<th>Marca</th>
+					<th>Descrição</th>
+					<th>Quantidade</th>
+					<th>Preço</th>
+				</tr>
+			</thead>
+			<tbody id="rel_insumos">
+
+			</tbody>
+		</table>
+		<!-- Informações do Solicitante -->
+		<table>
+		<h1>Informações do(s) Solicitante(s)</h1>
+			<thead>
+				<tr>
+					<th>Nome Completo</th>
+					<th>Telefone</th>
+					<th>CPF</th>
+					<th>CEP</th>
+					<th>Endereço</th>
+					<th>Cidade</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody id="rel_solicitantes">
+
+			</tbody>
+		</table>
+		<!-- Informações de Entrega -->
+		<table>
+		<h1>Informações de Entrega</h1>
+			<thead>
+				<tr>
+					<th>CEP</th>
+					<th>Endereço</th>
+					<th>Cidade</th>
+					<th>Estado</th>
+				</tr>
+			</thead>
+			<tbody id="rel_entregas">
+
+			</tbody>
+		</table>
+		<!-- Cálculos -->
+		<table>
+		<h1>Cálculos</h1>
+			<thead>
+				<tr>
+					<th>Preço Unitário dos Insumos</th>
+					<th>Quantidade materiais</th>
+					<th>Valor Total</th>
+				</tr>
+			</thead>
+			<tbody id="rel_calculos">
+
+			</tbody>
+		</table>
+	</section>
+		<footer>
+			<p>© 2016 iColabora</p>
+			<p><img src="img/duv.png"></p>			
+		</footer>
+</main>
+</body>
+</html>
