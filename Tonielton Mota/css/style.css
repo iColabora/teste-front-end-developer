@@ -1,0 +1,194 @@
+*, body {
+	list-style: none;
+	text-decoration: none;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Helvetica Neue','Arial','Tahoma';
+	font-size: 13px;
+	font-weight: bold;
+}
+body {
+	background-color: rgb(249,249,249);
+	width: 100vw;
+	height: 100vh;
+}
+/* Topo */
+main {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.header {
+	background-color: rgb(16,41,56);
+	border:0px;
+}
+.navbar {
+	height: 65px;
+	border: 0px;
+	box-shadow: none;
+	background: none;
+}
+.container {
+	height: 50px;
+	padding-top: 10px;
+}
+.navbar-brand {
+	padding-top: 5px;
+}
+.navbar-header {
+	padding-left: 20px;
+	max-width: 130px;
+	display: inline-block;
+}
+.navbar-header img {
+	width: 45px;
+	height: 45px;
+}
+.navbar ul.navbar-nav {
+	height: 50px;
+	width: 500px;
+	display: inline-block;
+/*    display: flex;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+*/
+	vertical-align: top;
+}
+.navbar ul li.active {
+	margin-left: 20px;
+}
+.navbar ul li.active a {
+	color: rgb(57,187,157) !important;
+}
+.navbar ul li {
+	line-height: 50px;
+	display: inline-block;
+	padding: 15px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.navbar ul li a {
+	color: #fff !important;
+	list-style: none;
+	text-transform: uppercase;
+}
+.navbar .process {
+	width: 200px;
+	height: 65px;
+	display: inline-block;
+	position: relative;
+	top: -18px;
+	background-color: rgb(57,187,157) !important;
+}
+.navbar .process li {
+	height: 65px;
+	line-height: 65px;
+}
+.navbar .process li img {
+	width: 15px;
+	height: 15px;
+	padding-right: 10px;
+}
+.none {
+	visibility: hidden !important;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+.view {
+	visibility: visible !important;
+	-webkit-transition: all 0.5s; /* Safari */
+    transition: all 0.5s;
+}
+.navbar .options {
+	float: right;
+	width: 420px;
+	height: 50px;
+}
+.navbar .options li {
+	height: 50px;
+	line-height: 50px;
+}
+.navbar .options li img {
+	width: 35px;
+	height: 35px;
+	vertical-align: middle;
+}
+.navbar .options input {
+	height: 30px;
+	background-color: rgba(255,255,255,0.5);
+	border: 0px;
+}
+
+
+/* Fim do Topo */
+button {
+	border:0;
+	background: none;
+	cursor: pointer;
+	color: #fff;
+}
+
+#view-body {
+	height: 80%;
+	max-width: 100%;
+	position: relative;
+}
+table {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+table th,
+table td{
+	text-align: left;
+	padding: 5px;
+	border: 1px solid #cccccc;
+	border-collapse:collapse;
+}	
+
+table th {
+	background-color: rgb(70,130,180);
+	color: #fff;
+}
+
+/*Grafico*/
+
+h1 {
+	max-width: 800px;
+	margin: 0 auto;
+	font-size: 16px;
+	margin-top: 30px;
+}
+
+footer {
+	background-color: rgb(86,83,81);
+	height: 30px;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	z-index: 99;
+	display: block;
+}
+
+footer p {
+	color: #fff;
+	line-height: 30px;
+	padding-left: 10px;
+	font-weight: normal !important;
+	display: inline-block;
+}
+footer p + p {
+	float: right;
+
+}
+
+footer p + p img {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	padding-right: 10px;
+}
