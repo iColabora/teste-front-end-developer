@@ -17,6 +17,12 @@
    				position: relative;
     			width: 100%;
     			padding: 15px 0px;
+
+          &:before {
+            left: 0;
+            top: 3;
+            margin-left: -30px;
+          }
    			}
 
    			.nav{
@@ -36,9 +42,43 @@
     		text-align: center;
     		float: none;
     	}
-	} 
-  	
-  	.footer {
-  		position: initial;
-  	}
+	}
+
+  .section {
+
+    .navigation {
+      float: none;
+      margin: auto;
+
+      .ul {
+        margin: 0 auto;
+      }
+    }
+
+    .section-content,
+    .section-dashboard {
+
+      .form-consulta {
+        width: 90%;
+        margin: 25px auto;
+      }
+    }
+
+  } 
+
+  .section-content, .section-dashboard {
+    margin: auto;
+    width: 100%;
+
+    .consulta {
+      .right {
+        float: left;
+      }
+    }
+  }
+
+  .dashboard > .section > .informations {
+        height: 70px;
+  }
+
 }

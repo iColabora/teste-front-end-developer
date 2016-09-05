@@ -29,9 +29,17 @@ a {
 }
 
 /* ================== LAYOUT ================== */
+html {
+	position: relative;
+    min-height: 100%;
+}
 body { 
-	height: 100%; 
+	margin: 0 0 40px;
 	background: #f3f3f3;
+}
+
+.wrapper-main {
+	height: 100%; 
 }
 
 .header {
@@ -151,12 +159,10 @@ body {
 }
 
 .section {
-	height: 100%;
-    // overflow: auto;
-    // position: relative;
-    min-height: 560px;
-    width: 100%;
+	width: 100%;
     background: #f3f3f3;
+    margin: 0 auto;
+	padding-bottom: 40px;
 
     .informations {
         background: #fff;
@@ -238,11 +244,10 @@ body {
 .footer {
 	color: #999999;
 	background: #565351;
-	padding: 0px 25px;
-	// position: absolute;
- //    bottom: 0;
- //    right: 0;
- //    left: 0;
+	height: 40px;
+	width: 100%;
+	position: absolute;
+    bottom: 0;
 	font-family: 'HelveticaNeue';
 
 	&-copyright {
@@ -264,31 +269,32 @@ body {
 
 .section-content,
 .section-dashboard {
-    width: 80%;
-    margin-left: auto;
-
+    width: 50%;
+    margin: 0 auto;
     
 	table {
 
-		// display: block;
-		width: 100%;
-		max-width: 800px;
+		display: block;
+		width: auto;
 		margin: 0 auto;
 		overflow-x: auto;
 		white-space: nowrap;
 		box-shadow: 0px 5px 14px -2px #d0d0d0;
 
 		thead tr .th {
-    		padding: 10px 20px;
-    		background: #55DB24;
-		    font-weight: bold;
-		    color: #fff;
-		}
+	    	
+	    	padding: 10px 20px;
+	    	background: #55DB24;
+			font-weight: bold;
+			color: #fff;
+			width: 100%;
 
+		}
 		tbody tr .td {
     		padding: 15px 24px;
     		background: #fff;
-    		    color: #102938;
+    		color: #102938;
+			width: 100%;
     	}
 
 		[class*='item_'] {
