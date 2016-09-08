@@ -43,10 +43,11 @@
               <li  class="active"><a ng-href="/">ADMINISTRAÇÃO</a></li>
             </ul>
 
+
             <button class="btn-iProcesso"><i class="fa fa-play" aria-hidden="true"></i> INICIAR PROCESSO</button>
 
+
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
               <li><a href="#"><i class="fa fa-wheelchair" aria-hidden="true"></i></a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -54,12 +55,19 @@
                   <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Dados Cadastrais</a></li>
-                  <li><a href="#">Notificações</a></li>
-                  <li><a href="#"><strong>Sair</strong></a></li>
+                  <li><a href="#"><strong><i class="fa fa-cog" aria-hidden="true"></i> <span>Dados Cadastrais</span></strong></a></li>
+                  <li><a href="#"><strong><i class="fa fa-power-off" aria-hidden="true"></i> <span>Sair</span></strong></a></li>
                 </ul>
               </li>
             </ul>
+
+            <form class="navbar-form navbar-right">
+              <div class="input-group">
+                <input type="text" class="form-control"  id="inputPesquisa" placeholder="Faça sua pesquisa" aria-describedby="basic-addon2">
+                <label for="inputPesquisa" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></label>
+              </div>
+            </form>
+
           </div>
         </div>
       </div>
@@ -68,7 +76,7 @@
     <div id="subNavTop">
       <nav>
         <ul>
-          <li><a href="#">Pedidos</a></li>
+          <li><a href="#" class="active">Pedidos</a></li>
           <li><a href="#">Solicitantes</a></li>
           <li><a href="#">Pedidos Pendentes</a></li>
         </ul>
@@ -81,6 +89,7 @@
 
     <div id="contentPrincipal" class="container-fluid">
     <div ng-view=""></div>
+
     </div>
 
     <div id="footer">
@@ -90,7 +99,7 @@
           2016 iColabora
         </div>
         <div class="col-xs-6 text-right">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
         </div>
       </div>
     </div>
