@@ -16,7 +16,7 @@ $(document).ready(function(){
 			$this.addClass('active-item');
 
 		}
-		else if( $item == 3 ){
+		else if( $item == 1 ){
 			$('#dashboard').show();
 			$('.section-dashboard').hide();
 			$('#tarefa').hide();
@@ -44,7 +44,7 @@ $(document).ready(function(){
 			$('#section-pedidos-dia').show();
 			buscarPedidosDiarios();
 
-			if( $.trim( $('#section-pedidos-dia' ).html() ) == '' ){
+			if( $.trim( $('#section-pedidos-dia' ).html() ) == '' ) {
 				
 				buscarPedidosDiarios();
 
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 			buscarPedidosSolicitantes();
 
-			if( $.trim( $('.conteudo-pedidos-solicitantes' ).html() ) == '' ){
+			if( $.trim( $('.conteudo-pedidos-solicitantes' ).html() ) == '' ) {
 				
 				buscarPedidosSolicitantes();
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 			$('#section-pedidos-solicitantes').hide();		
 			buscarPedidos('conteudo-pedido-pendentes');
 
-			if( $.trim( $('.conteudo-pedidos-solicitantes' ).html() ) == '' ){
+			if( $.trim( $('.conteudo-pedidos-solicitantes' ).html() ) == '' ) {
 				buscarPedidosSolicitantes();
 			}
 
@@ -80,7 +80,7 @@ $(document).ready(function(){
 
 	});
 
-	//ACCORDION - TASK
+	//TASK
 	$('.tab').on('click', function(){
 
 		$this = $(this);
@@ -93,9 +93,10 @@ $(document).ready(function(){
 		$tab = $this.attr('data-tab');
 		
 		if( $tab == 1 ) {
+
 			limpaPedidos();
 
-			if( $.trim( $('#section-pedido' ).html() ) == '' ){
+			if( $.trim( $('#section-pedido' ).html() ) == '' ) {
 				buscarPedidos('conteudo-pedido');
 			}
 			else {
@@ -106,30 +107,45 @@ $(document).ready(function(){
 
 		}
 		else if( $tab == 2 ){
-			$('#section-insumo').show();
-			$('#section-pedido').hide();
-			$('#section-solicitante').hide();
-			
-			$('#search-result').html('');
-			$('.search-input').val('').hide('slow');
-			$('#btn-clear').hide();
 
-			if( $.trim( $('#conteudo-insumo' ).html() ) == '' ){
-				buscarMateriais();
+			limpaInsumos();
+
+			if( $.trim( $('#conteudo-insumo' ).html() ) == '' ) {
+				buscarInsumos(2);
+			}
+			else {
+				$('#conteudo-insumo' ).html('');
+				$('#consulta-insumo').hide();
+				$('#visualizar-mais-insumo').prop('disabled', false);
+				buscarInsumos(2);
 			}
 
 		}
-		else if( $tab == 3){
-			$('#section-solicitante').show();
-			$('#section-pedido').hide();
-			$('#section-insumo').hide();
-			$('#search-result').html('');
-			$('.search-input').val('').hide('slow');
-			$('#btn-clear').hide();
+		else if( $tab == 3) {
 
-			// if( $.trim($('#conteudo-solicitante').html()) == '' ){
-			// 	buscarMateriais();
-			// }
+			limpaSolicitantes();
+			
+			if( $.trim($('#conteudo-solicitante').html()) == '' ) {
+				buscarSolicitantes();
+			}
+			else {
+				$('#conteudo-solicitante' ).html('');
+				buscarSolicitantes();
+			}
+		}
+		else if( $tab == 4 ) {
+
+			limpaMateriais();
+
+			if( $.trim($('#conteudo-material').html()) == '' ) {
+				buscarMateriais();
+			}
+			else {
+				$('#conteudo-material' ).html('');
+				$('.consulta-material').hide();
+				buscarMateriais();
+			}
+
 		}
 
 	}); 
@@ -193,7 +209,6 @@ $(document).on('click', '[class*="item_"]', function(e) {
 		$('#consulta-pedido > div').remove();
 
 		$('#consulta-pedido-dashboard > div').remove();
-		
 
 		$("tr:not(.active)").slideDown("slow");
 
@@ -202,6 +217,7 @@ $(document).on('click', '[class*="item_"]', function(e) {
 
 		//PEDIDO ESCOLHIDO
 		$('.item_'+id).addClass('active');
+		$('#tb-pedido thead tr').addClass('active');
 
 		//OCULTAR DEMAIS PEDIDOS
 		$("tr:not(.active)").slideUp("slow");
@@ -217,6 +233,115 @@ $(document).on('click', '[class*="item_"]', function(e) {
 			}
 
 		});
+	}
+
+});
+
+//INSUMOS
+$('#visualizar-mais-insumo').on('click', function(e){
+	e.preventDefault();
+
+	var total_linhas = $('#conteudo-insumo tr').length;
+	var limit = total_linhas + 1;
+
+	$('#conteudo-insumo').html('');
+	buscarInsumos(limit);
+
+	if( total_linhas == 8 ){
+		$('#visualizar-mais-insumo').prop('disabled', true);
+	}
+	
+});
+
+//SOLICITANTE
+$(document).on('click', '[class*="solicitante_"]', function(e) {
+
+	e.preventDefault();
+
+	var $this = $(this);
+	var id = $this.attr('data-id');
+	var cep = $(this).closest('tr').find('td[data-cep]').data('cep');
+
+	if( $('.solicitante_'+id).hasClass('active') ) {
+
+		$this.removeClass('active');
+
+		// $('#tb-solicitante thead tr').addClass('active');
+
+		$('.form-solicitante').slideUp("slow");
+
+		$("tr:not(.active)").slideDown("slow");
+
+	}
+	else {
+
+		//SOLICITANTES ESCOLHIDO
+		$('#tb-solicitante thead tr').addClass('active');
+		$('.solicitante_'+id).addClass('active');
+
+		//OCULTAR DEMAIS SOLICITANTES
+		$("tr:not(.active)").slideUp("slow");
+
+		//PREENCHE FORM
+		$('.form-solicitante').slideDown("slow", function() {
+
+			$("#rua").val("...");
+            $("#bairro").val("...");
+            $("#cidade").val("...");
+            $("#estado").val("...");
+
+            $.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                if (!("erro" in dados)) {
+                    //Atualiza os campos com os valores da consulta.
+                    $("#rua").val(dados.logradouro);
+                    $("#bairro").val(dados.bairro);
+                    $("#cidade").val(dados.localidade);
+                    $("#estado").val(dados.uf);
+            	}
+                else {
+                    alert("CEP não encontrado.");
+                }
+            });
+
+		});
+	}
+
+});
+
+//MATERIAL
+$(document).on('click', '[class*="material_"]', function(e) {
+
+	e.preventDefault();
+
+	var $this = $(this);
+	var id = $this.attr('data-id');
+
+	if( $('.material_'+id).hasClass('active') ) {
+
+		$this.removeClass('active');
+
+		$('.form-material').slideUp("slow");
+
+		$("tr:not(.active)").slideDown("slow");
+
+	}
+	else {
+
+		//MATERIAL ESCOLHIDO
+		$('#tb-material thead tr').addClass('active');
+		$('.material_'+id).addClass('active');
+
+		//OCULTAR DEMAIS MATERIAL
+		$("#tb-material tr:not(.active)").slideUp("slow");
+		$("#conteudo-pedido-material tr").remove();
+
+		//MOSTRA PEDIDOS RELACIONADO AO MATERIAL
+		$('.form-material').slideDown("slow", function() {
+			// console.log($(this));
+			buscarMaterialPedido(id);
+		});
+
 	}
 
 });

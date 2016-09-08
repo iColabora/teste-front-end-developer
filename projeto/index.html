@@ -7,9 +7,9 @@
   
   	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
   	<link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.min.css">
-  	<link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+  	<link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
 
-  	<script src="assets/js/mysql_lib.js"></script>
+  	<script src="assets/js/mysql_lib.min.js"></script>
   	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   	<script>
   		google.charts.load("current", {packages:["corechart"]});
@@ -49,7 +49,7 @@
 		</div> 
 	</header>
 	<!-- TASK -->
-	<section id="tarefa" class="section">
+	<section id="tarefa" class="section animated fadeIn">
 		<div class="informations">
 			<div class="wrapper">
 				<h3 class="tarefa-titulo"><i class="fa fa-users"></i>Tarefa</h3>
@@ -62,10 +62,9 @@
 					<li class="li tab" id="pedidos" data-tab="1">Pedidos</li>
 					<li class="li tab" id="isumos" data-tab="2">Insumos</li>
 					<li class="li tab" id="solicitantes" data-tab="3">Solicitantes</li>
+					<li class="li tab" id="materiais" data-tab="4">Materiais</li>
 				</ul>
 			</aside>
-			<!-- TESTE -->
-			<div id="teste"></div>
 			<!-- SECTION BUSCA -->
 			<div id="section-busca" class="section-content">
 				<div id="form-search" class="form-consulta">
@@ -73,8 +72,8 @@
 				</div>
 			</div>
 			<!-- SECTION PEDIDO -->
-			<div id="section-pedido" class="section-content content" >
-				<table id="tb-pedido">
+			<div id="section-pedido" class="section-content content animated fadeIn" >
+				<table id="tb-pedido" class="tb-default">
 					<thead>
 						<tr>
 							<th class="th"> #</th>
@@ -88,51 +87,110 @@
 					</tbody>
 				</table>
 				<!-- FORM PEDIDO -->
-				<div id="" class="form-consulta form-pedido task">
+				<div class="form-consulta form-pedido task">
 					<form id="consulta-pedido" class="consulta"></form>
 				</div>
 			</div>	
 			<!-- SECTION INSUMO -->
-			<div id="section-insumo" class="section-content content" >
-				<table>
+			<div id="section-insumo" class="section-content content animated fadeIn" >
+				<table class="tb-default">
 					<thead>
 						<tr>
-							<th class="th"><i class="fa fa-hashtag" aria-hidden="true"></i></th>
+							<th class="th">#</i></th>
+							<th class="th">Cod. Pedido</th>
 							<th class="th">Marca</th>
 							<th class="th">Descricao</th>
-							<th class="th">Quantidade</th>
 							<th class="th">Preço</th>
-							<th class="th"></th>
+							<th class="th">Quantidade</th>
 						</tr>
 					</thead>
 					<!-- LISTAGEM INSUMO -->
-					<tbody id="conteudo">
+					<tbody id="conteudo-insumo">
 					</tbody>
 				</table>
+				<button type="submit" id="visualizar-mais-insumo" class="right">+ insumos</button>
 				<!-- FORM INSUMO -->
 				<div class="form-insumo form-consulta">
 					<form id="consulta-insumo"></form>
 				</div>
 			</div>		
 			<!-- SECTION SOLICITANTE -->
-			<div id="section-solicitante" class="section-content content" >
-				<div class="block-busca-solicitante">
-					<input text="type" class="input cep" id="cep" name="cep" placeholder="Informe o CEP" />			
+			<div id="section-solicitante" class="section-content content animated fadeIn" >
+				<table id="tb-solicitante" class="tb-default">
+					<thead>
+						<tr>
+							<th class="th">Nome</th>
+							<th class="th">Telefone</th>
+							<th class="th">CPF</th>
+							<th class="th">CEP</th>
+							<th class="th"></th>
+						</tr>
+					</thead>
+					<!-- LISTAGEM SOLICITANTE -->
+					<tbody id="conteudo-solicitante">
+					</tbody>
+				</table>
+				<!-- FORM SOLICITANTE -->
+				<div class="form-consulta form-solicitante">
+					<form id="consulta-solicitante" class="consulta" method="GET">
+						<div>
+							<fieldset class="block-input">
+								<label class="label">Rua</label>
+								<input type="text" id="rua" value="" class="input full" disabled />
+							</fieldset>
+							<fieldset class="block-input">
+								<label class="label">Bairro</label>
+								<input type="text" id="bairro" value="" class="input full" disabled />
+							</fieldset>
+							<fieldset class="block-input">
+								<label class="label">Cidade</label>
+								<input type="text" id="cidade" value="" class="input full" disabled />
+							</fieldset>
+							<fieldset class="block-input">
+								<label class="label">Estado</label>
+								<input type="text" id="estado" value="" class="input" disabled />
+							</fieldset>
+						</div>
+					</form>
 				</div>
-				<div class="">
-					
-				</div>
-				<!-- FORM INSUMO -->
-				<!-- <div class="form-insumo form-consulta">
-					<form id="consulta-insumo"></form>
-				</div> -->
+			</div>			
+			<!-- SECTION MATERIAL -->
+			<div id="section-material" class="section-content content animated fadeIn" >
+				<table id="tb-material" class="tb-default">
+					<thead>
+						<tr>
+							<th class="th">Marca</th>
+							<th class="th">Nome</th>
+							<th class="th"></th>
+						</tr>
+					</thead>
+					<!-- LISTAGEM MATERIAL -->
+					<tbody id="conteudo-material">
+					</tbody>
+				</table>
+				<!-- PEDIDOS RELACIONADO MATERIAL -->
+				<div id="block-pedido-material" class="form-material consulta-material" style="display: none;">
 
+					<table id="tb-pedido-material">
+						<thead>
+							<tr>
+								<th class="th">Cod. Pedido</th>
+								<th class="th">Solicitante</th>
+								<th class="th">Data da Compra</th>
+								<th class="th">Quantidade</th>
+								<th class="th">Total</th>
+							</tr>
+						</thead>
+						<!-- LISTAGEM DE PEDIDOS RELACIONADO AO MATERIAL -->
+						<tbody id="conteudo-pedido-material"></tbody>
+					</table>
+				</div>
 			</div>	
 		</div>
 	</section>
 
 	<!-- DASHBOARD -->
-	<section id="dashboard" class="section">
+	<section id="dashboard" class="section animated fadeIn">
 		<div class="informations">
 			<div class="wrapper">
 				<ul class="ul dash-lista">
@@ -144,20 +202,20 @@
 		</div>
 		<div class="wrapper">
 			<!-- QTD DE PEDIDOS POR dia -->
-			<div id="section-pedidos-dia" class="section-dashboard">
+			<div id="section-pedidos-dia" class="section-dashboard animated fadeIn">
 				<div class="grafico">
 					<div id="pedidos-dia-chart" style="width: 900px; height: 500px;"></div>
 				</div>
 			</div>
-			<!-- PEDIDOS POR solicitante -->
-			<div id="section-pedidos-solicitantes" class="section-dashboard">
+			<!-- PEDIDOS POR SOLICITANTE -->
+			<div id="section-pedidos-solicitantes" class="section-dashboard animated fadeIn">
 				<div class="conteudo-pedidos-solicitantes">
 					<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 				</div>
 			</div>
 			<!-- PEDIDOS PENDENTES -->
-			<div id="section-pedidos-pendentes" class="section-dashboard">
-				<table id="tb-pedidos-pendentes">
+			<div id="section-pedidos-pendentes" class="section-dashboard animated fadeIn">
+				<table id="tb-pedidos-pendentes" class="tb-default">
 					<thead>
 						<th class="th"> #</th>
 						<th class="th">Solicitante</th>
@@ -181,10 +239,9 @@
 		</a>
 	</footer>
 	<script src="assets/js/jquery-3.1.0.min.js"></script>
-	<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
-	<script src="assets/js/event-scripts.js"></script>
-	<script src="assets/js/scripts.js"></script>
-	<script src="assets/js/db-scripts.js"></script>
+	<script src="assets/js/event-scripts.min.js"></script>
+	<script src="assets/js/scripts.min.js"></script>
+	<script src="assets/js/db-scripts.min.js"></script>
 	</div>
 </body>
 </html>

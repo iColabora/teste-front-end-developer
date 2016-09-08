@@ -61,6 +61,7 @@ var pedido = function(id, id_css) {
 	});
 }
 
+
 // ========== TASK ==========
 var buscarPedidos = function(id_css) {
 
@@ -85,28 +86,109 @@ var buscarPedidos = function(id_css) {
 	});
 };
 
+
+var buscarSolicitantes = function() {
+
+	var mysql_query = "SELECT id, nome, telefone, cpf, cep FROM solicitantes";
+
+	mysqlQuery(mysql_query, function(result){
+		// mostra o resultado da query
+		var obj = JSON.parse(result);
+		// console.log(obj);
+		var table_body =  document.getElementById('conteudo-solicitante');
+
+		obj.forEach(function(el){
+		var html_body = "<tr class='solicitante_"+el.id+"' data-id="+el.id+">"+
+			"<td class='td'>"+el.nome+"</td>"+
+			"<td class='td'>"+el.telefone+"</td>"+
+			"<td class='td'>"+el.cpf+"</td>"+
+			"<td class='td' data-cep="+el.cep+">"+el.cep+"</td>"+
+			"<td class='td'><i class='fa fa-chevron-down'></i></td>"+
+			"</tr>";
+			table_body.innerHTML += html_body;
+		});
+
+	});
+}
+
+var buscarInsumos = function(limit) {
+
+	var mysql_query = "SELECT i.*, m.marca FROM insumos i, materiais m WHERE i.id_material = m.id LIMIT 0, "+limit;
+
+	mysqlQuery(mysql_query, function(result){
+		// mostra o resultado da query
+		var obj = JSON.parse(result);
+		// console.log(obj);
+
+		var table_body =  document.getElementById('conteudo-insumo');
+
+		obj.forEach(function(el){
+		var html_body = "<tr class=insumo_'"+el.id+"' data-id="+el.id+">"+
+			"<td class='td'>"+el.id+"</td>"+
+			"<td class='td'>"+el.id_pedido+"</td>"+
+			"<td class='td'>"+el.marca+"</td>"+
+			"<td class='td'>"+el.descricao+"</td>"+
+			"<td class='td'>"+el.preco+"</td>"+
+			"<td class='td'>"+el.quantidade+"</td>"+
+			"</tr>";
+			table_body.innerHTML += html_body;
+		});
+	});
+}
+
 var buscarMateriais = function() {
 
-	// var mysql_query = "SELECT p.*, s.id, s.nome AS nm_solicitante FROM pedidos p, solicitantes s WHERE p.id = s.id";
+	var mysql_query = "SELECT id, nome, marca FROM materiais LIMIT 0,4";
 
-	// mysqlQuery(mysql_query, function(result){
-	// 	// mostra o resultado da query
-	// 	var obj = JSON.parse(result);
-	// 	// console.log(obj);
-	// 	var table_body =  document.getElementById("conteudo-pedido");
+	mysqlQuery(mysql_query, function(result){
+		// mostra o resultado da query
+		var obj = JSON.parse(result);
+		// console.log(obj);
+		var table_body =  document.getElementById("conteudo-material");
 
-	// 	obj.forEach(function(el){
-	// 	var html_body = "<tr class='item_"+el.id+"'' data-id="+el.id+">"+
-	// 		"<td>"+el.id+"</td>"+
-	// 		"<td>"+el.nm_solicitante+"</td>"+
-	// 		"<td>"+el.data_de_compra+"</td>"+
-	// 		"<td>v</td>"+
-	// 		"</tr>";
-	// 		table_body.innerHTML += html_body;
-	// 	});
+		obj.forEach(function(el){
+		var html_body = "<tr class='material_"+el.id+"'' data-id="+el.id+">"+
+			"<td class='td'>"+el.marca+"</td>"+
+			"<td class='td'>"+el.nome+"</td>"+
+			"<td class='td'><i class='fa fa-chevron-down'></td>"+
+			"</tr>";
+			table_body.innerHTML += html_body;
+		});
 
-	// });
+	});
 };
+
+var buscarMaterialPedido = function(id) {
+
+	var mysql_query = "SELECT m.id, m.id_pedido, m.nome, m.marca, m.quantidade AS qt_material, m.preco AS vl_material, "+
+						"p.data_de_compra, p.id, s.nome AS nm_solicitante,  "+
+						"i.quantidade AS qt_insumo, i.preco AS vl_insumo "+
+						"FROM materiais m, pedidos p, insumos i, solicitantes s WHERE p.id = m.id_pedido AND p.id = i.id_pedido AND p.id_solicitante = s.id AND m.id="+id+" GROUP BY p.id";
+
+	mysqlQuery(mysql_query, function(result){
+		// mostra o resultado da query
+		var obj = JSON.parse(result);
+		// console.log(obj);
+
+		var table_body =  document.getElementById("conteudo-pedido-material");
+
+		obj.forEach(function(el){
+
+		var total_pedido = ( (el.vl_insumo * el.qt_insumo) + (el.vl_material * el.qt_material) );
+
+		var html_body = "<tr>"+
+			"<td class='td'>"+el.id_pedido+"</td>"+
+			"<td class='td'>"+el.nm_solicitante+"</td>"+
+			"<td class='td'>"+formataData(el.data_de_compra)+"</td>"+
+			"<td class='td'>"+el.qt_material+"</td>"+
+			"<td class='td'>"+total_pedido+"</td>"+
+			"</tr>";
+			table_body.innerHTML += html_body;
+		});
+
+	});
+
+}
 
 
 // ========== DASHBOARD ==========
@@ -132,14 +214,13 @@ var buscarPedidosSolicitantes = function() {
         	retorno.push([el.nome, el.qt_pedido]);
         });
 
-        // console.log(retorno);
-
 		//DESENHA GRAFICO
 	    data = google.visualization.arrayToDataTable(retorno);
 
         var options = {
           title: 'Pedidos por solicitante',
           is3D: true,
+          colors: ['#FF954D', '#00A4D3', '#65E144', '#856DD6'],
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
