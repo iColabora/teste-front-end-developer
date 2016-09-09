@@ -1,0 +1,84 @@
+@media screen and (max-width: 768px) {
+	.header {
+    	height: 100%;
+
+    	.logo {
+    		display: block;
+    		text-align: center;
+    		float: none;
+    	}
+
+    	&-center {
+    		width: 100%;
+    		text-align: center;
+   			display: block;
+
+   			.block-processo a {
+   				position: relative;
+    			width: 100%;
+    			padding: 15px 0px;
+
+          &:before {
+            left: 0;
+            top: 3;
+            margin-left: -30px;
+          }
+   			}
+
+   			.nav{
+    			display: block;
+    			margin: auto;
+    			text-align: center;
+    			float: none;
+
+    			.ul .li { 
+    				width: 100%;
+    			    padding: 15px 0px 15px 0px;
+    			}
+   			}
+    	}
+
+    	.nav-opcoes {
+    		text-align: center;
+    		float: none;
+    	}
+	}
+
+  .section {
+
+    .navigation {
+      float: none;
+      margin: auto;
+
+      .ul {
+        margin: 0 auto;
+      }
+    }
+
+    .section-content,
+    .section-dashboard {
+
+      .form-consulta {
+        width: 90%;
+        margin: 25px auto;
+      }
+    }
+
+  } 
+
+  .section-content, .section-dashboard {
+    margin: auto;
+    width: 100%;
+
+    .consulta {
+      .right {
+        float: left;
+      }
+    }
+  }
+
+  .dashboard > .section > .informations {
+        height: 70px;
+  }
+
+}
