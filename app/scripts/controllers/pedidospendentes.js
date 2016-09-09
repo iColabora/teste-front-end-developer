@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name appShipment.controller:DashboardCtrl
+ * @name appShipment.controller:PedidospendentesCtrl
  * @description
- * # DashboardCtrl
- * Controller of the testeFrontEndDeveloperApp
+ * # PedidospendentesCtrl
+ * Controller of the appShipment
  */
 angular.module('appShipment')
-  .controller('DashboardCtrl', function () {
+  .controller('PedidospendentesCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

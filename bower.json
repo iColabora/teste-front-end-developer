@@ -10,8 +10,7 @@
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "moment": "momentjs#^2.14.1",
-    "angular-chart.js": "^1.0.2"
+    "moment": "momentjs#^2.14.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

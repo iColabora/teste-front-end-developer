@@ -70,10 +70,12 @@ angular.module('appShipment')
      });
 
      // Seta elemento e gera gráfico
-     var ctx = document.getElementById("myChart");
-     var myBarChart = new Chart(ctx, {
-       type: 'line',
-       data: dados,
-     });
+     setTimeout(function(){
+       var ctx = document.getElementById("chartPedido");
+       var myBarChart = new Chart(ctx, {
+         type: 'line',
+         data: dados,
+       });
+     },0)
 
 });

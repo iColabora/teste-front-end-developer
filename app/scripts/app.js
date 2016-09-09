@@ -16,13 +16,12 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'appShipment.pedidos',
-    'chart.js'
+    'appShipment.pedidos'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/tasks.html',
+        templateUrl: 'views/pedidos.html',
         controller: 'TasksCtrl',
         controllerAs: 'task',
         resolve: {
@@ -31,17 +30,28 @@ angular
           }
         }
       })
-      .when('/about', {
+      .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
         controllerAs: 'dasboard'
       })
+      .when('/solicitantes', {
+        templateUrl: 'views/solicitantes.html',
+        controller: 'SolicitantesCtrl',
+        controllerAs: 'solicitantes'
+      })
+      .when('/pedidosPendentes', {
+        templateUrl: 'views/pedidospendentes.html',
+        controller: 'PedidospendentesCtrl',
+        controllerAs: 'pedidosPendentes'
+      })
       .otherwise({
         redirectTo: '/'
       });
-
-      $locationProvider.html5Mode({
-        enabled: true,
-        requirebase: true
-      });
-  });
+  })
+    .controller('geralCtrl', function($scope, $location){
+        $scope.playProcesso = function(){
+            window.location.replace('#/dashboard');
+        }
+    })
+  ;

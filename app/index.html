@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="appShipment">
+  <body ng-app="appShipment" ng-controller="geralCtrl">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -44,7 +44,7 @@
             </ul>
 
 
-            <button class="btn-iProcesso"><i class="fa fa-play" aria-hidden="true"></i> INICIAR PROCESSO</button>
+            <button class="btn-iProcesso" ng-click="playProcesso()"><i class="fa fa-play" aria-hidden="true"></i> INICIAR PROCESSO</button>
 
 
             <ul class="nav navbar-nav navbar-right">
@@ -76,9 +76,9 @@
     <div id="subNavTop">
       <nav>
         <ul>
-          <li><a href="#" class="active">Pedidos</a></li>
-          <li><a href="#">Solicitantes</a></li>
-          <li><a href="#">Pedidos Pendentes</a></li>
+          <li><a href="#/" class="active">Pedidos</a></li>
+          <li><a href="#/solicitantes">Solicitantes</a></li>
+          <li><a href="#/pedidosPendentes">Pedidos Pendentes</a></li>
         </ul>
       </nav>
     </div>
@@ -117,10 +117,6 @@
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
-    <!-- ManualImports -->
-    <script src="node_modules/chart.js/dist/chart.js"></script>
-    <script src="https://use.fontawesome.com/7f0355a634.js"></script>
-    <!-- endManualImports -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
@@ -132,15 +128,21 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
+        <!-- ManualImports -->
+        <script src="node_modules/chart.js/dist/chart.js"></script>
+        <script src="https://use.fontawesome.com/7f0355a634.js"></script>
+        <!-- endManualImports -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/dashboard.js"></script>
         <script src="scripts/controllers/tasks.js"></script>
         <script src="scripts/services/pedidos.js"></script>
+        <script src="scripts/controllers/solicitantes.js"></script>
+        <script src="scripts/controllers/pedidospendentes.js"></script>
         <!-- endbuild -->
 
 
