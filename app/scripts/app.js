@@ -38,7 +38,12 @@ angular
       .when('/solicitantes', {
         templateUrl: 'views/solicitantes.html',
         controller: 'SolicitantesCtrl',
-        controllerAs: 'solicitantes'
+        controllerAs: 'solicitantes',
+        resolve: {
+          pedidosPorSolicitante: function(pedidos){
+            return pedidos.getPedidosPorSolicitante();
+          }
+        }
       })
       .when('/pedidosPendentes', {
         templateUrl: 'views/pedidospendentes.html',

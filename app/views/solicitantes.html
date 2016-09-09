@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-uniq panel-default">
   <div class="panel-heading">
     <h3><strong>Relatório de </strong>Solicitantes</h3>
   </div>
@@ -21,7 +21,7 @@
          </tr>
        </thead>
        <tbody>
-         <tr ng-repeat="pedido in task.pedidos" class="text-center">
+         <tr ng-repeat="pedido in solicitantes.pedidos" class="text-center">
            <td>{{ pedido.numero }}</td>
            <td>{{ pedido.data_de_compra | date : 'dd MMM yyyy' : 'UTC-03:00' }}</td>
            <td>{{ pedido.nome }}</td>

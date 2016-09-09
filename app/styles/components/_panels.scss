@@ -1,9 +1,11 @@
 /**
- * Painels
+ * Panels
 */
 .panel-default{
-  max-width: 1000px;
-  margin: 0 auto;
+  &.panel-uniq{
+    max-width: 1000px;
+    margin: 0 auto;
+  }
   .panel-heading{
     color: #ffffff;
     background-color: rgba(16, 41, 56, 0.85);

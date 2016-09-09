@@ -9,9 +9,5 @@
  */
 angular.module('appShipment')
   .controller('DashboardCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
   });

@@ -25,7 +25,9 @@ angular.module('appShipment.pedidos', [])
         return deferred.promise;
     };
 
-    // Retorna Pedidos
+    /**
+     * Retorna Pedidos
+    */
     pedido.getPedidos = function(){
       var deferred = $q.defer();
       var query = "SELECT materiais.nome, materiais.marca, materiais.preco, materiais.quantidade, pedidos.numero, pedidos.data_de_compra "+
@@ -37,7 +39,22 @@ angular.module('appShipment.pedidos', [])
       return callback(query, deferred);
     };
 
-    // Retorna quantidade de pedidos por dia
+    /**
+     * Retorna quantidade de pedidos por Solicitante
+    */
+    pedido.getPedidosPorSolicitante = function(){
+      var deferred = $q.defer();
+      var query = "SELECT DATE(pedidos.data_de_compra) AS data_de_compra, pedidos.numero, solicitantes.nome, solicitantes.id "+
+                    "FROM pedidos "+
+                      "JOIN solicitantes ON solicitantes.id=pedidos.id_solicitante "+
+                        "ORDER BY data_de_compra ASC ";
+
+      return callback(query, deferred);
+    };
+
+    /**
+     * Retorna quantidade de pedidos por dia
+    */
     pedido.getPedidosPorDia = function(){
       var deferred = $q.defer();
       var query = "SELECT DATE(pedidos.data_de_compra) AS data_de_compra, pedidos.numero, solicitantes.nome "+
