@@ -15,19 +15,26 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'appShipment.pedidos',
+    'chart.js'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/tasks.html',
         controller: 'TasksCtrl',
-        controllerAs: 'main'
+        controllerAs: 'task',
+        resolve: {
+          pedidosPorDia: function(pedidos) {
+            return pedidos.getPedidosPorDia();
+          }
+        }
       })
       .when('/about', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
-        controllerAs: 'about'
+        controllerAs: 'dasboard'
       })
       .otherwise({
         redirectTo: '/'

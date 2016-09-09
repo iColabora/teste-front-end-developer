@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3><strong>Relatório de </strong>Pedidos</h3>
+  </div>
+  <div class="panel-body">
+    <canvas id="line" class="chart chart-line" chart-data="data"
+  chart-labels="labels" chart-series="series" chart-options="options"
+  chart-dataset-override="datasetOverride" chart-click="onClick"
+  </canvas>
+
+  
+
+    <table class="table table-responsive table-bordered table-striped">
+       <thead>
+         <tr>
+           <th>
+             Pedido
+           </th>
+           <th>
+              Data
+           </th>
+           <th>
+             Solicitante
+           </th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="pedido in task.pedidos">
+           <td></td>
+           <td>aasdasd</td>
+           <td>asd</td>
+         </tr>
+       </tbody>
+     </table>
+
+  </div>
+  <div class="panel-footer">Panel Footer</div>
+</div>

@@ -40,5 +40,8 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js"
+  },
+  "dependencies": {
+    "chart.js": "^2.2.2"
   }
 }

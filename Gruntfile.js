@@ -86,6 +86,10 @@ module.exports = function (grunt) {
                 connect.static('./bower_components')
               ),
               connect().use(
+                '/node_modules',
+                connect.static('./node_modules')
+              ),
+              connect().use(
                 '/app/styles',
                 connect.static('./app/styles')
               ),
@@ -104,6 +108,10 @@ module.exports = function (grunt) {
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
+              ),
+              connect().use(
+                '/node_modules',
+                connect.static('./node_modules')
               ),
               connect.static(appConfig.app)
             ];
@@ -224,7 +232,7 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
-    }, 
+    },
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -371,7 +379,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'testeFrontEndDeveloperApp',
+          module: 'appShipment',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },

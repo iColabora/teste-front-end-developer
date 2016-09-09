@@ -1,0 +1,22 @@
+/**
+ * Painels
+*/
+.panel-default{
+  max-width: 1000px;
+  margin: 0 auto;
+  .panel-heading{
+    color: #ffffff;
+    background-color: rgba(16, 41, 56, 0.85);
+    padding: 10px;
+    h3{
+      font-size: 20px;
+      margin: 10px 5px;
+    }
+  }
+  .panel-body{
+
+  }
+  .panel-footer{
+
+  }
+}

@@ -8,7 +8,7 @@
  * Controller of the testeFrontEndDeveloperApp
  */
 angular.module('appShipment')
-  .controller('DashboardCtrl', function () {
+  .controller('DashboardCtrl', function ($rootScope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
