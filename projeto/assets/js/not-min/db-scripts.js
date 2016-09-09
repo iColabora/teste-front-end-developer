@@ -101,8 +101,8 @@ var buscarSolicitantes = function() {
 		var html_body = "<tr class='solicitante_"+el.id+"' data-id="+el.id+">"+
 			"<td class='td'>"+el.nome+"</td>"+
 			"<td class='td'>"+el.telefone+"</td>"+
-			"<td class='td'>"+el.cpf+"</td>"+
-			"<td class='td' data-cep="+el.cep+">"+el.cep+"</td>"+
+			"<td class='td'>"+formataCpf(el.cpf)+"</td>"+
+			"<td class='td' data-cep="+el.cep+">"+formataCep(el.cep)+"</td>"+
 			"<td class='td'><i class='fa fa-chevron-down'></i></td>"+
 			"</tr>";
 			table_body.innerHTML += html_body;
@@ -297,4 +297,17 @@ var formataData = function(data) {
 	return formato;
 }
 
+var formataCpf = function(cpf) {
+	formatoCpf = cpf.substr(0, 3) + '.' + 
+ 			cpf.substr(3, 3) + '.' + 
+ 			cpf.substr(6, 3) + '-' +
+ 			cpf.substr(9, 2);
+ 	return formatoCpf;
+}
 
+var formataCep = function(cep) {
+	cep = cep.replace("-","");
+	formatoCep = cep.substr(0, 5) + '-' + 
+				 cep.substr(5,3);
+	return formatoCep;
+}
