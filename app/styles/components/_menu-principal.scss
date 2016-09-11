@@ -117,45 +117,15 @@
   .navbar-form{
     margin: 22px 0px;
     padding: 0;
-    .input-group{
-      border: none;
-      #inputPesquisa{
+
+    .input-pesquisa{
+      #pesquisaGeral{
         background: $bg-azul-escuro;
         border: none;
         color: $bg-azul-escuro;
 
-        // Alteração de cor do placeholder
-        &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-            color: $bg-azul-escuro;
-        }
-        &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-           color: $bg-azul-escuro;
-        }
-        &::-moz-placeholder { /* Mozilla Firefox 19+ */
-           color: $bg-azul-escuro;
-        }
-        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-           color: $bg-azul-escuro;
-        }
+        @include colorPlaceholder($bg-azul-escuro, #fff);
 
-        &:focus{
-          border: 1px solid;
-          color: #fff;
-
-          // Alteração de cor do placeholder para branco
-          &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-              color: #fff;
-          }
-          &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-             color: #fff;
-          }
-          &::-moz-placeholder { /* Mozilla Firefox 19+ */
-             color: #fff;
-          }
-          &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-             color: #fff;
-          }
-        }
       }
       .input-group-addon{
         background: $bg-azul-escuro;

@@ -1,10 +1,91 @@
 <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3><strong>Pedidos </strong></h3>
+        <h3><strong>Pedidos </strong></h3>
+        <div class="input-group input-pesquisa">
+          <input type="text" class="form-control"  id="pesquisaProduto" placeholder="Faça sua pesquisa" aria-describedby="basic-addon2">
+          <label for="pesquisaProduto" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></label>
+        </div>
     </div>
     <div class="panel-body">
 
+      <div ng-repeat="pedido in dash.pedidos" id="ticketPedido"
+        ng-class="$index == 0 ? 'open col-sm-12' : 'col-sm-12'">
+
+        <div class="ticket-head row" ng-click="dash.openTicket($event)">
+            <h4>
+             <strong>PEDIDO</strong> {{ pedido.numero }}
+             <small>
+                realizado dia {{ dash.dateFormat(pedido.data_de_compra) | date : 'dd MMM yyyy' : 'UTC-03:00' }}
+             </small>
+            </h4>
+            <ul class="ticket-nav">
+              <li class="expand"><i class="fa fa-expand" aria-hidden="true"></i><i class="fa fa-compress" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+
+        <div class="ticket-body">
+          <div class="col-md-12">
+            <ul>
+              <li><strong>Solicitante: </strong> {{ pedido.nome }}</li>
+              <li><a  class="btn-detalhes" href="">Ver detalhes</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-12">
+            <small>LISTA DE ITENS DO PEDIDO</small>
+            <table class="table table-responsive table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">Material</th>
+                  <th class="text-center">Marca</th>
+                  <th class="text-center">Preço/Uni.</th>
+                  <th class="text-center">Quantidade</th>
+                  <th class="text-center">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="text-center" ng-repeat="material in dash.materiais" ng-if="material.numero == pedido.numero">
+                  <td>{{ material.nome}}  {{ idMaterial }}</td>
+                  <td>{{ material.marca}}</td>
+                  <td>{{ material.preco | currency:"R$":2 }}</td>
+                  <td>{{ material.quantidade}}</td>
+                  <td class="text-right">{{ material.preco * material.quantidade  | currency:"R$":2  }} </td>
+                </tr>
+                <tr>
+                  <th class="text-center">Material</th>
+                  <th class="text-center">Insumo</th>
+                  <th class="text-center"><i class="fa fa-chevron-down" aria-hidden="true"></i></th>
+                  <th class="text-center"><i class="fa fa-chevron-down" aria-hidden="true"></i></th>
+                  <th class="text-center"><i class="fa fa-chevron-down" aria-hidden="true"></i></th>
+                </tr>
+                <tr class="text-center" ng-repeat="insumo in dash.insumos" ng-if="insumo.numero == pedido.numero">
+                  <td>{{ insumo.nome }}</td>
+                  <td>{{ insumo.descricao}}</td>
+                  <td>{{ insumo.preco | currency:"R$":2 }}</td>
+                  <td>{{ insumo.quantidade}}</td>
+                  <td class="text-right">{{ insumo.preco * insumo.quantidade  | currency:"R$":2  }} </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table table-responsive table-bordered table-striped">
+              <thead>
+
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+
+            <div class="col-sm-12 text-right total-pedido">
+              <strong>TOTAL </strong><span>{{ dash.somaTotal(pedido.numero) | currency:"R$":2  }}</span>
+            </div>
+          </div>
+        </div>
+        <!-- END: ticket-body  -->
+
+      </div>
+      <!-- END: TicketPedido -->
     </div>
   </div>
 </div>

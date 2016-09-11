@@ -1,14 +1,28 @@
 # Teste Front-end Developer
-  Painel de controle com gráficos e tabelas.
+Painel de controle desenvolvido com Yeoman e AngularJS.
 
-## Ferramentas Utilizadas
-  Yeoman
-  AngularJs
-  Chartjs
+  - Gráficos com ChartJs
+  - Layout responsivo com Bootstrap
+  - Carregamento dinâmico com Angular Route
 
-## Para iniciar a aplicação
-  Utilize os comandos:
-  - Iniciar server com Grunt
-    /> grunt serve 
-  - Criar Build da aplicação
-    /> grunt build --force
+### Instalação
+
+Instale as dependências do projeto com Bower e npm.
+
+```sh
+$ cd teste-front-end-developer
+$ npm install
+$ bower install
+```
+
+Para ambientes de desenvolvimento execute com Liveload no endereço http://localhost:9000  utilizando:
+
+```sh
+$ grunt serve
+```
+
+Para geração dos arquivos minificados
+
+```sh
+$ grunt build --force
+```

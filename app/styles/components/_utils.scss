@@ -1,0 +1,45 @@
+/**
+  * utilidades gerais
+*/
+
+.clearfix{
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+// Alteração de cor do placeholder
+@mixin colorPlaceholder($normal, $focus){
+
+  &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: $normal;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+     color: $normal;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+     color: $normal;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+     color: $normal;
+  }
+
+  &:focus{
+    border: 1px solid;
+    color: $focus;
+
+    // Alteração de cor do placeholder para branco
+    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color: $focus;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color: $focus;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color: $focus;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color: $focus;
+    }
+  }
+}

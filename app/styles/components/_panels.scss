@@ -11,8 +11,17 @@
     background-color: rgba(16, 41, 56, 0.85);
     padding: 10px;
     h3{
-      font-size: 20px;
+      font-size: 25px;
       margin: 10px 5px;
+    }
+
+    .input-pesquisa{
+      max-width: 200px;
+      position: absolute;
+      z-index: 99;
+      right: 20px;
+      top: 20px;
+    
     }
   }
   .panel-body{

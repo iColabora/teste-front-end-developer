@@ -26,15 +26,42 @@ angular.module('appShipment.pedidos', [])
     };
 
     /**
-     * Retorna Pedidos
+     * Retorna Infos Gerais do Pedidos
     */
     pedido.getPedidos = function(){
       var deferred = $q.defer();
-      var query = "SELECT materiais.nome, materiais.marca, materiais.preco, materiais.quantidade, pedidos.numero, pedidos.data_de_compra "+
-                    "FROM materiais "+
-                        "JOIN pedidos ON pedidos.id=materiais.id_pedido "+
-                          "GROUP BY pedidos.data_de_compra "+
+      var query = "SELECT pedidos.numero, pedidos.data_de_compra, solicitantes.nome "+
+                    "FROM pedidos "+
+                        "JOIN solicitantes ON pedidos.id_solicitante=solicitantes.id "+
+                          "GROUP BY pedidos.numero "+
                             "ORDER BY pedidos.data_de_compra ASC";
+
+      return callback(query, deferred);
+    };
+
+    /**
+     * Retorna Insumos
+    */
+    pedido.getInsumos = function(){
+      var deferred = $q.defer();
+      var query = "SELECT insumos.descricao, insumos.quantidade, insumos.preco, insumos.id_material, pedidos.numero, materiais.nome "+
+                    "FROM insumos "+
+                    "JOIN pedidos ON pedidos.id=insumos.id_pedido "+
+                      "JOIN materiais ON materiais.id=insumos.id_material "+
+                          "ORDER BY pedidos.numero ASC";
+
+      return callback(query, deferred);
+    };
+
+    /**
+     * Retorna Materiais
+    */
+    pedido.getMateriais = function(){
+      var deferred = $q.defer();
+      var query = "SELECT materiais.id, materiais.nome, materiais.marca, materiais.preco, materiais.quantidade, pedidos.numero "+
+                    "FROM materiais "+
+                      "JOIN pedidos ON pedidos.id=materiais.id_pedido "+
+                        "ORDER BY pedidos.numero ASC";
 
       return callback(query, deferred);
     };

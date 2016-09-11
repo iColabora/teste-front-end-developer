@@ -33,7 +33,18 @@ angular
       .when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'DashboardCtrl',
-        controllerAs: 'dasboard'
+        controllerAs: 'dash',
+        resolve: {
+          pedidos: function(pedidos){
+            return pedidos.getPedidos();
+          },
+          materiais: function(pedidos){
+            return pedidos.getMateriais();
+          },
+          insumos: function(pedidos){
+            return pedidos.getInsumos();
+          }
+        }
       })
       .when('/solicitantes', {
         templateUrl: 'views/solicitantes.html',

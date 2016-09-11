@@ -1,0 +1,134 @@
+/**
+ * TicketPedido
+*/
+#ticketPedido{
+  background: rgba(252, 252, 252, 0.75);
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(56, 107, 101);
+  height: 60px;
+
+  &.open{
+    height: auto;
+    .ticket-head{
+      border-radius: 0;
+
+      .ticket-nav{
+        li{
+          &.expand{
+            .fa-expand{
+              display: none;
+            }
+            .fa-compress{
+              display: block;
+            }
+          }
+          &.more-info{
+            display: none;
+          }
+        }
+      }
+    }
+    .ticket-body{
+      display: block;
+    }
+  }
+
+  .ticket-head{
+    height: 60px;
+    border-radius: 5px;
+    background: #386b65;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 18px 15px;
+    cursor: pointer;
+    &:hover{
+      transition: 0.3s;
+      .ticket-nav{
+        color: rgba(255,255,255,0.8);
+      }
+    }
+    h4{
+      font-size: 20px;
+      margin: 0;
+      color: #fff;
+      small{
+        color: rgba(255,255,255,0.7);
+      }
+    }
+
+    .ticket-nav{
+      position: absolute;
+      z-index: 99;
+      color: rgba(255,255,255,0.2);
+      font-size: 25px;
+      margin: 0;
+      right: 10px;
+      top: 10px;
+      list-style: none;
+      font-size: 16px;
+        li{
+          display: inline-block;
+          &.expand{
+            .fa-compress{
+              display: none;
+            }
+          }
+          &.more-info{
+            display: none;
+          }
+        }
+    }
+
+  }
+
+  .ticket-body{
+    display: none;
+    ul{
+      list-style: none;
+      margin: 20px 0 20px 0;
+      padding: 0;
+      li{
+        color: #3d3d3d;
+        margin: 10px 0;
+        font-size: 17px;
+      }
+    }
+
+    small{
+      font-weight: bold;
+    }
+
+    table{
+      thead{
+        background: rgba(56, 107, 101, 0.09);
+        color: #386b65;
+        th{
+          border: 1px solid #386B65;
+        }
+      }
+      tbody{
+        td{
+          border: 1px solid #386b65;
+        }
+        th{
+          color: #386b65;
+          background: rgba(56, 107, 101, 0.09);
+          border: 1px solid #386B65;
+        }
+      }
+    }
+
+    .total-pedido{
+      border-top: 1px solid rgb(182, 182, 182);
+      padding-top: 10px;
+      span{
+        font-size: 22px;
+        font-weight: bold;
+        color: $verde-claro;
+      }
+    }
+  }
+
+}
