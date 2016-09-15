@@ -1,0 +1,21 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+// Imports Default
+@import "components/variaveis";
+@import "components/utils";
+
+// Imports Components
+@import "components/menu-principal";
+@import "components/sub-nav-top";
+@import "components/content-principal";
+@import "components/footer";
+
+// Imports Micro components
+@import "components/panels";
+@import "components/tables";
+@import "components/botoes";
+@import "components/ticketPedido";
+@import "components/inputPesquisa";

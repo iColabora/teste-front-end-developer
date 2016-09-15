@@ -1,0 +1,16 @@
+/**
+ * Footer
+*/
+#footer{
+  background: $bg-cinza-escuro;
+  color: $font-cinza;
+  font-size: 15px;
+  line-height: 45px;
+  border-bottom: 1px solid $borda-cinza-escuro;
+
+  .fa-info-circle{
+    font-size: 20px;
+    padding-top: 10px;
+    line-height: 23px;
+  }
+}

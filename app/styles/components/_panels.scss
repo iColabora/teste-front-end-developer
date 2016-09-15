@@ -1,0 +1,33 @@
+/**
+ * Panels
+*/
+.panel-default{
+  &.panel-uniq{
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .panel-heading{
+    color: #ffffff;
+    background-color: rgba(16, 41, 56, 0.85);
+    padding: 10px;
+    h3{
+      font-size: 25px;
+      margin: 10px 5px;
+    }
+
+    .input-pesquisa{
+      max-width: 200px;
+      position: absolute;
+      z-index: 99;
+      right: 20px;
+      top: 20px;
+    
+    }
+  }
+  .panel-body{
+
+  }
+  .panel-footer{
+
+  }
+}

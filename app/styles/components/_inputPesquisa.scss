@@ -1,0 +1,16 @@
+.input-pesquisa{
+  border: none;
+  .form-control{
+    background: none;
+    border: none;
+    color: none;
+
+    @include colorPlaceholder(rgba(255,255,255,0), rgba(255,255,255,1));
+  }
+  .input-group-addon{
+    background: none;
+    color: #fff;
+    font-size: 19px;
+    border: none;
+  }
+}

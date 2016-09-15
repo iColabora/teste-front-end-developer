@@ -1,0 +1,57 @@
+/**
+ * subNavTop
+*/
+#subNavTop{
+  border-bottom: 1px solid $borda-cinza;
+	position: relative;
+  background: #fff;
+  @media (max-width: $break-point){
+    z-index: -1;
+  }
+
+  &:after {
+  	bottom: 100%;
+  	left: 50px;
+  	border: solid transparent;
+  	content: " ";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  	border-color: rgba(0,0,0,0);
+  	border-bottom-color: #fff;
+  	border-width: 10px;
+  	margin-left: -10px;
+  }
+
+  nav{
+    ul{
+      margin: 0;
+      padding: 0;
+      li{
+        list-style: none;
+        display: inline-block;
+        a{
+          color: $font-cinza-escuro;
+          display: inline-block;
+          line-height: 50px;
+          padding: 0 10px;
+          @media (min-width: 375px){
+            padding: 0 20px;
+          }
+          @media (min-width: 480px){
+            padding: 0 40px;
+          }
+          &:hover{
+            color: $verde-claro;
+            text-decoration: none;
+          }
+          &.active{
+            font-weight: bold;
+            color: $verde-claro;
+          }
+        }
+      }
+    }
+  }
+}

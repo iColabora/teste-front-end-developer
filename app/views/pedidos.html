@@ -1,0 +1,33 @@
+<div class="panel panel-uniq panel-default">
+  <div class="panel-heading">
+    <h3><strong>Relatório de </strong>Pedidos</h3>
+  </div>
+  <div class="panel-body">
+
+  <canvas id="chartPedido" height="100px"></canvas>
+  <div class="clearfix"></div>
+  <table class="table table-responsive table-bordered table-striped">
+     <thead>
+       <tr>
+         <th class="text-center">
+           Pedido
+         </th>
+         <th class="text-center">
+            Data
+         </th>
+         <th class="text-center">
+           Solicitante
+         </th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr ng-repeat="pedido in task.pedidos" class="text-center">
+         <td>{{ pedido.numero }}</td>
+         <td>{{ pedido.data_de_compra | date : 'dd MMM yyyy' : 'UTC-03:00' }}</td>
+         <td>{{ pedido.nome }}</td>
+       </tr>
+     </tbody>
+   </table>
+
+  </div>
+</div>

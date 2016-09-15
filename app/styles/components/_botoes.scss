@@ -1,0 +1,32 @@
+/**
+ *
+*/
+
+.btn{
+  padding: 10px 15px;
+  &.btn-verde{
+    background: $verde-escuro;
+    color: #fff;
+  }
+  &.btn-azul{
+    background: $azul-escuro;
+    color: #fff;
+  }
+  &.bold{
+    font-weight: bold;
+  }
+}
+
+.btn-detalhes{
+  color: rgb(56, 107, 101);
+  font-weight: bold;
+  border: 1px solid rgb(56, 107, 101);
+  padding: 5px 10px;
+  float: right;
+  text-decoration: none !important;
+  &:hover{
+    transition: .6s;
+    color: #fff;
+    background: rgb(56, 107, 101);
+  }
+}
