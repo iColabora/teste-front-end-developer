@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shipment of a hardware retailer</title>		
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.min.css">
+        <script src="js/jquery-3.1.0.min.js" ></script>
+        <script src="js/bootstrap.min.js" ></script>
+        <script src="js/dashboard.min.js" ></script>
+        <script type="text/javascript" src="js/amCharts/amcharts.js"></script>
+        <script type="text/javascript" src="js/amCharts//serial.js"></script>
+        <script type="text/javascript" src="js/amCharts//light.js"></script>
+        <script src="js/mysql_lib.js" ></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">					
+                        <a class="navbar-logo" href="index.html"><img id="logo" src="img/logo.png"></a>
+                    </div>
+                    <div id="navbarMain">
+                        <ul class="nav navbar-nav left vcenter">
+                            <li><a href="dashboard.html">DASHBOARDS</a></li>
+                            <li><a href="solucoes.html">SOLUÇÕES</a></li>
+                            <li><a href="administracao.html">ADMINISTRAÇÃO</a></li>
+                            <li><a class="nav-processo" href="processo.html"><span class="glyphicon glyphicon-play"></span> INICIAR PROCESSO</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">                        
+                            <li class="icon"><a href="#"><img src="img/icon-search.png"></a></li>
+                            <li class="icon"><a href="#"><img src="img/icon-wheelchair.png"></a></li>
+                            <li class=""><a href="#"><img src="img/profile.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="menu">
+                <div class="container">
+                    <ul class="nav navbar-nav menu-nav" role="tablist">
+                        <li role="presentation" class="active"><a href="#contentDash1" aria-controls="contentDash1" role="tab" data-toggle="tab">Dashboard 1</a></li>
+                        <li role="presentation" class=""><a href="#contentDash2" aria-controls="contentDash2" role="tab" data-toggle="tab">Dashboard 2</a></li>
+                        <li role="presentation" class=""><a href="#contentDash3" aria-controls="contentDash3" role="tab" data-toggle="tab">Dashboard 3</a></li>                    
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="contentDash1">
+                    <div class="col-md-10 col-md-offset-1">
+                        <button class="btn btn-default pull-right btn-refresh" id="refreshChart1"><span class="glyphicon glyphicon-refresh"></span></button>
+                        <div class="container" id="chartdiv1" style="height:450px; width: auto"></div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="contentDash2">
+                    <div class="col-md-10 col-md-offset-1">
+                        <button class="btn btn-default pull-right btn-refresh" id="refreshChart2"><span class="glyphicon glyphicon-refresh"></span></button>
+                        <div class="container" id="chartdiv2" style="height:450px; width: auto"></div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="contentDash3">
+                    <div class="container col-md-6 col-md-offset-3" id="tablePedidos" >
+                        <h3 class="text-center">Pedidos Pendentes</h3>
+                        <button class="btn btn-default pull-right btn-refresh" id="refreshTable"><span class="glyphicon glyphicon-refresh"></span></button>
+                        <table class="table table-responsive table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class='text-center'>Pedido</th>
+                                    <th class='text-center'>Nome</th>
+                                    <th class='text-center'>Data de Compra</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tBodyPedidos"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="copyright">&copy 2016 iColabora <span class=" pull-right glyphicon glyphicon-question-sign"></span></span></p>
+            </div>
+        </footer>
+    </body>
+
+</html>
