@@ -14,8 +14,6 @@ $(document).ready(function () {
     });
 
     $('#btnNextPedido').click(function () {
-
-
         if (formValidate($('#formPedido'))) {
             var qnt = parseInt($('#pedidoQntMat').val());
             var preco = parseFloat($('#pedidoPreco').val().replace(",", "."));
@@ -116,7 +114,6 @@ $(document).ready(function () {
 
 
 function atualizaValorTotal() {
-
     var valInsumos = 0;
     $('#tBodyInsumo tr').each(function (i, row) {
         var row = $(row);
@@ -204,7 +201,6 @@ function formValidate(form) {
 }
 
 function maskElements() {
-
     $('.preco').mask('000.000.000.000.000,00', {reverse: true});
     $('.cep').mask('00000-000', {reverse: false});
     $('#solicCpf').mask('000.000.000-00', {reverse: true});
