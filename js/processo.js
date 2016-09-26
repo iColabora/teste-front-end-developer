@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     maskElements();
 
+    valPedido = 0;
+
     $("#buscarPedido").click(function () {
         var idPedido = $('#inputBusca').val();
         buscaPedido(idPedido);
@@ -12,7 +14,14 @@ $(document).ready(function () {
     });
 
     $('#btnNextPedido').click(function () {
+
+
         if (formValidate($('#formPedido'))) {
+            var qnt = parseInt($('#pedidoQntMat').val());
+            var preco = parseFloat($('#pedidoPreco').val().replace(",", "."));
+            valPedido = (qnt * preco).toFixed(2);
+            atualizaValorTotal();
+            $('#valorPedido').html("R$ " + valPedido.replace(".", ","));
             $('.tab-item').removeClass('active');
             $('#insumos-tab').attr('data-toggle', "tab");
             $('#insumos-tab').parent().fadeIn();
@@ -67,6 +76,7 @@ $(document).ready(function () {
     $('.remove-insumo').click(function (e) {
         e.preventDefault();
         $(this).closest('tr').remove();
+        atualizaValorTotal();
     });
 
     $('.tab').tab();
@@ -100,8 +110,24 @@ $(document).ready(function () {
 
     $('#incluirInsumo').click(function () {
         addInsumo();
+        atualizaValorTotal();
     })
 });
+
+
+function atualizaValorTotal() {
+
+    var valInsumos = 0;
+    $('#tBodyInsumo tr').each(function (i, row) {
+        var row = $(row);
+        var qnt = parseInt(row.find('.celQ').text());
+        var valor = parseFloat(row.find('.celV').text().replace(",", "."));
+        valInsumos = parseFloat(valInsumos) + parseFloat((qnt * valor));
+    });
+    var valorTotal = (parseFloat(valInsumos.toFixed(2)) + parseFloat(valPedido)).toFixed(2);
+    $('#valorInsumos').html("R$ " + valInsumos.toFixed(2).toString().replace(".", ","));
+    $('#valorTotal').html("R$ " + valorTotal.toString().replace(".", ","));
+}
 
 function buscaPedido(idPedido) {
     var query = "SELECT\n\
@@ -113,10 +139,10 @@ function buscaPedido(idPedido) {
                 WHERE \n\
                     p.id = " + idPedido;
     mysqlQuery(query, function (result) {
-         var obj = JSON.parse(result);         
+        var obj = JSON.parse(result);
         if (obj.length > 0) {
             $('#alertPedido').hide();
-            obj = obj[0];            
+            obj = obj[0];
             $('#modalPedidoLabel').html('Pedido ' + obj.id);
             $('#resBuscaIdpedido').val(obj.id);
             $('#resBuscaDataCompra').val(obj.data_de_compra);
@@ -146,8 +172,13 @@ function addInsumo() {
         } else {
             valor = form.insumoPreco + ',00';
         }
-        var row = "<tr><td><a href='#' class='remove-insumo'><span class='glyphicon glyphicon-remove'></span></a></td><td>" + marca_desc + "</td><td>" + form.insumoDesc + "</td><td>" + form.insumoQnt + "</td><td>" + valor + "</td></tr>";
+        var row = "<tr><td><a href='#' class='remove-insumo'><span class='glyphicon glyphicon-remove'></span></a></td><td>" + marca_desc + "</td><td>" + form.insumoDesc + "</td><td class='celQ'>" + form.insumoQnt + "</td><td class='celV'>" + valor + "</td></tr>";
         $('#tBodyInsumo').append(row);
+        $('.remove-insumo').click(function (e) {
+            e.preventDefault();
+            $(this).closest('tr').remove();
+            atualizaValorTotal();
+        });
     }
 }
 
