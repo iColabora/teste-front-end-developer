@@ -1,0 +1,402 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shipment of a hardware retailer</title>		
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/custom.min.css">                
+        <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <script src="js/jquery-3.1.0.min.js" ></script>                
+        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="js/jquery.masked.js" ></script>                
+        <script src="js/bootstrap.min.js" ></script>
+        <script src="js/processo.min.js" ></script>     
+        <script src="js/mysql_lib.js" ></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">					
+                        <a class="navbar-logo" href="index.html"><img id="logo" src="img/logo.png"></a>
+                    </div>
+                    <div id="navbarMain">
+                        <ul class="nav navbar-nav left vcenter">
+                            <li><a href="dashboard.html">DASHBOARDS</a></li>
+                            <li><a href="solucoes.html">SOLUÇÕES</a></li>
+                            <li><a href="administracao.html">ADMINISTRAÇÃO</a></li>
+                            <li class="nav-processo"><a href="processo.html"><span class="glyphicon glyphicon-play"></span> INICIAR PROCESSO</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">                        
+                            <li class="icon"><a href="#"><img src="img/icon-search.png"></a></li>
+                            <li class="icon"><a href="#"><img src="img/icon-wheelchair.png"></a></li>
+                            <li class=""><a href="#"><img src="img/profile.png"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="menu">
+                <div class="container">                
+                    <ul class="nav navbar-nav menu-nav">
+                        <li><a href="#"><img src="img/icon-coworkers.png"> Tarefa</a></li>
+                        <li class="active" style="padding: 3px;"><a href="#">Check if extra insurance is necessary</a></li>		
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">                
+                    <div class="col-md-8 col-md-offset-2" id="forms">
+                        <ul class="nav nav-tabs" id="tabsProceso" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#contentPedido" class="tab" id="pedido-tab" role="tab" data-toggle="tab" aria-controls="contentPedido" aria-expanded="true">Pedido</a>
+                            </li>
+                            <li style="display:block" role="presentation" class="">
+                                <a href="#contentInsumos" class="tab" id="insumos-tab" role="tab" data-toggle="tab" aria-controls="contentInsumos" aria-expanded="true">Insumos</a>
+                            </li>
+                            <li style="display:none" role="presentation" class="">
+                                <a href="#contentSolicitante" class="tab" id="solicitante-tab" role="tab" data-toggle="tab" aria-controls="contentSolicitante" aria-expanded="true">Solicitante</a>
+                            </li>
+                            <li style="display:none" role="presentation" class="">
+                                <a href="#contentEntrega" class="tab" id="entrega-tab" role="tab" data-toggle="tab" aria-controls="contentEntrega" aria-expanded="true">Entrega</a>
+                            </li>                            
+                            </li>
+                            <li style="display:none" role="presentation" class="">
+                                <a href="#contentFinalizado" class="tab" id="finalizado-tab" role="tab" data-toggle="tab" aria-controls="contentFinalizado" aria-expanded="true">Pedido Finalizado</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade active in" role="tabpanel" id="contentPedido" aria-labelledby="pedido-tab"> 
+                                <form id="formPedido" class="form-active" style="display:block">
+                                    <h4>Dados do Pedido</h4>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputBusca">Número de Pedido</label>
+                                                <div class="input-group" >
+                                                    <input type="number" min="0" class="form-control" placeholder="#" id="inputBusca" name="inputBusca">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary" type="button" id="buscarPedido">Buscar</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <div class="alert alert-danger" role="alert" style="display: none;" id="alertPedido"><span class="glyphicon glyphicon-exclamation-sign"></span> Pedido não encontrado</div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="pedidoDataCompra">Data de Compra</label>
+                                                <input type="text" class="form-control" placeholder="dd/mm/aaaa" id="pedidoDataCompra" name="pedidoDataCompra">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="pedidoMarca">Marca</label>
+                                                <select class="form-control" id="pedidoMarca" name="pedidoMarca">
+                                                    <option value=""> --</option>
+                                                    <option value="Marca 1">Marca 1</option>
+                                                    <option value="Marca 2">Marca 2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="pedidoQntMat">Quantidade do Material</label>
+                                                <input type="number" min="1" class="form-control" id="pedidoQntMat" name="pedidoQntMat">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="pedidoPreco">Preço Total</label>
+                                                <input type="text" class="form-control preco" id="pedidoPreco" name="pedidoPreco">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="pull-right">                                        
+                                                <button type="button" class="btn btn-primary" id="btnNextPedido">Avançar</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modalPedido" tabindex="-1" role="dialog" aria-labelledby="modalPedidoLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="modalPedidoLabel"></h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>                                                    
+                                                    <fieldset>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="resBuscaIdpedido">Número de Pedido</label>
+                                                                <input disabled type="number" min="0" class="form-control" id="resBuscaIdpedido" name="resBuscaIdpedido">                                                                
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="resBuscaDataCompra">Data de Compra</label>
+                                                                <input disabled type="text" class="form-control" id="resBuscaDataCompra" name="resBuscaDataCompra">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-12">
+                                                                <label for="resBuscaNome">Nome do Solicitante</label>
+                                                                <input disabled type="text" class="form-control" id="resBuscaNome" name="resBuscaNome">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="resBuscaTel">Telefone</label>
+                                                                <input disabled type="text" class="form-control" id="resBuscaTel" name="resBuscaTel">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-10">
+                                                                <label for="resBuscaRua">Rua</label>
+                                                                <input disabled type="text" class="form-control" id="resBuscaRua" name="resBuscaRua">
+                                                            </div>
+                                                            <div class="form-group col-md-2">
+                                                                <label for="resBuscaRua">Nº</label>
+                                                                <input disabled type="text" class="form-control" id="resBuscaNumero" name="resBuscaNumero">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="resBuscaBairro">Bairro</label>
+                                                                <input disabled type="text"  class="form-control" id="resBuscaBairro" name="resBuscaBairro">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="resBuscaCidade">Cidade</label>
+                                                                <input disabled type="text" class="form-control" id="resBuscaCidade" name="resBuscaCidade">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="resBuscaEstado">Estado</label>
+                                                                <input disabled type="text" class="form-control preco" id="resBuscaEstado" name="resBuscaEstado">
+                                                            </div>
+                                                        </div>                                                        
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" role="tabpanel" id="contentInsumos" aria-labelledby="insumos-tab"> 
+                                <form id="formInsumos">
+                                    <h4>Insumos do Pedido</h4>
+                                    <div class="row">
+                                        <div class="form-group col-md-6 ">
+                                            <p class="pull-right"><strong>Pedido: </strong><span id="valorPedido"></span></p>
+                                        </div>	
+                                        <div class="form-group col-md-6 ">
+                                            <p class="pull-right"><strong>Insumos: </strong><span id="valorInsumos"></span></p>
+                                        </div>	
+                                        <div class="form-group col-md-12">
+                                            <p class="pull-right"><strong>Total(insumos + pedidos): </strong><span id="valorTotal">R$ 1932,99</span></p>
+                                        </div>	
+                                    </div>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="">Marca</label>
+                                                <select class="form-control" name="insumoMarca" id="insumoMarca" name="insumoMarca">                                            
+                                                    <option value=""> --</option>
+                                                    <option value="Marca 1">Marca 1</option>
+                                                    <option value="Marca 2">Marca 2</option>                                            
+                                                </select>
+                                            </div>  
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="insumoDesc">Descrição</label>
+                                                <textarea rows="3" class="form-control" id="insumoDesc" name="insumoDesc"></textarea>
+                                            </div>	
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-5">
+                                                <label for="insumoQnt">Quantidade</label>
+                                                <input type="number" min="1" class="form-control" id="insumoQnt" name="insumoQnt">
+                                            </div>	
+                                            <div class="form-group col-md-7">
+                                                <label for="insumoPreco">Preço</label>
+                                                <input type="text" class="form-control preco" id="insumoPreco" name="insumoPreco">
+                                            </div>	
+                                        </div>
+                                        <div class="row">
+                                            <div class="text-center">
+                                                <button type="button" class="btn btn-warning" id="incluirInsumo">Incluir</button>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-danger col-md-12" role="alert" style="display: none;" id="alertInsumos">Um pedido deve ter pelo menos dois insumos.</div>
+                                        <div class="row">
+                                            <button type="button" class="btn btn-primary btnPrev">Voltar</button>
+                                            <button id="btnNextInsumo" type="button" class="btn btn-primary pull-right">Avançar</button>
+                                        </div>
+                                        <table class="table table-responsive table-insumos">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Marca</th>
+                                                    <th>Descrição</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Preço  (R$)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tBodyInsumo">
+                                                <tr>
+                                                    <td><a href="#" class="remove-insumo"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                                    <td>Marca 1</td>
+                                                    <td>Item 1</td>
+                                                    <td class='celQ'>2</td>
+                                                    <td class='celV'>67,99</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="#" class="remove-insumo"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                                    <td>Marca 2</td>
+                                                    <td>Item 2</td>
+                                                    <td class='celQ'>32</td>
+                                                    <td class='celV'>7,99</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" role="tabpanel" id="contentSolicitante" aria-labelledby="solicitante-tab"> 
+                                <form id="formSolicitante">
+                                    <h4>Dados do Solicitante</h4>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="solicNome">Nome Completo</label>                                    
+                                                <input type="text" class="form-control" placeholder="" id="solicNome" name="solicNome">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="solicCpf">CPF</label>
+                                                <input type="text" class="form-control" placeholder="" id="solicCpf" name="solicCpf">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="solicTel">Telefone</label>
+                                                <input type="text" class="form-control not-required" id="solicTel" name="solicTel">
+                                            </div>	
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="solicCep">CEP</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control cep" placeholder=""  id="solicCep" name="solicCep">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary btn-cep" type="button" id="btnBuscaCepSolic">Buscar</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <p class="p-loading" style="display: none">Carregando...</p>
+                                            <div class="alert alert-danger col-md-6" role="alert" style="display: none;" id="alertSolic">CEP inválido.</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="solicEndereco">Endereço</label>                                    
+                                                <input type="text" class="form-control" placeholder="" id="solicEndereco" name="solicEndereco">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="solicComp">Complemento</label>                                    
+                                                <input type="text" class="form-control not-required" placeholder="" id="solicComp" name="solicComp">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="solicEstado">Estado</label>
+                                                <input type="text" class="form-control" id="solicEstado" name="solicEstado">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="solicCidade">Cidade</label>
+                                                <input type="text" class="form-control" placeholder="" id="solicCidade" name="solicCidade">
+                                            </div>
+                                            <div class="checkbox col-md-12">
+                                                <label>
+                                                    <input id="mesmoEndereco" type="checkbox"> Utilizar este endereço para entrega.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button type="button" class="btn btn-primary btnPrev">Voltar</button>
+                                            <button id="btnNextSolic" type="button" class="btn btn-primary pull-right">Avançar</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>                            
+                            <div class="tab-pane fade" role="tabpanel" id="contentEntrega" aria-labelledby="entrega-tab"> 
+                                <form id="formEntrega">
+                                    <h4>Dados de Entrega</h4>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="entregaCep">CEP</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control cep" placeholder="" id="entregaCep" name="entregaCep">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary btn-cep" type="button" id="btnBuscaCepEnt">Buscar</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <p class="p-loading" style="display: none">Carregando...</p>
+                                            <div class="alert alert-danger col-md-6" role="alert" style="display: none;" id="alertEntrega">CEP inválido.</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <label for="entregaEndereco">Endereço</label>                                    
+                                                <input type="text" class="form-control" placeholder="" id="entregaEndereco" name="entregaEndereco">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="entregaComp">Complemento</label>                                    
+                                                <input type="text" class="form-control not-required" placeholder="" id="entregaComp" name="entregaComp">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="entregaEstado">Estado</label>
+                                                <input type="text" class="form-control" id="entregaEstado" name="entregaEstado">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="entregaCidade">Cidade</label>
+                                                <input type="text" class="form-control" placeholder="" id="entregaCidade" name="entregaCidade">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <button type="button" class="btn btn-primary btn-prev">Voltar</button>
+                                            <button id="btnNextEntrega" type="button" class="btn btn-primary pull-right">Finalizar Pedido</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" role="tabpanel" id="contentFinalizado" aria-labelledby="finalizado-tab"> 
+                                <div class="jumbotron">
+                                    <h2><span class="glyphicon glyphicon-ok"></span> Pedido finalizado</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="copyright">&copy 2016 iColabora <span class=" pull-right glyphicon glyphicon-question-sign"></span></span></p>
+            </div>
+        </footer>
+    </body>
+
+</html>
