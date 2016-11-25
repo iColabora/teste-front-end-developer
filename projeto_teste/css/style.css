@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:500|Raleway|Raleway:500');
+
+body {
+	/*font-family: 'Titillium Web', Arial, sans-serif;*/
+	font-family: 'Raleway', Arial, sans-serif;
+}
+/** header **/
+header #iconNav {
+	width: 100px;
+    height: 50px;
+    float: left;
+}
+header nav {
+	width: 100%;
+	height: 48px;
+	position: fixed;
+	top: 0;
+	background-color: #102938;
+	color: #fff;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+header nav ul:nth-child(1) {
+	float: right;
+	left: 30px;
+}
+header nav ul:nth-child(2) {
+	float: left;
+	right: 30px;
+}
+header nav ul li {
+	display: inline-block;
+	padding: 16px;
+	text-transform: uppercase;
+	background-color: #102938;
+	transition: all 0.35s ease-in-out;
+}
+header nav ul li:hover {
+	/*background-color: lighten(#102938, 70%);*/
+	background-color: #285b79;
+	cursor: pointer;
+}
+header nav ul li#iniciarProcesso {
+	background-color: #39bb9d;
+}
+/** fim header **/
+
+/** lista de tarefas **/
+#main {
+	margin-top: 65px;
+	width: 100%;
+	color: #102938;
+	border-bottom: 1px solid black;
+    padding-bottom: 14px;
+    font-weight: bold;
+}
+#main #actions table tr td {
+	min-height: 30px;
+	
+}
+#main #actions table tr td:nth-child(1) {
+	min-width: 75px;
+    padding-left: 40px;
+    font-size:17px;
+}
+#main #actions table tr td:nth-child(2) {
+	min-width: 60%;
+}
+/** fim lista de tarefas **/
+
+/* forms */
+#forms {
+	display: block;
+    width: 94.3%;
+    margin: 0 auto;
+    margin-top: 28px;
+}
+#forms div {
+	margin-bottom: 20px;
+}
+#forms tbody {
+	display: inline-block;
+}
+#forms h3 {
+	line-height: 27px;
+	width: 81.3%;
+	margin-bottom: 8px;
+	font-weight: bold;
+}
+#forms .tableLabels tr:nth-child(1) {
+	border-bottom: 1px dotted black;
+	border-top: 1px dashed #39bb9d;
+    height: 30px;
+    margin-bottom: 7px;
+}
+#forms th {
+	display: inline-block;
+    margin-right: 8px;
+	width: 157px;
+	font-size: 13px;
+	padding-top: 8px;
+}
+#forms input {
+	border-radius: 7px;
+    padding: 6px 13px;
+    font-size: 12px;
+    font-family: Raleway;
+    min-width: 164px;
+    margin-bottom: 7px;
+}
+#forms select {
+	width: 155px;
+    height: 24px;
+    margin-bottom: 6px;
+}
+.conteudoTable {
+	padding-top: 7px;
+}
+.conteudoTable td {
+    margin-right: 5px;
+    display: inline-block;
+    width: 160px;
+    height: 20px;
+    text-align: center;
+    font-size: 13px;
+}
+/** fim forms **/
+
+/** footer **/
+footer {
+	width: 100%;
+	height: 30px;
+	position: absolute;
+	bottom: 0;
+	background-color: #565351;
+}
+footer div:nth-child(1){
+	position: relative;
+	float: left;
+	left: 30px;
+	color: #999999;
+	padding-top: 10px;
+	font-size: 12px;
+}
+footer div:nth-child(2){
+	position: relative;
+    width: 16px;
+    height: 13px;
+    float: right;
+    color: #565351;
+    background-color: #bcbdc0;
+    border-radius: 7px;
+    font-size: 12px;
+    right: 30px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 2px;
+}
+/** fim footer **/
