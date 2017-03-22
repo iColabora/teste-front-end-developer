@@ -1,0 +1,5 @@
+{"error":0,"message":"Admin data fetch successfully","data":[
+{"id":"004","name":"Monitor","marca":"Samsung","quantidade":26,"preco":83.20,"dataCompra":"13/01/2017"},
+{"id":"003","name":"Notebook","marca":"Dell","quantidade":6,"preco":22000,"dataCompra":"27/02/2017"},
+{"id":"002","name":"Teclado","marca":"Clone","quantidade":17,"preco": 25.60,"dataCompra":"05/03/2017"},
+{"id":"001","name":"Mouse","marca":"Razer","quantidade":10, "preco": 54.50,"dataCompra":"09/01/2017"}]}

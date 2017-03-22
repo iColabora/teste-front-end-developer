@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+	<head>
+ 		  <meta charset="utf-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <title>iColabora Teste</title>
+		  <meta name="description" content="The HTML5 Herald">
+		  <meta name="author" content="SitePoint">
+		  <!-- LINK FONT -->
+		  <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
+
+		  <!-- SCRIPTS JS -->
+		  <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+		  <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+		  <script type="text/javascript" src="./js/app.min.js"></script>
+			<script src="http://code.highcharts.com/highcharts.js"></script>
+		  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+			<script src="https://code.highcharts.com/modules/exporting.js"></script>
+			<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+
+
+		  <!-- LINKS CSS -->
+		  <link rel="stylesheet" href="./css/style.min.css">
+			<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+
+ 		 </head>
+
+<header>
+	<nav class="row">
+		<div class="tabs col-5 col-m-5">
+			<ul >
+	    	 <li> <a class="tablinks" onclick="openTab(event, 'Dashboards')" id="first-tab">DASHBOARDS</a></li>
+	    	 <li> <a class="tablinks" onclick="openTab(event, 'Solucoes')">SOLUÇÕES</a></li>
+	    	 <li> <a class="tablinks" onclick="openTab(event, 'Administracao')">ADMINISTRAÇÃO</a></li>
+	 		 </ul>
+	     </div>
+	     <div class="col-2 col-m-2">
+	     	<button class="tablinks" onclick="openTab(event,'Iniciar')" id="start-process">► INICIAR PROCESSO</button>
+	     </div>
+	     <div class="col-5 col-m-2" id="acessibilidade" >
+	     <ul>
+				 <li>
+					 <img src="./img/cadeira-icon.png">
+				 </li>
+	     	<li>
+	     		<input id="search-input" style="display:none;"  type="search" placeholder="Busca...">
+	     	</li>
+	     	<li>
+	     		<img id="search-img-input" onClick="openSearch()" src="./img/search-icon.png">
+	     	</li>
+	     </ul>
+
+	     </div>
+	</nav>
+</header>
+
+<body>
+	<section>
+		<div id="Dashboards" class="tabcontent">
+		  <h3>DASHBOARDS</h3>
+						<table id="tabela-pedidos-pendentes" class="display" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+											<th>Pedido Número</th>
+											<th>Nome</th>
+											<th>Data</th>
+											<th>Valor</th>
+									</tr>
+							</thead>
+							<tfoot>
+									<tr>
+										<th>Pedido Número</th>
+										<th>Nome</th>
+										<th>Data</th>
+										<th>Valor</th>>
+									</tr>
+							</tfoot>
+					<tbody>
+							<tr>
+									<td>004</td>
+									<td>Barry Allen</td>
+									<td>13/01/2017</td>
+									<td>$300,00</td>
+							</tr>
+							<tr>
+									<td>003</td>
+									<td>Tony Stark</td>
+									<td>27/02/2017</td>
+									<td>$170,750</td>
+							</tr>
+							<tr>
+									<td>002</td>
+									<td>Victor Stone</td>
+									<td>05/03/2017</td>
+									<td>$86,000</td>
+							</tr>
+							<tr>
+									<td>001</td>
+									<td>Edward Nygma</td>
+									<td>09/01/2017</td>
+									<td>$433,060</td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="chart-produto-dia">
+					</div>
+					<div id="chart-solicitantes">
+					</div>
+		</div>
+
+		<div id="Solucoes" class="tabcontent">
+		  <h3>SOLUÇÕES</h3>
+		  <p></p>
+		</div>
+
+		<div id="Administracao" class="tabcontent">
+		  <h3>ADMINISTRAÇÃO</h3>
+		  <p></p>
+		</div>
+
+		<div id="Iniciar" class="tabcontent">
+				<h3>GOODS TO SHIP</h3>
+			  <form class="form-style">
+					<label>Número do Pedido</label>
+					<select id="numeroPedido">
+					</select>
+					<label>Material</label>
+					<input id="materialSelect" type="text" name="material"disabled>
+					<label>Marca</label>
+					<input id="marcaSelect" type="text" name="marca" disabled>
+					<label>Data de compra</label>
+					<input id="dataCompra"type="text" name="data-compra" disabled>
+					<label>Quantidade do Material</label>
+					<input id="quantidadeMaterial" type="text" name="quantidade-material" disabled>
+					<label>Normal Post</label><input id="normal-post" class="radio-form" type="radio" name="type-post" value="normal-post" checked>
+					<label>Special Post</label><input class="radio-form" type="radio" name="type-post" value="special-post">
+					<div id="check-insurance" >
+						<label>Extra Insurance?</label><input id="insurance-box"type="checkbox">
+					</div>
+				</form>
+
+				<form class="form-style" method="get" action=".">
+						<h3>POST DETAILS</h3>
+						<label>Nome completo</label>
+						<input id="nomeSolicitante" type="text" name="nome-pessoa" disabled>
+						<label>Telefone</label>
+						<input id="telSolicitante" type="text" name="telefone" disabled>
+						<label>CPF</label>
+						<input id="cpfSolicitante" type="text" name="cpf" disabled>
+		        <label>CEP
+		        <input name="cep" type="text" id="cepSolicitante" value="" size="10" maxlength="9" />
+		        <label>Endereço
+		        <input name="endereco" type="text" id="endereco" size="90" disabled>
+						<label>Número
+						<input name="numero-casa" type="text" id="numeroCasa" disabled>
+						<button type="submit">Send
+	        </form>
+		</div>
+	</section>
+</body>
+</html>
