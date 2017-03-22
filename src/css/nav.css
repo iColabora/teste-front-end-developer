@@ -1,0 +1,94 @@
+nav {
+
+	background-color: #0E2937;
+	-webkit-box-shadow: 0 3px 10px 0px #2b2b2b;
+box-shadow: 0 3px 10px 0px #2b2b2b;
+}
+
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/*Estilo dos bot�es das tabs */
+
+nav li {
+	display: inline;
+	cursor: pointer;
+}
+
+.tabs li a {
+	color: white;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.tabs li a:hover {
+	color: #1E9180;
+}
+
+.tabs li a.active {
+	color: #1E9180;
+	font-weight: bold;
+}
+
+
+
+/* Estilo conte�do tabs*/
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+		background: rgba(255, 255, 255, 0.17);
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 10px 5px #C2C2C2;
+    box-shadow: 0 0 11px -2px #525151;
+		margin-top:25px;
+}
+
+.tabcontent h3{
+	color:white;
+	text-shadow: 0 1px 5px #292828;
+}
+
+#start-process {
+	color: white;
+	font-weight: bold;
+	padding:20px;
+	background: #1E9180;
+	border:none;
+	cursor:pointer;
+	width:100%;
+}
+
+#start-process.active{
+	background: #21af9a;
+
+}
+
+#start-process:hover{
+	background: #21af9a;
+}
+
+#acessibilidade img {
+	width: 20px;
+}
+
+nav ul {
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+
+#search-input {
+	padding:0;
+	border-radius:5px;
+	padding:5px;
+	border: none;
+}
+
+#acessibilidade li {
+	float:right;
+	margin-right: 10px;
+}

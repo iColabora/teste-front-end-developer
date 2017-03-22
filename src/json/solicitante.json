@@ -1,0 +1,5 @@
+{"error":0,"message":"Admin data fetch successfully","data":[
+{"id":"004","solicitante":"Barry Allen","telefone":"4332-4560","cpf":412456478901,"cep":"09840040","numero":127},
+{"id":"003","solicitante":"Tony Stark","telefone":"9820-1023","cpf":12365497804,"cep":"09830030","numero":117},
+{"id":"002","solicitante":"Victor Stone","telefone":"4352-4290","cpf":89876256205,"cep":"09820020","numero":890},
+{"id":"001","solicitante":"Edward Nygma","telefone":"9201-2529","cpf":92065112409,"cep":"09810010","numero":666}]}
