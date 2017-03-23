@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+
+				</button>
+				<a class="navbar-brand" id="logo" href="#" data-toggle="tooltip"
+					data-placement="bottom"><img src="img/logo.png" width="50%"></a>
+
+				>
+			</div>
+
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a class="menuFont" href="index.html">DASHBOARDS</a></li>
+					<li><a class="menuFont" href="#">SOLUÇÕES</a></li>
+					<li><a class="menuFont" href="#">ADMINISTRAÇÃO</a></li>
+
+
+				</ul>
+				<div class="navbar-form navbar-left">
+					<div class="navProcesso">
+
+
+						<h5>
+							<a class="start" href="processo.html"><span
+								class="glyphicon glyphicon-play"> </span> INICIAR PROCESSO</a>
+						</h5>
+
+					</div>
+
+				</div>
+
+
+				<div class="col-md-4">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href=""><i class="fa fa-search iconesDireito"
+								aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-wheelchair iconesDireito"
+								aria-hidden="true"></i></a></li>
+						<li class="dropdown"><a href="#"
+							class="dropdown-toggle profile-image" data-toggle="dropdown">
+								<img src="img/mike-dias.png" class="img-circle special-img"><b
+								class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="glyphicon glyphicon-cog"></i>
+										Minha conta</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><i
+										class="glyphicon glyphicon glyphicon-off"></i> Sair</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<div class="container principal">
+		<div class="row">
+
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active"><a data-toggle="tab"
+					href="#cadastro">Cadastro Solicitante</a></li>
+				<li role="presentation"><a data-toggle="tab" href="#pedido">Novo
+						Pedido</a></li>
+
+			</ul>
+
+			<div class="tab-content">
+				<div id="cadastro" class="tab-pane fade in active">
+
+
+
+
+
+
+
+
+					<form method="get" action="">
+						<div class="col-md-6">
+
+							<div class="form-group">
+
+								<h3>Informações do solicitante</h3>
+								<div class="col-xs-12">
+									<label>Nome:</label> <input class="form-control" type="text">
+								</div>
+								<div class="col-xs-4">
+									<label>Telefone:</label> <input type="text"
+										class="form-control">
+								</div>
+
+								<div class="col-xs-4">
+									<label>CPF:</label> <input type="text" class="form-control" />
+								</div>
+
+								<div class="col-xs-4">
+									<label>CEP: </label> <input name="cep" id="cep" size="10"
+										maxlength="9" type="text" class="form-control" />
+								</div>
+
+								<div class="col-xs-12">
+									<label>Logradouro: </label> <input type="text"
+										class="form-control" id="logradouro" required>
+								</div>
+
+								<div class="col-xs-3">
+									<label>Número:</label> <input type="text" class="form-control">
+								</div>
+
+								<div class="col-xs-9">
+									<label>Complemento:</label> <input type="text"
+										class="form-control">
+								</div>
+
+								<div class="col-xs-6">
+									<label>Bairro:</label> <input type="text" name="bairro"
+										id="bairro" class="form-control">
+								</div>
+
+								<div class="col-xs-6">
+									<label>Cidade:</label> <input type="text" name="cidade"
+										id="cidade" class="form-control">
+								</div>
+
+								<div class="col-xs-6">
+									<label>Estado:</label> <input type="text" name="estado"
+										id="estado" class="form-control">
+								</div>
+
+								<div class="col-xs-6">
+									<label>Pais:</label> <input type="text" class="form-control"
+										value="Brasil">
+								</div>
+
+
+
+
+
+							</div>
+
+
+						</div>
+
+						<div class="col-md-6">
+
+							<h3>Informações de entrega</h3>
+							<div class="form-group">
+								<div class="col-xs-4">
+									<label>CEP:</label> <input name="cep" id="endEntrega_cep"
+										size="10" maxlength="9" type="text" class="form-control" />
+								</div>
+
+
+								<div class="col-xs-12">
+									<label>Logradouro:</label> <input type="text"
+										class="form-control" name="endEntrega_logradouro"
+										id="endEntrega_logradouro" />
+								</div>
+
+								<div class="col-xs-3">
+									<label>Número:</label> <input type="text" class="form-control" />
+								</div>
+
+								<div class="col-xs-9">
+									<label>Complemento:</label> <input type="text"
+										class="form-control" />
+								</div>
+
+								<div class="col-xs-6">
+									<label>Bairro:</label> <input type="text"
+										name="endEntrega_bairro" id="endEntrega_bairro"
+										class="form-control">
+								</div>
+
+								<div class="col-xs-6">
+									<label>Cidade:</label> <input type="text"
+										name="endEntrega_cidade" id="endEntrega_cidade"
+										class="form-control">
+								</div>
+
+
+								<div class="col-xs-6">
+									<label>Estado:</label> <input type="text" class="form-control"
+										name="endEntrega_estado" id="endEntrega_estado">
+								</div>
+
+								<div class="col-xs-6">
+									<label>Pais:</label> <input type="text" class="form-control"
+										value="Brasil">
+								</div>
+
+
+								<div class="col-xs-12">
+									<h4>
+										<input type="checkbox" value="dadosSolicitante" />Utilizar o
+										mesmo endereço do solicitante
+									</h4>
+									<button class="btn btn-primary">Salvar</button>
+
+								</div>
+
+
+							</div>
+
+						</div>
+
+
+					</form>
+
+
+
+
+
+
+
+
+
+
+				</div>
+				<div id="pedido" class="tab-pane fade">
+					<h3>Dados do pedido</h3>
+					<div class="form-group">
+						<label class="col-xs-3 control-label">Solicitante:</label>
+						<div class="col-xs-5 selectContainer">
+							<select class="form-control" name="color">
+							
+							<option></option>
+
+
+
+
+							</select>
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<footer>
+
+		<nav class="navbar navbar-fixed-bottom footerFormat">
+			<div class="container-fluid">
+
+				<div class="col-md-12 pull-left">
+					<h5>
+						<i class="fa fa-copyright" aria-hidden="true"></i>
+						<script type="text/javascript">
+							var year = new Date();
+							document.write(year.getFullYear());
+						</script>
+						iColabora
+						<div class="pull-right">
+							<i class="fa fa-question-circle" aria-hidden="true"></i>
+						</div>
+
+
+					</h5>
+				</div>
+
+			</div>
+
+		</nav>
+
+
+
+
+
+
+	</footer>
+	<script src="js/viaCepConsulta.js"> </script>
+</body>
+</html>
+
