@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	 
+
+
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+
+				</button>
+				<a class="navbar-brand" id="logo" href="#" data-toggle="tooltip" data-placement="bottom"><img
+					src="img/logo.png" width="50%"></a>
+					
+>
+			</div>
+
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+				<li><a class="menuFont" href="index.html">DASHBOARDS</a></li>
+					<li><a  class="menuFont" href="#">SOLUÇÕES</a></li>
+					<li><a  class="menuFont" href="#">ADMINISTRAÇÃO</a></li>
+
+
+				</ul>
+				<form class="navbar-form navbar-left">
+					<div class="navProcesso">
+
+
+						<h5>
+							<a class="start" href="processo.html"><span
+								class="glyphicon glyphicon-play"> </span> INICIAR PROCESSO</a>
+						</h5>
+
+					</div>
+
+				</form>
+
+
+				<div class="col-md-4">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href=""><i
+								class="fa fa-search iconesDireito"
+								aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-wheelchair iconesDireito"
+								aria-hidden="true"></i></a></li>
+						<li class="dropdown"><a href="#"
+							class="dropdown-toggle profile-image" data-toggle="dropdown">
+								<img src="img/mike-dias.png"
+								class="img-circle special-img"><b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="glyphicon glyphicon-cog"></i>
+										Minha conta</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><i
+										class="glyphicon glyphicon glyphicon-off"></i> Sair</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+<div class="container principal">
+<div class="row">
+	
+<div id="task" class="task">
+  <div class="tarefas">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="nav-bar-middle">
+          <h4><i class="fa fa-users iconesDireito"></i>Tarefa</h4>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="nav-bar-middle">
+          <h4 > Check if extra insurance is necessary</h4>
+        </div>
+      </div>
+    </div></div></div>
+
+
+<div class="col-md-12">
+
+	<h3>Últimos  pedidos</h3>
+	<table class="table table-striped table-hover table-responsive">
+	
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>Data Compra</th>
+				<th>Bairro</th>
+				<th>Cidade</th>				
+				<th>Estado</th>
+				<th>Produto</th>
+								<th>Total Gasto</th>
+				
+				
+				
+			</tr>
+		</thead>
+		<tbody id="latestOrders">
+
+		</tbody>
+	</table>
+
+	<script src="mysql_lib.js"></script>
+	<script>
+		window.onload = function(){
+
+			var mysql_query = "SELECT *, sol.nome as nome, mat.nome material FROM pedidos ped INNER JOIN solicitantes sol on sol.id = "+
+			"ped.id_solicitante "+
+			"INNER JOIN materiais mat on mat.id_pedido = ped.id ORDER BY data_de_compra DESC";
+		  	mysqlQuery(mysql_query, function(result){
+		    	// mostra o resultado da query
+		    	var obj = JSON.parse(result);
+		    	var table_body =  document.getElementById("latestOrders");
+
+			    obj.forEach(function(el){
+			    	
+			    	var html_body = "<tr>"+
+										"<td>"+el.id+"</td>"+
+										"<td>"+el.nome+"</td>"+
+										"<td>"+el.data_de_compra+"</td>"+
+										"<td>"+el.bairro+"</td>"+
+									    "<td>"+el.cidade+"</td>"+
+										"<td>"+el.estado+"</td>"+
+										"<td>"+el.material+' ('+el.quantidade+')'+"</td>"+														
+										"<td>"+'R$'+el.preco*el.quantidade+',00'+"</td>"+
+								
+									"</tr>";
+					table_body.innerHTML += html_body;
+			    });
+
+		  	});
+		};
+	</script>
+	
+	
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+
+<nav class="navbar navbar-fixed-bottom footerFormat">
+  <div class="container-fluid">
+
+      <div class="col-md-12 pull-left">
+      <h5>
+        <i class="fa fa-copyright" aria-hidden="true"></i> 
+        <script type="text/javascript">
+        var year = new Date();document.write(year.getFullYear());
+        </script> iColabora
+        <div class="pull-right">
+        <i class="fa fa-question-circle" aria-hidden="true"></i>
+        </div>
+      
+      
+      </h5>
+      </div>
+      
+  </div>
+</nav>
+
+ 
+
+
+      
+
+</footer>
+</body>
+</html>
+
