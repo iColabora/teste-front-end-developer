@@ -1,0 +1,16 @@
+{
+  "name": "LibIN",
+  "version": "1.0.0",
+  "authors": [
+    "Agner Esteves Ballejo"
+  ],
+  "description": "> [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas)\r >\r > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br>\r > Essa prova consiste em testar seus conhecimentos com <b>HTML, CSS, JavaScript, SQL</b> entre outras coisas. <br>\r > O conjunto de interfaces disponibilizado leva em média <b>6 horas</b> para ser implementado;",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "https://github.com/agscripter/teste-front-end-developer#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "ignore": [],
+  "private": true
+}

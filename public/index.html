@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paínel de Controle</title>
+
+    <link href="/css/libs.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/app.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+
+    <nav id="menu">
+        <ul>
+            <a href="#graph1">Gráfico 1</a>
+            <a href="#graph2">Gráfico 2</a>
+            <a href="#table">Tabela</a>
+        </ul>
+    </nav>
+
+    <section class="paginator">
+        <div data-page="graph1" class="page show-page">
+            <h2>Gráfico 01</h2>
+        </div>
+
+        <div data-page="graph2" class="page hide-page">
+            <h2>Gráfico 02</h2>
+        </div>
+
+        <div data-page="table" class="page hide-page">
+            <h2>Tabela</h2>
+        </div>
+    </section>
+
+    <script src="/js/libs.js"></script>
+    <script src="/js/app.js"></script>    
+</body>
+</html>
