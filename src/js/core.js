@@ -7,12 +7,19 @@ var Core = {
         this.paginatorMenu = new Paginator('#menu ul a', '.paginator');
         this.paginatorMenu.init();
 
-        Database.fetchAllPedidos(function(result) {
-            console.log(result);
-        });
-
-        CEP.getInfo('08411462', function(result) {
-            console.log(result);
+        /**
+         * Form pedido
+         */
+        var formPedido = new FormWizard('.form-wizard.form-pedido', {
+            data_de_compra: {
+                isDate: true
+            },
+            cep: {
+                mask: '00000-000'
+            },
+            nome: {
+                rules: 'required|min:3|max:10'
+            }
         });
     }
 

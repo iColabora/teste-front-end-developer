@@ -9,6 +9,7 @@ var concat = require('gulp-concat'),
 var scripts = [
   './src/js/database.js',
   './src/js/validator.js',
+  './src/js/form-wizard.js',
   './src/js/paginator.js',
   './src/js/cep.js',
   './src/js/core.js',
@@ -16,21 +17,25 @@ var scripts = [
 
 var scriptsLibs = [
   './exemplo-query/mysql_lib.js',
-  './bower_components/jquery/dist/jquery.js',
-  './bower_components/datatables.net/js/jquery.dataTables.js',
-  './bower_components/datatables.net-bs/js/dataTables.bootstrap.js'
+  './bower_components/jquery/dist/jquery.min.js',
+  './bower_components/bootstrap/dist/js/bootstrap.min.js',
+  './bower_components/datatables.net/js/jquery.dataTables.min.js',
+  './bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js',
+  './bower_components/jquery-mask-plugin/dist/jquery.mask.min.js',
+  './vendor/datepicker/js/bootstrap-datepicker.min.js',
+  './vendor/datepicker/locales/bootstrap-datepicker.pt-BR.min.js'
 ];
 
 var cssLib = [
   './bower_components/bootstrap/dist/css/bootstrap.min.css',
   './bower_components/datatables.net-bs/dataTables.bootstrap.css',
-  './src/vendor/animate.css'
+  './vendor/animate.css',
+  './vendor/datepicker/css/bootstrap-datepicker3.css'
 ];
 
 gulp.task('scripts-libs', function() {
   return gulp.src(scriptsLibs)
     .pipe(concat('libs.js'))
-    .pipe(uglify({mangle: true}))
     .pipe(gulp.dest('./public/js/'));
 });
 
@@ -66,7 +71,7 @@ gulp.task('css-libs', function() {
     .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('serve', ['sass', 'css-libs'], function() {
+gulp.task('serve', ['sass', 'css-libs', 'scripts-libs'], function() {
     browserSync.init({
         server: "./public"
     });
