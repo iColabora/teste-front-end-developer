@@ -1,0 +1,191 @@
+		* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.menu {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    background: #102938;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin-top: 19px;
+    margin-left: 50px;
+    list-style: none;
+    float: left;
+    padding: 0px;
+}
+
+ul li {
+    display: inline;
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: inline-block;
+}
+
+.logo {
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+    height: 30px;
+    width: 30px;
+}
+
+.icons {
+    position: absolute;
+    top: 13px;
+    right: 0;
+}
+
+.icons a {
+    margin: 15px;
+}
+
+.icons #arrow {
+	position: relative;
+	margin: 15px;
+	left: -30px;
+}
+
+.iniciar button {
+    height: 70px;
+    width: 180px;
+    background: #39bb9d;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    margin-left: 100px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.play-icon:before {
+	position: relative;
+  	top: 0px;
+  	left: -5px;
+  	
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid white;
+}
+
+iframe {
+	position: fixed;
+	top: 60px;
+	left: 0px;
+    width: 100%;
+    height: 500px;
+    border: inactiveborder;
+}
+
+footer nav {
+    background: #565351;
+    overflow: auto;
+    zoom: 1;
+    color: #999;
+}
+
+footer nav h2 {
+	position: relative;
+	top: 8px;
+    float: left;
+    font-size: 14px;
+    margin: 10px;
+}
+
+footer nav a {
+	position: relative;
+	top: 3px;
+    float: right;
+    margin: 10px;
+}
+
+.home-container {
+  padding: 50px 0;
+}
+
+.form-container {
+  position: absolute;
+  left: 50px;
+  padding: 50px 0;
+}
+
+.field-container {
+  position: fixed;
+  left: 350px;
+  padding: 50px 0;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+div#piechart_3d {
+    width: auto;
+    margin: 0 auto !important;
+}
+
+div#div-easter-egg {
+    display:none;
+}
+
+div#centralized-fields {
+    position: absolute;
+    left: 300px;
+    width: 600px;
+    margin: auto;
+}
+
+.centralized-player {
+    position: absolute;
+    margin: auto;
+    top: 35%;
+    left: 36%;
+    transform: translate(-50%, -50%);
+}
+
+.inline {
+	display: inline-block;
+}
+
+.inline-submit-button {
+     display: inline-block;
+     padding-left: 453px;
+     padding-top: 20px;
+}
+
+.inline-search-button {
+     display: inline-block;
+     padding-left: 5px;
+     padding-top: 24px;
+}
+
+.inline-checkbox {
+     display: inline-block;
+     padding-left: 15px;
+}
