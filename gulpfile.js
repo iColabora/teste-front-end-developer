@@ -10,6 +10,7 @@ var scripts = [
   './src/js/database.js',
   './src/js/validator.js',
   './src/js/paginator.js',
+  './src/js/cep.js',
   './src/js/core.js',
 ];
 

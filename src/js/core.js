@@ -7,7 +7,11 @@ var Core = {
         this.paginatorMenu = new Paginator('#menu ul a', '.paginator');
         this.paginatorMenu.init();
 
-        Database.fetchAllSolicitantes(function(result) {
+        Database.fetchAllPedidos(function(result) {
+            console.log(result);
+        });
+
+        CEP.getInfo('08411462', function(result) {
             console.log(result);
         });
     }
