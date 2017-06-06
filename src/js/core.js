@@ -7,7 +7,7 @@ var Core = {
         this.paginatorMenu = new Paginator('#menu ul a', '.paginator');
         this.paginatorMenu.init();
 
-        Database.fetchAllPedidos(function(result) {
+        Database.fetchAllSolicitantes(function(result) {
             console.log(result);
         });
     }

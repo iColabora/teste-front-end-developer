@@ -7,7 +7,9 @@ var Paginator = function(links, el) {
 
     var _createEvents = function() {
         $links.click(function() {
-            $this.setSelectedPage($(this).attr('href').replace('#', ''));
+            if ($(this).hasClass('enabled')) {
+                $this.setSelectedPage($(this).attr('href').replace('#', ''));
+            }
         });
     }
 

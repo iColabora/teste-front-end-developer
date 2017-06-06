@@ -15,11 +15,15 @@ var scripts = [
 
 var scriptsLibs = [
   './exemplo-query/mysql_lib.js',
-  './bower_components/jquery/dist/jquery.js'
+  './bower_components/jquery/dist/jquery.js',
+  './bower_components/datatables.net/js/jquery.dataTables.js',
+  './bower_components/datatables.net-bs/js/dataTables.bootstrap.js'
 ];
 
 var cssLib = [
-  './bower_components/bootstrap/dist/css/bootstrap.min.css'
+  './bower_components/bootstrap/dist/css/bootstrap.min.css',
+  './bower_components/datatables.net-bs/dataTables.bootstrap.css',
+  './src/vendor/animate.css'
 ];
 
 gulp.task('scripts-libs', function() {

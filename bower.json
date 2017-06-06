@@ -9,7 +9,9 @@
   "license": "MIT",
   "homepage": "https://github.com/agscripter/teste-front-end-developer#readme",
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "datatables.net": "^1.10.15",
+    "datatables.net-bs": "^2.1.1"
   },
   "ignore": [],
   "private": true
