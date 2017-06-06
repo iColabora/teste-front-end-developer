@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootstrap-responsive.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="shortcut icon" href="img/logoIcon.ico" type="image/x-icon" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/mysql_lib.js"></script>
+<script type="text/javascript" src="js/exit.js"></script>
+</head>
+<body>
+	<div class="container-fluid form-container">
+		<form id="form-task" method="get" action="">
+			<div id="centralized-fields" class="col-md-6">
+				<div class="form-group">
+					<div class="panel panel-default">
+						<div class="panel-heading">Dados do Pedido</div>
+						<div class="panel-body">
+							<div class="inline col-xs-10">
+								<label>Nº Pedido:</label> <input id="numeroPedido"
+									class="form-control" type="text" placeholder="Número do Pedido">
+							</div>
+							<div class="inline-search-button">
+								<button type="button" class="btn btn-default">Buscar</button>
+							</div>
+							<div class="inline col-xs-4">
+								<label>Material:</label> <input id="material" type="text"
+									class="form-control" placeholder="Notebook" disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<label>Marca:</label> <input id="marca" type="text"
+									class="form-control" placeholder="Acer Aspire F5-573G-74DT"
+									disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<label>Quantidade: </label> <input id="quantidade" type="text"
+									class="form-control" placeholder="1" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<input id="material2" type="text" class="form-control"
+									placeholder="Impressora" disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<input id="marca2" type="text" class="form-control"
+									placeholder="Epson Ecotank L-375 Wi-Fi" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<input id="quantidade2" type="text" class="form-control"
+									placeholder="1" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<input id="material3" type="text" class="form-control"
+									placeholder="Mouse" disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<input id="marca3" type="text" class="form-control"
+									placeholder="HP Z3200 sem Fio" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<input id="quantidade3" type="text" class="form-control"
+									placeholder="1" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<input id="material4" type="text" class="form-control"
+									placeholder="Headset" disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<input id="marca4" type="text" class="form-control"
+									placeholder="Logitech G230" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<input id="quantidade4" type="text" class="form-control"
+									placeholder="1" disabled />
+							</div>
+							<div class="inline col-xs-4">
+								<label>Data da Compra: </label> <input id="dataCompra"
+									type="text" class="form-control" placeholder="06/06/2017"
+									disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<label>Preço total:</label> <input id="precoTotal" type="text"
+									class="form-control" placeholder="R$ 5250,00" disabled>
+							</div>
+						</div>
+						<div class="panel-heading">Dados do Insumo</div>
+						<div class="panel-body">
+							<div class="inline col-xs-3">
+								<label>Marca:</label> <input id="marcaInsumo" type="text"
+									class="form-control" placeholder="Epson" disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<label>Descrição: </label> <input id="descricaoInsumo"
+									type="text" class="form-control" placeholder="Tanque de Tinta"
+									disabled>
+							</div>
+							<div class="inline col-xs-2">
+								<label>Quantidade:</label> <input id="quantidadeInsumo"
+									type="text" class="form-control" placeholder="5" disabled>
+							</div>
+							<div class="inline col-xs-3">
+								<label>Preço:</label> <input id="precoInsumo" type="text"
+									class="form-control" placeholder="R$ 550,00" disabled>
+							</div>
+							<div class="inline col-xs-3">
+								<input id="marcaInsumo2" type="text" class="form-control"
+									placeholder="Brasforma" disabled>
+							</div>
+							<div class="inline col-xs-4">
+								<input id="descricaoInsumo2" type="text" class="form-control"
+									placeholder="Kit Limpa Tela" disabled>
+							</div>
+							<div class="inline col-xs-2">
+								<input id="quantidadeInsumo2" type="text" class="form-control"
+									placeholder="2" disabled>
+							</div>
+							<div class="inline col-xs-3">
+								<input id="precoInsumo2" type="text" class="form-control"
+									placeholder="R$ 20,00" disabled>
+							</div>
+						</div>
+						<div class="panel-heading">Dados do Solicitante</div>
+						<div class="panel-body">
+							<div class="col-xs-12">
+								<label>Nome:</label> <input id="nomeSol" class="form-control"
+									type="text" required>
+							</div>
+							<div class="col-xs-4">
+								<label>Telefone:</label> <input id="telefoneSol" type="text"
+									class="form-control" required>
+							</div>
+							<div class="col-xs-4">
+								<label>CPF:</label> <input id="cpfSol" size="12" maxlength="11"
+									type="text" class="form-control" placeholder="99999999999"
+									required />
+							</div>
+							<div class="col-xs-4">
+								<label>CEP: </label> <input id="cepSol" name="cep" id="cep"
+									size="9" maxlength="8" type="text" class="form-control"
+									placeholder="99999999" required />
+							</div>
+							<div class="col-xs-12">
+								<label>Logradouro: </label> <input id="logradouroSol"
+									type="text" class="form-control" required>
+							</div>
+							<div class="col-xs-3">
+								<label>Número:</label> <input id="numeroSol" type="text"
+									class="form-control" required>
+							</div>
+							<div class="col-xs-9">
+								<label>Complemento:</label> <input id="complementoSol"
+									type="text" class="form-control">
+							</div>
+							<div class="col-xs-6">
+								<label>Bairro:</label> <input id="bairroSol" type="text"
+									name="bairro" id="bairro" class="form-control" required>
+							</div>
+							<div class="col-xs-6">
+								<label>Cidade:</label> <input id="cidadeSol" type="text"
+									name="cidade" id="cidade" class="form-control" required>
+							</div>
+							<div class="inline col-xs-6">
+								<label>Estado:</label> <select id="estadoSol"
+									class="form-control" required>
+									<option>UF</option>
+									<option value="AC">AC</option>
+									<option value="AL">AL</option>
+									<option value="AP">AP</option>
+									<option value="AM">AM</option>
+									<option value="BA">BA</option>
+									<option value="CE">CE</option>
+									<option value="DF">DF</option>
+									<option value="ES">ES</option>
+									<option value="GO">GO</option>
+									<option value="MA">MA</option>
+									<option value="MT">MT</option>
+									<option value="MS">MS</option>
+									<option value="MG">MG</option>
+									<option value="PA">PA</option>
+									<option value="PB">PB</option>
+									<option value="PR">PR</option>
+									<option value="PE">PE</option>
+									<option value="PI">PI</option>
+									<option value="RJ">RJ</option>
+									<option value="RN">RN</option>
+									<option value="RS">RS</option>
+									<option value="RO">RO</option>
+									<option value="RR">RR</option>
+									<option value="SC">SC</option>
+									<option value="SP">SP</option>
+									<option value="SE">SE</option>
+									<option value="TO">TO</option>
+								</select>
+							</div>
+							<div class="col-xs-6">
+								<label>Pais:</label> <input id="paisSol" type="text"
+									class="form-control" required>
+							</div>
+						</div>
+						<div class="panel-heading">Dados da Entrega</div>
+						<div class="panel-body">
+							<div class="inline col-xs-4">
+								<label>CEP: </label> <input name="cep" id="cep2" size="9"
+									maxlength="8" type="text" class="form-control"
+									placeholder="99999999" required />
+							</div>
+							<div class="inline col-xs-8">
+								<label>Endereço:</label> <input id="endereco2"
+									class="form-control" type="text" required>
+							</div>
+							<div class="inline col-xs-4">
+								<label>Complemento: </label> <input id="complemento2"
+									type="text" class="form-control">
+							</div>
+							<div class="inline col-xs-4">
+								<label>Cidade:</label> <input id="cidade2" type="text"
+									class="form-control" required>
+							</div>
+							<div class="inline col-xs-4">
+								<label>Estado:</label> <select id="estado2" class="form-control"
+									required>
+									<option>UF</option>
+									<option value="AC">AC</option>
+									<option value="AL">AL</option>
+									<option value="AP">AP</option>
+									<option value="AM">AM</option>
+									<option value="BA">BA</option>
+									<option value="CE">CE</option>
+									<option value="DF">DF</option>
+									<option value="ES">ES</option>
+									<option value="GO">GO</option>
+									<option value="MA">MA</option>
+									<option value="MT">MT</option>
+									<option value="MS">MS</option>
+									<option value="MG">MG</option>
+									<option value="PA">PA</option>
+									<option value="PB">PB</option>
+									<option value="PR">PR</option>
+									<option value="PE">PE</option>
+									<option value="PI">PI</option>
+									<option value="RJ">RJ</option>
+									<option value="RN">RN</option>
+									<option value="RS">RS</option>
+									<option value="RO">RO</option>
+									<option value="RR">RR</option>
+									<option value="SC">SC</option>
+									<option value="SP">SP</option>
+									<option value="SE">SE</option>
+									<option value="TO">TO</option>
+								</select>
+							</div>
+							<div class="inline-checkbox checkbox">
+								<label> <input type="checkbox" value=""> Mesmo
+									endereço do solicitante
+								</label>
+							</div>
+						</div>
+						<div class="panel-heading">Total</div>
+						<div class="panel-body">
+							<div class="inline col-xs-4">
+								<label>R$ </label>
+							</div>
+							<div class="inline-submit-button">
+								<button type="submit" class="btn btn-default">Concluir</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
