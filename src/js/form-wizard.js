@@ -22,8 +22,6 @@ var FormWizard = function(el, fields) {
         }
         
         if (properties.rules) {
-            $fields[field].el.attr('data-toggle', 'tooltip');
-            $fields[field].el.attr('data-placement', 'top');
             $fields[field].validator = new Validator($elField, properties.rules);
         }
 
@@ -34,12 +32,15 @@ var FormWizard = function(el, fields) {
         }
 
         if (properties.mask) {
-            _startMask($fields[field], properties.mask);
+            _startMask($fields[field], properties.mask, properties.onCompleteMask);
         }
     };
 
-    var _startMask = function(field, mask) {
-        field.el.mask(mask);
+    var _startMask = function(field, mask, onComplete) {
+        var options =  {
+            onComplete: onComplete ? onComplete : function() {}
+        };
+        field.el.mask(mask, options);
     };
 
     var _startDatepicker = function(field) {
@@ -51,23 +52,50 @@ var FormWizard = function(el, fields) {
 
     var _createEvents = function(field) {
         field.el.on('keyup', function() {
-            _validateField($fields[$(this).attr('name')]);
+            if (field.validator) {
+                _validateField($fields[$(this).attr('name')]);
+            }
         });
     }
 
     var _validateField = function(field) {
         field.validator.validate(function(rule, status) {
+            var formGroup = field.el.parent();
+
+            formGroup.find('.validator-errors span').removeClass('show');
+
             if (!status) {
-                field.el.attr('title', rule.name);
-                field.el.tooltip('show');
-                field.tooltip = true;
+                console.log('.validator-errors span[data-error="'+rule.name+'"]');
+                formGroup.find('.validator-errors span[data-error="'+rule.name+'"]').addClass('show');
+                formGroup.addClass('has-error');
             } else {
-                if (field.tooltip) {
-                    field.tooltip = false;
-                    field.el.tooltip('destroy');   
-                }
+                formGroup.removeClass('has-error').addClass('has-success');
             }
         });
+    }
+
+    this.setValue = function(fields) {
+        for (var i in fields) {
+            if ($fields[i]) {
+                $fields[i].el.attr('value', fields[i]);
+            }
+        }
+    }
+
+    this.setEnabled = function(fields) {
+        for (var i in fields) {
+            if ($fields[fields[i]]) {
+                $fields[fields[i]].el.removeAttr('disabled');
+            }
+        }
+    }
+
+    this.setDisabled = function(fields) {
+        for (var i in fields) {
+            if ($fields[fields[i]]) {
+                $fields[fields[i]].el.attr('disabled', 'disabled');
+            }
+        }
     }
 
     /**

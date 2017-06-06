@@ -37,8 +37,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="nome">Nome</label>
+                                <label for="rua">Rua</label>
+                                <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua" disabled="disabled">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label" for="nome">Nome</label>
                                 <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
+
+                                <div class="validator-errors">
+                                    <span class="help-block" data-error="required">O campo nome é obrigatório</span>
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-default">Submit</button>
