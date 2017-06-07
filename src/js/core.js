@@ -10,10 +10,6 @@ var Core = {
         this.paginatorMenu = new Paginator('#menu ul a', '.paginator');
         this.paginatorMenu.init();
 
-        Database.fetchAllSolicitantes(function(result) {
-            console.log(result);
-        });
-
         /**
          * Form pedido
          */
@@ -34,6 +30,14 @@ var Core = {
                 rules: 'required|min:3'
             }
         });
+
+        this.createGraphOne();
+        this.createGraphTwo();
+        this.createTable();
+    },
+
+    createTable: function() {
+      $('#table-pedidos').DataTable();  
     },
 
     searchCep: function(cep) {
@@ -46,6 +50,58 @@ var Core = {
             $this.formPedido.setValue(address);
             $this.formPedido.setEnabled(fieldsAddress);
         });
+    },
+
+    createGraphOne: function() {
+        $this = this;
+
+        Database.fetchPedidosPorDia(function(result) {
+            result = $this.prepareResultPorDia(result);
+
+            ChartPedidos.init('chartOne', '# pedidos por dia', result.labels, result.data);
+        });  
+    },
+
+    createGraphTwo: function() {
+        $this = this;
+
+        Database.fetchPedidosPorSolicitantes(function(result) {
+            result = $this.prepareResultPorSolicitante(result);
+
+            ChartPedidos.init('chartTwo', '# pedidos por solicitante', result.labels, result.data);
+        });
+    },
+
+    prepareResultPorSolicitante: function(result) {
+        var ret = {
+            labels: [],
+            data: []            
+        };
+
+        for (var i in result) {
+            ret.labels.push(result[i].nome);
+            ret.data.push(result[i].total);
+        }
+
+        return ret;
+    },
+
+    prepareResultPorDia: function(result) {
+        var ret = {
+            data: [],
+            labels: []
+        };
+
+        for (var i in result) {
+            ret.labels.push(this.prepareNumber(result[i].day));
+            ret.data.push(result[i].total);
+        }
+        
+        return ret;
+    },
+
+    prepareNumber: function(number) {
+        return number < 10 ? "0"+number : number;
     }
 
 }

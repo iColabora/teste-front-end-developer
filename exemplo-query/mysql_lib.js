@@ -13,7 +13,7 @@ function mysqlQuery(sql_string, callback){
 				}
 			}
 		};
-		xhttp.open("GET", api_host+sql_string, false);
+		xhttp.open("GET", encodeURI(api_host+sql_string), false);
 		xhttp.send();
 	}else{
 		console.warn("Your query mysql is not a string");

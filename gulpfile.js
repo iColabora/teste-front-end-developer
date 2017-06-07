@@ -12,6 +12,7 @@ var scripts = [
   './src/js/form-wizard.js',
   './src/js/paginator.js',
   './src/js/cep.js',
+  './src/js/chart_pedidos.js',
   './src/js/core.js',
 ];
 
@@ -22,15 +23,16 @@ var scriptsLibs = [
   './bower_components/datatables.net/js/jquery.dataTables.min.js',
   './bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js',
   './bower_components/jquery-mask-plugin/dist/jquery.mask.min.js',
+  './bower_components/chart.js/dist/Chart.min.js',
   './vendor/datepicker/js/bootstrap-datepicker.min.js',
   './vendor/datepicker/locales/bootstrap-datepicker.pt-BR.min.js'
 ];
 
 var cssLib = [
   './bower_components/bootstrap/dist/css/bootstrap.min.css',
-  './bower_components/datatables.net-bs/dataTables.bootstrap.css',
+  './bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css',
   './vendor/animate.css',
-  './vendor/datepicker/css/bootstrap-datepicker3.css'
+  './vendor/datepicker/css/bootstrap-datepicker3.css',
 ];
 
 gulp.task('scripts-libs', function() {
