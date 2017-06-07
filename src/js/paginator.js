@@ -3,7 +3,8 @@ var Paginator = function(links, el, onPageChange) {
     var $this = this,
         $links = $(links),
         $el = $(el),
-        selectedPage = null;
+        selectedPage = null,
+        pagesLoaded = {};
 
     var _createEvents = function() {
         $links.click(function() {
@@ -17,8 +18,18 @@ var Paginator = function(links, el, onPageChange) {
         _createEvents();
     };
 
+    this.loadHtml = function(page, el, callback) {
+        $.ajax({
+            url: "views/"+page+".html"
+        }).done(function(result) {
+            el.find('.content').html(result);
+            callback();
+        });
+    }
+
     this.setSelectedPage = function(page) {
         $this = this;
+
         $el.find('.page').removeClass('show-page').addClass('hide-page');
         this.selectedPage = $el.find('div[data-page='+page+']');
         this.selectedPage.addClass('show-page').removeClass('hide-page');
@@ -27,8 +38,14 @@ var Paginator = function(links, el, onPageChange) {
             $this.selectedPage.find('.loading').addClass('hide');
             $this.selectedPage.find('.content').addClass('show');
         }
-        
-        onPageChange(page, showContentFn);
+
+        if (!pagesLoaded.page) {
+            this.loadHtml(page, this.selectedPage, function() {
+                onPageChange(page, showContentFn);
+            });
+        } else {
+            onPageChange(page, showContentFn);
+        }
     }
 
 }

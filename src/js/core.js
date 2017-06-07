@@ -7,10 +7,8 @@ var Core = {
     init: function() {
         var $this = this;
 
-        this.paginatorMenu = new Paginator('#menu ul a', '.paginator', function(page, showContentFn) {
-            if (page == 'graph1') {
-                showContentFn();
-            }
+        this.paginatorMenu = new Paginator('.page-change', '.paginator', function(page, showContentFn) {
+            $this.pages[page]($this, showContentFn);
         });
         
         this.paginatorMenu.init();
@@ -36,13 +34,11 @@ var Core = {
             }
         });
 
-        this.createGraphOne();
-        this.createGraphTwo();
-        this.createTable();
-    },
+        String.prototype.replaceAll = function(search, replacement) {
+            return this.replace(new RegExp(search, 'g'), replacement);
+        }
 
-    createTable: function() {
-      $('#table-pedidos').DataTable();  
+        this.paginatorMenu.setSelectedPage('dashboard1');
     },
 
     searchCep: function(cep) {
@@ -57,24 +53,59 @@ var Core = {
         });
     },
 
-    createGraphOne: function() {
-        $this = this;
+    pages: {
+        dashboard1: function($this, showContentFn) {
+            Database.fetchPedidosPorDia(function(result) {
+                result = $this.prepareResultPorDia(result);
 
-        Database.fetchPedidosPorDia(function(result) {
-            result = $this.prepareResultPorDia(result);
+                ChartPedidos.init('chartOne', '# pedidos por dia', result.labels, result.data);
+                showContentFn();
+            });  
+        },
 
-            ChartPedidos.init('chartOne', '# pedidos por dia', result.labels, result.data);
-        });  
-    },
+        dashboard2: function($this, showContentFn) {
+            Database.fetchPedidosPorSolicitantes(function(result) {
+                result = $this.prepareResultPorSolicitante(result);
 
-    createGraphTwo: function() {
-        $this = this;
+                ChartPedidos.init('chartTwo', '# pedidos por solicitante', result.labels, result.data);
+                showContentFn();
+            });
+        },
 
-        Database.fetchPedidosPorSolicitantes(function(result) {
-            result = $this.prepareResultPorSolicitante(result);
+        dashboard3: function($this, showContentFn) {
+            Database.fetchAllPedidos(function(result) {
+                var data = [];
 
-            ChartPedidos.init('chartTwo', '# pedidos por solicitante', result.labels, result.data);
-        });
+                for (var i in result) {
+                    var total = Number(result[i].total_materiais) + Number(result[i].total_insumos);
+                    data.push([
+                        result[i].numero,
+                        result[i].nome,
+                        result[i].data_de_compra.replaceAll('-', '/'),
+                        'R$ ' + result[i].total_materiais.toFixed(2),
+                        'R$ ' + result[i].total_insumos.toFixed(2),
+                        'R$ ' + total.toFixed(2)
+                    ]);
+                }
+
+                $('#table-pedidos').DataTable({
+                    columns: [
+                        { title: 'Numero' },
+                        { title: 'Solicitante' },
+                        { title: 'Data de compra' },
+                        { title: 'Total em Materiais' },
+                        { title: 'Total em Insumos' },
+                        { title: 'Total da compra' }
+                    ],
+                    data: data
+                });
+                showContentFn();
+            });
+        },
+        
+        process: function($this, showContentFn) {
+
+        }
     },
 
     prepareResultPorSolicitante: function(result) {

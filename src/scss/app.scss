@@ -3,5 +3,14 @@
     padding:0;
 }
 
+$color-background: #f8f8f8;
+
+@import '_navbar.scss';
 @import '_paginator.scss';
 @import '_validator.scss';
+@import '_footer.scss';
+
+body { 
+    padding-top: 100px;
+    background-color:$color-background;
+}
