@@ -1,7 +1,7 @@
 var Database = {
     
     fetchAllPedidos: function(callback) {
-        var query = "SELECT * FROM pedidos";
+        var query = "select *, ((SELECT SUM (m.quantidade*m.preco) FROM materiais as m WHERE m.id_pedido = p.id)+(SELECT SUM (i.quantidade*i.preco) FROM insumos as i WHERE i.id_pedido = p.id)) as valor from pedidos as p";
         this._execute(query, callback); 
     },
 

@@ -7,7 +7,12 @@ var Core = {
     init: function() {
         var $this = this;
 
-        this.paginatorMenu = new Paginator('#menu ul a', '.paginator');
+        this.paginatorMenu = new Paginator('#menu ul a', '.paginator', function(page, showContentFn) {
+            if (page == 'graph1') {
+                showContentFn();
+            }
+        });
+        
         this.paginatorMenu.init();
 
         /**

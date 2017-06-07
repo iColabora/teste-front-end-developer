@@ -1,5 +1,19 @@
 .paginator {
 
+    .loading {
+        .hide {
+            display:none;
+        }
+    }
+
+    .content {
+        display:none;
+
+        .show {
+            display:block;
+        }
+    }
+
     .show-page {
         display:block;
     }
