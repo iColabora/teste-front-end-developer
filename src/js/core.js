@@ -3,6 +3,7 @@ var Core = {
     paginatorMenu: null,
     validator: null,
     formPedido: null,
+    formSolicitante: null,
 
     init: function() {
         var $this = this;
@@ -12,27 +13,6 @@ var Core = {
         });
         
         this.paginatorMenu.init();
-
-        /**
-         * Form pedido
-         */
-        this.formPedido = new FormWizard('.form-wizard.form-pedido', {
-            data_de_compra: {
-                isDate: true
-            },
-            cep: {
-                mask: '00000-000',
-                onCompleteMask: function(cep) {
-                    $this.searchCep(cep);
-                }
-            },
-            nome: {
-                rules: 'required|min:3|max:10'
-            },
-            rua: {
-                rules: 'required|min:3'
-            }
-        });
 
         String.prototype.replaceAll = function(search, replacement) {
             return this.replace(new RegExp(search, 'g'), replacement);
@@ -44,12 +24,12 @@ var Core = {
     searchCep: function(cep) {
         var $this = this;
 
-        var fieldsAddress = ['rua', 'numero', 'complemento', 'cidade', 'estado'];
+        var fieldsAddress = ['rua', 'numero', 'complemento', 'cidade', 'uf'];
 
-        this.formPedido.setDisabled(fieldsAddress);
+        this.formSolicitante.setDisabled(fieldsAddress);
         CEP.getInfo(cep, function(address) {
-            $this.formPedido.setValue(address);
-            $this.formPedido.setEnabled(fieldsAddress);
+            $this.formSolicitante.setValue(address);
+            $this.formSolicitante.setEnabled(fieldsAddress);
         });
     },
 
@@ -104,7 +84,47 @@ var Core = {
         },
         
         process: function($this, showContentFn) {
+            $this.formPedido = new FormWizard('.form-wizard.form-pedido', {
+                data_de_compra: {
+                    isDate: true
+                }
+            });
 
+            $this.formSolicitante = new FormWizard('.form-wizard.form-solicitante', {
+                nome: {
+                    rules: 'required|min:3|max:10'
+                },
+                telefone: {
+                    mask: '(00) 00000-0000',
+                },
+                cpf: {
+                    mask: '000.000.000-00',
+                },
+                cep: {
+                    mask: '00000-000',
+                    onCompleteMask: function(cep) {
+                        $this.searchCep(cep);
+                    }
+                },
+                rua: {
+                    rules: 'required|min:3'
+                },
+                numero: {
+                    rules: 'required'
+                },
+                complemento: {
+                    rules: 'required'
+                },
+                uf: {
+                    rules: 'required',
+                    select: true
+                },
+                cidade: {
+                    rules: 'required|min:3'
+                }
+            });
+
+            showContentFn();
         }
     },
 

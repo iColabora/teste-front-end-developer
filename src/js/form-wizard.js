@@ -16,9 +16,15 @@ var FormWizard = function(el, fields) {
     };
 
     var _initializeField = function(field, properties) {
-        $elField = $el.find('input[name="'+field+'"]');
+        if (properties.select) {
+            $elField = $el.find('select[name="'+field+'"]');
+        } else {
+            $elField = $el.find('input[name="'+field+'"]');
+        }
+
         $fields[field] = {
-            el: $elField
+            el: $elField,
+            properties: properties
         }
         
         if (properties.rules) {
@@ -65,7 +71,6 @@ var FormWizard = function(el, fields) {
             formGroup.find('.validator-errors span').removeClass('show');
 
             if (!status) {
-                console.log('.validator-errors span[data-error="'+rule.name+'"]');
                 formGroup.find('.validator-errors span[data-error="'+rule.name+'"]').addClass('show');
                 formGroup.addClass('has-error');
             } else {
@@ -77,7 +82,11 @@ var FormWizard = function(el, fields) {
     this.setValue = function(fields) {
         for (var i in fields) {
             if ($fields[i]) {
-                $fields[i].el.attr('value', fields[i]);
+                if ($fields[i].properties.select) {
+                    $fields[i].el.val(fields[i]);
+                } else {
+                    $fields[i].el.attr('value', fields[i]);
+                }
             }
         }
     }
