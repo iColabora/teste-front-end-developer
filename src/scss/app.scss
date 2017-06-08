@@ -3,7 +3,17 @@
     padding:0;
 }
 
-$color-background: #f8f8f8;
+$color-background: #f9f9f9;
+$color-accent: #39bb9d;
+
+@font-face
+{
+	font-family: 'HelveticaNeueBold';
+	src: url('../assets/fonts/HelveticaNeue-Bold.eot');
+	src: local('Helvetica Neue Bold'), local('HelveticaNeue'), url('../assets/fonts/HelveticaNeue-Bold.woff') format('woff'), url('../assets/fonts/HelveticaNeue-Bold.ttf') format('truetype');
+}
+
+$font-helvetica: 'HelveticaNeueBold';
 
 @import '_navbar.scss';
 @import '_paginator.scss';

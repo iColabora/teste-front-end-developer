@@ -1,27 +1,70 @@
 .navbar{
     
-    $background-navbar: #333;
-    $color-navbar: #fff;
+    $background-navbar: #102938;
+    $color-navbar: #feffff;
 
     $background-sub-navbar: #fff;
     $color-border-bottom-sub-navbar: #ddd;
-    $color-sub-navbar: #aaa;
+    $color-sub-navbar: #666666;
 
     &.navbar-dark {
         background-color:$background-navbar;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
 
-        a {
-            color: $color-navbar;
-            text-transform: uppercase;
-            
-            &:hover {
-                background-color: transparent;
+        .navbar-header {
+            .navbar-brand {
+                padding-top:8px;
+
+                img {
+                    width:34px;
+                    height: auto;
+                }
             }
         }
-    }
+        
+        ul.navbar-nav{
+            li{
+                a {
+                    color: $color-navbar;
+                    text-transform: uppercase;
+                    font-family: $font-helvetica;
+                    
+                    &:hover,
+                    &:active,
+                    &:focus {
+                        background-color: transparent;
+                        color:$color-accent;
+                    }
+                }
 
-    .init-process {
-        margin-left:20px;
+                &.focus {
+                    background: transparent;
+
+                    a {
+                        color: $color-accent;
+                    }
+                }
+
+                &:hover{
+                    background: transparent;
+                }
+
+                &.init-process {
+                    margin-left:20px;
+                    background: $color-accent;
+
+                    &:hover {
+                        background: $color-accent;
+                        
+                        a {
+                            color:#fff;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     &.navbar-fixed-top {
@@ -46,7 +89,16 @@
 
             li {
                 float:left;
-                padding: 17px 23px 15px;
+
+                a {
+                    float:left;
+                    padding: 17px 23px 15px;
+                    color: $color-sub-navbar;
+
+                    &:hover{
+                        text-decoration:none;
+                    }
+                }
             }
         }
     }

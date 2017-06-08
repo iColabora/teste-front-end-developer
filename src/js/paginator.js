@@ -31,6 +31,8 @@ var Paginator = function(links, el, onPageChange) {
         $this = this;
 
         $el.find('.page').removeClass('show-page').addClass('hide-page');
+        $el.find('.page .loading').removeClass('hide');
+        $el.find('.page .content').removeClass('show');
         this.selectedPage = $el.find('div[data-page='+page+']');
         this.selectedPage.addClass('show-page').removeClass('hide-page');
 
