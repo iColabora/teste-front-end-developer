@@ -32,7 +32,6 @@ var FormPedido = function(core, showContentFn) {
             Database.findPedidoByNumero(formPedido.get('numero'), function(result) {
                 formPedido.setEnabled(['numero', 'data_de_compra']);
                 if (result.length == 1) {
-                    console.log(result[0]);
                     formPedido.setValue(result[0]);
                 }
             });
