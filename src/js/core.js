@@ -86,13 +86,9 @@ var Core = {
                 $this.changeTitleHeader(title);
 
                 if (page == 'formPedido') {
-                    if (!$this.formPedido) {
-                        $this.formPedido = new FormPedido($this, showContentForms);
-                    }
+                    $this.formPedido = new FormPedido($this, showContentForms);
                 } else if (page == 'formSolicitante') {
-                    if (!$this.formSolicitante) {
-                        $this.formSolicitante = new FormSolicitante($this, showContentForms);
-                    }
+                    $this.formSolicitante = new FormSolicitante($this, showContentForms);
                 }
             });
 

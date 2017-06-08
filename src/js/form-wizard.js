@@ -71,15 +71,19 @@ var FormWizard = function(el, fields, submitCallback) {
             }
 
             if (field.properties.keyUp) {
-                field.properties.keyUp(e);
+                field.properties.keyUp(e, field);
             }
 
-            if ($this.allValidate()) {
-                $this.enableBtnSubmit();
-            } else {
-                $this.disableBtnSubmit();
-            }
+            $this.verifySubmitEnaled();
         });
+    }
+
+    this.verifySubmitEnaled = function() {
+        if (this.allValidate()) {
+            this.enableBtnSubmit();
+        } else {
+            this.disableBtnSubmit();
+        }
     }
 
     this.validateField = function(field) {
@@ -115,10 +119,20 @@ var FormWizard = function(el, fields, submitCallback) {
                 if ($fields[i].properties.select) {
                     $fields[i].el.val(fields[i]);
                 } else {
-                    $fields[i].el.attr('value', fields[i]);
+                    if ($fields[i].properties.isDate) {
+                        $fields[i].el.datepicker('update', this.getDate(fields[i]));
+                        this.validateField($fields[i]);
+                    } else {
+                        $fields[i].el.attr('value', fields[i]);
+                    }
                 }
             }
         }
+    }
+
+    this.getDate = function(date) {
+        var dateSplit = date.split('-');
+        return new Date(dateSplit[2], dateSplit[1], dateSplit[0]);
     }
 
     this.setEnabled = function(fields) {

@@ -9,8 +9,8 @@ var FormPedido = function(core, showContentFn) {
         formPedido = new FormWizard('.form-wizard.form-pedido', {
             numero: {
                 rules: 'required',
-                keyUp: function(e) {
-                    $this.keyUpNumero(e);
+                keyUp: function(e, field) {
+                    $this.keyUpNumero(e, field);
                 }
             },
             data_de_compra: {
@@ -22,17 +22,22 @@ var FormPedido = function(core, showContentFn) {
         });
     }
 
-    this.keyUpNumero = function(e) {
+    this.keyUpNumero = function(e, field) {
         var $this = this;
+
+        if (!field.status) {
+            return;
+        }
 
         clearTimeout(timeoutNumero);
         timeoutNumero = setTimeout(function() {
             formPedido.setDisabled(['numero', 'data_de_compra']);
 
             Database.findPedidoByNumero(formPedido.get('numero'), function(result) {
-                formPedido.setEnabled(['numero', 'data_de_compra']);
+                formPedido.setEnabled(['numero']);
                 if (result.length == 1) {
                     formPedido.setValue(result[0]);
+                    formPedido.verifySubmitEnaled();
                 }
             });
         }, 1000);

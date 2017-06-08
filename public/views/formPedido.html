@@ -1,12 +1,27 @@
-<div class="row">
+<div class="row form-pedido">
 
     <div class="col col-md-6">
         <div class="row">
             <div class="col col-md-11">
                 <form class="form-wizard form-pedido">
                     <div class="form-group">
-                        <label for="numero">Número</label>
+                        <label for="numero" class="control-label">Número</label>
                         <input type="number" name="numero" class="form-control" id="numero" placeholder="Número" step="1" min="0" value="0">
+                        
+                        <div class="validator-errors">
+                            <span class="help-block" data-error="required">O campo de número é obrigatório</span>
+                        </div>
+
+                        <div class="about-pedido">
+                            <h5>Pedido encontrado:</h5>
+                            <ul class="list-group sub-list">
+                                <li class="list-group-item">Cras justo odio</li>
+                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                <li class="list-group-item">Morbi leo risus</li>
+                                <li class="list-group-item">Porta ac consectetur ac</li>
+                                <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
+                        </div>
                     </div>
 
                     <div class="form-group">
