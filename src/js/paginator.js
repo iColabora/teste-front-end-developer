@@ -43,10 +43,10 @@ var Paginator = function(links, el, onPageChange) {
 
         if (!pagesLoaded.page) {
             this.loadHtml(page, this.selectedPage, function() {
-                onPageChange(page, showContentFn);
+                onPageChange(page, $this.selectedPage.data('title'), showContentFn);
             });
         } else {
-            onPageChange(page, showContentFn);
+            onPageChange(page, this.selectedPage.data('title'), showContentFn);
         }
     }
 

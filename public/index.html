@@ -20,10 +20,10 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Dashboards</a></li>
+                        <li class="active"><a href="#" class="change-sub-navbar" data-subnavbar="dashboards">Dashboards</a></li>
                         <li><a href="#">Soluções</a></li>
                         <li><a href="#">Administração</a></li>
-                        <li class="init-process"><a href="#process" class="page-change enabled">Iniciar processo</a></li>
+                        <li class="init-process"><a href="#process" class="page-change enabled change-sub-navbar" data-subnavbar="title-header">Iniciar processo</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Link</a></li>
@@ -37,7 +37,11 @@
                 </div>
             </div>
 
-            <div class="sub-navbar">
+            <div class="sub-navbar title-header hide">
+                <h2></h2>
+            </div>
+            
+            <div class="sub-navbar dashboards">
                 <ul class="list">
                     <li><a href="#dashboard1" class="page-change enabled">Dashboard 1</a></li>
                     <li><a href="#dashboard2" class="page-change enabled">Dashboard 2</a></li>
@@ -89,7 +93,13 @@
             </div>
 
             <div data-page="process" class="page hide-page">
-                process
+                <div class="loading">
+                    Loading...
+                </div>
+
+                <div class="content">
+                    
+                </div>
             </div>
         </section>
     </div>

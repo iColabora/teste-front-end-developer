@@ -1,4 +1,4 @@
-var FormWizard = function(el, fields) {
+var FormWizard = function(el, fields, submitCallback) {
 
     /**
      * Properties
@@ -9,23 +9,35 @@ var FormWizard = function(el, fields) {
     /**
      * Treat fields
      */
-    var _initializeFields = function() {
+    this.initializeFields = function() {
         for (var i in fields) {
-            _initializeField(i, fields[i]);
+            this.initializeField(i, fields[i]);
         }
+
+        this.btnSubmit = $el.find('.btn-submit');
+        this.btnSubmit.click(function() {
+            submitCallback();
+        });
     };
 
-    var _initializeField = function(field, properties) {
-        $elField = $el.find('input[name="'+field+'"]');
+    this.initializeField = function(field, properties) {
+        if (properties.select) {
+            $elField = $el.find('select[name="'+field+'"]');
+        } else {
+            $elField = $el.find('input[name="'+field+'"]');
+        }
+
         $fields[field] = {
-            el: $elField
+            el: $elField,
+            properties: properties,
+            status: properties.rules ? false : true
         }
         
         if (properties.rules) {
             $fields[field].validator = new Validator($elField, properties.rules);
         }
 
-         _createEvents($fields[field]);
+         this.createEvents($fields[field]);
 
         if (properties.isDate) {
             _startDatepicker($fields[field]);
@@ -50,22 +62,35 @@ var FormWizard = function(el, fields) {
         });
     };
 
-    var _createEvents = function(field) {
-        field.el.on('keyup', function() {
+    this.createEvents = function(field) {
+        var $this = this;
+
+        field.el.on('keyup', function(e) {
             if (field.validator) {
-                _validateField($fields[$(this).attr('name')]);
+                $this.validateField($fields[$(this).attr('name')]);
+            }
+
+            if (field.properties.keyUp) {
+                field.properties.keyUp(e);
+            }
+
+            if ($this.allValidate()) {
+                $this.enableBtnSubmit();
+            } else {
+                $this.disableBtnSubmit();
             }
         });
     }
 
-    var _validateField = function(field) {
+    this.validateField = function(field) {
         field.validator.validate(function(rule, status) {
+            field.status = status;
+
             var formGroup = field.el.parent();
 
             formGroup.find('.validator-errors span').removeClass('show');
 
             if (!status) {
-                console.log('.validator-errors span[data-error="'+rule.name+'"]');
                 formGroup.find('.validator-errors span[data-error="'+rule.name+'"]').addClass('show');
                 formGroup.addClass('has-error');
             } else {
@@ -74,10 +99,24 @@ var FormWizard = function(el, fields) {
         });
     }
 
+    this.allValidate = function() {
+        for (var i in $fields) {
+            if (!$fields[i].status) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     this.setValue = function(fields) {
         for (var i in fields) {
             if ($fields[i]) {
-                $fields[i].el.attr('value', fields[i]);
+                if ($fields[i].properties.select) {
+                    $fields[i].el.val(fields[i]);
+                } else {
+                    $fields[i].el.attr('value', fields[i]);
+                }
             }
         }
     }
@@ -98,11 +137,23 @@ var FormWizard = function(el, fields) {
         }
     }
 
+    this.enableBtnSubmit = function() {
+        this.btnSubmit.removeAttr('disabled');
+    }
+
+    this.disableBtnSubmit = function() {
+        this.btnSubmit.attr('disabled', 'disabled');
+    }
+
+    this.get = function(field) {
+        return $fields[field].el.val();
+    };
+
     /**
      * Initialize
      */
     this.init = function() {
-        _initializeFields();
+        this.initializeFields();
     };
 
     this.init();

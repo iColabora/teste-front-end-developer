@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col col-md-6">
+        <form action="" method="post" class="form-wizard form-solicitante">
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
+
+                        <div class="validator-errors">
+                            <span class="help-block" data-error="required">O campo nome é obrigatório</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="cpf">CPF</label>
+                        <input type="text" name="cpf" class="form-control" id="cpf" placeholder="CPF">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="cep">CEP</label>
+                        <input type="text" name="cep" class="form-control" id="cep" placeholder="CEP">
+                    </div>
+
+                    <div class="col col-md-1">
+                        <img class="animated loading-icon" src="/loading.svg" alt="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="rua">Rua</label>
+                        <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="numero_soliciante">Numero</label>
+                        <input type="number" name="numero" class="form-control" id="numero_soliciante" placeholder="Número" disabled="disabled" step="1" value="0" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="complemento">Complemento</label>
+                        <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="uf">Estado</label>
+                        <select disabled="disabled" name="uf" class="form-control" id="uf">
+                            <option disabled="disabled" selected="selected">Selecione um estado</option>
+                            <option value="SP">SP</option>
+                            <option value="RJ">RJ</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col col-md-11">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade" disabled="disabled">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="col col-md-1"></div>
+
+    </div>
+
+    <div class="col col-md-6"></div>
+</div>

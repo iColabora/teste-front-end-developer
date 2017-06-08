@@ -1,5 +1,5 @@
 .footer {
-
+    
     $background-color-footer: #555;
     $text-color-footer: #fff;
     $color-border-top-footer: #ddd;
@@ -10,6 +10,7 @@
     float:left;
     width:100%;
     padding:5px;
+    margin-top:20px;
     border-top:1px solid $color-border-top-footer;
 
     .left {

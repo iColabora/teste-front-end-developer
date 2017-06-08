@@ -13,6 +13,8 @@ var scripts = [
   './src/js/paginator.js',
   './src/js/cep.js',
   './src/js/chart_pedidos.js',
+  './src/js/forms/formPedido.js',
+  './src/js/forms/formSolicitante.js',
   './src/js/core.js',
 ];
 
@@ -73,7 +75,7 @@ gulp.task('css-libs', function() {
     .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('serve', ['sass', 'css-libs', 'scripts-libs'], function() {
+gulp.task('serve', ['sass', 'css-libs', 'scripts-libs', 'scripts-site'], function() {
     browserSync.init({
         server: "./public"
     });

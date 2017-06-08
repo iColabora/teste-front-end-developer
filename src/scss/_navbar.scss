@@ -54,6 +54,10 @@
                     margin-left:20px;
                     background: $color-accent;
 
+                    a, a:focus{
+                        color:#fff;
+                    }
+
                     &:hover {
                         background: $color-accent;
                         
@@ -81,6 +85,14 @@
             color: $color-sub-navbar;
         }
 
+        h2 {
+            font-size:14px;
+            float:left;
+            width:100%;
+            margin:0;
+            padding: 17px 23px 15px;
+        }
+
         ul.list {
             margin-bottom:0px;
             float:left;
@@ -95,7 +107,10 @@
                     padding: 17px 23px 15px;
                     color: $color-sub-navbar;
 
-                    &:hover{
+                    &:hover,
+                    &:focus,
+                    &:active{
+                        color: $color-sub-navbar;
                         text-decoration:none;
                     }
                 }

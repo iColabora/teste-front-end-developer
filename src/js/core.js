@@ -1,56 +1,34 @@
 var Core = {
 
     paginatorMenu: null,
+    paginatorForms: null,
     validator: null,
     formPedido: null,
+    formSolicitante: null,
 
     init: function() {
         var $this = this;
 
-        this.paginatorMenu = new Paginator('.page-change', '.paginator', function(page, showContentFn) {
+        this.paginatorMenu = new Paginator('.page-change', '.paginator', function(page, title, showContentFn) {
             $this.pages[page]($this, showContentFn);
         });
-        
-        this.paginatorMenu.init();
 
-        /**
-         * Form pedido
-         */
-        this.formPedido = new FormWizard('.form-wizard.form-pedido', {
-            data_de_compra: {
-                isDate: true
-            },
-            cep: {
-                mask: '00000-000',
-                onCompleteMask: function(cep) {
-                    $this.searchCep(cep);
-                }
-            },
-            nome: {
-                rules: 'required|min:3|max:10'
-            },
-            rua: {
-                rules: 'required|min:3'
-            }
-        });
+        this.paginatorMenu.init();
 
         String.prototype.replaceAll = function(search, replacement) {
             return this.replace(new RegExp(search, 'g'), replacement);
         }
 
         this.paginatorMenu.setSelectedPage('dashboard1');
+
+        $('.change-sub-navbar').click(function(){
+            $this.changeSubNavbar($(this).data('subnavbar'));
+        });
     },
 
-    searchCep: function(cep) {
-        var $this = this;
-
-        var fieldsAddress = ['rua', 'numero', 'complemento', 'cidade', 'estado'];
-
-        this.formPedido.setDisabled(fieldsAddress);
-        CEP.getInfo(cep, function(address) {
-            $this.formPedido.setValue(address);
-            $this.formPedido.setEnabled(fieldsAddress);
-        });
+    changeSubNavbar: function(sub) {
+        $('.sub-navbar').addClass('hide');
+        $('.sub-navbar.'+sub).removeClass('hide');
     },
 
     pages: {
@@ -102,10 +80,31 @@ var Core = {
                 showContentFn();
             });
         },
-        
-        process: function($this, showContentFn) {
 
+        process: function($this, showContentFn) {
+            $this.paginatorForms = new Paginator('--', '.paginator.forms', function(page, title, showContentForms) {
+                $this.changeTitleHeader(title);
+
+                if (page == 'formPedido') {
+                    if (!$this.formPedido) {
+                        $this.formPedido = new FormPedido($this, showContentForms);
+                    }
+                } else if (page == 'formSolicitante') {
+                    if (!$this.formSolicitante) {
+                        $this.formSolicitante = new FormSolicitante($this, showContentForms);
+                    }
+                }
+            });
+
+            $this.paginatorForms.init();
+            $this.paginatorForms.setSelectedPage('formPedido');
+
+            showContentFn();
         }
+    },
+
+    changeTitleHeader: function(title) {
+        $('.title-header h2').text(title);
     },
 
     prepareResultPorSolicitante: function(result) {
