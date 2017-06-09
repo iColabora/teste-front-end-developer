@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome">
+                    <input type="text" disabled name="nome" class="form-control" id="nome" placeholder="Nome">
 
                     <div class="validator-errors">
                         <span class="help-block" data-error="required">O campo nome é obrigatório</span>
@@ -24,7 +24,7 @@
 
                 <div class="form-group">
                     <label for="telefone">Telefone</label>
-                    <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone">
+                    <input type="text" disabled name="telefone" class="form-control" id="telefone" placeholder="Telefone">
                 </div>
 
                 <h3 class="margin">Endereço</h3>
@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label for="cep">CEP</label>
                             <div class="loading-field">
-                                <input type="text" name="cep" class="form-control" id="cep" placeholder="CEP">
+                                <input disabled type="text" name="cep" class="form-control" id="cep" placeholder="CEP">
                                 <img class="image-loading animated" src="/assets/images/loading.svg" alt=""/>
                             </div>
                         </div>
@@ -82,6 +82,8 @@
                         </div>
                     </div>
                 </div>
+
+                <button type="button" class="btn btn-success pull-right btn-submit" disabled>Materiais <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
             </form>
         </div>
 

@@ -41,7 +41,7 @@ var Paginator = function(links, el, onPageChange) {
             $this.selectedPage.find('.content').addClass('show');
         }
 
-        if (!pagesLoaded.page) {
+        if (!pagesLoaded[page]) {
             this.loadHtml(page, this.selectedPage, function() {
                 onPageChange(page, $this.selectedPage.data('title'), showContentFn);
             });

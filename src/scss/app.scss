@@ -9,8 +9,8 @@ $color-accent: #39bb9d;
 @font-face
 {
 	font-family: 'HelveticaNeueBold';
-	src: url('../assets/fonts/HelveticaNeue-Bold.eot');
-	src: local('Helvetica Neue Bold'), local('HelveticaNeue'), url('../assets/fonts/HelveticaNeue-Bold.woff') format('woff'), url('../assets/fonts/HelveticaNeue-Bold.ttf') format('truetype');
+	src: url('../fonts/HelveticaNeue-Bold.eot');
+	src: local('Helvetica Neue Bold'), local('HelveticaNeue'), url('../fonts/HelveticaNeue-Bold.woff') format('woff'), url('../fonts/HelveticaNeue-Bold.ttf') format('truetype');
 }
 
 $font-helvetica: 'HelveticaNeueBold';
@@ -36,6 +36,12 @@ html {
         .wrapper {
             min-height: 100%;
             margin-bottom: -51px;
+            position:relative;
+
+            .container {
+                min-height:100%;
+                position:relative;
+            }
 
             .push {
                 height:31px;

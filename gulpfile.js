@@ -9,6 +9,7 @@ var concat = require('gulp-concat'),
 var scripts = [
   './src/js/database.js',
   './src/js/validator.js',
+  './src/js/pedido.js',
   './src/js/form-wizard.js',
   './src/js/paginator.js',
   './src/js/cep.js',

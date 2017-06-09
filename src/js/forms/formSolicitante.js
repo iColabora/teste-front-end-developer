@@ -1,6 +1,7 @@
-var FormSolicitante = function(core, showContentFn) {
+var FormSolicitante = function(core, pedido, showContentFn) {
 
-    var formSolicitante = null;
+    var formSolicitante = null,
+        timeoutCpf = null;
 
     this.init = function() {
         var $this = this;
@@ -14,6 +15,9 @@ var FormSolicitante = function(core, showContentFn) {
             },
             cpf: {
                 mask: '000.000.000-00',
+                onCompleteMask: function() {
+                    $this.searchCpf();
+                }
             },
             cep: {
                 mask: '00000-000',
@@ -41,8 +45,45 @@ var FormSolicitante = function(core, showContentFn) {
         }, function() {
 
         });
-        showContentFn();
+        
+        this.load();
     };
+
+    this.load = function() {
+        if (pedido.get('id') == 0) {
+            showContentFn();
+        } else {
+            Database.findSolicitanteById(pedido.get('idSolicitante'), function(result) {
+                if (result.length == 0) {
+                    formSolicitante.setEnabled(['cep', 'nome', 'telefone']);
+                } else {
+                    var solicitante = result[0];
+
+                    solicitante.cpf = maskCpf(solicitante.cpf);
+                    solicitante.cep = maskCep(solicitante.cep);
+                    solicitante.telefone = maskTelefone(solicitante.telefone);
+
+                    formSolicitante.setValue(solicitante);
+                    showContentFn();
+                }
+            });
+        }
+    }
+
+    var maskTelefone = function(telefone) {
+        var div = $('<div>'+telefone.replace('(').replace(')')+'</div>').mask('(00) 00000-0000');
+        return div.text();
+    }
+
+    var maskCpf = function(cpf) {
+        var div = $('<div>'+cpf+'</div>').mask('000.000.000-00');
+        return div.text();
+    }
+
+    var maskCep = function(cep) {
+        var div = $('<div>'+cep+'</div>').mask('00000-000');
+        return div.text();
+    }
 
     this.searchCep = function(cep) {
         var $this = this;
@@ -55,6 +96,15 @@ var FormSolicitante = function(core, showContentFn) {
             formSolicitante.setEnabled(fieldsAddress);
         });
     };
+
+    this.searchSolicitante = function() {
+        clearTimeout(timeoutCpf);
+        timeoutCpf = setTimeout(function() {
+            var cpf = formSolicitante.get('cpf');
+            console.log('cpf ', cpf);
+
+        }, 1000);
+    }
 
     this.init();
     

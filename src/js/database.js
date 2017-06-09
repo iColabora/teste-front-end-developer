@@ -1,13 +1,18 @@
 var Database = {
     
     fetchAllPedidos: function(callback) {
-        var query = "select p.numero, s.nome, DATE_FORMAT(STR_TO_DATE(p.data_de_compra, '%Y-%m-%d'), '%d-%m-%Y') as data_de_compra, (SELECT SUM (m.quantidade*m.preco) FROM materiais as m WHERE m.id_pedido = p.id) as total_materiais, (SELECT SUM (i.quantidade*i.preco) FROM insumos as i WHERE i.id_pedido = p.id) as total_insumos from pedidos as p INNER JOIN solicitantes as s ON s.id = p.id_solicitante";
+        var query = "select p.numero, p.id, p.id_solicitante, s.nome, DATE_FORMAT(STR_TO_DATE(p.data_de_compra, '%Y-%m-%d'), '%d-%m-%Y') as data_de_compra, (SELECT SUM (m.quantidade*m.preco) FROM materiais as m WHERE m.id_pedido = p.id) as total_materiais, (SELECT SUM (i.quantidade*i.preco) FROM insumos as i WHERE i.id_pedido = p.id) as total_insumos from pedidos as p INNER JOIN solicitantes as s ON s.id = p.id_solicitante";
         this._execute(query, callback); 
     },
 
     findPedidoByNumero: function(numero, callback) {
-        var query = "select p.numero, s.nome, DATE_FORMAT(STR_TO_DATE(p.data_de_compra, '%Y-%m-%d'), '%d-%m-%Y') as data_de_compra, (SELECT SUM (m.quantidade*m.preco) FROM materiais as m WHERE m.id_pedido = p.id) as total_materiais, (SELECT SUM (i.quantidade*i.preco) FROM insumos as i WHERE i.id_pedido = p.id) as total_insumos from pedidos as p INNER JOIN solicitantes as s ON s.id = p.id_solicitante WHERE p.numero = "+numero;
+        var query = "select p.numero, p.id, p.id_solicitante, s.nome, DATE_FORMAT(STR_TO_DATE(p.data_de_compra, '%Y-%m-%d'), '%d-%m-%Y') as data_de_compra, (SELECT SUM (m.quantidade*m.preco) FROM materiais as m WHERE m.id_pedido = p.id) as total_materiais, (SELECT SUM (i.quantidade*i.preco) FROM insumos as i WHERE i.id_pedido = p.id) as total_insumos from pedidos as p INNER JOIN solicitantes as s ON s.id = p.id_solicitante WHERE p.numero = "+numero;
         this._execute(query, callback);
+    },
+
+    findSolicitanteById: function(id, callback) {
+        var query = "SELECT * FROM solicitantes WHERE id = " + id;
+        this._execute(query, callback); 
     },
 
     fetchAllSolicitantes: function(callback) {

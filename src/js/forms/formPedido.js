@@ -1,7 +1,9 @@
-var FormPedido = function(core, showContentFn) {
+var FormPedido = function(core, pedido, showContentFn) {
 
     var formPedido = null,
-        timeoutNumero = null;
+        timeoutNumero = null,
+        id = 0,
+        idSolicitante = 0;
 
     this.init = function() {
         $this = this;
@@ -16,11 +18,23 @@ var FormPedido = function(core, showContentFn) {
             },
             data_de_compra: {
                 rules: 'required',
-                isDate: true
+                isDate: true,
+                onChangeDate: function() {
+                    
+                }
             }
         }, function() {
-            core.paginatorForms.setSelectedPage('formSolicitante');
+            $this.submit();
         });
+        showContentFn();
+    }
+
+    this.submit = function() {
+        var values = formPedido.getAll();
+        values.id = id;
+        values.idSolicitante = idSolicitante;
+        pedido.setData(values);
+        core.paginatorForms.setSelectedPage('formSolicitante');
     }
 
     this.keyUpNumero = function(e, field) {
@@ -44,7 +58,6 @@ var FormPedido = function(core, showContentFn) {
                 formPedido.setEnabled(['numero']);
                 if (result.length == 1) {
                     result = result[0];
-
                     formPedido.setValue(result);
                     formPedido.verifySubmitEnaled();
 
@@ -58,8 +71,13 @@ var FormPedido = function(core, showContentFn) {
                         } 
                         fieldsPedido.find('li[data-field="'+i+'"] span').text(value);
                     }
+                    
+                    id = result.id;
+                    idSolicitante = result.id_solicitante;
                     $('.about-pedido').removeClass('hide');
                 } else {
+                    id = 0;
+                    formPedido.setEnabled(['data_de_compra']);
                     $('.about-pedido').addClass('hide');
                 }
                 formPedido.hideLoading('numero');

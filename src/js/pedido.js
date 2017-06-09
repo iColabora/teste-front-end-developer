@@ -5,8 +5,16 @@ var Pedido = function() {
     var materiais = [];
     var insumos = [];
 
-    this.set = function(key, value) {
-        data[key] = value;
-    };
+    this.setData = function(d) {
+        data = d;
+    }
+
+    this.getData = function() {
+        return data;
+    }
+
+    this.get = function(k) {
+        return data[k];
+    }
 
 };

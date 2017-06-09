@@ -5,6 +5,7 @@ var Core = {
     validator: null,
     formPedido: null,
     formSolicitante: null,
+    pedido: null,
 
     init: function() {
         var $this = this;
@@ -88,13 +89,21 @@ var Core = {
         },
 
         process: function($this, showContentFn) {
+            if (!$this.pedido) {
+                $this.pedido = new Pedido();
+            }
+            
             $this.paginatorForms = new Paginator('--', '.paginator.forms', function(page, title, showContentForms) {
                 $this.changeTitleHeader(title);
 
                 if (page == 'formPedido') {
-                    $this.formPedido = new FormPedido($this, showContentForms);
+                    if (!$this.formPedido) {
+                        $this.formPedido = new FormPedido($this, $this.pedido, showContentForms);   
+                    }
                 } else if (page == 'formSolicitante') {
-                    $this.formSolicitante = new FormSolicitante($this, showContentForms);
+                    if (!$this.formSolicitante) {
+                        $this.formSolicitante = new FormSolicitante($this, $this.pedido, showContentForms);
+                    }
                 }
             });
 

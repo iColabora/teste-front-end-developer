@@ -10,13 +10,16 @@ var FormWizard = function(el, fields, submitCallback) {
      * Treat fields
      */
     this.initializeFields = function() {
+        var $this = this;
         for (var i in fields) {
             this.initializeField(i, fields[i]);
         }
 
         this.btnSubmit = $el.find('.btn-submit');
         this.btnSubmit.click(function() {
-            submitCallback();
+            if ($this.allValidate()) {
+                submitCallback();
+            }
         });
     };
 
@@ -40,7 +43,7 @@ var FormWizard = function(el, fields, submitCallback) {
          this.createEvents($fields[field]);
 
         if (properties.isDate) {
-            _startDatepicker($fields[field]);
+            this.startDatepicker($fields[field]);
         }
 
         if (properties.mask) {
@@ -55,10 +58,23 @@ var FormWizard = function(el, fields, submitCallback) {
         field.el.mask(mask, options);
     };
 
-    var _startDatepicker = function(field) {
+    this.startDatepicker = function(field) {
+        var $this = this;
+
         field.el.datepicker({
             format: 'dd/mm/yyyy',
-            language: "pt-BR"
+            language: 'pt-BR',
+            orientation: 'bottom left'
+        }).on('changeDate', function(e) {
+            if (field.validator) {
+                $this.validateField(field);
+            }
+
+            $this.verifySubmitEnaled();
+   
+            if (field.properties) {
+                field.properties.onChangeDate(e);
+            }
         });
     };
 
@@ -147,6 +163,12 @@ var FormWizard = function(el, fields, submitCallback) {
         }
     }
 
+    this.setAllEnabled = function() {
+        for (var i in $fields) {
+            $fields[i].el.removeAttr('disabled');
+        }
+    }
+
     this.setDisabled = function(fields) {
         for (var i in fields) {
             if ($fields[fields[i]]) {
@@ -166,6 +188,16 @@ var FormWizard = function(el, fields, submitCallback) {
     this.get = function(field) {
         return $fields[field].el.val();
     };
+
+    this.getAll = function() {
+        var ret = {};
+
+        for (var i in $fields) {
+            ret[i] = $fields[i].el.val();
+        }
+
+        return ret;
+    }
 
     this.showLoading = function(field) {
         $fields[field].el.parent().find('.image-loading').addClass('show fadeIn');
