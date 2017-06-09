@@ -5,6 +5,7 @@ var Core = {
     validator: null,
     formPedido: null,
     formSolicitante: null,
+    formMaterial: null,
     pedido: null,
 
     init: function() {
@@ -103,6 +104,10 @@ var Core = {
                 } else if (page == 'formSolicitante') {
                     if (!$this.formSolicitante) {
                         $this.formSolicitante = new FormSolicitante($this, $this.pedido, showContentForms);
+                    }
+                } else if (page == 'formMaterial') {
+                    if (!$this.formMaterial) {
+                        $this.formMaterial = new FormMaterial($this, $this.pedido, showContentForms);
                     }
                 }
             });

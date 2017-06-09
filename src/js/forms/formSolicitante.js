@@ -47,11 +47,17 @@ var FormSolicitante = function(core, pedido, showContentFn) {
                 rules: 'required|min:3'
             }
         }, function() {
-
+            $this.submit();
         });
         
         this.load();
     };
+
+    this.submit = function() {
+        var values = formSolicitante.getAll();
+        pedido.setSolicitante(values);
+        core.paginatorForms.setSelectedPage('formMaterial');
+    }
 
     this.load = function() {
         var $this = this;
@@ -65,7 +71,10 @@ var FormSolicitante = function(core, pedido, showContentFn) {
                 } else {
                     var solicitante = result[0];
                     $this.setValueForm(solicitante);
+                    $this.formSolicitante.validateAllFields();
+                    $this.formSolicitante.verifySubmitEnaled();
                 }
+                showContentFn();
             });
         }
     }

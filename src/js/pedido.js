@@ -13,6 +13,10 @@ var Pedido = function() {
         return data;
     }
 
+    this.setSolicitante = function(s) {
+        solicitante = s;
+    }
+
     this.get = function(k) {
         return data[k];
     }

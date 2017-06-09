@@ -16,6 +16,7 @@ var scripts = [
   './src/js/chart_pedidos.js',
   './src/js/forms/formPedido.js',
   './src/js/forms/formSolicitante.js',
+  './src/js/forms/formMaterial.js',
   './src/js/core.js',
 ];
 
