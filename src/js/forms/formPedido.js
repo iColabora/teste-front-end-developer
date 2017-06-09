@@ -77,9 +77,9 @@ var FormPedido = function(core, pedido, showContentFn) {
                     $('.about-pedido').removeClass('hide');
                 } else {
                     id = 0;
-                    formPedido.setEnabled(['data_de_compra']);
                     $('.about-pedido').addClass('hide');
                 }
+                formPedido.setEnabled(['data_de_compra']);
                 formPedido.hideLoading('numero');
             });
         }, 1000);

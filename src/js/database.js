@@ -15,6 +15,11 @@ var Database = {
         this._execute(query, callback); 
     },
 
+    findSolicitanteByCpf: function(cpf, callback) {
+        var query = "SELECT * FROM solicitantes WHERE cpf = " + cpf;
+        this._execute(query, callback); 
+    },
+
     fetchAllSolicitantes: function(callback) {
         var query = "SELECT * FROM solicitantes";
         this._execute(query, callback); 

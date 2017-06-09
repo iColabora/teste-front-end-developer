@@ -2,7 +2,11 @@ var Validator = function (field, rulesValidate){
     
     var rules = {
         required: function(opt) {
-            return field.val().length > 0;
+            if (field.is("select")) {
+                return field.val() != '-1' || field.val() != '';
+            } else if (field.is("input")) {
+                return field.val().length > 0;
+            }
         },
         max: function(opt) {
             return field.val().length <= opt;

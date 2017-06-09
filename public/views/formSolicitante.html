@@ -5,7 +5,7 @@
                 <h3>Dados pessoais</h3>
 
                 <div class="form-group">
-                    <label for="cpf">CPF</label>
+                    <label for="cpf" class="control-label">CPF</label>
 
                     <div class="loading-field">
                         <input type="text" name="cpf" class="form-control" id="cpf" placeholder="CPF">
@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nome">Nome</label>
+                    <label for="nome" class="control-label">Nome</label>
                     <input type="text" disabled name="nome" class="form-control" id="nome" placeholder="Nome">
 
                     <div class="validator-errors">
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="telefone">Telefone</label>
+                    <label for="telefone" class="control-label">Telefone</label>
                     <input type="text" disabled name="telefone" class="form-control" id="telefone" placeholder="Telefone">
                 </div>
 
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col col-md-3">
                         <div class="form-group">
-                            <label for="cep">CEP</label>
+                            <label for="cep" class="control-label">CEP</label>
                             <div class="loading-field">
                                 <input disabled type="text" name="cep" class="form-control" id="cep" placeholder="CEP">
                                 <img class="image-loading animated" src="/assets/images/loading.svg" alt=""/>
@@ -42,7 +42,7 @@
 
                     <div class="col col-md-9">
                         <div class="form-group">
-                            <label for="rua">Rua</label>
+                            <label for="rua" class="control-label">Rua</label>
                             <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua" disabled="disabled">
                         </div>
                     </div>
@@ -51,13 +51,13 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="form-group">
-                            <label for="numero_soliciante">Numero</label>
+                            <label for="numero_soliciante" class="control-label">Numero</label>
                             <input type="number" name="numero" class="form-control" id="numero_soliciante" placeholder="Número" disabled="disabled" step="1" value="0" min="0">
                         </div>
                     </div>
                     <div class="col col-md-6">
                         <div class="form-group">
-                            <label for="complemento">Complemento</label>
+                            <label for="complemento" class="control-label">Complemento</label>
                             <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento" disabled="disabled">
                         </div>
                     </div>
@@ -66,9 +66,9 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="form-group">
-                            <label for="uf">Estado</label>
-                            <select disabled="disabled" name="uf" class="form-control" id="uf">
-                                <option disabled="disabled" selected="selected">Selecione um estado</option>
+                            <label for="estado" class="control-label">Estado</label>
+                            <select disabled="disabled" name="estado" class="form-control" id="estado">
+                                <option disabled="disabled" value="-1" selected="selected">Selecione um estado</option>
                                 <option value="SP">SP</option>
                                 <option value="RJ">RJ</option>
                             </select>
@@ -77,7 +77,7 @@
 
                     <div class="col col-md-6">
                         <div class="form-group">
-                            <label for="cidade">Cidade</label>
+                            <label for="cidade" class="control-label">Cidade</label>
                             <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade" disabled="disabled">
                         </div>
                     </div>

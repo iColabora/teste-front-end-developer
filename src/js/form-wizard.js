@@ -123,6 +123,16 @@ var FormWizard = function(el, fields, submitCallback) {
         });
     }
 
+    this.validateAllFields = function() {
+        for (var i in $fields) {
+            if ($fields[i].validator) {
+                this.validateField($fields[i]);
+            } else {
+                console.log(i);
+            }
+        }
+    }
+
     this.allValidate = function() {
         for (var i in $fields) {
             if (!$fields[i].status) {
@@ -188,6 +198,15 @@ var FormWizard = function(el, fields, submitCallback) {
     this.get = function(field) {
         return $fields[field].el.val();
     };
+
+    this.unmask = function(field) {
+        return $fields[field].el.unmask();
+    }
+
+    this.getCleanValue = function(field) {
+        return $fields[field].el.cleanVal();
+    }
+    
 
     this.getAll = function() {
         var ret = {};

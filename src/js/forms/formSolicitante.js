@@ -8,18 +8,22 @@ var FormSolicitante = function(core, pedido, showContentFn) {
 
         formSolicitante = new FormWizard('.form-solicitante', {
             nome: {
-                rules: 'required|min:3|max:10'
+                rules: 'required|min:3|max:100'
             },
             telefone: {
+                rules: 'required',
                 mask: '(00) 00000-0000',
             },
             cpf: {
+                rules: 'required',
                 mask: '000.000.000-00',
                 onCompleteMask: function() {
-                    $this.searchCpf();
-                }
+                    $this.searchSolicitante();
+                },
+                hasLoading: true
             },
             cep: {
+                rules: 'required',
                 mask: '00000-000',
                 onCompleteMask: function(cep) {
                     $this.searchCep(cep);
@@ -33,9 +37,9 @@ var FormSolicitante = function(core, pedido, showContentFn) {
                 rules: 'required'
             },
             complemento: {
-                rules: 'required'
+                
             },
-            uf: {
+            estado: {
                 rules: 'required',
                 select: true
             },
@@ -50,6 +54,8 @@ var FormSolicitante = function(core, pedido, showContentFn) {
     };
 
     this.load = function() {
+        var $this = this;
+        
         if (pedido.get('id') == 0) {
             showContentFn();
         } else {
@@ -58,16 +64,19 @@ var FormSolicitante = function(core, pedido, showContentFn) {
                     formSolicitante.setEnabled(['cep', 'nome', 'telefone']);
                 } else {
                     var solicitante = result[0];
-
-                    solicitante.cpf = maskCpf(solicitante.cpf);
-                    solicitante.cep = maskCep(solicitante.cep);
-                    solicitante.telefone = maskTelefone(solicitante.telefone);
-
-                    formSolicitante.setValue(solicitante);
-                    showContentFn();
+                    $this.setValueForm(solicitante);
                 }
             });
         }
+    }
+
+    this.setValueForm = function(solicitante) {
+        solicitante.cpf = maskCpf(solicitante.cpf);
+        solicitante.cep = maskCep(solicitante.cep);
+        solicitante.telefone = maskTelefone(solicitante.telefone);
+
+        formSolicitante.setValue(solicitante);
+        formSolicitante.setAllEnabled();
     }
 
     var maskTelefone = function(telefone) {
@@ -98,11 +107,24 @@ var FormSolicitante = function(core, pedido, showContentFn) {
     };
 
     this.searchSolicitante = function() {
+        var $this = this;
+
         clearTimeout(timeoutCpf);
         timeoutCpf = setTimeout(function() {
-            var cpf = formSolicitante.get('cpf');
-            console.log('cpf ', cpf);
+            formSolicitante.setDisabled(['cpf']);
+            var cpf = formSolicitante.getCleanValue('cpf');
+            formSolicitante.showLoading('cpf');
 
+            Database.findSolicitanteByCpf(cpf, function(result) {
+                if (result.length == 0) {
+                    formSolicitante.setEnabled(['cep', 'nome', 'telefone']);
+                } else {
+                    $this.setValueForm(result[0]);
+                    formSolicitante.validateAllFields();
+                    formSolicitante.verifySubmitEnaled();
+                }
+                formSolicitante.hideLoading('cpf');
+            });
         }, 1000);
     }
 
