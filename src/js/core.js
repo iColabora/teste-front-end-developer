@@ -22,7 +22,13 @@ var Core = {
         this.paginatorMenu.setSelectedPage('dashboard1');
 
         $('.change-sub-navbar').click(function(){
+            
             $this.changeSubNavbar($(this).data('subnavbar'));
+        });
+
+        $('.navbar .navbar-nav a').click(function() {
+            $('.navbar .navbar-nav li').removeClass('active');
+            $(this).addClass('active');
         });
     },
 

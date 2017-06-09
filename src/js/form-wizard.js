@@ -92,6 +92,10 @@ var FormWizard = function(el, fields, submitCallback) {
 
             var formGroup = field.el.parent();
 
+            if (field.properties.hasLoading) {
+                formGroup = formGroup.parent();
+            }
+
             formGroup.find('.validator-errors span').removeClass('show');
 
             if (!status) {
@@ -162,6 +166,14 @@ var FormWizard = function(el, fields, submitCallback) {
     this.get = function(field) {
         return $fields[field].el.val();
     };
+
+    this.showLoading = function(field) {
+        $fields[field].el.parent().find('.image-loading').addClass('show fadeIn');
+    }
+
+    this.hideLoading = function(field) {
+        $fields[field].el.parent().find('.image-loading').removeClass('fadeIn show');
+    }
 
     /**
      * Initialize

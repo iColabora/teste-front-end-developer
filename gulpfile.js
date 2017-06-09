@@ -40,14 +40,14 @@ var cssLib = [
 gulp.task('scripts-libs', function() {
   return gulp.src(scriptsLibs)
     .pipe(concat('libs.js'))
-    .pipe(gulp.dest('./public/js/'));
+    .pipe(gulp.dest('./public/assets/js/'));
 });
 
 gulp.task('scripts-site', function() {
   return gulp.src(scripts)
     .pipe(concat('app.js'))
     .pipe(uglify({mangle: true}))
-    .pipe(gulp.dest('./public/js/'));
+    .pipe(gulp.dest('./public/assets/js/'));
 });
 
 gulp.task('sass', function() {
@@ -59,7 +59,7 @@ gulp.task('sass', function() {
     .pipe($.autoprefixer({  
       browsers: ['last 2 versions', 'ie >= 9']
     }))
-    .pipe(gulp.dest('public/css'));
+    .pipe(gulp.dest('public/assets/css'));
 });
 
 gulp.task('css-libs', function() {
@@ -72,7 +72,7 @@ gulp.task('css-libs', function() {
       browsers: ['last 2 versions', 'ie >= 9']
     }))
     .pipe(concat('libs.css'))
-    .pipe(gulp.dest('public/css'));
+    .pipe(gulp.dest('public/assets/css'));
 });
 
 gulp.task('serve', ['sass', 'css-libs', 'scripts-libs', 'scripts-site'], function() {

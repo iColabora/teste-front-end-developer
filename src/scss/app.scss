@@ -14,15 +14,32 @@ $color-accent: #39bb9d;
 }
 
 $font-helvetica: 'HelveticaNeueBold';
+$font-trebuchet: 'Trebuchet MS Regular';
 
 @import '_navbar.scss';
 @import '_paginator.scss';
 @import '_validator.scss';
 @import '_sublist.scss';
+@import '_form-wizard.scss';
 @import '_form-pedido.scss';
+@import '_form-solicitante.scss';
 @import '_footer.scss';
 
-body { 
-    padding-top: 110px;
-    background-color:$color-background;
+html {
+    height:100%;
+
+    body { 
+        height:100%;
+        padding-top: 115px;
+        background-color:$color-background;
+
+        .wrapper {
+            min-height: 100%;
+            margin-bottom: -51px;
+
+            .push {
+                height:31px;
+            }
+        }
+    }
 }

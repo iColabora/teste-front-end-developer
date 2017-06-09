@@ -3,12 +3,13 @@
     $background-color-footer: #555;
     $text-color-footer: #fff;
     $color-border-top-footer: #ddd;
-    $copy-color: #ddd;
+    $copy-color: #999;
 
     background-color: $background-color-footer;
     color: $text-color-footer;
     float:left;
     width:100%;
+    height:31px;
     padding:5px;
     margin-top:20px;
     border-top:1px solid $color-border-top-footer;
@@ -19,6 +20,8 @@
 
         span.copy {
             color: $copy-color;
+            font-family: $font-trebuchet;
+            font-size:12px;
         }
     }
 

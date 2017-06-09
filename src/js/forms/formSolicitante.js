@@ -5,7 +5,7 @@ var FormSolicitante = function(core, showContentFn) {
     this.init = function() {
         var $this = this;
 
-        formSolicitante = new FormWizard('.form-wizard.form-solicitante', {
+        formSolicitante = new FormWizard('.form-solicitante', {
             nome: {
                 rules: 'required|min:3|max:10'
             },
@@ -19,7 +19,8 @@ var FormSolicitante = function(core, showContentFn) {
                 mask: '00000-000',
                 onCompleteMask: function(cep) {
                     $this.searchCep(cep);
-                }
+                },
+                hasLoading: true
             },
             rua: {
                 rules: 'required|min:3'

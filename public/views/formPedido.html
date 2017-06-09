@@ -1,39 +1,38 @@
 <div class="row form-pedido">
 
     <div class="col col-md-6">
-        <div class="row">
-            <div class="col col-md-11">
-                <form class="form-wizard form-pedido">
-                    <div class="form-group">
-                        <label for="numero" class="control-label">Número</label>
-                        <input type="number" name="numero" class="form-control" id="numero" placeholder="Número" step="1" min="0" value="0">
-                        
-                        <div class="validator-errors">
-                            <span class="help-block" data-error="required">O campo de número é obrigatório</span>
-                        </div>
+        <form class="form-wizard form-pedido">
+            <div class="form-group">
+                <label for="numero" class="control-label">Número</label>
 
-                        <div class="about-pedido">
-                            <h5>Pedido encontrado:</h5>
-                            <ul class="list-group sub-list">
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">Dapibus ac facilisis in</li>
-                                <li class="list-group-item">Morbi leo risus</li>
-                                <li class="list-group-item">Porta ac consectetur ac</li>
-                                <li class="list-group-item">Vestibulum at eros</li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="loading-field">
+                    <input type="number" name="numero" class="form-control" id="numero" placeholder="Número" step="1" min="0" value="0">
+                    <img class="image-loading animated" src="/assets/images/loading.svg" alt=""/>
+                </div>
+                
+                <div class="validator-errors">
+                    <span class="help-block" data-error="required">O campo de número é obrigatório</span>
+                </div>
 
-                    <div class="form-group">
-                        <label for="data_de_compra">Data de compra</label>
-                        <input type="text" name="data_de_compra" disabled="disabled" class="form-control" id="data_de_compra" placeholder="Data de compra">
-                    </div>
-
-                    <button type="button" class="btn btn-success pull-right btn-submit" disabled>Solicitante</button>
-                </form>
+                <div class="about-pedido hide">
+                    <h5>Pedido encontrado:</h5>
+                    <ul class="list-group sub-list fields-pedido">
+                        <li class="list-group-item" data-field="numero">Número do pedido: <span></span></li>
+                        <li class="list-group-item" data-field="nome">Solicitante: <span></span></li>
+                        <li class="list-group-item" data-field="total_materiais">Total em materiais: R$ <span></span></li>
+                        <li class="list-group-item" data-field="total_insumos">Total em insumos: R$ <span></span></li>
+                        <li class="list-group-item" data-field="total">Total: R$ <span></span></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="col col-md-1"></div>
+            <div class="form-group">
+                <label for="data_de_compra">Data de compra</label>
+                <input type="text" name="data_de_compra" disabled="disabled" class="form-control" id="data_de_compra" placeholder="Data de compra">
+            </div>
+
+            <button type="button" class="btn btn-success pull-right btn-submit" disabled>Solicitante <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+        </form>
         </div>
     </div>
     <div class="col col-md-6"></div>
