@@ -38,7 +38,7 @@ var Paginator = function(links, el, onPageChange) {
 
         var showContentFn = function() {
             $this.selectedPage.find('.loading').addClass('hide');
-            $this.selectedPage.find('.content').addClass('show');
+            $this.selectedPage.find('.content').addClass('show animated fadeIn');
         }
 
         if (!pagesLoaded[page]) {
