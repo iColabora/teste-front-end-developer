@@ -1,7 +1,7 @@
 var FormFinish = function(core, pedido, showContentFn) {
 
     this.init = function() {
-        this.mergeSolicitante();
+        //this.mergeSolicitante();
 
         showContentFn();
     }
