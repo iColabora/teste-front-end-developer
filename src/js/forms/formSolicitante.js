@@ -71,8 +71,8 @@ var FormSolicitante = function(core, pedido, showContentFn) {
                 } else {
                     var solicitante = result[0];
                     $this.setValueForm(solicitante);
-                    $this.formSolicitante.validateAllFields();
-                    $this.formSolicitante.verifySubmitEnaled();
+                    formSolicitante.validateAllFields();
+                    formSolicitante.verifySubmitEnabled();
                 }
                 showContentFn();
             });
@@ -106,7 +106,7 @@ var FormSolicitante = function(core, pedido, showContentFn) {
     this.searchCep = function(cep) {
         var $this = this;
 
-        var fieldsAddress = ['rua', 'numero', 'complemento', 'cidade', 'uf'];
+        var fieldsAddress = ['cep', 'rua', 'numero', 'complemento', 'cidade', 'uf'];
 
         formSolicitante.setDisabled(fieldsAddress);
         CEP.getInfo(cep, function(address) {
@@ -130,7 +130,7 @@ var FormSolicitante = function(core, pedido, showContentFn) {
                 } else {
                     $this.setValueForm(result[0]);
                     formSolicitante.validateAllFields();
-                    formSolicitante.verifySubmitEnaled();
+                    formSolicitante.verifySubmitEnabled();
                 }
                 formSolicitante.hideLoading('cpf');
             });

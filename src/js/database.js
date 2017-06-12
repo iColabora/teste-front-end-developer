@@ -10,6 +10,16 @@ var Database = {
         this._execute(query, callback);
     },
 
+    findMaterialByIdPedido: function(id, callback) {
+        var query = "SELECT * FROM materiais WHERE id_pedido = " + id;
+        this._execute(query, callback); 
+    },
+
+    findInsumoByIdPedido: function(id, callback) {
+        var query = "SELECT * FROM insumos WHERE id_pedido = " + id;
+        this._execute(query, callback); 
+    },
+
     findSolicitanteById: function(id, callback) {
         var query = "SELECT * FROM solicitantes WHERE id = " + id;
         this._execute(query, callback); 

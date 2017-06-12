@@ -6,7 +6,7 @@ var FormPedido = function(core, pedido, showContentFn) {
         idSolicitante = 0;
 
     this.init = function() {
-        $this = this;
+        var $this = this;
 
         formPedido = new FormWizard('.form-wizard.form-pedido', {
             numero: {
@@ -50,16 +50,17 @@ var FormPedido = function(core, pedido, showContentFn) {
                 $('.about-pedido').addClass('hide');
                 return;
             }
+
             formPedido.setDisabled(['numero', 'data_de_compra']);
             
-            formPedido.showLoading('numero');
+            formPedido.showLoading('numero', 0);
 
             Database.findPedidoByNumero(formPedido.get('numero'), function(result) {
                 formPedido.setEnabled(['numero']);
                 if (result.length == 1) {
                     result = result[0];
                     formPedido.setValue(result);
-                    formPedido.verifySubmitEnaled();
+                    formPedido.verifySubmitEnabled();
 
                     result.total = result.total_materiais + result.total_insumos;
 
@@ -80,7 +81,7 @@ var FormPedido = function(core, pedido, showContentFn) {
                     $('.about-pedido').addClass('hide');
                 }
                 formPedido.setEnabled(['data_de_compra']);
-                formPedido.hideLoading('numero');
+                formPedido.hideLoading('numero', 0);
             });
         }, 1000);
     }

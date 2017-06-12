@@ -3,8 +3,8 @@ var Validator = function (field, rulesValidate){
     var rules = {
         required: function(opt) {
             if (field.is("select")) {
-                return field.val() != '-1' || field.val() != '';
-            } else if (field.is("input")) {
+                return field.val() != '-1' && field.val() != '' && field.val() != null && field.val() != 'null';
+            } else if (field.is("input") || field.is("textarea")) {
                 return field.val().length > 0;
             }
         },

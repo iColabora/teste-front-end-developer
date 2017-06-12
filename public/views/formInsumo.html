@@ -1,0 +1,69 @@
+<div class="container form-center">
+    <form class="form-wizard form-insumo">
+        <h3>Insumos desse pedido</h3>
+
+        <ul class="list-group list-insumos">
+
+            <li class="list-group-item">
+                <input type="hidden" name="id[]" class="form-control" id="id" data-field="id">
+
+                <div class="form-group">
+                    <label class="control-label">Descrição</label>
+                    <textarea class="form-control" name="descricao" id="descricao" data-field="descricao" rows="3"></textarea>
+
+                    <div class="validator-errors">
+                        <span class="help-block" data-error="required">O campo descrição é obrigatório</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">Material</label>
+                            <select name="material" class="form-control sel-material" data-field="id_material">
+                                <option disabled="disabled" value="-1" selected="selected">Selecione um material</option>
+                            </select>
+
+                            <div class="validator-errors">
+                                <span class="help-block" data-error="required">O campo material é obrigatório</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-3">
+                        <div class="form-group">
+                            <label for="quantidade" class="control-label">Quantidade</label>
+                            <input type="number" name="quantidade[]" class="form-control" data-field="quantidade" placeholder="Quantidade">
+
+                            <div class="validator-errors">
+                                <span class="help-block" data-error="required">O campo quantidade é obrigatório</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-5">
+                        <div class="form-group">
+                            <label for="preco" class="control-label">Preço R$</label>
+                            <input type="number" name="preco[]" class="form-control" data-field="preco" placeholder="Preço">
+
+                            <div class="validator-errors">
+                                <span class="help-block" data-error="required">O campo preço é obrigatório</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <div class="row">
+            <div class="col col-md-6">
+                <button type="button" class="btn btn-success btn-add-insumo">Adicionar insumo <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+            <div class="col col-md-6">
+                <button type="button" class="btn btn-success pull-right btn-submit"> Endereço de entrega<span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </form>
+
+</div>

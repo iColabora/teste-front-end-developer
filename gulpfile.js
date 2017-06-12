@@ -17,6 +17,11 @@ var scripts = [
   './src/js/forms/formPedido.js',
   './src/js/forms/formSolicitante.js',
   './src/js/forms/formMaterial.js',
+  './src/js/forms/formInsumo.js',
+  './src/js/forms/formAddress.js',
+  './src/js/forms/formInsurance.js',
+  './src/js/forms/formResumo.js',
+  './src/js/forms/formFinish.js',
   './src/js/core.js',
 ];
 

@@ -23,6 +23,12 @@ $font-trebuchet: 'Trebuchet MS Regular';
 @import '_form-wizard.scss';
 @import '_form-pedido.scss';
 @import '_form-solicitante.scss';
+@import '_form-material.scss';
+@import '_form-insumo.scss';
+@import '_form-address.scss';
+@import '_form-insurance.scss';
+@import '_form-resumo.scss';
+@import '_form-finish.scss';
 @import '_footer.scss';
 
 html {
@@ -38,9 +44,19 @@ html {
             margin-bottom: -51px;
             position:relative;
 
-            .container {
+            .dashboard {
+                margin:0 0 30px;
+                float:left;
+                width:100%;
+            }
+
+            >.container {
                 min-height:100%;
                 position:relative;
+
+                .form-center {
+                    max-width:600px;
+                }
             }
 
             .push {

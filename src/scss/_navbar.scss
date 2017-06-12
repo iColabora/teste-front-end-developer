@@ -59,6 +59,10 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
+        .dropdown-menu {
+            background-color:$background-navbar;
+        }
+
         .navbar-header {
             .navbar-brand {
                 padding-top:13px;

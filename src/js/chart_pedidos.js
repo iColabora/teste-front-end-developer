@@ -17,7 +17,7 @@ var ChartPedidos = {
 
     constructElement: function() {
         var ctx = document.getElementById(this.el);
-        ctx.height = 300;
+        ctx.height = 100;
         this.chart = new Chart(ctx, {
             type: this.type,
             data: {

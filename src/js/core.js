@@ -6,6 +6,10 @@ var Core = {
     formPedido: null,
     formSolicitante: null,
     formMaterial: null,
+    formInsumo: null,
+    formInsurance: null,
+    formAddress: null,
+    formResumo: null,
     pedido: null,
 
     init: function() {
@@ -96,6 +100,8 @@ var Core = {
             
             $this.paginatorForms = new Paginator('--', '.paginator.forms', function(page, title, showContentForms) {
                 $this.changeTitleHeader(title);
+                
+                console.log('Change page', page);
 
                 if (page == 'formPedido') {
                     if (!$this.formPedido) {
@@ -109,11 +115,31 @@ var Core = {
                     if (!$this.formMaterial) {
                         $this.formMaterial = new FormMaterial($this, $this.pedido, showContentForms);
                     }
+                } else if (page == 'formInsumo') {
+                    if (!$this.formInsumo) {
+                        $this.formInsumo = new FormInsumo($this, $this.pedido, showContentForms);
+                    }
+                } else if (page == 'formAddress') {
+                    if (!$this.formAddress) {
+                        $this.formAddress = new FormAddress($this, $this.pedido, showContentForms);
+                    }
+                } else if (page == 'formInsurance') {
+                    if (!$this.formInsurance) {
+                        $this.formInsurance = new FormInsurance($this, $this.pedido, showContentForms);
+                    }
+                } else if (page == 'formResumo') {
+                    if (!$this.formResumo) {
+                        $this.formResumo = new FormResumo($this, $this.pedido, showContentForms);
+                    }
+                } else if (page == 'formFinish') {
+                    if (!$this.formFinish) {
+                        $this.formFinish = new FormFinish($this, $this.pedido, showContentForms);
+                    }
                 }
             });
 
             $this.paginatorForms.init();
-            $this.paginatorForms.setSelectedPage('formPedido');
+            $this.paginatorForms.setSelectedPage('FormFinish');
 
             showContentFn();
         }
