@@ -7,6 +7,9 @@ var FormSolicitante = function(core, pedido, showContentFn) {
         var $this = this;
 
         formSolicitante = new FormWizard('.form-solicitante', {
+            id: {
+
+            },
             nome: {
                 rules: 'required|min:3|max:100'
             },
@@ -55,6 +58,10 @@ var FormSolicitante = function(core, pedido, showContentFn) {
 
     this.submit = function() {
         var values = formSolicitante.getAll();
+        values.cpf = formSolicitante.getCleanValue('cpf');
+        values.cep = values.cep.replace('-', '');
+        values.telefone = values.telefone.replace(' ', '');
+
         pedido.setSolicitante(values);
         core.paginatorForms.setSelectedPage('formMaterial');
     }

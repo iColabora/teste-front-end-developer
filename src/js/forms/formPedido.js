@@ -9,10 +9,9 @@ var FormPedido = function(core, pedido, showContentFn) {
         var $this = this;
 
         formPedido = new FormWizard('.form-wizard.form-pedido', {
-            numero: {
-                rules: 'required',
+            id: {
                 keyUp: function(e, field) {
-                    $this.keyUpNumero(e, field);
+                    $this.keyUpId(e, field);
                 },
                 hasLoading: true
             },
@@ -37,7 +36,7 @@ var FormPedido = function(core, pedido, showContentFn) {
         core.paginatorForms.setSelectedPage('formSolicitante');
     }
 
-    this.keyUpNumero = function(e, field) {
+    this.keyUpId = function(e, field) {
         var $this = this;
 
         if (!field.status) {
@@ -46,17 +45,17 @@ var FormPedido = function(core, pedido, showContentFn) {
 
         clearTimeout(timeoutNumero);
         timeoutNumero = setTimeout(function() {
-            if (formPedido.get('numero') == '') {
+            if (formPedido.get('id') == '') {
                 $('.about-pedido').addClass('hide');
                 return;
             }
 
-            formPedido.setDisabled(['numero', 'data_de_compra']);
+            formPedido.setDisabled(['id', 'data_de_compra']);
             
-            formPedido.showLoading('numero', 0);
+            formPedido.showLoading('id', 0);
 
-            Database.findPedidoByNumero(formPedido.get('numero'), function(result) {
-                formPedido.setEnabled(['numero']);
+            Database.findPedidoById(formPedido.get('id'), function(result) {
+                formPedido.setEnabled(['id']);
                 if (result.length == 1) {
                     result = result[0];
                     formPedido.setValue(result);
@@ -81,7 +80,7 @@ var FormPedido = function(core, pedido, showContentFn) {
                     $('.about-pedido').addClass('hide');
                 }
                 formPedido.setEnabled(['data_de_compra']);
-                formPedido.hideLoading('numero', 0);
+                formPedido.hideLoading('id', 0);
             });
         }, 1000);
     }

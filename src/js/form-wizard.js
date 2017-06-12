@@ -280,7 +280,7 @@ var FormWizard = function(el, fields, submitCallback) {
     }
 
     this.getCleanValue = function(field) {
-        return $fields[field].el.cleanVal();
+        return $fields[field].els[0].el.cleanVal();
     }
     
 

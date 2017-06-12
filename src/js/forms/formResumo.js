@@ -13,7 +13,15 @@ var FormResumo = function(core, pedido, showContentFn) {
         this.setValuesForInsumos();
         this.setValuesForInsurance();
 
+        formResumo.find('.btn-submit').click(function() {
+            $this.submit();
+        });
+
         showContentFn();
+    }
+
+    this.submit = function() {
+        core.paginatorForms.setSelectedPage('formFinish');
     }
 
     this.setValueForPedido = function() {

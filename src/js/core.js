@@ -139,7 +139,7 @@ var Core = {
             });
 
             $this.paginatorForms.init();
-            $this.paginatorForms.setSelectedPage('FormFinish');
+            $this.paginatorForms.setSelectedPage('formPedido');
 
             showContentFn();
         }
