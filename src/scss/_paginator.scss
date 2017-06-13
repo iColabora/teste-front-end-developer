@@ -1,0 +1,32 @@
+.paginator {
+
+    height:100%;
+
+    .loading {
+
+        width:100%;
+        text-align:center;
+        padding:50px 0;
+
+        .hide {
+            display:none;
+        }
+    }
+
+    .content {
+        display:none;
+
+        .show {
+            display:block;
+        }
+    }
+
+    .show-page {
+        display:block;
+    }
+
+    .hide-page {
+        display:none;
+    }
+
+}

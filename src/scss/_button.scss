@@ -1,0 +1,18 @@
+.btn {
+    &[disabled] {
+        &.btn-success {
+            background-color: lighten($color-accent, 20%);
+            border:1px solid lighten($color-accent, 10%);
+        }
+    }
+
+    &.btn-success {
+        background-color: $color-accent;
+        border:1px solid darken($color-accent, 10%);
+
+        &:hover{
+            background-color: darken($color-accent, 10%);
+            border:1px solid darken($color-accent, 20%);
+        }
+    }
+}

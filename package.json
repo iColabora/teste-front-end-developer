@@ -1,0 +1,28 @@
+{
+  "name": "teste-front-end-developer",
+  "version": "1.0.0",
+  "description": "> [![Logo iColabora](http://www.icolabora.com.br/vagas/imgs/icolabora.png)](https://www.icolabora.com.br/vagas)\r >\r > Todos que os interessados que fizerem pull request receberão um feedback da iColabora.<br>\r > Essa prova consiste em testar seus conhecimentos com <b>HTML, CSS, JavaScript, SQL</b> entre outras coisas. <br>\r > O conjunto de interfaces disponibilizado leva em média <b>6 horas</b> para ser implementado;",
+  "main": "mysql_lib.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agscripter/teste-front-end-developer.git"
+  },
+  "author": "Agner Esteves Ballejo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agscripter/teste-front-end-developer/issues"
+  },
+  "homepage": "https://github.com/agscripter/teste-front-end-developer#readme",
+  "dependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}

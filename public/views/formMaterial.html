@@ -1,0 +1,51 @@
+<div class="container form-center">
+    <form class="form-wizard form-material">
+        <h3>Materiais desse pedido</h3>
+
+        <ul class="list-group list-material">
+
+            <li class="list-group-item">
+                <input type="hidden" name="id[]" class="form-control" id="id" data-field="id">
+
+                <div class="form-group">
+                    <label for="nome" class="control-label">Nome</label>
+                    <input type="text" name="nome[]" class="form-control" data-field="nome" placeholder="Nome">
+                </div>
+
+                <div class="row">
+                    <div class="col col-md-4">
+                        <div class="form-group">
+                            <label for="marca" class="control-label">Marca</label>
+                            <input type="text" name="marca[]" class="form-control" data-field="marca" placeholder="Marca">
+                        </div>
+                    </div>
+
+                    <div class="col col-md-3">
+                        <div class="form-group">
+                            <label for="quantidade" class="control-label">Quantidade</label>
+                            <input type="number" name="quantidade[]" class="form-control" data-field="quantidade" placeholder="Quantidade">
+                        </div>
+                    </div>
+
+                    <div class="col col-md-5">
+                        <div class="form-group">
+                            <label for="preco" class="control-label">Preço R$</label>
+                            <input type="number" name="preco[]" class="form-control" data-field="preco" placeholder="Preço">
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+        <div class="row">
+            <div class="col col-md-6">
+                <button type="button" class="btn btn-success btn-add-material">Adicionar material <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+            </div>
+            <div class="col col-md-6">
+                <button type="button" class="btn btn-success pull-right btn-submit"> Insumos<span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </form>
+
+</div>

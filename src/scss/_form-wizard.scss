@@ -1,0 +1,26 @@
+.form-wizard {
+
+    h3 {
+        width:100%;
+        font-size:18px;
+        border-bottom:1px solid #eee;
+        padding-bottom:7px;
+
+        &.margin{
+            margin-top:40px;
+        }
+    }
+
+    .loading-field{
+        position:relative;
+        width:100%;
+
+        .image-loading {
+            position:absolute;
+            right:3px;
+            top:2px;
+            display:none;
+        }
+    }
+
+}

@@ -1,0 +1,36 @@
+<div class="container form-center">
+    <form class="form-wizard form-pedido">
+        <h3>Pedido</h3>
+
+        <div class="form-group">
+            <label for="codigo" class="control-label">Código</label>
+
+            <div class="loading-field">
+                <input type="number" name="id" class="form-control" id="codigo" placeholder="Código" data-field="id" step="1" min="0" value="0">
+                <img class="image-loading animated" src="/assets/images/loading.svg" alt=""/>
+            </div>
+
+            <div class="about-pedido hide">
+                <h5>Pedido encontrado:</h5>
+                <ul class="list-group sub-list fields-pedido">
+                    <li class="list-group-item" data-field="numero">Número do pedido: <span></span></li>
+                    <li class="list-group-item" data-field="nome">Solicitante: <span></span></li>
+                    <li class="list-group-item" data-field="total_materiais">Total em materiais: R$ <span></span></li>
+                    <li class="list-group-item" data-field="total_insumos">Total em insumos: R$ <span></span></li>
+                    <li class="list-group-item" data-field="total">Total: R$ <span></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="data_de_compra">Data de compra</label>
+            <input type="text" name="data_de_compra" disabled="disabled" class="form-control" id="data_de_compra" data-field="data_de_compra" placeholder="Data de compra" data-field="">
+
+            <div class="validator-errors">
+                <span class="help-block" data-error="required">O campo de data da compra é obrigatório</span>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-success pull-right btn-submit" disabled>Solicitante <span class="glyphicon glyphicon-play" aria-hidden="true"></span></button>
+    </form>
+</div>

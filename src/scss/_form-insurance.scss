@@ -1,0 +1,32 @@
+.form-insurance {
+
+    margin:20px 0 60px;
+    float:left;
+    width:100%;
+
+    .sub {
+        margin: 20px 0;
+        font-size:16px;
+    }
+
+    .radio {
+        background-color:#eee;
+
+        label {
+            width:100%;
+            text-align:center;
+            padding:10px;
+
+            &:hover,
+            &.checked {
+                background-color: $color-accent;
+                color:#fff;
+            }
+        }
+    }
+
+    .btn-submit {
+        margin-top:10px;
+    }
+
+}

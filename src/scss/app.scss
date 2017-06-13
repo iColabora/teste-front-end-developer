@@ -1,0 +1,92 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+$color-background: #f9f9f9;
+$color-accent: #39bb9d;
+
+@font-face
+{
+	font-family: 'HelveticaNeueBold';
+	src: url('../fonts/HelveticaNeue-Bold.eot');
+	src: local('Helvetica Neue Bold'), local('HelveticaNeue'), url('../fonts/HelveticaNeue-Bold.woff') format('woff'), url('../fonts/HelveticaNeue-Bold.ttf') format('truetype');
+}
+
+$font-helvetica: 'HelveticaNeueBold';
+$font-trebuchet: 'Trebuchet MS Regular';
+
+@import '_navbar.scss';
+@import '_paginator.scss';
+@import '_validator.scss';
+@import '_sublist.scss';
+@import '_button.scss';
+@import '_form-wizard.scss';
+@import '_form-pedido.scss';
+@import '_form-solicitante.scss';
+@import '_form-material.scss';
+@import '_form-insumo.scss';
+@import '_form-address.scss';
+@import '_form-insurance.scss';
+@import '_form-resumo.scss';
+@import '_form-finish.scss';
+@import '_footer.scss';
+
+html {
+    height:100%;
+
+    body { 
+        height:100%;
+        padding-top: 115px;
+        background-color:$color-background;
+
+        .wrapper {
+            min-height: 100%;
+            margin-bottom: -51px;
+            position:relative;
+
+            .dashboard {
+                margin:0 0 30px;
+                float:left;
+                width:100%;
+
+                .pagination {
+                    >.active {
+                        a {
+                            background-color: $color-accent;
+                            border-color: darken($color-accent, 10%);
+
+                            &:focus,
+                            &:hover {
+                                background-color: $color-accent;
+                            }
+                        }
+
+                        span {
+                            background-color: $color-accent;
+                            border-color: darken($color-accent, 10%);
+
+                            &:hover,
+                            &:focus {
+                                background-color: $color-accent;
+                            }
+                        }
+                    }
+                }
+            }
+
+            >.container {
+                min-height:100%;
+                position:relative;
+
+                .form-center {
+                    max-width:600px;
+                }
+            }
+
+            .push {
+                height:31px;
+            }
+        }
+    }
+}
