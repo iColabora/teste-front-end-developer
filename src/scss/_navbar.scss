@@ -7,7 +7,7 @@
     $color-border-bottom-sub-navbar: #ddd;
     $color-sub-navbar: #666;
     $color-title-subnav: #102938;
-    
+
     .navbar-nav:not(.navbar-right) {
         >li {
             >a {
@@ -156,6 +156,33 @@
         background: $background-sub-navbar;
         border-bottom:1px solid $color-border-bottom-sub-navbar;
         min-height:55px;
+        position:relative;
+        
+        .arrow {
+            position:absolute;
+            left:0;
+            top:0;
+            width:17.5px;
+            height: auto;
+        }
+
+        &.dashboards {
+            .arrow {
+                top:-7px;
+                left:23px;
+                -webkit-transform: rotate(180deg);
+                -moz-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        }
+
+        &.process {
+            .arrow {
+                left:100px;
+                top:53px;
+            }
+        }
 
         a {
             color: $color-sub-navbar;

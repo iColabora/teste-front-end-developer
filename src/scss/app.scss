@@ -49,6 +49,30 @@ html {
                 margin:0 0 30px;
                 float:left;
                 width:100%;
+
+                .pagination {
+                    >.active {
+                        a {
+                            background-color: $color-accent;
+                            border-color: darken($color-accent, 10%);
+
+                            &:focus,
+                            &:hover {
+                                background-color: $color-accent;
+                            }
+                        }
+
+                        span {
+                            background-color: $color-accent;
+                            border-color: darken($color-accent, 10%);
+
+                            &:hover,
+                            &:focus {
+                                background-color: $color-accent;
+                            }
+                        }
+                    }
+                }
             }
 
             >.container {
