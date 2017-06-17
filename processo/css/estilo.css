@@ -1,0 +1,90 @@
+body {
+  color: #102938;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.container-fluid{
+	color: #606c88;
+}
+
+.navbar-default{
+	background: #102938
+}
+
+.tab-pane{
+ padding-top: 20px;
+ }
+ 
+ .style_form {
+margin: 0 auto;
+/* To see the outline of the form */
+background: #102938;
+height: auto !important;
+text-align: left;
+padding: 20px 0px 10px 0px;
+color: white;
+width: 35%;
+text-align: center;
+border-radius: 10px;
+}
+
+.style_form h1 {
+margin-bottom: 30px;
+}
+::-webkit-input-placeholder {
+color: #5292b6;
+padding: 10px;
+}
+
+.style_form div+ div {
+margin-top: 1em;
+}
+*:focus {
+outline: none;
+box-shadow: none;
+
+}
+.foto-perfil{
+position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 4px;
+  padding-top: 5px;
+  padding-right: 35px;
+  text-align: right;
+  width: 80px;
+}
+
+.profile {
+background: no-repeat top right;
+ 
+ position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-right: 35px;
+  text-align: right;
+  width: 180px;
+}
+
+.menuFont {
+  font-size: 1.3em;
+  margin-top: 5px; }
+   .navbar-default .navbar-nav > li > a {
+    color: #ffffff; }
+	
+	
+.start {
+  background-color: #39bb9d;
+  padding: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: white; 
+}
+.start:hover {
+    text-decoration: none;
+    color: colHover; 
+}
+.start a {
+    padding-top: 20px;
+}
