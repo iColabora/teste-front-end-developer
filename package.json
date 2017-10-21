@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass-loader": "^1.0.10",
+    "expose-loader": "^0.7.3",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.7.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "jquery": "^3.2.1",
+    "jquery-confirm": "^3.3.2",
+    "jquery-mask-plugin": "^1.14.12",
+    "moment": "^2.19.1",
+    "pump": "^1.0.2",
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.0",
+    "webpack-stream": "^4.0.0"
+  }
+}

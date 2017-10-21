@@ -1,0 +1,19 @@
+@import "reset";
+
+@import "imports";
+
+@import "variables";
+
+body {
+    font-family: $default-font;
+    background-color: $default-bgcolor;
+    min-height: 637px;
+    position: relative;
+}
+
+@import "header/menu";
+@import "header/dashboard";
+
+@import "content/content";
+
+@import "footer/footer";

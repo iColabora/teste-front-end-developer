@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iColabora - Turbina</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <header>
+        <nav class="header-menu container-fluid">
+            <img class="header-menu-logo" src="img/logo.svg" alt="Logotipo da Aplica&ccedil;ão">
+            <ul class="header-menu-main">
+                <li class="header-menu-main-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="header-menu-main-item">
+                    <a href="#">Solu&ccedil;&otilde;es</a>
+                </li>
+                <li class="header-menu-main-item">
+                    <a href="#">Administra&ccedil;&atilde;o</a>
+                </li>
+            </ul>
+            <button class="header-menu-begin-process"><i class="glyphicon glyphicon-play"></i> Iniciar Processo</button>
+            <ul class="header-menu-right">
+                <li class="header-menu-right-button">
+                    <button class="header-menu-right-button-search" alt="Fazer uma busca">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </li>
+                <li class="header-menu-right-button">
+                    <button class="header-menu-right-button-accessibility" alt="Acessibilidade">
+                        <i class="glyphicon glyphicon-bell"></i>
+                    </button>
+                </li>
+                <li class="header-menu-right-button">
+                    <div class="profile">
+                        <img class="profile-pic" src="img/users/jose-da-silva.jpg" alt="Foto de José da Silva">
+                        <button class="profile-options">
+                            <i class="glyphicon glyphicon-triangle-bottom"></i>
+                        </button>
+                    </div>
+                    <div class="profile-info hide">
+                        <div class="profile-info-presentation">
+                            <img src="img/users/jose-da-silva.jpg" alt="Foto de José da Silva">
+                            <h5>José da Silva</h5>
+                        </div>
+                        <div class="profile-info-action">
+                            <button type="button">
+                                <i class="glyphicon glyphicon-user"></i> Ver perfil
+                            </button>
+                            <button type="button">
+                                <i class="glyphicon glyphicon-log-out"></i> Sair
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="row dashboard">
+            <div class="dashboard-info">
+                <div class="dashboard-info-icon">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </div>
+                <span class="dashboard-info-title">Tarefa</span>    
+                <span class="dashboard-info-description">"Check if extra insurance is necessary"</span>
+            </div>  
+        </div>
+    </header>
+    <main class="container">
+        
+        <form id="pedido">
+            <h2>Busque um pedido:</h2>
+            <div class="row">
+                <div class="col-sm-3 form-group">
+                        <label for="">Data de compra:</label>
+                        <input type="text" readonly class="form-control increase datetime" name="pedido-data-de-compra">
+                    </div>
+                <div class="col-sm-3 form-group">
+                    <label for="">N&uacute;mero de Pedido:</label>
+                    <input type="text" class="form-control increase required" name="pedido-numero" placeholder="Digite um n&uacute;mero de pedido">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <br>
+                    <button type="button" class="btn btn-theme increase buscar"><i class="glyphicon glyphicon-search"></i> Buscar</button>
+                </div>
+            </div>
+
+            <h2>Dados do Solicitante:</h2>
+            <div class="row">
+                <div class="col-sm-6 form-group">
+                    <label>Nome completo:</label>
+                    <input type="text" placeholder="Nome Completo" class="form-control required" name="solicitante-nome">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>CPF:</label>
+                    <input type="text" placeholder="CPF" class="form-control cpf required" name="solicitante-cpf">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Telefone:</label>
+                    <input type="text" placeholder="Telefone" class="form-control phone required" name="solicitante-telefone">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>CEP:</label>
+                    <input type="text" placeholder="CEP" class="form-control cep required" name="solicitante-cep">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Endere&ccedil;o:</label>
+                    <input type="text" placeholder="Endere&ccedil;o" class="form-control required" name="solicitante-endereco">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Complemento:</label>
+                    <input type="text" placeholder="Complemento" class="form-control" name="solicitante-complemento">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Cidade:</label>
+                    <input type="text" placeholder="Cidade" class="form-control required" name="solicitante-cidade">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Estado:</label>
+                    <select class="form-control required" name="solicitante-estado">
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AP</option>
+                        <option>AM</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MT</option>
+                        <option>MS</option>
+                        <option>MG</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PR</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RS</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>SC</option>
+                        <option selected="selected">SP</option>
+                        <option>SE</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Endere&ccedil;o de Entrega:</h2>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <br />
+                    <button type="button" class="btn btn-theme copia-endereco-solicitante required"><span class="glyphicon glyphicon-copy"></span> Copiar Endere&ccedil;o do Solicitante</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 form-group">
+                    <label>CEP:</label>
+                    <input type="text" placeholder="CEP" class="form-control cep required" name="pedido-cep">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Endere&ccedil;o:</label>
+                    <input type="text" placeholder="Endere&ccedil;o" class="form-control required" name="pedido-endereco">
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label>Complemento:</label>
+                    <input type="text" placeholder="Complemento" class="form-control" name="pedido-complemento">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Cidade:</label>
+                    <input type="text" placeholder="Cidade" class="form-control required" name="pedido-cidade">
+                </div>
+                <div class="col-sm-3 form-group">
+                    <label>Estado:</label>
+                    <select class="form-control required" name="pedido-estado">
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AP</option>
+                        <option>AM</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MT</option>
+                        <option>MS</option>
+                        <option>MG</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PR</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RS</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>SC</option>
+                        <option selected="selected">SP</option>
+                        <option>SE</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Lista de Materiais:</h2>
+                <div class="col-sm-12">
+                    <table id="table-materiais" class="table table-hover table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Marca</th>
+                                <th>Quantidade</th>
+                                <th>Pre&ccedil;o total</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="remove-me">
+                                <td colspan="5" class="text-center">Nenhum registro na tabela.</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="dados-material" colspan="5">
+                                    <div class="col-sm-3 form-group">
+                                        <input required placeholder="Nome do Material" type="text" class="form-control" name="material-nome">
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <input required  placeholder="Marca do Material" type="text" class="form-control" name="material-marca">
+                                    </div>
+                                    <div class="col-sm-2 form-group">
+                                        <input required placeholder="Quantidade" type="number" class="form-control" name="material-quantidade">
+                                    </div>
+                                    <div class="col-sm-2 form-group">
+                                        <input required placeholder="Pre&ccedil;o" type="text" class="form-control money" name="material-preco">
+                                    </div>
+                                    <div class="col-sm-2 form-group">
+                                        <button type="button" class="btn btn-theme btn-adiciona-material">
+                                            <span class="glyphicon glyphicon-plus"></span> Adicionar Material
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <h2>Lista de Insumos:</h2>
+                <div class="col-sm-12">
+                    <table id="table-insumos" class="table table-hover table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th>Insumo</th>
+                                <th>Marca</th>
+                                <th>Quantidade</th>
+                                <th>Pre&ccedil;o total</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="remove-me">
+                                <td colspan="5" class="text-center">Nenhum registro na tabela.</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="dados-insumo" colspan="5">
+                                    <div class="col-sm-3 form-group">
+                                        <input required placeholder="Nome do Insumo" type="text" class="form-control" name="insumo-nome">
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <input required  placeholder="Marca do Insumo" type="text" class="form-control" name="insumo-marca">
+                                    </div>
+                                    <div class="col-sm-2 form-group">
+                                        <input required placeholder="Quantidade" type="number" class="form-control" name="insumo-quantidade">
+                                    </div>
+                                    <div class="col-sm-2 form-group">
+                                        <input required placeholder="Pre&ccedil;o" type="text" class="form-control money" name="insumo-preco">
+                                    </div>
+                                    <div class="col-sm-2 form-group">
+                                        <button type="button" class="btn btn-theme btn-adiciona-insumo">
+                                            <span class="glyphicon glyphicon-plus"></span> Adicionar Insumo
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" disabled="disabled" class="btn btn-theme increase continua"><span class="glyphicon glyphicon-floppy-open"></span> Salvar e Prosseguir para tarefa de postagem </button>
+                    <button type="button" disabled="disabled" class="btn btn-warning increase extra-insurance"><span class="glyphicon glyphicon-floppy-open"></span> Salvar e solicitar seguro extra </button>
+                    
+                </div>
+            </div>
+        </form>
+    </main>
+    <footer class="footer">
+        &copy; 2017 - iColabora
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>
