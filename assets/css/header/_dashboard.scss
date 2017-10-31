@@ -1,0 +1,59 @@
+header {
+
+    .dashboard {
+        display: block;
+        height: 60px;
+        background-color: #fff;
+        color: $default-font-color;
+        font-size: $default-font-size - 1;
+
+        .dashboard-list {
+            display: inline-block;
+            margin: 20px 40px;
+
+            .dashboard-list-item {
+                display: inline-block;
+                padding: 0 20px;
+                cursor: pointer;
+            }
+
+            .dashboard-list-item.active {
+                color: $primary-font-color-hover;
+            }
+
+            .dashboard-list-item:hover {
+                color: $primary-font-color-hover;
+            }
+        }
+
+        .dashboard-info {
+            display: inline-block;
+            color:inherit;
+            margin: 20px 10px;
+            padding: 0 20px;
+
+            .dashboard-info-icon {
+                display: inline-block;
+                color: $primary-font-color-hover;
+                font-size: $default-font-size + 1;
+                padding-right: 3px;
+
+                i {
+                    display: inline;
+                }
+            }
+
+            .dashboard-info-title,
+            .dashboard-info-description {
+                font: $header-font;
+                display: inline;
+                color:inherit;
+            }
+
+            .dashboard-info-description {
+                padding-left: 30px;
+            }
+        }
+    }
+
+}
