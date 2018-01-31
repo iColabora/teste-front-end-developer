@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Material Icons CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/estilo.min.css">
+
+    <title>Teste Front-end Developer</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+            <a class="navbar-brand" href="">
+                <img src="images/Logo.png" width="32" height="32" alt="Logo iColabora">
+            </a>
+            <div class="collapse navbar-collapse navbarLinks">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#collapseSubmenu" role="button" aria-expanded="false">Dashboads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Soluções</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Administração</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-bg-center navbarLinks">
+                <ul class="navbar-nav">
+                    <li><a class="nav-link" href="task.html"><i class="material-icons md-custom">&#xE037;</i> Iniciar Processo</a></li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="material-icons md-32 md-light">&#xE8B6;</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="material-icons md-32 md-light">&#xE914;</i></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="images/MikeDias.png" width="32" height="32" alt="Imagem Usuário">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="collapse navbar-expand-lg" id="collapseSubmenu">
+            <div class="card card-body">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link nav-secLink active-secLink" href="">Dashboad 1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-secLink" href="">Dashboad 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-secLink" href="">Dashboad 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="container graf-section">
+            <h3 class="section-title">Pedidos por dia</h3>
+            <canvas class="my-4" id="pedidosDia" width="450" height="120"></canvas>
+        </section>
+        
+        <section class="container graf-section">
+            <hr>
+            <h3 class="section-title">Pedidos por solicitantes</h3>
+            <canvas class="my-4" id="pedidosSolicitantes" width="900" height="380"></canvas>
+        </section>
+        
+        <section class="container">
+            <hr>
+            <h3 class="section-title">Pedidos pendentes</h3>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Número Pedido</th>
+                        <th>Solicitante</th>
+                        <th>Data da Compra</th>
+                        <th>CEP</th>
+                    </tr>
+                </thead>
+                <tbody id="pedidosPendentes">
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="footer fixed-bottom">
+        <span class="copyright">&#64; 2016 iColabora</span>
+        <i class="material-icons help-ico">&#xE887;</i>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="bootstrap/js/iconwc.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- script Chart.js-->        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        
+    <!-- script iColabora-->
+    <!-- script custom-->
+    <script src="mysql_lib.js"></script>
+    <script src="js/method.js"></script>
+
+</body>
+
+</html>

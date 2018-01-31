@@ -1,0 +1,200 @@
+/* Rules for sizing the icon. */
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-32 {
+    font-size: 32px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+
+/* Rules for using icons as black on a light background. */
+
+.material-icons.md-dark {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.material-icons.md-dark.md-inactive {
+    color: rgba(0, 0, 0, 0.26);
+}
+
+
+/* Rules for using icons as white on a dark background. */
+
+.material-icons.md-light {
+    color: rgba(74, 92, 104, 1);
+}
+
+.material-icons.md-light:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.material-icons.md-custom {
+    color: #ffffff;
+    vertical-align: bottom;
+}
+
+
+/*navbar configures*/
+
+.navbar {
+    background-color: #102938;
+    padding: 0;
+}
+
+.navbarLinks {
+    font-family: "Helvetica Neue", "Helvetica", "sans-serif";
+    font-weight: bold;
+    font-size: 12.39pt;
+    text-transform: uppercase;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #39bb9d;
+}
+
+.navbar-bg-center {
+    background-color: #39bb9d;
+    margin: 0;
+    padding: 0.5em;
+    border: 0;
+}
+
+.navbar-brand,
+.navbar-collapse {
+    padding: 0 2rem;
+}
+
+.navbar-bg-center .navbar-nav .nav-link:hover {
+    color: rgba(16, 41, 56, 0.7);
+}
+
+.nav-secLink {
+    font-family: "Trebuchet MS", "Helvetica", sans-serif;
+    font-size: 12pt;
+    color: #666666;
+}
+
+.nav-secLink:hover {
+    font-weight: bold;
+    color: #39bb9d;
+}
+
+
+.dropdown-toggle::after {
+    color: #4a5c68;
+}
+
+
+.active-secLink {
+    font-weight: bold;
+    color: #39bb9d;
+}
+
+main {
+    margin-bottom: 3rem;
+}
+
+.copyright {
+    padding-left: 1.25rem;
+}
+
+.help-ico {
+    padding-right: 1.25rem;
+    display: block;
+    float: right;
+    color: #999999;
+}
+
+.footer {
+    font-family: "Trebuchet MS", "Helvetica", sans-serif;
+    font-size: 12pt;
+    color: #999999;
+    background-color: #565351!important;
+    padding: 5px 0;
+}
+
+.jbt-title {
+    font-family: "Helvetica Neue", "Helvetica", "sans-serif";
+    font-weight: bold;
+    font-size: 12pt;
+    color: #102938;
+    padding: 0 0 0 1rem;
+    margin: 0;
+}
+
+.jbt-text {
+    font-family: "Helvetica Neue", "Helvetica", "sans-serif";
+    font-size: 12pt;
+    color: #102938;
+}
+
+.card-body img {
+    margin: 0 0.45rem;
+    padding: 0;
+}
+
+.jumbotron {
+    margin: 0;
+    padding: 0.85rem 1.25rem;
+    background-color: #ffffff;
+    border-bottom:solid rgba(153, 153, 153, 0.7) 1px;
+    position: relative;
+}
+
+table {
+    text-align: center;
+}
+
+.section-title{
+    text-align: center;
+    font-family: "Helvetica Neue", "Helvetica", "sans-serif";
+    font-weight: bold;
+    color: #102938;
+    padding-top: 1rem;
+}
+
+.graf-section {
+    width: 75%;
+}
+
+label {
+    margin-right: 0.5rem;
+}
+
+.conj-input{
+    margin: 0.5rem 0.5rem 0 0;
+}
+
+.form-custom{
+    margin-top: 1rem;
+}
+
+.form-font{
+    margin-top: 0;
+    padding-top:0;
+}
+
+.form-coluna-hum,
+.col-sm-10 {
+    padding-left: 0;
+}
+
+
