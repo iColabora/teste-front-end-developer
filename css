@@ -1,0 +1,184 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #FFFAFA;
+	background-size: cover;
+	font-family: sans-serif;
+}
+nav{
+	width: 100%;
+	height: 100px;
+	position: relative;
+	background: #102938;
+}
+
+ul{
+	width: 80%;
+	margin: 0 auto;
+	padding: 0;
+
+}
+ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 20px;
+}
+ul li: hover{
+	background: #01141f;
+}
+ul li a {
+	align-items: left;
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+	text-align: center;
+}
+li{
+	list-style: none;
+	display: inline-block;
+	padding: 20px;
+}
+button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 20px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+fa-search{
+	width: 100%
+	padding 20px;
+	text-align: center;
+}
+.toggle
+{
+	width: 100%;
+	padding: 10px 20px;
+	background: #01141f;
+	text-align: right;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 30px;
+	display: none;
+}
+@media (max-width: 768px)
+{
+	.toggle{
+		display: block;
+	}
+
+ul{
+	width: 100%;
+	display: none;
+}
+ul li{
+	display: block;
+	text-align: center;
+}
+.active{
+	display: block;
+}
+}
+.titulo{
+	text-align: center;
+	padding: 50px 0 20px;
+}
+.titulo h1
+{
+	margin: 0;
+	padding: 0;
+	color: #262626;
+	text-transform: uppercase;
+	font-size: 36px;
+}
+.container{
+	width: 180%;
+	height: 650px;
+	background-size: #fbfbed;
+	margin: 0 auto;
+	border: 2px solid #fff;
+	box-shadow: 0 15px 40px rgba(0,0,0,.5);
+}
+.container1{
+	width: 87%;
+	height: 150px;
+	background-size: #fbfbed;
+	margin: 0 auto;
+	border: 2px solid #fff;
+	box-shadow: 0 15px 40px rgba(0,0,0,.5);
+}
+.container .esquerda{
+	float: left;
+	width: 50%;
+	height: 400px;
+	background:url(../img/img1.png);
+	background-size: cover;
+	box-sizing: border-box; 
+}
+.container .direita{
+	float: right;
+	width: 50%;
+	height: 400px;
+	box-sizing: border-box;
+}
+.formbox{
+width: 100%
+padding: 80px 40px;
+box-sizing: border-box;
+height: 400px;
+background: #fcf7fc;
+}
+
+.formbox p
+{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #FFFAFA;
+}
+
+.formbox input{
+	margin-bottom: 20px;
+}
+.formbox input[type="text"];
+{
+	border: none;
+	border-bottom: 2px solid #a6af13;
+	outline: none;
+	height: 40px;
+}
+.formbox input[type="submit"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	background: #262626;
+}
+legend{
+	animation: 
+}
+fieldset{
+	float: right;
+	width: 410px;
+	padding: 0 10px;
+	text-align: left;
+	
+}
+
+input{
+	width: 100px; display: inline-block;
+}
+
+
+footer{
+    margin: 0;
+	padding: 0;
+	background-color: #565351;
+	background-size: cover;
+	font-family: sans-serif;
+
+}
